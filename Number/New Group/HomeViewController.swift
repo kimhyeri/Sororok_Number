@@ -16,7 +16,8 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
-        
+        tableView.register(UINib(nibName:"HomeTableViewCell",bundle: nil), forCellReuseIdentifier: "HomeTableViewCell")
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,9 +32,17 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! UITableViewCell
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath) as! HomeTableViewCell
+   
         return cell
     }
     
+//    func createSearchBar() {
+//        let searchBar = UISearchBar()
+//        searchBar.placeholder = "검색하세요"
+//        searchBar.sizeToFit()
+//        searchBar.isTranslucent = false
+//        view.addSubview(searchBar)
+//    }
 }
+
