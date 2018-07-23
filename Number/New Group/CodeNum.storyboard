@@ -12,7 +12,7 @@
         <!--Code Num View Controller-->
         <scene sceneID="zM5-SI-YOQ">
             <objects>
-                <viewController id="mMN-8W-m9K" customClass="CodeNumViewController" customModule="Number" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CodeNum" id="mMN-8W-m9K" customClass="CodeNumViewController" customModule="Number" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mud-ak-sEw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
