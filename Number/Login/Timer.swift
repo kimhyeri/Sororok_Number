@@ -18,7 +18,6 @@ extension LoginViewController {
     
     //1초마다 라벨에 표시하기
     @objc func timeLimit() {
-        print("he")
         if time > 0 {
             time -= 1
             timeDown.text = "입력시간 \(time/60)분\(time%60)초"

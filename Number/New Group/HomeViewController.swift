@@ -37,12 +37,12 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-//    func createSearchBar() {
-//        let searchBar = UISearchBar()
-//        searchBar.placeholder = "검색하세요"
-//        searchBar.sizeToFit()
-//        searchBar.isTranslucent = false
-//        view.addSubview(searchBar)
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.view.endEditing(true)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.view.endEditing(true)
+    }
 }
 

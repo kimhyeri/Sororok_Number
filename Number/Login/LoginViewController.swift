@@ -22,6 +22,18 @@ class LoginViewController: UIViewController {
     var timer = Timer()
     var startTimer = false
     
+    //numTextField변화 살펴보기
+    @IBAction func numberEditing(_ sender: UITextField) {
+        if (sender.text?.count)! == 0 {
+            sender.backgroundColor = .white
+            sender.textColor = .lightGray
+    
+        }else {
+            sender.backgroundColor = .lightGray
+            sender.textColor = .white
+        }
+    }
+    
     //인증번호 전송
     @IBAction func pressedButton(_ sender: UIButton) {
         sender.setTitle("메일 재전송", for: UIControlState.normal)
@@ -51,9 +63,8 @@ class LoginViewController: UIViewController {
 
 //MARK: TextField Delegate extension part
 extension LoginViewController : UITextFieldDelegate {
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.view.endEditing(true)
     }
-  
 }
