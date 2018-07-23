@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		351AB6322105AEBA0017D41A /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351AB6312105AEBA0017D41A /* Timer.swift */; };
 		35ECDEF02103B1B700308080 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ECDEEF2103B1B700308080 /* AppDelegate.swift */; };
 		35ECDEF22103B1B700308080 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ECDEF12103B1B700308080 /* ViewController.swift */; };
 		35ECDEF52103B1B700308080 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35ECDEF32103B1B700308080 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		351AB6312105AEBA0017D41A /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		35ECDEEC2103B1B700308080 /* Number.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Number.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35ECDEEF2103B1B700308080 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35ECDEF12103B1B700308080 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 			children = (
 				35ECDF022103B1D600308080 /* Login.storyboard */,
 				35ECDF042103B1E600308080 /* LoginViewController.swift */,
+				351AB6312105AEBA0017D41A /* Timer.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 			files = (
 				35ECDF15210476F200308080 /* HomeTableViewCell.swift in Sources */,
 				35ECDF12210475E200308080 /* HomeViewController.swift in Sources */,
+				351AB6322105AEBA0017D41A /* Timer.swift in Sources */,
 				35ECDF0E210475A200308080 /* CodeNumViewController.swift in Sources */,
 				35ECDF052103B1E600308080 /* LoginViewController.swift in Sources */,
 				35ECDEF22103B1B700308080 /* ViewController.swift in Sources */,
