@@ -16,6 +16,8 @@
 		3556196521071C01009CC356 /* DetailHomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3556196321071C01009CC356 /* DetailHomeTableViewController.swift */; };
 		3556196A21071EDF009CC356 /* DetailHomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3556196821071EDF009CC356 /* DetailHomeTableViewCell.swift */; };
 		3556196B21071EDF009CC356 /* DetailHomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3556196921071EDF009CC356 /* DetailHomeTableViewCell.xib */; };
+		355F0A732108E96C00715E3F /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 355F0A722108E96C00715E3F /* Setting.storyboard */; };
+		355F0A752108E99D00715E3F /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355F0A742108E99D00715E3F /* SettingTableViewController.swift */; };
 		35ECDEF02103B1B700308080 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ECDEEF2103B1B700308080 /* AppDelegate.swift */; };
 		35ECDEF22103B1B700308080 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ECDEF12103B1B700308080 /* ViewController.swift */; };
 		35ECDEF52103B1B700308080 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35ECDEF32103B1B700308080 /* Main.storyboard */; };
@@ -41,6 +43,8 @@
 		3556196321071C01009CC356 /* DetailHomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHomeTableViewController.swift; sourceTree = "<group>"; };
 		3556196821071EDF009CC356 /* DetailHomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHomeTableViewCell.swift; sourceTree = "<group>"; };
 		3556196921071EDF009CC356 /* DetailHomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailHomeTableViewCell.xib; sourceTree = "<group>"; };
+		355F0A722108E96C00715E3F /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
+		355F0A742108E99D00715E3F /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		35ECDEEC2103B1B700308080 /* Number.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Number.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35ECDEEF2103B1B700308080 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35ECDEF12103B1B700308080 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +118,15 @@
 			path = DetailHome;
 			sourceTree = "<group>";
 		};
+		355F0A712108E95600715E3F /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				355F0A722108E96C00715E3F /* Setting.storyboard */,
+				355F0A742108E99D00715E3F /* SettingTableViewController.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		35ECDEE32103B1B600308080 = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +184,7 @@
 		35ECDF0C2104759400308080 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				355F0A712108E95600715E3F /* Setting */,
 				3556196721071D39009CC356 /* DetailHome */,
 				351AB6372105C14B0017D41A /* MyPage */,
 				35ECDF0F210475D800308080 /* Home.storyboard */,
@@ -268,6 +282,7 @@
 				35ECDF10210475D800308080 /* Home.storyboard in Resources */,
 				3556196B21071EDF009CC356 /* DetailHomeTableViewCell.xib in Resources */,
 				35ECDEF52103B1B700308080 /* Main.storyboard in Resources */,
+				355F0A732108E96C00715E3F /* Setting.storyboard in Resources */,
 				35ECDF0921046EB600308080 /* CodeNum.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -342,6 +357,7 @@
 				35ECDF0E210475A200308080 /* CodeNumViewController.swift in Sources */,
 				351AB6362105C00C0017D41A /* LoginViewController.swift in Sources */,
 				3556196521071C01009CC356 /* DetailHomeTableViewController.swift in Sources */,
+				355F0A752108E99D00715E3F /* SettingTableViewController.swift in Sources */,
 				35ECDEF22103B1B700308080 /* ViewController.swift in Sources */,
 				35ECDEF02103B1B700308080 /* AppDelegate.swift in Sources */,
 				351AB63B2105C16E0017D41A /* MyPageViewController.swift in Sources */,
@@ -493,7 +509,10 @@
 				DEVELOPMENT_TEAM = H92U9KV5T2;
 				INFOPLIST_FILE = Number/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hyeri.Number;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -510,7 +529,10 @@
 				DEVELOPMENT_TEAM = H92U9KV5T2;
 				INFOPLIST_FILE = Number/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hyeri.Number;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
