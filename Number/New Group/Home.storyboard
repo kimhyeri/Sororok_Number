@@ -90,6 +90,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="iu9-G3-Kyz"/>
                     <connections>
+                        <outlet property="myImage" destination="0AZ-2Y-AAb" id="Qqi-zl-QxL"/>
+                        <outlet property="myName" destination="tgm-5v-Yfe" id="fQe-IE-k4Z"/>
                         <outlet property="tableView" destination="pj7-xP-Sw6" id="RQ5-3h-Es0"/>
                     </connections>
                 </viewController>

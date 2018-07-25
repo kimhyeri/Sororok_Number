@@ -12,6 +12,12 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var myImage: UIImageView!
+    
+    @IBOutlet weak var myName: UILabel!
+    
+    var lastContentOffset: CGFloat = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -25,7 +31,7 @@ class HomeViewController: UIViewController {
     }
 }
 
-extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
+extension HomeViewController : UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
@@ -47,5 +53,27 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
     }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.lastContentOffset = scrollView.contentOffset.y
+        print("scroll start")
+        myName.text = "희은"
+        myImage.frame.size.width = 40
+        myImage.frame.size.height = 40
+        
+    }
+    
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        if (self.lastContentOffset < scrollView.contentOffset.y) {
+//            print("scroll top")
+//
+//        } else if (self.lastContentOffset > scrollView.contentOffset.y) {
+//            // moved to bottom
+//               print("scroll bottom")
+//        } else {
+//            // didn't move
+//               print("scroll not move")
+//        }
+//    }
 }
 
