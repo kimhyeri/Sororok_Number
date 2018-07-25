@@ -52,7 +52,7 @@
                                 <rect key="frame" x="0.0" y="67" width="375" height="145"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0AZ-2Y-AAb">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mypageUser" translatesAutoresizingMaskIntoConstraints="NO" id="0AZ-2Y-AAb">
                                         <rect key="frame" x="8" y="17" width="63" height="63"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -106,4 +106,7 @@
             <point key="canvasLocation" x="914" y="186"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="mypageUser" width="64" height="64"/>
+    </resources>
 </document>

@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="61.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="73G-cH-QmU">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mypageUser" translatesAutoresizingMaskIntoConstraints="NO" id="73G-cH-QmU">
                         <rect key="frame" x="27" y="10" width="40" height="40"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
@@ -40,4 +40,7 @@
             <point key="canvasLocation" x="34" y="63"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="mypageUser" width="64" height="64"/>
+    </resources>
 </document>

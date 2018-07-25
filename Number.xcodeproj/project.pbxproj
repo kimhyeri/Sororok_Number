@@ -27,9 +27,11 @@
 		35ECDF12210475E200308080 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ECDF11210475E200308080 /* HomeViewController.swift */; };
 		35ECDF15210476F200308080 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ECDF13210476F200308080 /* HomeTableViewCell.swift */; };
 		35ECDF16210476F200308080 /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35ECDF14210476F200308080 /* HomeTableViewCell.xib */; };
+		9A12B48230E7577C9E7159CA /* Pods_Number.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDD04C5D158AE3D2E5D532A9 /* Pods_Number.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04CEFCC74BD7CE9157399955 /* Pods-Number.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Number.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Number/Pods-Number.debug.xcconfig"; sourceTree = "<group>"; };
 		351AB6312105AEBA0017D41A /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		351AB6332105C00C0017D41A /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		351AB6342105C00C0017D41A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -52,6 +54,8 @@
 		35ECDF11210475E200308080 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = "Number/New Group/HomeViewController.swift"; sourceTree = SOURCE_ROOT; };
 		35ECDF13210476F200308080 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		35ECDF14210476F200308080 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
+		8BDCC3C3DE9D9AB0F178EA67 /* Pods-Number.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Number.release.xcconfig"; path = "Pods/Target Support Files/Pods-Number/Pods-Number.release.xcconfig"; sourceTree = "<group>"; };
+		DDD04C5D158AE3D2E5D532A9 /* Pods_Number.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Number.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A12B48230E7577C9E7159CA /* Pods_Number.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,6 +119,8 @@
 			children = (
 				35ECDEEE2103B1B700308080 /* Number */,
 				35ECDEED2103B1B700308080 /* Products */,
+				52D8C84EDE53D4CCCE4B9832 /* Pods */,
+				AA24B5033219F2AE898B2745 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -174,6 +181,23 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		52D8C84EDE53D4CCCE4B9832 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				04CEFCC74BD7CE9157399955 /* Pods-Number.debug.xcconfig */,
+				8BDCC3C3DE9D9AB0F178EA67 /* Pods-Number.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		AA24B5033219F2AE898B2745 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DDD04C5D158AE3D2E5D532A9 /* Pods_Number.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -181,9 +205,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 35ECDEFE2103B1BA00308080 /* Build configuration list for PBXNativeTarget "Number" */;
 			buildPhases = (
+				F9F8FB20281D83B1F53E0B4D /* [CP] Check Pods Manifest.lock */,
 				35ECDEE82103B1B700308080 /* Sources */,
 				35ECDEE92103B1B700308080 /* Frameworks */,
 				35ECDEEA2103B1B700308080 /* Resources */,
+				344D4D40F8FCDF9BAFE7EBEF /* [CP] Embed Pods Frameworks */,
+				9DC2982F8794A418E7CE6408 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -246,6 +273,62 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		344D4D40F8FCDF9BAFE7EBEF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Number/Pods-Number-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Number/Pods-Number-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9DC2982F8794A418E7CE6408 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Number/Pods-Number-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F9F8FB20281D83B1F53E0B4D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Number-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		35ECDEE82103B1B700308080 /* Sources */ = {
@@ -403,16 +486,14 @@
 		};
 		35ECDEFF2103B1BA00308080 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 04CEFCC74BD7CE9157399955 /* Pods-Number.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H92U9KV5T2;
 				INFOPLIST_FILE = Number/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hyeri.Number;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -422,16 +503,14 @@
 		};
 		35ECDF002103B1BA00308080 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BDCC3C3DE9D9AB0F178EA67 /* Pods-Number.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H92U9KV5T2;
 				INFOPLIST_FILE = Number/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hyeri.Number;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

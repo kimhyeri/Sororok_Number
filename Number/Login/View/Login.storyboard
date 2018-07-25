@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sEc-wp-kAd">
-    <device id="retina5_5" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -14,14 +14,14 @@
             <objects>
                 <viewController id="sEc-wp-kAd" customClass="LoginViewController" customModule="Number" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Njk-kS-xU6">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0bp-mT-hVx" userLabel="MiddleView">
-                                <rect key="frame" x="0.0" y="251.66666666666663" width="414" height="233"/>
+                                <rect key="frame" x="0.0" y="217" width="375" height="233"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="새로운 번호를 입력해주세요" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0IX-45-Quo">
-                                        <rect key="frame" x="35" y="25.000000000000028" width="344" height="41"/>
+                                        <rect key="frame" x="35" y="25" width="305" height="41"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="41" id="w6i-9C-ajt"/>
                                         </constraints>
@@ -33,7 +33,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="이름이 뭐에요?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NIm-rt-Vrg">
-                                        <rect key="frame" x="35" y="85.000000000000028" width="344" height="41"/>
+                                        <rect key="frame" x="35" y="85" width="305" height="41"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="41" id="h4M-vu-ef4"/>
                                         </constraints>
@@ -42,7 +42,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="이메일이 뭐에요?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kJ4-OD-5zc">
-                                        <rect key="frame" x="35" y="145.00000000000003" width="344" height="41"/>
+                                        <rect key="frame" x="35" y="145" width="305" height="41"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="41" id="62f-cu-bNZ"/>
                                         </constraints>
@@ -51,13 +51,13 @@
                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="입력시간 3분00초" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WgM-bn-8gc">
-                                        <rect key="frame" x="262" y="193.00000000000003" width="117" height="20"/>
+                                        <rect key="frame" x="223" y="193" width="117" height="20"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZPn-nC-sdn">
-                                        <rect key="frame" x="296" y="146.00000000000003" width="82" height="39"/>
+                                        <rect key="frame" x="257" y="146" width="82" height="39"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="39" id="JVi-Mu-QuC"/>
@@ -90,10 +90,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oAj-Fc-Z4Z" userLabel="TopView">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="251.66666666666666"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="217"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="어서와요!😀" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cqx-EZ-fFR">
-                                        <rect key="frame" x="35" y="210.66666666666666" width="147" height="36"/>
+                                        <rect key="frame" x="35" y="176" width="147" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -106,10 +106,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BGI-6a-JTA" userLabel="BottomView">
-                                <rect key="frame" x="0.0" y="681" width="414" height="55"/>
+                                <rect key="frame" x="0.0" y="612" width="375" height="55"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0H5-Yl-ubK">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="55"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
                                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
