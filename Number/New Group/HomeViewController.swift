@@ -23,6 +23,16 @@ class HomeViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName:"HomeTableViewCell",bundle: nil), forCellReuseIdentifier: "HomeTableViewCell")
+        
+        let buttonView = UIView()
+        buttonView.frame = CGRect(x: view.frame.midX, y: view.frame.midY, width: 50, height: 50)
+        buttonView.backgroundColor = .red
+        
+        let button = UIButton()
+        button.frame = CGRect(x: view.frame.midX, y: view.frame.midY, width: 30, height: 30)
+        button.addTarget(self, action: #selector(buttonPressed), for: UIControlEvents.touchUpInside)
+        buttonView.addSubview(button)
+        view.addSubview(buttonView)
 
     }
 
@@ -53,27 +63,33 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource, UIScr
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
     }
+//
+//    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+//        self.lastContentOffset = scrollView.contentOffset.y
+//        print("scroll start")
+//        myName.text = "희은"
+//        myImage.frame = CGRect(x:myImage.center.x , y: myImage.center.y , width: 50, height: 50)
+//
+//    }
     
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        self.lastContentOffset = scrollView.contentOffset.y
-        print("scroll start")
-        myName.text = "희은"
-        myImage.frame.size.width = 40
-        myImage.frame.size.height = 40
-        
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (self.lastContentOffset < scrollView.contentOffset.y) {
+            print("\(self.lastContentOffset),\(scrollView.contentOffset.y)")
+
+        } else if (self.lastContentOffset > scrollView.contentOffset.y) {
+            // moved to bottom
+            print("\(self.lastContentOffset),\(scrollView.contentOffset.y)")
+
+        } else {
+            // didn't move
+               print("scroll not move")
+        }
     }
     
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        if (self.lastContentOffset < scrollView.contentOffset.y) {
-//            print("scroll top")
-//
-//        } else if (self.lastContentOffset > scrollView.contentOffset.y) {
-//            // moved to bottom
-//               print("scroll bottom")
-//        } else {
-//            // didn't move
-//               print("scroll not move")
-//        }
-//    }
+    @objc func buttonPressed(){
+        print("button pressed")
+        let vc = UIViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
