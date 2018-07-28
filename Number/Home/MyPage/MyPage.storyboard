@@ -99,7 +99,7 @@
         <!--Album View Controller-->
         <scene sceneID="PfA-H0-id5">
             <objects>
-                <viewController id="V4U-la-Cx1" customClass="AlbumViewController" customModule="Number" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Album" id="V4U-la-Cx1" customClass="AlbumViewController" customModule="Number" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="osM-BK-vcF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
