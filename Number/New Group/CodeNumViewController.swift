@@ -14,7 +14,7 @@ class CodeNumViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     
     @IBAction func pressedSosik(_ sender: Any) {
-        let nv = self.storyboard?.instantiateViewController(withIdentifier: "LeftMenuNavigationController") 
+        let nv = self.storyboard?.instantiateViewController(withIdentifier: "LeftMenuNavigationController")
         present(nv!, animated: true, completion: nil)
     }
     override func viewDidLoad() {
@@ -48,4 +48,10 @@ class CodeNumViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
+    @IBAction func profilePressed(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "MyPage", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "MyPage") as! MyPageViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
 }

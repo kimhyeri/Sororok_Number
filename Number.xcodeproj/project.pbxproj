@@ -19,6 +19,8 @@
 		354EA790210C665600D16A80 /* GroupCreate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 354EA78F210C665600D16A80 /* GroupCreate.storyboard */; };
 		354EA792210C6A2500D16A80 /* GroupCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354EA791210C6A2500D16A80 /* GroupCreateViewController.swift */; };
 		354EA795210C877300D16A80 /* SideMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354EA794210C877300D16A80 /* SideMenuTableViewController.swift */; };
+		354EA798210C8FF900D16A80 /* Delete.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 354EA797210C8FF900D16A80 /* Delete.storyboard */; };
+		354EA79A210C900900D16A80 /* DeleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354EA799210C900900D16A80 /* DeleteViewController.swift */; };
 		3556196221071BDE009CC356 /* DetailHome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3556196121071BDE009CC356 /* DetailHome.storyboard */; };
 		3556196521071C01009CC356 /* DetailHomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3556196321071C01009CC356 /* DetailHomeTableViewController.swift */; };
 		3556196A21071EDF009CC356 /* DetailHomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3556196821071EDF009CC356 /* DetailHomeTableViewCell.swift */; };
@@ -53,6 +55,8 @@
 		354EA78F210C665600D16A80 /* GroupCreate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GroupCreate.storyboard; sourceTree = "<group>"; };
 		354EA791210C6A2500D16A80 /* GroupCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateViewController.swift; sourceTree = "<group>"; };
 		354EA794210C877300D16A80 /* SideMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewController.swift; sourceTree = "<group>"; };
+		354EA797210C8FF900D16A80 /* Delete.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Delete.storyboard; sourceTree = "<group>"; };
+		354EA799210C900900D16A80 /* DeleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteViewController.swift; sourceTree = "<group>"; };
 		3556196121071BDE009CC356 /* DetailHome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailHome.storyboard; sourceTree = "<group>"; };
 		3556196321071C01009CC356 /* DetailHomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHomeTableViewController.swift; sourceTree = "<group>"; };
 		3556196821071EDF009CC356 /* DetailHomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHomeTableViewCell.swift; sourceTree = "<group>"; };
@@ -149,6 +153,15 @@
 			path = SideMenu;
 			sourceTree = "<group>";
 		};
+		354EA796210C8FEC00D16A80 /* Delete */ = {
+			isa = PBXGroup;
+			children = (
+				354EA797210C8FF900D16A80 /* Delete.storyboard */,
+				354EA799210C900900D16A80 /* DeleteViewController.swift */,
+			);
+			path = Delete;
+			sourceTree = "<group>";
+		};
 		3556196721071D39009CC356 /* DetailHome */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +176,7 @@
 		355F0A712108E95600715E3F /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				354EA796210C8FEC00D16A80 /* Delete */,
 				355F0A722108E96C00715E3F /* Setting.storyboard */,
 				355F0A742108E99D00715E3F /* SettingTableViewController.swift */,
 			);
@@ -331,6 +345,7 @@
 				35ECDEF52103B1B700308080 /* Main.storyboard in Resources */,
 				355F0A732108E96C00715E3F /* Setting.storyboard in Resources */,
 				35ECDF0921046EB600308080 /* CodeNum.storyboard in Resources */,
+				354EA798210C8FF900D16A80 /* Delete.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,6 +429,7 @@
 				354EA792210C6A2500D16A80 /* GroupCreateViewController.swift in Sources */,
 				35ECDEF22103B1B700308080 /* ViewController.swift in Sources */,
 				35ECDEF02103B1B700308080 /* AppDelegate.swift in Sources */,
+				354EA79A210C900900D16A80 /* DeleteViewController.swift in Sources */,
 				351AB63B2105C16E0017D41A /* MyPageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

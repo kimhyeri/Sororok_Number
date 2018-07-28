@@ -109,6 +109,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="yOl-gN-aJg" kind="show" id="7qa-uQ-R2b"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell4" rowHeight="50" id="AeJ-Rv-AaO">
                                 <rect key="frame" x="0.0" y="328" width="375" height="50"/>
@@ -172,6 +175,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DUs-IX-BMr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="277.60000000000002" y="96.7016491754123"/>
+        </scene>
+        <!--Delete-->
+        <scene sceneID="Ffc-xM-32L">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Delete" id="yOl-gN-aJg" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eCk-8W-Rsf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="914" y="96"/>
         </scene>
     </scenes>
 </document>

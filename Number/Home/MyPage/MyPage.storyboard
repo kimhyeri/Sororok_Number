@@ -12,7 +12,7 @@
         <!--My Page View Controller-->
         <scene sceneID="IxX-KU-aTh">
             <objects>
-                <viewController id="6LC-0E-zZF" customClass="MyPageViewController" customModule="Number" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyPage" id="6LC-0E-zZF" customClass="MyPageViewController" customModule="Number" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fF9-wA-ILB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
