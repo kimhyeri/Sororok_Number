@@ -10,6 +10,8 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    var interactor : Interactor?
+
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var myImage: UIImageView!

@@ -23,6 +23,8 @@
 		354EA79A210C900900D16A80 /* DeleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354EA799210C900900D16A80 /* DeleteViewController.swift */; };
 		354EA79D210C9BD300D16A80 /* ManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354EA79C210C9BD300D16A80 /* ManagerViewController.swift */; };
 		354EA79F210C9BDA00D16A80 /* Manager.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 354EA79E210C9BDA00D16A80 /* Manager.storyboard */; };
+		3551E837210CD465009DF002 /* PresentAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3551E836210CD465009DF002 /* PresentAnimation.swift */; };
+		3551E839210CD582009DF002 /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3551E838210CD582009DF002 /* Interactor.swift */; };
 		3556196221071BDE009CC356 /* DetailHome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3556196121071BDE009CC356 /* DetailHome.storyboard */; };
 		3556196521071C01009CC356 /* DetailHomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3556196321071C01009CC356 /* DetailHomeTableViewController.swift */; };
 		3556196A21071EDF009CC356 /* DetailHomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3556196821071EDF009CC356 /* DetailHomeTableViewCell.swift */; };
@@ -61,6 +63,8 @@
 		354EA799210C900900D16A80 /* DeleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteViewController.swift; sourceTree = "<group>"; };
 		354EA79C210C9BD300D16A80 /* ManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerViewController.swift; sourceTree = "<group>"; };
 		354EA79E210C9BDA00D16A80 /* Manager.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Manager.storyboard; sourceTree = "<group>"; };
+		3551E836210CD465009DF002 /* PresentAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentAnimation.swift; sourceTree = "<group>"; };
+		3551E838210CD582009DF002 /* Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
 		3556196121071BDE009CC356 /* DetailHome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailHome.storyboard; sourceTree = "<group>"; };
 		3556196321071C01009CC356 /* DetailHomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHomeTableViewController.swift; sourceTree = "<group>"; };
 		3556196821071EDF009CC356 /* DetailHomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHomeTableViewCell.swift; sourceTree = "<group>"; };
@@ -246,6 +250,8 @@
 			children = (
 				35ECDF0821046EB600308080 /* CodeNum.storyboard */,
 				35ECDF0D210475A200308080 /* CodeNumViewController.swift */,
+				3551E836210CD465009DF002 /* PresentAnimation.swift */,
+				3551E838210CD582009DF002 /* Interactor.swift */,
 			);
 			name = CodeNum;
 			path = "New Group";
@@ -431,6 +437,7 @@
 			files = (
 				353EC8C4210A2BBF004081D1 /* AlbumViewController.swift in Sources */,
 				35ECDF15210476F200308080 /* HomeTableViewCell.swift in Sources */,
+				3551E839210CD582009DF002 /* Interactor.swift in Sources */,
 				353EC8C6210A3169004081D1 /* AlbumUICollectionViewCell.swift in Sources */,
 				3556196A21071EDF009CC356 /* DetailHomeTableViewCell.swift in Sources */,
 				35ECDF12210475E200308080 /* HomeViewController.swift in Sources */,
@@ -443,6 +450,7 @@
 				355F0A752108E99D00715E3F /* SettingTableViewController.swift in Sources */,
 				354EA79D210C9BD300D16A80 /* ManagerViewController.swift in Sources */,
 				354EA792210C6A2500D16A80 /* GroupCreateViewController.swift in Sources */,
+				3551E837210CD465009DF002 /* PresentAnimation.swift in Sources */,
 				35ECDEF22103B1B700308080 /* ViewController.swift in Sources */,
 				35ECDEF02103B1B700308080 /* AppDelegate.swift in Sources */,
 				354EA79A210C900900D16A80 /* DeleteViewController.swift in Sources */,

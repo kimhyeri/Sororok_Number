@@ -59,7 +59,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dhQ-uJ-Ll0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3100" y="-367.46626686656674"/>
+            <point key="canvasLocation" x="3207" y="-340"/>
         </scene>
         <!--Side Menu Navigation Controller-->
         <scene sceneID="TXr-mB-nAZ">
@@ -78,7 +78,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lyi-17-5bl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2436" y="-367"/>
+            <point key="canvasLocation" x="2510" y="-340"/>
         </scene>
         <!--Code Num View Controller-->
         <scene sceneID="zM5-SI-YOQ">
@@ -115,30 +115,6 @@
                                     <constraint firstAttribute="height" constant="108" id="98m-On-R89"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Jx-zI-FRK">
-                                <rect key="frame" x="0.0" y="581" width="375" height="86"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="희은님의 주소록" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WJI-7n-dWc">
-                                        <rect key="frame" x="133" y="18" width="108" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2pY-6O-IfR">
-                                        <rect key="frame" x="164" y="47" width="46" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
-                                        <connections>
-                                            <segue destination="Vz1-4i-7aI" kind="presentation" id="FsZ-Rt-Q9I"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="86" id="rjW-z0-8VQ"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FiX-lM-eji">
                                 <rect key="frame" x="0.0" y="172" width="375" height="108"/>
                                 <subviews>
@@ -157,6 +133,13 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="희은님의 주소록" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WJI-7n-dWc">
+                                <rect key="frame" x="133" y="604" width="108" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -165,9 +148,6 @@
                             <constraint firstItem="6BY-FH-Nt1" firstAttribute="top" secondItem="y0H-hf-aGS" secondAttribute="top" id="V9k-D6-2HE"/>
                             <constraint firstItem="FiX-lM-eji" firstAttribute="top" secondItem="6BY-FH-Nt1" secondAttribute="bottom" id="X3V-Tt-4ai"/>
                             <constraint firstItem="FiX-lM-eji" firstAttribute="leading" secondItem="y0H-hf-aGS" secondAttribute="leading" id="Z0z-Vk-qV3"/>
-                            <constraint firstItem="8Jx-zI-FRK" firstAttribute="trailing" secondItem="y0H-hf-aGS" secondAttribute="trailing" id="gLu-oD-dWc"/>
-                            <constraint firstItem="8Jx-zI-FRK" firstAttribute="leading" secondItem="y0H-hf-aGS" secondAttribute="leading" id="hVp-fV-atb"/>
-                            <constraint firstItem="8Jx-zI-FRK" firstAttribute="bottom" secondItem="y0H-hf-aGS" secondAttribute="bottom" id="hee-iI-ybi"/>
                             <constraint firstItem="FiX-lM-eji" firstAttribute="trailing" secondItem="y0H-hf-aGS" secondAttribute="trailing" id="rE0-f2-apK"/>
                             <constraint firstItem="FiX-lM-eji" firstAttribute="height" secondItem="6BY-FH-Nt1" secondAttribute="height" id="zDo-Ab-R6e"/>
                         </constraints>
@@ -222,7 +202,7 @@
                 <viewControllerPlaceholder storyboardName="Home" id="Vz1-4i-7aI" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L8Q-GA-Gr9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2019.2" y="-342.72863568215894"/>
+            <point key="canvasLocation" x="2018" y="-278"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="roX-Kb-HNt">

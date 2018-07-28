@@ -12,7 +12,7 @@
         <!--Home View Controller-->
         <scene sceneID="w8P-Sc-D57">
             <objects>
-                <viewController id="9aW-ES-GiU" customClass="HomeViewController" customModule="Number" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Home" id="9aW-ES-GiU" customClass="HomeViewController" customModule="Number" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QtS-87-A3H">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
