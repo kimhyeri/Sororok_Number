@@ -22,16 +22,19 @@ class LoginViewController: UIViewController {
     var timer = Timer()
     var startTimer = false
     
-    //numTextField변화 살펴보기
     @IBAction func numberEditing(_ sender: UITextField) {
-        if (sender.text?.count)! == 0 {
-            sender.backgroundColor = .white
-            sender.textColor = .lightGray
-    
-        }else {
-            sender.backgroundColor = .lightGray
-            sender.textColor = .white
+        if (sender.text?.count)! == 3 || (sender.text?.count)! == 8 {
+            sender.text?.append("-")
         }
+        
+//        if (sender.text?.count)! == 0 {
+//            sender.backgroundColor = .white
+//            sender.textColor = .lightGray
+//
+//        }else {
+//            sender.backgroundColor = .lightGray
+//            sender.textColor = .white
+//        }
     }
     
     //인증번호 전송
@@ -47,9 +50,10 @@ class LoginViewController: UIViewController {
     @IBAction func pressLoginButton(_ sender: Any) {
         timeLimitStop()
         let storyboard = UIStoryboard.init(name: "CodeNum", bundle: nil)
-        let nv = storyboard.instantiateViewController(withIdentifier: "CodeNum") as! CodeNumViewController
+        let nv = storyboard.instantiateViewController(withIdentifier: "NV")
+//            as! CodeNumViewController
         present(nv, animated: true, completion: nil)
-        UIApplication.shared.keyWindow?.rootViewController = nv
+//        UIApplication.shared.keyWindow?.rootViewController = nv
     }
  
     override func viewDidLoad() {
@@ -57,7 +61,6 @@ class LoginViewController: UIViewController {
         numTextField.delegate = self
         
     }
-
 }
 
 
