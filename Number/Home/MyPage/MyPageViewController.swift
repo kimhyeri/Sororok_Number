@@ -10,9 +10,11 @@ import UIKit
 
 class MyPageViewController: UIViewController {
 
+    @IBOutlet weak var myImage: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        myImage.backgroundColor = .black
     }
 
 }

@@ -12,7 +12,7 @@
         <!--Group Create View Controller-->
         <scene sceneID="myx-4v-9IE">
             <objects>
-                <viewController id="nWg-o9-S1c" customClass="GroupCreateViewController" customModule="Number" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GroupCreate" id="nWg-o9-S1c" customClass="GroupCreateViewController" customModule="Number" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hNy-PF-b1K">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

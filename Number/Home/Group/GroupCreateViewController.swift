@@ -21,9 +21,7 @@ class GroupCreateViewController: UIViewController {
         
         let storyboard = UIStoryboard(name: "MyPage", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "Album") as! AlbumViewController
-        //네비게이션 세팅하고
-//        self.navigationController?.pushViewController(vc, animated: true)
-        present(vc, animated: true, completion: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
         
     }
 

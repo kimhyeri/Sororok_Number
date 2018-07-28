@@ -66,7 +66,7 @@
 		35ECDEFB2103B1BA00308080 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		35ECDF0821046EB600308080 /* CodeNum.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CodeNum.storyboard; sourceTree = "<group>"; };
 		35ECDF0D210475A200308080 /* CodeNumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeNumViewController.swift; sourceTree = "<group>"; };
-		35ECDF0F210475D800308080 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Home.storyboard; path = "Number/New Group/Home.storyboard"; sourceTree = SOURCE_ROOT; };
+		35ECDF0F210475D800308080 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Home.storyboard; path = Number/Home/Home.storyboard; sourceTree = SOURCE_ROOT; };
 		35ECDF11210475E200308080 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = "Number/New Group/HomeViewController.swift"; sourceTree = SOURCE_ROOT; };
 		35ECDF13210476F200308080 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		35ECDF14210476F200308080 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
@@ -221,8 +221,8 @@
 				355F0A712108E95600715E3F /* Setting */,
 				3556196721071D39009CC356 /* DetailHome */,
 				351AB6372105C14B0017D41A /* MyPage */,
-				35ECDF0F210475D800308080 /* Home.storyboard */,
 				35ECDF11210475E200308080 /* HomeViewController.swift */,
+				35ECDF0F210475D800308080 /* Home.storyboard */,
 				35ECDF13210476F200308080 /* HomeTableViewCell.swift */,
 				35ECDF14210476F200308080 /* HomeTableViewCell.xib */,
 			);

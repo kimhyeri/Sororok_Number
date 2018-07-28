@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="229"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mypageUser" translatesAutoresizingMaskIntoConstraints="NO" id="ox0-Ec-6W6">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ox0-Ec-6W6">
                                         <rect key="frame" x="130" y="65" width="114" height="114"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -91,6 +91,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="dTj-4s-1x5"/>
                     </view>
+                    <connections>
+                        <outlet property="myImage" destination="ox0-Ec-6W6" id="cZl-lb-uuo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MtQ-Ev-Cui" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -152,7 +155,4 @@
             <point key="canvasLocation" x="1413.5999999999999" y="-0.44977511244377816"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="mypageUser" width="64" height="64"/>
-    </resources>
 </document>
