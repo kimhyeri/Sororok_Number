@@ -7,14 +7,22 @@
 //
 
 import UIKit
+import SideMenu
 
 class CodeNumViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
     
+    @IBAction func pressedSosik(_ sender: Any) {
+        let nv = self.storyboard?.instantiateViewController(withIdentifier: "LeftMenuNavigationController") 
+        present(nv!, animated: true, completion: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+   
+        let menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as! UISideMenuNavigationController
+        SideMenuManager.default.menuLeftNavigationController = menuLeftNavigationController
+
         let label = UILabel()
         label.text = ""
         imageView.backgroundColor = .black
@@ -29,12 +37,12 @@ class CodeNumViewController: UIViewController {
     func addButton(){
         let groupCreate = UIButton()
         groupCreate.backgroundColor = .black
-        groupCreate.frame = CGRect(x: view.frame.width - 50, y: view.frame.height - 50, width: 50, height: 50)
+        groupCreate.frame = CGRect(x: view.frame.width - 80, y: view.frame.height - 80, width: 50, height: 50)
         self.view.addSubview(groupCreate)
-        groupCreate.addTarget(self, action: #selector(self.printHI), for: UIControlEvents.touchUpInside)
+        groupCreate.addTarget(self, action: #selector(self.createGroup), for: UIControlEvents.touchUpInside)
     }
     
-    @objc func printHI(){
+    @objc func createGroup(){
         let storyboard = UIStoryboard(name: "GroupCreate", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "GroupCreate") as! GroupCreateViewController
         self.navigationController?.pushViewController(vc, animated: true)

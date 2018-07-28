@@ -18,12 +18,12 @@ class GroupCreateViewController: UIViewController {
     }
 
     @IBAction func AlbumPressed(_ sender: Any) {
-        
         let storyboard = UIStoryboard(name: "MyPage", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "Album") as! AlbumViewController
         self.navigationController?.pushViewController(vc, animated: true)
-        
     }
 
-
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.view.endEditing(true)
+    }
 }
