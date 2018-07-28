@@ -72,9 +72,10 @@ import Photos
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.cellIdentifier, for: indexPath) as! AlbumUICollectionViewCell
         
         let asset : PHAsset = fetchAlbum.object(at: indexPath.row)
+        let size = (view.frame.width - 10) / 4
         
         imageManager.requestImage(for: asset,
-                                  targetSize: CGSize(width: 50, height: 50),
+                                  targetSize: CGSize(width: size, height: size),
                                   contentMode: .aspectFill,
                                   options: nil,
                                   resultHandler: {image, _ in
@@ -84,5 +85,14 @@ import Photos
         return cell
     }
 }
+ 
+ extension AlbumViewController : UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+      
+        let size = (view.frame.width - 20) / 4
+        
+        return CGSize(width: size, height: size)
+    }
+ }
  
 

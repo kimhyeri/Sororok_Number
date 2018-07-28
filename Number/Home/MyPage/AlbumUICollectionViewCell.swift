@@ -12,4 +12,5 @@ class AlbumUICollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
     
+    
 }
