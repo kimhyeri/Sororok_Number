@@ -31,6 +31,7 @@
 		3556196B21071EDF009CC356 /* DetailHomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3556196921071EDF009CC356 /* DetailHomeTableViewCell.xib */; };
 		355F0A732108E96C00715E3F /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 355F0A722108E96C00715E3F /* Setting.storyboard */; };
 		355F0A752108E99D00715E3F /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355F0A742108E99D00715E3F /* SettingTableViewController.swift */; };
+		356A58FE210D9F35003C20BB /* CustomNaviViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356A58FD210D9F35003C20BB /* CustomNaviViewController.swift */; };
 		35ECDEF02103B1B700308080 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ECDEEF2103B1B700308080 /* AppDelegate.swift */; };
 		35ECDEF22103B1B700308080 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ECDEF12103B1B700308080 /* ViewController.swift */; };
 		35ECDEF52103B1B700308080 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35ECDEF32103B1B700308080 /* Main.storyboard */; };
@@ -71,6 +72,7 @@
 		3556196921071EDF009CC356 /* DetailHomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailHomeTableViewCell.xib; sourceTree = "<group>"; };
 		355F0A722108E96C00715E3F /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		355F0A742108E99D00715E3F /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
+		356A58FD210D9F35003C20BB /* CustomNaviViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNaviViewController.swift; sourceTree = "<group>"; };
 		35ECDEEC2103B1B700308080 /* Number.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Number.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35ECDEEF2103B1B700308080 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35ECDEF12103B1B700308080 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				35ECDF0D210475A200308080 /* CodeNumViewController.swift */,
 				3551E836210CD465009DF002 /* PresentAnimation.swift */,
 				3551E838210CD582009DF002 /* Interactor.swift */,
+				356A58FD210D9F35003C20BB /* CustomNaviViewController.swift */,
 			);
 			name = CodeNum;
 			path = "New Group";
@@ -446,6 +449,7 @@
 				354EA795210C877300D16A80 /* SideMenuTableViewController.swift in Sources */,
 				35ECDF0E210475A200308080 /* CodeNumViewController.swift in Sources */,
 				351AB6362105C00C0017D41A /* LoginViewController.swift in Sources */,
+				356A58FE210D9F35003C20BB /* CustomNaviViewController.swift in Sources */,
 				3556196521071C01009CC356 /* DetailHomeTableViewController.swift in Sources */,
 				355F0A752108E99D00715E3F /* SettingTableViewController.swift in Sources */,
 				354EA79D210C9BD300D16A80 /* ManagerViewController.swift in Sources */,

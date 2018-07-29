@@ -121,6 +121,9 @@ open class UISideMenuNavigationController: UINavigationController {
     override open func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationBar.shadowImage = UIImage()
+        self.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        
         if !locked && usingInterfaceBuilder {
             if leftSide {
                 sideMenuManager.menuLeftNavigationController = self
