@@ -25,18 +25,6 @@ class HomeViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName:"HomeTableViewCell",bundle: nil), forCellReuseIdentifier: "HomeTableViewCell")
-        
-        let buttonView = UIView()
-        buttonView.frame = CGRect(x: view.frame.maxX - 55, y: view.frame.maxY - 55, width: 50, height: 50)
-        buttonView.backgroundColor = .gray
-        view.addSubview(buttonView)
-
-        let button = UIButton()
-        button.frame = CGRect(x: buttonView.frame.midX, y: buttonView.frame.midY, width: 30, height: 30)
-        button.addTarget(self, action: #selector(buttonPressed), for: UIControlEvents.touchUpInside)
-        button.backgroundColor = .black
-        buttonView.addSubview(button)
-
     }
 
     override func didReceiveMemoryWarning() {

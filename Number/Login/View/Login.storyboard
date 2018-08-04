@@ -25,7 +25,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="41" id="w6i-9C-ajt"/>
                                         </constraints>
-                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
                                         <connections>
@@ -37,7 +36,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="41" id="h4M-vu-ef4"/>
                                         </constraints>
-                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -46,7 +44,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="41" id="62f-cu-bNZ"/>
                                         </constraints>
-                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                     </textField>

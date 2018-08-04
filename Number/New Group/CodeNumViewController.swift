@@ -14,18 +14,23 @@ class CodeNumViewController: UIViewController, UIGestureRecognizerDelegate {
     var interactor = Interactor()
 
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var changeView: UIView!
+    @IBOutlet weak var thirdView: UIView!
+    
     
     @IBAction func pressedSosik(_ sender: Any) {
         let nv = self.storyboard?.instantiateViewController(withIdentifier: "LeftMenuNavigationController")
         present(nv!, animated: true, completion: nil)
     }
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-   
+        thirdView.alpha = 0
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.handlePanGesture(_:)))
         
-        self.view.addGestureRecognizer(panGesture)
+        self.changeView.addGestureRecognizer(panGesture)
         
         let menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as! UISideMenuNavigationController
         SideMenuManager.default.menuLeftNavigationController = menuLeftNavigationController
@@ -66,31 +71,47 @@ class CodeNumViewController: UIViewController, UIGestureRecognizerDelegate {
     @objc func handlePanGesture(_ sender: UIScreenEdgePanGestureRecognizer){
         let location = sender.translation(in: view)
         let progress = -(location.y / self.view.frame.height)
-        print(progress)
 
         switch sender.state {
-        case .began:
-            print("began")
-            interactor.hasStarted = true
-            let nextVC = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "Home") as! HomeViewController
-            nextVC.interactor = self.interactor
-            nextVC.transitioningDelegate = nextVC
-            self.present(nextVC, animated: true, completion: nil)
         case .changed:
             print("changed")
-            interactor.shoudFinish = progress > 0.5
-            interactor.update(progress)
-        case .cancelled:
-            print("cancelled")
-            interactor.hasStarted = false
-        case .ended:
-            interactor.hasStarted = false
-            interactor.shoudFinish ? interactor.finish() : interactor.cancel()
+            thirdView.alpha = 1
+            thirdView.backgroundColor = .black
+            
         default:
             print("default")
         }
-        
     }
+
+    
+//    @objc func handlePanGesture(_ sender: UIScreenEdgePanGestureRecognizer){
+//        let location = sender.translation(in: view)
+//        let progress = -(location.y / self.view.frame.height)
+//        print(progress)
+//
+//        switch sender.state {
+//        case .began:
+//            print("began")
+//            interactor.hasStarted = true
+//            let nextVC = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "Home") as! HomeViewController
+//            nextVC.interactor = self.interactor
+//            nextVC.transitioningDelegate = nextVC
+//            self.present(nextVC, animated: true, completion: nil)
+//        case .changed:
+//            print("changed")
+//            interactor.shoudFinish = progress > 0.5
+//            interactor.update(progress)
+//        case .cancelled:
+//            print("cancelled")
+//            interactor.hasStarted = false
+//        case .ended:
+//            interactor.hasStarted = false
+//            interactor.shoudFinish ? interactor.finish() : interactor.cancel()
+//        default:
+//            print("default")
+//        }
+//    }
+    
 }
 
 extension HomeViewController: UIViewControllerTransitioningDelegate {
@@ -102,5 +123,4 @@ extension HomeViewController: UIViewControllerTransitioningDelegate {
         return interactor?.hasStarted == true ? interactor : nil
     }
 }
-
 
