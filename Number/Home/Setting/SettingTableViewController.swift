@@ -29,6 +29,12 @@ class SettingTableViewController: UITableViewController {
         return cell
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       
+        let popUp = UIStoryboard(name: "Delete", bundle: nil).instantiateViewController(withIdentifier: "popUp") as! DeleteViewController
+        popUp.modalPresentationStyle = .overCurrentContext
+        self.present(popUp, animated: false, completion: nil)
+    }
 
 
 

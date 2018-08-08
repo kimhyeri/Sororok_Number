@@ -75,9 +75,7 @@ class CodeNumViewController: UIViewController, UIGestureRecognizerDelegate {
         switch sender.state {
         case .changed:
             print("changed")
-            thirdView.alpha = 1
-            thirdView.backgroundColor = .black
-            
+            thirdView.alpha = progress * 3
         default:
             print("default")
         }

@@ -12,11 +12,15 @@
         <!--Delete View Controller-->
         <scene sceneID="Fd6-j2-O4e">
             <objects>
-                <viewController id="hT3-2t-ROs" customClass="DeleteViewController" customModule="Number" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="popUp" id="hT3-2t-ROs" customClass="DeleteViewController" customModule="Number" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rfh-AT-lbj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9yY-4m-lA1">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ikF-9K-xnV">
                                 <rect key="frame" x="0.0" y="373" width="375" height="294"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -71,7 +75,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9yY-4m-lA1" firstAttribute="leading" secondItem="RVT-PM-6k4" secondAttribute="leading" id="Fd7-Ht-SQ1"/>
+                            <constraint firstItem="9yY-4m-lA1" firstAttribute="trailing" secondItem="RVT-PM-6k4" secondAttribute="trailing" id="LUW-bR-P1Y"/>
+                            <constraint firstItem="9yY-4m-lA1" firstAttribute="top" secondItem="rfh-AT-lbj" secondAttribute="top" id="PeH-os-9Er"/>
+                            <constraint firstItem="9yY-4m-lA1" firstAttribute="bottom" secondItem="RVT-PM-6k4" secondAttribute="bottom" id="fsL-yg-8vu"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="RVT-PM-6k4"/>
                     </view>
                 </viewController>
