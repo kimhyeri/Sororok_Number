@@ -54,28 +54,39 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource, UIScr
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
     }
-//
-//    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-//        self.lastContentOffset = scrollView.contentOffset.y
-//        print("scroll start")
-//        myName.text = "희은"
-//        myImage.frame = CGRect(x:myImage.center.x , y: myImage.center.y , width: 50, height: 50)
-//
-//    }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if (self.lastContentOffset < scrollView.contentOffset.y) {
             print("\(self.lastContentOffset),\(scrollView.contentOffset.y)")
+            print("move down")
+            if scrollView.contentOffset.y > 128 {
+                print("view 땡겨라")
+            }
+          
 
         } else if (self.lastContentOffset > scrollView.contentOffset.y) {
             // moved to bottom
             print("\(self.lastContentOffset),\(scrollView.contentOffset.y)")
-
-        } else {
-            // didn't move
-               print("scroll not move")
+            print("move up")
+            if scrollView.contentOffset.y < 128 {
+                print("view 늘려라")
+            }
         }
     }
+    
+//    func scrollViewDidScroll(scrollView: UIScrollView!) {
+//        if (self.lastContentOffset > scrollView.contentOffset.y) {
+//            // move up
+//            print("move up")
+//        }
+//        else if (self.lastContentOffset < scrollView.contentOffset.y) {
+//            // move down
+//            print("move down")
+//        }
+//
+//        // update the new position acquired
+//        self.lastContentOffset = scrollView.contentOffset.y
+//    }
     
     @objc func buttonPressed(){
         print("button pressed")

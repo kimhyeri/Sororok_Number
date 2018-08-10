@@ -60,21 +60,21 @@ class CodeNumViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @objc func handlePanGesture(_ sender: UIScreenEdgePanGestureRecognizer){
-        let location = sender.translation(in: view)
-        let progress = -(location.y / self.view.frame.height)
-        print(location)
-        switch sender.state {
-        case .changed:
-            print("changed")
-            nameLabel.text = "희은님"
-            imageView.frame = CGRect(x: 20, y: 50, width: 30, height: 30)
-//            nameLabel.frame = CGRect(x: 100, y: 10, width: view.frame.width/2, height: 30)
-            firstView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 120)
-            heightConstant.constant = 100
-        default:
-            print("default")
-        }
+//        let location = sender.translation(in: view)
+//        let progress = -(location.y / self.view.frame.height)
+//        print(location)
+//        switch sender.state {
+//        case .changed:
+//            print("changed")
+//            nameLabel.text = "희은님"
+//            imageView.frame = CGRect(x: 20, y: 50, width: 30, height: 30)
+//            firstView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 120)
+//            heightConstant.constant = 100
+//        default:
+//            print("default")
+//        }
     }
+    
 }
 
 extension HomeViewController: UIViewControllerTransitioningDelegate {
