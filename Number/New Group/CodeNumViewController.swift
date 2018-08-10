@@ -17,6 +17,7 @@ class CodeNumViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var thirdView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var heightConstant: NSLayoutConstraint!
     
     @IBAction func pressedSosik(_ sender: Any) {
         let nv = self.storyboard?.instantiateViewController(withIdentifier: "LeftMenuNavigationController")
@@ -69,6 +70,7 @@ class CodeNumViewController: UIViewController, UIGestureRecognizerDelegate {
             imageView.frame = CGRect(x: 20, y: 50, width: 30, height: 30)
 //            nameLabel.frame = CGRect(x: 100, y: 10, width: view.frame.width/2, height: 30)
             firstView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 120)
+            heightConstant.constant = 100
         default:
             print("default")
         }
