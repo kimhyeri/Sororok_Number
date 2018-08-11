@@ -19,6 +19,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var myName: UILabel!
     
     var lastContentOffset: CGFloat = 0
+    var codeNum : CodeNumViewController = CodeNumViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,7 +66,6 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource, UIScr
           
 
         } else if (self.lastContentOffset > scrollView.contentOffset.y) {
-            // moved to bottom
             print("\(self.lastContentOffset),\(scrollView.contentOffset.y)")
             print("move up")
             if scrollView.contentOffset.y < 128 {
@@ -73,20 +73,6 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource, UIScr
             }
         }
     }
-    
-//    func scrollViewDidScroll(scrollView: UIScrollView!) {
-//        if (self.lastContentOffset > scrollView.contentOffset.y) {
-//            // move up
-//            print("move up")
-//        }
-//        else if (self.lastContentOffset < scrollView.contentOffset.y) {
-//            // move down
-//            print("move down")
-//        }
-//
-//        // update the new position acquired
-//        self.lastContentOffset = scrollView.contentOffset.y
-//    }
     
     @objc func buttonPressed(){
         print("button pressed")
