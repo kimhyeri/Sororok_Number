@@ -10,3 +10,4 @@ import Foundation
 import UIKit
 
 let changeViewNotificationKey = "Number.ChangeView"
+let changeBackViewNotificationKey = "Number.ChnageBackView"

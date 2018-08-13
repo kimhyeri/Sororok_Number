@@ -16,9 +16,11 @@ class CodeNumViewController: UIViewController {
     @IBOutlet weak var thirdView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var heightConstant: NSLayoutConstraint!
+    @IBOutlet weak var thirdViewHeight: NSLayoutConstraint!
     
     var interactor = Interactor()
     let change = Notification.Name(rawValue: changeViewNotificationKey)
+    let pull = Notification.Name(rawValue: changeBackViewNotificationKey)
     
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -65,12 +67,22 @@ class CodeNumViewController: UIViewController {
     
     func createObserver(){
         NotificationCenter.default.addObserver(self, selector: #selector(CodeNumViewController.updateView(notification:)), name: change, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(CodeNumViewController.updateBackView(notification:)), name: pull, object: nil)
+        
     }
     
     @objc func updateView(notification: NSNotification) {
         heightConstant.constant = 100
+        thirdViewHeight.constant = 567
         nameLabel.text = "희은님"
-        imageView.frame = CGRect(x: 10, y: 10, width: 30, height: 30)
+        imageView.frame = CGRect(x: 30, y: 30, width: 30, height: 30)
+        firstView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 100)
+    }
+    
+    @objc func updateBackView(notification: NSNotification) {
+        heightConstant.constant = 151
+        nameLabel.text = "반갑습니다"
+        imageView.frame = CGRect(x: 30, y: 30, width: 30, height: 30)
         firstView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 100)
     }
 }

@@ -69,6 +69,8 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource, UIScr
             print("move up")
             if scrollView.contentOffset.y < 128 {
                 print("view 늘려라")
+                let name = Notification.Name(rawValue:changeBackViewNotificationKey)
+                NotificationCenter.default.post(name: name, object: nil)
             }
         }
     }
