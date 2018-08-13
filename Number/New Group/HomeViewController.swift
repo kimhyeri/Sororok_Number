@@ -11,11 +11,10 @@ import UIKit
 class HomeViewController: UIViewController {
     
     var interactor : Interactor?
+    var delegate: ViewChange? = nil
 
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var myImage: UIImageView!
-    
     @IBOutlet weak var myName: UILabel!
     
     var lastContentOffset: CGFloat = 0
@@ -62,6 +61,7 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource, UIScr
             print("move down")
             if scrollView.contentOffset.y > 128 {
                 print("view 땡겨라")
+                delegate?.changeView(viewSize: 100)
             }
           
 
@@ -75,7 +75,6 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource, UIScr
     }
     
     @objc func buttonPressed(){
-        print("button pressed")
         let vc = UIViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }

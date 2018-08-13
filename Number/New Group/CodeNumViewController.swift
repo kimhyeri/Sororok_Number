@@ -9,19 +9,26 @@
 import UIKit
 import SideMenu
 
-class CodeNumViewController: UIViewController, UIGestureRecognizerDelegate {
-
-    var interactor = Interactor()
-
+class CodeNumViewController: UIViewController {
+    
     @IBOutlet weak var firstView: UIView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var thirdView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var heightConstant: NSLayoutConstraint!
     
+    var interactor = Interactor()
+    var delegate: ViewChange? = nil
+ㅈ
     @IBAction func pressedSosik(_ sender: Any) {
         let nv = self.storyboard?.instantiateViewController(withIdentifier: "LeftMenuNavigationController")
         present(nv!, animated: true, completion: nil)
+    }
+    
+    @IBAction func profilePressed(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "MyPage", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "MyPage") as! MyPageViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     override func viewDidLoad() {
@@ -33,7 +40,7 @@ class CodeNumViewController: UIViewController, UIGestureRecognizerDelegate {
         imageView.backgroundColor = .black
         addButton()
     }
-
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
     }
@@ -51,31 +58,10 @@ class CodeNumViewController: UIViewController, UIGestureRecognizerDelegate {
         let vc = storyboard.instantiateViewController(withIdentifier: "GroupCreate") as! GroupCreateViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
-
-    @IBAction func profilePressed(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "MyPage", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "MyPage") as! MyPageViewController
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
     
-    @objc func handlePanGesture(_ sender: UIScreenEdgePanGestureRecognizer){
-        let location = sender.translation(in: view)
-        let progress = -(location.y / self.view.frame.height)
-        print(location)
-        switch sender.state {
-        case .changed:
-            print("changed")
-            nameLabel.text = "희은님"
-            imageView.frame = CGRect(x: 25, y: 35, width: 30, height: 30)
-            firstView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 100)
-            heightConstant.constant = 100
-        default:
-            print("default")
-        }
-    }    
-
 }
 
+//MARK: Transition Delegate
 extension HomeViewController: UIViewControllerTransitioningDelegate {
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return PresentAnimation()
@@ -86,3 +72,27 @@ extension HomeViewController: UIViewControllerTransitioningDelegate {
     }
 }
 
+//MARK: Gesture Delegate
+extension CodeNumViewController: UIGestureRecognizerDelegate {
+    @objc func handlePanGesture(_ sender: UIScreenEdgePanGestureRecognizer){
+        let location = sender.translation(in: view)
+        let progress = -(location.y / self.view.frame.height)
+        print(location)
+        print(progress)
+        switch sender.state {
+        case .changed:
+            print("changed")
+        default:
+            print("default")
+        }
+    }
+}
+
+extension CodeNumViewController : ViewChange {
+    func changeView(viewSize: CGFloat) {
+        heightConstant.constant = viewSize
+        nameLabel.text = "희은님"
+        imageView.frame = CGRect(x: 10, y: 10, width: 30, height: 30)
+        firstView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 100)
+    }
+}
