@@ -18,8 +18,7 @@ class CodeNumViewController: UIViewController {
     @IBOutlet weak var heightConstant: NSLayoutConstraint!
     
     var interactor = Interactor()
-    var delegate: ViewChange? = nil
-ㅈ
+
     @IBAction func pressedSosik(_ sender: Any) {
         let nv = self.storyboard?.instantiateViewController(withIdentifier: "LeftMenuNavigationController")
         present(nv!, animated: true, completion: nil)
@@ -39,6 +38,8 @@ class CodeNumViewController: UIViewController {
         SideMenuManager.default.menuLeftNavigationController = menuLeftNavigationController
         imageView.backgroundColor = .black
         addButton()
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "Container") as! HomeViewController
+        vc.delegate = self
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){

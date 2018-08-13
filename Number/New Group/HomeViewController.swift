@@ -11,7 +11,7 @@ import UIKit
 class HomeViewController: UIViewController {
     
     var interactor : Interactor?
-    var delegate: ViewChange? = nil
+    var delegate: ViewChange!
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var myImage: UIImageView!
@@ -79,4 +79,6 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource, UIScr
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
+
+
 
