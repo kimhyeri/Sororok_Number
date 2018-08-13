@@ -11,14 +11,12 @@ import UIKit
 class HomeViewController: UIViewController {
     
     var interactor : Interactor?
-    var delegate: ViewChange!
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var myImage: UIImageView!
     @IBOutlet weak var myName: UILabel!
     
     var lastContentOffset: CGFloat = 0
-    var codeNum : CodeNumViewController = CodeNumViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +59,8 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource, UIScr
             print("move down")
             if scrollView.contentOffset.y > 128 {
                 print("view 땡겨라")
-                delegate?.changeView(viewSize: 100)
+                let name = Notification.Name(rawValue:changeViewNotificationKey)
+                NotificationCenter.default.post(name: name, object: nil)
             }
           
 
@@ -80,5 +79,15 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource, UIScr
     }
 }
 
+//MARK: Transition Delegate
+extension HomeViewController: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return PresentAnimation()
+    }
+    
+    func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return interactor?.hasStarted == true ? interactor : nil
+    }
+}
 
 

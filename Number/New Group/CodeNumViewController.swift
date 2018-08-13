@@ -18,7 +18,11 @@ class CodeNumViewController: UIViewController {
     @IBOutlet weak var heightConstant: NSLayoutConstraint!
     
     var interactor = Interactor()
-
+    let change = Notification.Name(rawValue: changeViewNotificationKey)
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     @IBAction func pressedSosik(_ sender: Any) {
         let nv = self.storyboard?.instantiateViewController(withIdentifier: "LeftMenuNavigationController")
         present(nv!, animated: true, completion: nil)
@@ -38,8 +42,7 @@ class CodeNumViewController: UIViewController {
         SideMenuManager.default.menuLeftNavigationController = menuLeftNavigationController
         imageView.backgroundColor = .black
         addButton()
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "Container") as! HomeViewController
-        vc.delegate = self
+        createObserver()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
@@ -60,16 +63,15 @@ class CodeNumViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-}
-
-//MARK: Transition Delegate
-extension HomeViewController: UIViewControllerTransitioningDelegate {
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return PresentAnimation()
+    func createObserver(){
+        NotificationCenter.default.addObserver(self, selector: #selector(CodeNumViewController.updateView(notification:)), name: change, object: nil)
     }
     
-    func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        return interactor?.hasStarted == true ? interactor : nil
+    @objc func updateView(notification: NSNotification) {
+        heightConstant.constant = 100
+        nameLabel.text = "희은님"
+        imageView.frame = CGRect(x: 10, y: 10, width: 30, height: 30)
+        firstView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 100)
     }
 }
 
@@ -89,11 +91,3 @@ extension CodeNumViewController: UIGestureRecognizerDelegate {
     }
 }
 
-extension CodeNumViewController : ViewChange {
-    func changeView(viewSize: CGFloat) {
-        heightConstant.constant = viewSize
-        nameLabel.text = "희은님"
-        imageView.frame = CGRect(x: 10, y: 10, width: 30, height: 30)
-        firstView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 100)
-    }
-}
