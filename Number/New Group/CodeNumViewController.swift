@@ -11,6 +11,7 @@ import SideMenu
 
 class CodeNumViewController: UIViewController {
     
+    @IBOutlet weak var topViewCon: NSLayoutConstraint!
     @IBOutlet weak var firstView: UIView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var thirdView: UIView!
@@ -42,6 +43,7 @@ class CodeNumViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         topView.alpha = 0
+        topView.frame = CGRect(x: 0, y: -100 , width: self.view.frame.width, height: navigationBarHeight)
         navigationBarHeight = navigationBarHeight + (self.navigationController?.navigationBar.frame.height)!
         let menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as! UISideMenuNavigationController
         SideMenuManager.default.menuLeftNavigationController = menuLeftNavigationController
@@ -75,16 +77,36 @@ class CodeNumViewController: UIViewController {
     
     @objc func updateView(notification: NSNotification) {
         print("댕김댕김")
-        UIView.animate(withDuration: 0.3, animations: {
-            self.view.layoutIfNeeded()
-        })
-        firstView.frame = CGRect(x:0, y: 0, width: self.view.frame.width , height: navigationBarHeight )
-        searchView.frame = CGRect(x: 0, y: self.firstView.frame.height , width: self.view.frame.width, height: 38)
-        thirdView.frame = CGRect(x: 0, y: self.firstView.frame.height + self.searchView.frame.height, width: self.view.frame.width, height: self.view.frame.height - (searchView.frame.height))
-        imageView.alpha = 0
-        nameLabel.alpha = 0
-        nameShadow.alpha = 0
-        topView.alpha = 1
+
+        
+//        var dyna = Double(notification.userInfo?["scroll"]! as! Double) * 0.1
+//        let myFloat = NSNumber.init(value: dyna).floatValue
+//        let myCGFloat = CGFloat(myFloat)
+        if firstView.frame.height > navigationBarHeight{
+            firstView.frame = CGRect(x:0, y: 0, width: self.view.frame.width , height: (firstView.frame.height - 2.2) )
+            searchView.frame = CGRect(x: 0, y: self.firstView.frame.height , width: self.view.frame.width, height: 38)
+            thirdView.frame = CGRect(x: 0, y: self.firstView.frame.height + self.searchView.frame.height, width: self.view.frame.width, height: self.view.frame.height - (firstView.frame.height + searchView.frame.height))
+            imageView.alpha = imageView.alpha - 0.02
+            imageView.frame = CGRect(x:self.imageView.frame.minX, y: self.imageView.frame.minY - 5, width: self.imageView.frame.width , height: imageView.frame.height )
+            nameLabel.frame = CGRect(x:self.nameLabel.frame.minX, y: self.nameLabel.frame.minY  - 5, width: self.nameLabel.frame.width , height: nameLabel.frame.height )
+            nameShadow.frame = CGRect(x:self.nameShadow.frame.minX, y: self.nameShadow.frame.minY  - 5, width: self.nameShadow.frame.width , height: nameShadow.frame.height )
+            nameLabel.alpha = imageView.alpha - 0.02
+            nameShadow.alpha = imageView.alpha - 0.02
+            topView.alpha = topView.alpha + 0.01
+            if topViewCon.constant < -300 {
+                topViewCon.constant = topViewCon.constant + 2
+            }
+            UIView.animate(withDuration: 0.3, animations: {
+                self.view.layoutIfNeeded()
+            })
+        }
+//        firstView.frame = CGRect(x:0, y: 0, width: self.view.frame.width , height: (firstView.frame.height - 1) )
+//        searchView.frame = CGRect(x: 0, y: self.firstView.frame.height , width: self.view.frame.width, height: 38)
+//        thirdView.frame = CGRect(x: 0, y: self.firstView.frame.height + self.searchView.frame.height, width: self.view.frame.width, height: self.view.frame.height - (firstView.frame.height + searchView.frame.height))
+//        imageView.alpha = imageView.alpha - 0.1
+//        nameLabel.alpha = imageView.alpha - 0.1
+//        nameShadow.alpha = imageView.alpha - 0.1
+//        topView.alpha = topView.alpha + 0.1
 
         self.view.layoutIfNeeded()
 

@@ -109,33 +109,35 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="748" verticalCompressionResistancePriority="748" fixedFrame="YES" text="치와와님 안녕하세요 !" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1YM-gu-RJ2">
-                                        <rect key="frame" x="24" y="149" width="343" height="87"/>
+                                        <rect key="frame" x="24" y="149" width="327" height="87"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bcc-FC-uLx">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BIL-vc-BUx">
-                                                <rect key="frame" x="25" y="30" width="24" height="24"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="치와와님" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NiN-S5-1Gv">
-                                                <rect key="frame" x="57" y="28" width="182" height="26"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.20392156862745098" green="0.22745098039215686" blue="0.81176470588235294" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bcc-FC-uLx">
+                                <rect key="frame" x="0.0" y="-99" width="375" height="65"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BIL-vc-BUx">
+                                        <rect key="frame" x="22" y="25" width="32" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="치와와님" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NiN-S5-1Gv">
+                                        <rect key="frame" x="60" y="28" width="182" height="26"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="SfT-Ka-zrn"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ofC-pN-mgd">
                                 <rect key="frame" x="0.0" y="236" width="375" height="38"/>
@@ -158,6 +160,12 @@
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="bcc-FC-uLx" secondAttribute="trailing" id="RVO-zs-afc"/>
+                            <constraint firstItem="bcc-FC-uLx" firstAttribute="centerY" secondItem="Mud-ak-sEw" secondAttribute="centerY" constant="-400" id="fhF-wj-ymK"/>
+                            <constraint firstItem="bcc-FC-uLx" firstAttribute="leading" secondItem="Mud-ak-sEw" secondAttribute="leading" id="i6b-8d-NMB"/>
+                            <constraint firstItem="bcc-FC-uLx" firstAttribute="centerX" secondItem="Mud-ak-sEw" secondAttribute="centerX" id="v9F-dQ-2Gy"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="y0H-hf-aGS"/>
                     </view>
                     <navigationItem key="navigationItem" id="HjK-Me-bNA">
@@ -195,6 +203,7 @@
                         <outlet property="searchView" destination="ofC-pN-mgd" id="1Uf-kk-WIR"/>
                         <outlet property="thirdView" destination="MUc-nZ-bgo" id="rbO-OL-41v"/>
                         <outlet property="topView" destination="bcc-FC-uLx" id="UIC-YC-rD6"/>
+                        <outlet property="topViewCon" destination="fhF-wj-ymK" id="iug-21-HZC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gKb-Cm-Evz" userLabel="First Responder" sceneMemberID="firstResponder"/>
