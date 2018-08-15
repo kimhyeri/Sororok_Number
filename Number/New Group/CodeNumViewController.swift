@@ -15,12 +15,14 @@ class CodeNumViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var thirdView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var heightConstant: NSLayoutConstraint!
-    @IBOutlet weak var thirdViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var nameShadow: UIView!
+    @IBOutlet weak var searchView: UIView!
+    @IBOutlet weak var topView: UIView!
     
     var interactor = Interactor()
     let change = Notification.Name(rawValue: changeViewNotificationKey)
     let pull = Notification.Name(rawValue: changeBackViewNotificationKey)
+    var navigationBarHeight: CGFloat = 20
     
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -39,8 +41,8 @@ class CodeNumViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.handlePanGesture(_:)))
-        self.view.addGestureRecognizer(panGesture)
+        topView.alpha = 0
+        navigationBarHeight = navigationBarHeight + (self.navigationController?.navigationBar.frame.height)!
         let menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as! UISideMenuNavigationController
         SideMenuManager.default.menuLeftNavigationController = menuLeftNavigationController
         imageView.backgroundColor = .black
@@ -69,39 +71,29 @@ class CodeNumViewController: UIViewController {
     func createObserver(){
         NotificationCenter.default.addObserver(self, selector: #selector(CodeNumViewController.updateView(notification:)), name: change, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(CodeNumViewController.updateBackView(notification:)), name: pull, object: nil)
-        
     }
     
     @objc func updateView(notification: NSNotification) {
-        heightConstant.constant = 100
-        thirdViewHeight.constant = 567
-        nameLabel.text = "희은님"
-        imageView.frame = CGRect(x: 30, y: 30, width: 30, height: 30)
-        firstView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 100)
+        print("댕김댕김")
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        })
+        firstView.frame = CGRect(x:0, y: 0, width: self.view.frame.width , height: navigationBarHeight )
+        searchView.frame = CGRect(x: 0, y: self.firstView.frame.height , width: self.view.frame.width, height: 38)
+        thirdView.frame = CGRect(x: 0, y: self.firstView.frame.height + self.searchView.frame.height, width: self.view.frame.width, height: self.view.frame.height - (searchView.frame.height))
+        imageView.alpha = 0
+        nameLabel.alpha = 0
+        nameShadow.alpha = 0
+        topView.alpha = 1
+
         self.view.layoutIfNeeded()
+
     }
     
     @objc func updateBackView(notification: NSNotification) {
-
-        nameLabel.text = "반갑습니다"
-        imageView.frame = CGRect(x: 30, y: 30, width: 20, height: 20)
-        firstView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 151)
+        print("댕김댕김")
+        self.view.layoutIfNeeded()
     }
 }
 
-//MARK: Gesture Delegate
-extension CodeNumViewController: UIGestureRecognizerDelegate {
-    @objc func handlePanGesture(_ sender: UIScreenEdgePanGestureRecognizer){
-        let location = sender.translation(in: view)
-        let progress = -(location.y / self.view.frame.height)
-        print(location)
-        print(progress)
-        switch sender.state {
-        case .changed:
-            print("changed")
-        default:
-            print("default")
-        }
-    }
-}
 

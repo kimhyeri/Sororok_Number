@@ -76,7 +76,7 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource, UIScr
         if (self.lastContentOffset < scrollView.contentOffset.y) {
             print("\(self.lastContentOffset),\(scrollView.contentOffset.y)")
             print("move down")
-            if scrollView.contentOffset.y > 128 {
+            if scrollView.contentOffset.y > 118 {
                 print("view 땡겨라")
                 let name = Notification.Name(rawValue:changeViewNotificationKey)
                 NotificationCenter.default.post(name: name, object: nil)
@@ -89,7 +89,7 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource, UIScr
         } else if (self.lastContentOffset > scrollView.contentOffset.y) {
             print("\(self.lastContentOffset),\(scrollView.contentOffset.y)")
             print("move up")
-            if scrollView.contentOffset.y < 128 {
+            if scrollView.contentOffset.y < 118 {
                 print("view 늘려라")
                 let name = Notification.Name(rawValue:changeBackViewNotificationKey)
                 NotificationCenter.default.post(name: name, object: nil)
