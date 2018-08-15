@@ -11,13 +11,14 @@ import UIKit
 class HomeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var cellView: UIView!
+    @IBOutlet weak var groupImage: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-//        cellView.layer.cornerRadius = self.frame.height / 4.0
-//        self.cellView.layer.borderWidth = 1
-//        self.cellView.layer.borderColor = UIColor(red:196/255, green:197/255, blue:214/255, alpha: 1).cgColor
+        print("hello")
+        
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

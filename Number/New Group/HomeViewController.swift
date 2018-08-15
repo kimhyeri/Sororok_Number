@@ -38,6 +38,10 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource, UIScr
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath) as! HomeTableViewCell
+        cell.groupImage.layer.cornerRadius = 10
+        cell.cellView.layer.cornerRadius = 10
+        cell.cellView.layer.borderWidth = 1
+        cell.cellView.layer.borderColor = UIColor(red:196/255, green:197/255, blue:214/255, alpha: 1).cgColor
         return cell
     }
     
