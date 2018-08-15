@@ -11,6 +11,8 @@ import SideMenu
 
 class CodeNumViewController: UIViewController {
     
+    @IBOutlet weak var nothingLabel1: UILabel!
+    @IBOutlet weak var nothingLabel2: UILabel!
     @IBOutlet weak var topViewCon: NSLayoutConstraint!
     @IBOutlet weak var firstView: UIView!
     @IBOutlet weak var imageView: UIImageView!
@@ -42,6 +44,8 @@ class CodeNumViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        nothingLabel1.alpha = 0
+        nothingLabel2.alpha = 0
         topView.alpha = 0
         topView.frame = CGRect(x: 0, y: -100 , width: self.view.frame.width, height: navigationBarHeight)
         navigationBarHeight = navigationBarHeight + (self.navigationController?.navigationBar.frame.height)!
