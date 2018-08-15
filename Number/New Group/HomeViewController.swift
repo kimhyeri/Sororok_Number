@@ -61,6 +61,9 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource, UIScr
                 print("view 땡겨라")
                 let name = Notification.Name(rawValue:changeViewNotificationKey)
                 NotificationCenter.default.post(name: name, object: nil)
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.view.layoutIfNeeded()
+                })
             }
           
 
@@ -71,6 +74,9 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource, UIScr
                 print("view 늘려라")
                 let name = Notification.Name(rawValue:changeBackViewNotificationKey)
                 NotificationCenter.default.post(name: name, object: nil)
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.view.layoutIfNeeded()
+                })
             }
         }
     }

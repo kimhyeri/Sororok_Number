@@ -25,6 +25,7 @@ class CodeNumViewController: UIViewController {
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
+    
     @IBAction func pressedSosik(_ sender: Any) {
         let nv = self.storyboard?.instantiateViewController(withIdentifier: "LeftMenuNavigationController")
         present(nv!, animated: true, completion: nil)
@@ -77,13 +78,14 @@ class CodeNumViewController: UIViewController {
         nameLabel.text = "희은님"
         imageView.frame = CGRect(x: 30, y: 30, width: 30, height: 30)
         firstView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 100)
+        self.view.layoutIfNeeded()
     }
     
     @objc func updateBackView(notification: NSNotification) {
-        heightConstant.constant = 151
+
         nameLabel.text = "반갑습니다"
-        imageView.frame = CGRect(x: 30, y: 30, width: 30, height: 30)
-        firstView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 100)
+        imageView.frame = CGRect(x: 30, y: 30, width: 20, height: 20)
+        firstView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 151)
     }
 }
 
