@@ -44,9 +44,28 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource, UIScr
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.view.endEditing(true)
-        let storyboard = UIStoryboard.init(name: "DetailHome", bundle: nil)
-        let nv = storyboard.instantiateViewController(withIdentifier: "DetailHome") as! DetailHomeTableViewController
-        navigationController?.pushViewController(nv, animated: true)
+        let alert = UIAlertController(title: "그룹 코드를 입력해주세요", message: nil, preferredStyle: .alert)
+        alert.addTextField { (pTextField) in
+                pTextField.placeholder = "코드 입력"
+                pTextField.clearButtonMode = .whileEditing
+                pTextField.borderStyle = .none
+        }
+        
+        let noAlert = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default){
+            (result: UIAlertAction) in
+            alert.removeFromParentViewController()
+        }
+        let okAlert = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default){
+            (result: UIAlertAction) in
+            alert.removeFromParentViewController()
+            let storyboard = UIStoryboard.init(name: "DetailHome", bundle: nil)
+            let nv = storyboard.instantiateViewController(withIdentifier: "DetailHome") as! DetailHomeTableViewController
+            self.navigationController?.pushViewController(nv, animated: true)
+        }
+        
+        alert.addAction(noAlert)
+        alert.addAction(okAlert)
+        present(alert,animated: true, completion: nil)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
