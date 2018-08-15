@@ -38,7 +38,6 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource, UIScr
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath) as! HomeTableViewCell
-   
         return cell
     }
     
@@ -76,13 +75,13 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource, UIScr
         if (self.lastContentOffset < scrollView.contentOffset.y) {
             print("\(self.lastContentOffset),\(scrollView.contentOffset.y)")
             print("move down")
-            if scrollView.contentOffset.y > 0 && scrollView.contentOffset.y < 118 {
+            if scrollView.contentOffset.y > 0 && scrollView.contentOffset.y < 300 {
                 print("view 땡겨라")
                 var scroll = ["scroll" :scrollView.contentOffset.y]
                 let name = Notification.Name(rawValue:changeViewNotificationKey)
                 NotificationCenter.default.post(name: name, object: nil, userInfo: scroll)
             }
-            UIView.animate(withDuration: 1, animations: {
+            UIView.animate(withDuration: 0.5, animations: {
                 self.view.layoutIfNeeded()
             })
             
@@ -90,7 +89,7 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource, UIScr
         } else if (self.lastContentOffset > scrollView.contentOffset.y) {
             print("\(self.lastContentOffset),\(scrollView.contentOffset.y)")
             print("move up")
-            if scrollView.contentOffset.y > 118 {
+            if scrollView.contentOffset.y > 200 {
                 print("view 늘려라")
                 let name = Notification.Name(rawValue:changeBackViewNotificationKey)
                 NotificationCenter.default.post(name: name, object: nil)
