@@ -81,6 +81,7 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource, UIScr
             print("move down")
             if scrollView.contentOffset.y > 0 && scrollView.contentOffset.y < 300 {
                 print("view 땡겨라")
+                
                 var scroll = ["scroll" :scrollView.contentOffset.y]
                 let name = Notification.Name(rawValue:changeViewNotificationKey)
                 NotificationCenter.default.post(name: name, object: nil, userInfo: scroll)

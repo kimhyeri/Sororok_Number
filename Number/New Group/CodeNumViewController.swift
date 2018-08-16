@@ -81,11 +81,13 @@ class CodeNumViewController: UIViewController {
     
     @objc func updateView(notification: NSNotification) {
         print("댕김댕김")
-        
-//        var dyna = Double(notification.userInfo?["scroll"]! as! Double) * 0.1
-//        let myFloat = NSNumber.init(value: dyna).floatValue
-//        let myCGFloat = CGFloat(myFloat)
-        
+    
+        if let dyna = notification.userInfo?["scroll"] as? Double {
+            print(dyna)
+
+            let val = CGFloat(dyna)
+        }
+
         if firstView.frame.height > navigationBarHeight{
             firstView.frame = CGRect(x:0, y: 0, width: self.view.frame.width , height: (firstView.frame.height - 2.2) )
             searchView.frame = CGRect(x: 0, y: self.firstView.frame.height , width: self.view.frame.width, height: 38)
