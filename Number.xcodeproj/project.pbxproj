@@ -33,6 +33,7 @@
 		355F0A732108E96C00715E3F /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 355F0A722108E96C00715E3F /* Setting.storyboard */; };
 		355F0A752108E99D00715E3F /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355F0A742108E99D00715E3F /* SettingTableViewController.swift */; };
 		356A58FE210D9F35003C20BB /* CustomNaviViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356A58FD210D9F35003C20BB /* CustomNaviViewController.swift */; };
+		358268F621262669003415F0 /* TwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358268F521262669003415F0 /* TwoViewController.swift */; };
 		35ECDEF02103B1B700308080 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ECDEEF2103B1B700308080 /* AppDelegate.swift */; };
 		35ECDEF22103B1B700308080 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ECDEF12103B1B700308080 /* ViewController.swift */; };
 		35ECDEF52103B1B700308080 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35ECDEF32103B1B700308080 /* Main.storyboard */; };
@@ -75,6 +76,7 @@
 		355F0A722108E96C00715E3F /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		355F0A742108E99D00715E3F /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		356A58FD210D9F35003C20BB /* CustomNaviViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNaviViewController.swift; sourceTree = "<group>"; };
+		358268F521262669003415F0 /* TwoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoViewController.swift; sourceTree = "<group>"; };
 		35ECDEEC2103B1B700308080 /* Number.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Number.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35ECDEEF2103B1B700308080 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35ECDEF12103B1B700308080 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				35ECDF0821046EB600308080 /* CodeNum.storyboard */,
+				358268F521262669003415F0 /* TwoViewController.swift */,
 				35ECDF0D210475A200308080 /* CodeNumViewController.swift */,
 				3551E836210CD465009DF002 /* PresentAnimation.swift */,
 				3551E838210CD582009DF002 /* Interactor.swift */,
@@ -448,6 +451,7 @@
 				3556196A21071EDF009CC356 /* DetailHomeTableViewCell.swift in Sources */,
 				35ECDF12210475E200308080 /* HomeViewController.swift in Sources */,
 				353EC8CC210AF0F1004081D1 /* AddressViewController.swift in Sources */,
+				358268F621262669003415F0 /* TwoViewController.swift in Sources */,
 				351AB6322105AEBA0017D41A /* Timer.swift in Sources */,
 				354BB8942121F56800FE489C /* Notification.swift in Sources */,
 				354EA795210C877300D16A80 /* SideMenuTableViewController.swift in Sources */,
