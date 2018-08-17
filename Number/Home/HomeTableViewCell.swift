@@ -14,9 +14,7 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var groupImage: UIImageView!
     
     override func awakeFromNib() {
-        super.awakeFromNib()
-        print("hello")
-        
+        super.awakeFromNib()        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

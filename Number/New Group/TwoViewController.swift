@@ -1,18 +1,8 @@
 //
-//  ViewController.swift
+//  TwoViewController.swift
 //  Number
 //
 //  Created by hyerikim on 2018. 8. 17..
-//  Copyright © 2018년 nexters.number. All rights reserved.
-//
-
-import UIKit
-
-//
-//  CodeNumViewController.swift
-//  Number
-//
-//  Created by hyerikim on 2018. 7. 22..
 //  Copyright © 2018년 nexters.number. All rights reserved.
 //
 
@@ -33,14 +23,7 @@ class TwoViewController: UIViewController {
     @IBOutlet weak var topView: UIView!
     
     var lastContentOffset: CGFloat = 0
-    var interactor = Interactor()
-    let change = Notification.Name(rawValue: changeViewNotificationKey)
-    let pull = Notification.Name(rawValue: changeBackViewNotificationKey)
     var navigationBarHeight: CGFloat = 20
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
     
     @IBAction func pressedSosik(_ sender: Any) {
         let nv = self.storyboard?.instantiateViewController(withIdentifier: "LeftMenuNavigationController")
@@ -55,18 +38,25 @@ class TwoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        nothingLabel1.alpha = 0
-        nothingLabel2.alpha = 0
         tableView.delegate = self
         tableView.dataSource = self
-        topView.alpha = 0
+        defaultView()
+        addButton()
+    }
+    
+    func defaultView(){
         topView.frame = CGRect(x: 0, y: -100 , width: self.view.frame.width, height: navigationBarHeight)
         navigationBarHeight = navigationBarHeight + (self.navigationController?.navigationBar.frame.height)!
-        let menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as! UISideMenuNavigationController
-        tableView.register(UINib(nibName:"HomeTableViewCell",bundle: nil), forCellReuseIdentifier: "HomeTableViewCell")
-        SideMenuManager.default.menuLeftNavigationController = menuLeftNavigationController
+        
+        nothingLabel1.alpha = 0
+        nothingLabel2.alpha = 0
+        topView.alpha = 0
         imageView.backgroundColor = .black
-        addButton()
+        
+        tableView.register(UINib(nibName:"HomeTableViewCell",bundle: nil), forCellReuseIdentifier: "HomeTableViewCell")
+        
+        let menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as! UISideMenuNavigationController
+        SideMenuManager.default.menuLeftNavigationController = menuLeftNavigationController
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
@@ -87,50 +77,73 @@ class TwoViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    @objc func updateView(notification: NSNotification) {
-        print("댕김댕김")
-        
-        if let dyna = notification.userInfo?["scroll"] as? Double {
-            print(dyna)
-            
-            let val = CGFloat(dyna)
-        }
-        
+    @objc func buttonPressed(){
+        let vc = UIViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+//MARK: ScrollViewDeleate animation
+
+extension TwoViewController : UIScrollViewDelegate {
+    func changeView(){
+        print("뷰 바뀐다")
         if firstView.frame.height > navigationBarHeight{
-            firstView.frame = CGRect(x:0, y: 0, width: self.view.frame.width , height: (firstView.frame.height - 2.2) )
+            firstView.frame = CGRect(x:0, y: 0, width: self.view.frame.width , height: (firstView.frame.height - (tableView.contentOffset.y * 1)) )
             searchView.frame = CGRect(x: 0, y: self.firstView.frame.height , width: self.view.frame.width, height: 38)
             tableView.frame = CGRect(x: 0, y: self.firstView.frame.height + self.searchView.frame.height, width: self.view.frame.width, height: self.view.frame.height - (firstView.frame.height + searchView.frame.height))
-            imageView.alpha = imageView.alpha - 0.02
             imageView.frame = CGRect(x:self.imageView.frame.minX, y: self.imageView.frame.minY - 5, width: self.imageView.frame.width , height: imageView.frame.height )
             nameLabel.frame = CGRect(x:self.nameLabel.frame.minX, y: self.nameLabel.frame.minY  - 5, width: self.nameLabel.frame.width , height: nameLabel.frame.height )
             nameShadow.frame = CGRect(x:self.nameShadow.frame.minX, y: self.nameShadow.frame.minY  - 5, width: self.nameShadow.frame.width , height: nameShadow.frame.height )
-            nameLabel.alpha = imageView.alpha - 0.02
-            nameShadow.alpha = imageView.alpha - 0.02
-            topView.alpha = topView.alpha + 0.01
+            
             if topViewCon.constant < -300 {
                 topViewCon.constant = topViewCon.constant + 2
             }
+            topView.alpha = topView.alpha + (tableView.contentOffset.y * 0.1)
+            imageView.alpha = imageView.alpha - (tableView.contentOffset.y * 0.1)
+            nameLabel.alpha = imageView.alpha - (tableView.contentOffset.y * 0.1)
+            nameShadow.alpha = imageView.alpha - (tableView.contentOffset.y * 0.1)
             UIView.animate(withDuration: 0.3, animations: {
                 self.view.layoutIfNeeded()
             })
         }
-        
-        self.view.layoutIfNeeded()
-        
     }
     
-    @objc func updateBackView(notification: NSNotification) {
-        print("댕김댕김")
-        self.view.layoutIfNeeded()
-        
-        
+    func changeBackView(){
+        if firstView.frame.height > navigationBarHeight{
+            print("원점회복")
+            firstView.frame = CGRect(x:0, y: 0, width: self.view.frame.width , height: (firstView.frame.height + (tableView.contentOffset.y * 0.1)) )
+            searchView.frame = CGRect(x: 0, y: self.firstView.frame.height , width: self.view.frame.width, height: 38)
+            tableView.frame = CGRect(x: 0, y: self.firstView.frame.height + self.searchView.frame.height, width: self.view.frame.width, height: self.view.frame.height + (firstView.frame.height + searchView.frame.height))
+            imageView.frame = CGRect(x:self.imageView.frame.minX, y: self.imageView.frame.minY + 5, width: self.imageView.frame.width , height: imageView.frame.height )
+            nameLabel.frame = CGRect(x:self.nameLabel.frame.minX, y: self.nameLabel.frame.minY  + 5, width: self.nameLabel.frame.width , height: nameLabel.frame.height )
+            nameShadow.frame = CGRect(x:self.nameShadow.frame.minX, y: self.nameShadow.frame.minY  + 5, width: self.nameShadow.frame.width , height: nameShadow.frame.height )
+            
+            if topViewCon.constant > -300 {
+                topViewCon.constant = topViewCon.constant - 2
+            }
+            topView.alpha = topView.alpha + (tableView.contentOffset.y * 0.01)
+            imageView.alpha = imageView.alpha - 0.02
+            nameLabel.alpha = imageView.alpha - (tableView.contentOffset.y * 0.01)
+            nameShadow.alpha = imageView.alpha - (tableView.contentOffset.y * 0.01)
+            UIView.animate(withDuration: 0.3, animations: {
+                self.view.layoutIfNeeded()
+            })
+        }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (self.lastContentOffset < scrollView.contentOffset.y) {
+            changeView()
+        } else if (self.lastContentOffset > scrollView.contentOffset.y) {
+            changeBackView()
+        }
     }
 }
 
+//MARK: TableView Delegate, DataSource
 
-
-
-extension TwoViewController : UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate{
+extension TwoViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
@@ -147,6 +160,15 @@ extension TwoViewController : UITableViewDelegate, UITableViewDataSource, UIScro
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.view.endEditing(true)
+        createAlert()
+    }
+    
+}
+
+//MARK: AlertViewController Custom
+
+extension TwoViewController {
+    func createAlert(){
         let alert = UIAlertController(title: "그룹 코드를 입력해주세요", message: nil, preferredStyle: .alert)
         alert.addTextField { (pTextField) in
             pTextField.placeholder = "코드 입력"
@@ -170,68 +192,7 @@ extension TwoViewController : UITableViewDelegate, UITableViewDataSource, UIScro
         alert.addAction(okAlert)
         present(alert,animated: true, completion: nil)
     }
-    
-    func changeView(){
-        firstView.frame = CGRect(x:0, y: 0, width: self.view.frame.width , height: (firstView.frame.height - (tableView.contentOffset.y * 0.1)) )
-        searchView.frame = CGRect(x: 0, y: self.firstView.frame.height , width: self.view.frame.width, height: 38)
-        tableView.frame = CGRect(x: 0, y: self.firstView.frame.height + self.searchView.frame.height, width: self.view.frame.width, height: self.view.frame.height - (firstView.frame.height + searchView.frame.height))
-        imageView.frame = CGRect(x:self.imageView.frame.minX, y: self.imageView.frame.minY - 5, width: self.imageView.frame.width , height: imageView.frame.height )
-        nameLabel.frame = CGRect(x:self.nameLabel.frame.minX, y: self.nameLabel.frame.minY  - 5, width: self.nameLabel.frame.width , height: nameLabel.frame.height )
-        nameShadow.frame = CGRect(x:self.nameShadow.frame.minX, y: self.nameShadow.frame.minY  - 5, width: self.nameShadow.frame.width , height: nameShadow.frame.height )
-
-        if topViewCon.constant < -300 {
-            topViewCon.constant = topViewCon.constant + 2
-        }
-        topView.alpha = topView.alpha + (tableView.contentOffset.y * 0.01)
-        imageView.alpha = imageView.alpha - 0.02
-        nameLabel.alpha = imageView.alpha - (tableView.contentOffset.y * 0.01)
-        nameShadow.alpha = imageView.alpha - (tableView.contentOffset.y * 0.01)
-        UIView.animate(withDuration: 0.3, animations: {
-            self.view.layoutIfNeeded()
-        })
-    }
-    func changeBackView(){
-        firstView.frame = CGRect(x:0, y: 0, width: self.view.frame.width , height: (firstView.frame.height + (tableView.contentOffset.y * 0.1)) )
-        searchView.frame = CGRect(x: 0, y: self.firstView.frame.height , width: self.view.frame.width, height: 38)
-        tableView.frame = CGRect(x: 0, y: self.firstView.frame.height + self.searchView.frame.height, width: self.view.frame.width, height: self.view.frame.height + (firstView.frame.height + searchView.frame.height))
-        imageView.frame = CGRect(x:self.imageView.frame.minX, y: self.imageView.frame.minY + 5, width: self.imageView.frame.width , height: imageView.frame.height )
-        nameLabel.frame = CGRect(x:self.nameLabel.frame.minX, y: self.nameLabel.frame.minY  + 5, width: self.nameLabel.frame.width , height: nameLabel.frame.height )
-        nameShadow.frame = CGRect(x:self.nameShadow.frame.minX, y: self.nameShadow.frame.minY  + 5, width: self.nameShadow.frame.width , height: nameShadow.frame.height )
-        
-        if topViewCon.constant  -300 {
-            topViewCon.constant = topViewCon.constant - 2
-        }
-        topView.alpha = topView.alpha + (tableView.contentOffset.y * 0.01)
-        imageView.alpha = imageView.alpha - 0.02
-        nameLabel.alpha = imageView.alpha - (tableView.contentOffset.y * 0.01)
-        nameShadow.alpha = imageView.alpha - (tableView.contentOffset.y * 0.01)
-        UIView.animate(withDuration: 0.3, animations: {
-            self.view.layoutIfNeeded()
-        })
-    }
-
-func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    if (self.lastContentOffset < scrollView.contentOffset.y) {
-        if scrollView.contentOffset.y > 0 && scrollView.contentOffset.y < 300 {
-            if firstView.frame.height > navigationBarHeight{
-                changeView()
-            }
-        }
-    } else if (self.lastContentOffset > scrollView.contentOffset.y) {
-        if scrollView.contentOffset.y > 0 && scrollView.contentOffset.y < 300 {
-            if firstView.frame.height > navigationBarHeight{
-                changeBackView()
-            }
-        }
-    }
 }
-
-@objc func buttonPressed(){
-    let vc = UIViewController()
-    self.navigationController?.pushViewController(vc, animated: true)
-}
-}
-
 
 
 
