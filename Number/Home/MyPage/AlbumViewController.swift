@@ -90,7 +90,7 @@ import Photos
                                       options: nil,
                                       resultHandler: {image, _ in
                                         cell.imageView?.image = image
-                                        
+                            
             })
         }
         

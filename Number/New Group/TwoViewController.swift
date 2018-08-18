@@ -11,6 +11,7 @@ import SideMenu
 
 class TwoViewController: UIViewController {
     
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var imageSecondView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nothingLabel1: UILabel!
@@ -46,7 +47,8 @@ class TwoViewController: UIViewController {
     }
     
     func defaultView(){
-        self.navigationController!.navigationBar.topItem!.title = ""
+    self.navigationController!.navigationBar.topItem!.title = ""
+        
         topView.frame = CGRect(x: 0, y: -100 , width: self.view.frame.width, height: navigationBarHeight)
         navigationBarHeight = navigationBarHeight + (self.navigationController?.navigationBar.frame.height)!
         imageView.layer.cornerRadius = self.imageView.frame.size.width / 2

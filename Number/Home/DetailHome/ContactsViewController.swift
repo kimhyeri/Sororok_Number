@@ -23,6 +23,22 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
         self.navigationItem.rightBarButtonItem = rightBarButtonItem
         
     }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = UILabel()
+        if section == 0 {
+            label.text = " ㄱ"
+            label.backgroundColor = UIColor.white
+        }else{
+            label.text = " ㄴ"
+            label.backgroundColor = UIColor.lightGray
+        }
+        return label
+    }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DetailHomeTableViewCell", for: indexPath) as! DetailHomeTableViewCell
@@ -31,6 +47,10 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.view.endEditing(true)
     }
     
     @objc func pressedButton(){
