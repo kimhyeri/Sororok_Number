@@ -48,7 +48,7 @@ class TwoViewController: UIViewController {
     }
     
     func defaultView(){
-    self.navigationController!.navigationBar.topItem!.title = ""
+        self.navigationController!.navigationBar.topItem!.title = ""
         
         topView.frame = CGRect(x: 0, y: -100 , width: self.view.frame.width, height: navigationBarHeight)
         navigationBarHeight = navigationBarHeight + (self.navigationController?.navigationBar.frame.height)!
@@ -60,6 +60,7 @@ class TwoViewController: UIViewController {
         imageView.backgroundColor = .black
         
         tableView.register(UINib(nibName:"HomeTableViewCell",bundle: nil), forCellReuseIdentifier: "HomeTableViewCell")
+//        tableView.register(UINib(nibName:"NothingTableViewCell",bundle: nil), forCellReuseIdentifier: "NothingTableViewCell")
         
         let menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as! UISideMenuNavigationController
         SideMenuManager.default.menuLeftNavigationController = menuLeftNavigationController
@@ -71,7 +72,7 @@ class TwoViewController: UIViewController {
     
     func addButton() {
         let groupCreate = UIButton()
-        groupCreate.backgroundColor = .black
+        groupCreate.backgroundColor = UIColor.init(red: 255/255, green: 161/255, blue: 190/255, alpha: 1)
         groupCreate.frame = CGRect(x: view.frame.width - 80, y: view.frame.height - 80, width: 50, height: 50)
         self.view.addSubview(groupCreate)
         groupCreate.addTarget(self, action: #selector(self.createGroup), for: UIControlEvents.touchUpInside)
@@ -160,6 +161,13 @@ extension TwoViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //데이터 아무것도 없을 경우 0, api통신 바꿔줘야함
+ 
+//        if(indexPath.row == 0){
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "NothingTableView", for: indexPath) as! NothingTableViewCell
+//
+//            return cell
+//        }
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath) as! HomeTableViewCell
         cell.cellView.layer.cornerRadius = 10
         cell.cellView.layer.borderWidth = 1

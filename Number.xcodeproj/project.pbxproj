@@ -30,6 +30,8 @@
 		3556196521071C01009CC356 /* DetailHomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3556196321071C01009CC356 /* DetailHomeTableViewController.swift */; };
 		3556196A21071EDF009CC356 /* DetailHomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3556196821071EDF009CC356 /* DetailHomeTableViewCell.swift */; };
 		3556196B21071EDF009CC356 /* DetailHomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3556196921071EDF009CC356 /* DetailHomeTableViewCell.xib */; };
+		355BB75021297782009A7837 /* NothingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355BB74E21297782009A7837 /* NothingTableViewCell.swift */; };
+		355BB75121297782009A7837 /* NothingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 355BB74F21297782009A7837 /* NothingTableViewCell.xib */; };
 		355F0A732108E96C00715E3F /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 355F0A722108E96C00715E3F /* Setting.storyboard */; };
 		355F0A752108E99D00715E3F /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355F0A742108E99D00715E3F /* SettingTableViewController.swift */; };
 		3565D4432128291B000D70D2 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3565D4422128291B000D70D2 /* ContactsViewController.swift */; };
@@ -76,6 +78,8 @@
 		3556196321071C01009CC356 /* DetailHomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHomeTableViewController.swift; sourceTree = "<group>"; };
 		3556196821071EDF009CC356 /* DetailHomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHomeTableViewCell.swift; sourceTree = "<group>"; };
 		3556196921071EDF009CC356 /* DetailHomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailHomeTableViewCell.xib; sourceTree = "<group>"; };
+		355BB74E21297782009A7837 /* NothingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NothingTableViewCell.swift; path = Number/Home/DetailHome/NothingTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		355BB74F21297782009A7837 /* NothingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NothingTableViewCell.xib; path = Number/Home/DetailHome/NothingTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 		355F0A722108E96C00715E3F /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		355F0A742108E99D00715E3F /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		3565D4422128291B000D70D2 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
@@ -264,6 +268,8 @@
 			children = (
 				35ECDF0821046EB600308080 /* CodeNum.storyboard */,
 				358268F521262669003415F0 /* TwoViewController.swift */,
+				355BB74E21297782009A7837 /* NothingTableViewCell.swift */,
+				355BB74F21297782009A7837 /* NothingTableViewCell.xib */,
 				35ECDF0D210475A200308080 /* CodeNumViewController.swift */,
 				3551E836210CD465009DF002 /* PresentAnimation.swift */,
 				3551E838210CD582009DF002 /* Interactor.swift */,
@@ -373,6 +379,7 @@
 				3556196221071BDE009CC356 /* DetailHome.storyboard in Resources */,
 				351AB6352105C00C0017D41A /* Login.storyboard in Resources */,
 				35ECDF16210476F200308080 /* HomeTableViewCell.xib in Resources */,
+				355BB75121297782009A7837 /* NothingTableViewCell.xib in Resources */,
 				35ECDEFA2103B1BA00308080 /* LaunchScreen.storyboard in Resources */,
 				351AB6392105C1570017D41A /* MyPage.storyboard in Resources */,
 				35ECDEF72103B1BA00308080 /* Assets.xcassets in Resources */,
@@ -465,6 +472,7 @@
 				351AB6322105AEBA0017D41A /* Timer.swift in Sources */,
 				354BB8942121F56800FE489C /* Notification.swift in Sources */,
 				3565D44721283B0A000D70D2 /* HexColor.swift in Sources */,
+				355BB75021297782009A7837 /* NothingTableViewCell.swift in Sources */,
 				354EA795210C877300D16A80 /* SideMenuTableViewController.swift in Sources */,
 				35ECDF0E210475A200308080 /* CodeNumViewController.swift in Sources */,
 				351AB6362105C00C0017D41A /* LoginViewController.swift in Sources */,
