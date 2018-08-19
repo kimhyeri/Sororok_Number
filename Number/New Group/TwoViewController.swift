@@ -11,7 +11,6 @@ import SideMenu
 
 class TwoViewController: UIViewController {
     
-    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var imageSecondView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nothingLabel1: UILabel!
@@ -94,7 +93,7 @@ class TwoViewController: UIViewController {
 
 extension TwoViewController : UIScrollViewDelegate {
     func changeView(){
-        print("뷰 바뀐다")
+//        print("뷰 바뀐다")
         if movedView == false{
             if firstView.frame.height > navigationBarHeight{
                 firstView.frame = CGRect(x:0, y: 0, width: self.view.frame.width , height: (firstView.frame.height - (tableView.contentOffset.y * 0.1)) )
@@ -121,7 +120,7 @@ extension TwoViewController : UIScrollViewDelegate {
     func changeBackView(){
         if movedView == true {
             if firstView.frame.height > navigationBarHeight{
-                print("원점회복")
+//                print("원점회복")
                 firstView.frame = CGRect(x:0, y: 0, width: self.view.frame.width , height: (firstView.frame.height + (tableView.contentOffset.y * 0.1)) )
                 searchView.frame = CGRect(x: 0, y: self.firstView.frame.height , width: self.view.frame.width, height: 38)
                 tableView.frame = CGRect(x: 0, y: self.firstView.frame.height + self.searchView.frame.height, width: self.view.frame.width, height: self.view.frame.height + (firstView.frame.height + searchView.frame.height))
@@ -144,11 +143,21 @@ extension TwoViewController : UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if (self.lastContentOffset < scrollView.contentOffset.y) {
+        if scrollView.contentOffset.y >= 0 && scrollView.contentOffset.y <= navigationBarHeight {
             changeView()
-        } else if (self.lastContentOffset > scrollView.contentOffset.y) {
-            changeBackView()
+            print("뷰 줄어든다")
+            
+        } else if scrollView.contentOffset.y > navigationBarHeight {
+            print("원상복귀")
+//            heightConstraint.constant = collectionViewHeight
+//            tableView.isScrollEnabled = true
         }
+        
+//        if (self.lastContentOffset < scrollView.contentOffset.y) {
+//            changeView()
+//        } else if (self.lastContentOffset > scrollView.contentOffset.y) {
+//            changeBackView()
+//        }
     }
 }
 
@@ -161,13 +170,13 @@ extension TwoViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //데이터 아무것도 없을 경우 0, api통신 바꿔줘야함
- 
+        
+//데이터 아무것도 없을 경우
 //        if(indexPath.row == 0){
 //            let cell = tableView.dequeueReusableCell(withIdentifier: "NothingTableView", for: indexPath) as! NothingTableViewCell
-//
 //            return cell
 //        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath) as! HomeTableViewCell
         cell.cellView.layer.cornerRadius = 10
         cell.cellView.layer.borderWidth = 1

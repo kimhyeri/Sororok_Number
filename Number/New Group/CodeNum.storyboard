@@ -31,7 +31,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="73"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="efC-2y-cEw">
+                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="efC-2y-cEw">
                                             <rect key="frame" x="10" y="10" width="355" height="52.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XNb-Le-hGj">
@@ -59,6 +59,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="news" destination="XNb-Le-hGj" id="W8t-YM-Fgb"/>
+                                    <outlet property="newsView" destination="efC-2y-cEw" id="ZQT-Ll-zdP"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -71,7 +72,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dhQ-uJ-Ll0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3352.8000000000002" y="-344.07796101949026"/>
+            <point key="canvasLocation" x="2929" y="-341"/>
         </scene>
         <!--Side Menu Navigation Controller-->
         <scene sceneID="TXr-mB-nAZ">
@@ -90,7 +91,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lyi-17-5bl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2617" y="-344"/>
+            <point key="canvasLocation" x="2193" y="-341"/>
         </scene>
         <!--Code Num View Controller-->
         <scene sceneID="zM5-SI-YOQ">
@@ -309,7 +310,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y49-3p-ASN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1492" y="342"/>
+            <point key="canvasLocation" x="1492" y="228"/>
         </scene>
         <!--Two View Controller-->
         <scene sceneID="Dqv-qO-EQI">
@@ -454,7 +455,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Sg-uD-Eua" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2086" y="-1401"/>
+            <point key="canvasLocation" x="2082" y="-1086"/>
         </scene>
         <!--Custom Navi View Controller-->
         <scene sceneID="GWd-Q0-4pF">
@@ -475,7 +476,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ina-5f-H7u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1343" y="-1401"/>
+            <point key="canvasLocation" x="1338" y="-1086"/>
         </scene>
         <!--Setting-->
         <scene sceneID="3Lw-Rd-Geo">
@@ -483,7 +484,7 @@
                 <viewControllerPlaceholder storyboardName="Setting" id="pC5-bI-4zp" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bkQ-FL-nrL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2650" y="-1401"/>
+            <point key="canvasLocation" x="2646" y="-1087"/>
         </scene>
     </scenes>
     <resources>

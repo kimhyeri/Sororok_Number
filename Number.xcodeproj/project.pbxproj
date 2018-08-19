@@ -32,6 +32,9 @@
 		3556196B21071EDF009CC356 /* DetailHomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3556196921071EDF009CC356 /* DetailHomeTableViewCell.xib */; };
 		355BB75021297782009A7837 /* NothingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355BB74E21297782009A7837 /* NothingTableViewCell.swift */; };
 		355BB75121297782009A7837 /* NothingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 355BB74F21297782009A7837 /* NothingTableViewCell.xib */; };
+		355BB7532129E625009A7837 /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355BB7522129E625009A7837 /* LogoutViewController.swift */; };
+		355BB7552129E63C009A7837 /* Logout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 355BB7542129E63C009A7837 /* Logout.storyboard */; };
+		355BB7572129E767009A7837 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 355BB7562129E766009A7837 /* Assets.xcassets */; };
 		355F0A732108E96C00715E3F /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 355F0A722108E96C00715E3F /* Setting.storyboard */; };
 		355F0A752108E99D00715E3F /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355F0A742108E99D00715E3F /* SettingTableViewController.swift */; };
 		3565D4432128291B000D70D2 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3565D4422128291B000D70D2 /* ContactsViewController.swift */; };
@@ -42,7 +45,6 @@
 		35ECDEF02103B1B700308080 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ECDEEF2103B1B700308080 /* AppDelegate.swift */; };
 		35ECDEF22103B1B700308080 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ECDEF12103B1B700308080 /* ViewController.swift */; };
 		35ECDEF52103B1B700308080 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35ECDEF32103B1B700308080 /* Main.storyboard */; };
-		35ECDEF72103B1BA00308080 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35ECDEF62103B1BA00308080 /* Assets.xcassets */; };
 		35ECDEFA2103B1BA00308080 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35ECDEF82103B1BA00308080 /* LaunchScreen.storyboard */; };
 		35ECDF0921046EB600308080 /* CodeNum.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35ECDF0821046EB600308080 /* CodeNum.storyboard */; };
 		35ECDF0E210475A200308080 /* CodeNumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ECDF0D210475A200308080 /* CodeNumViewController.swift */; };
@@ -80,6 +82,9 @@
 		3556196921071EDF009CC356 /* DetailHomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailHomeTableViewCell.xib; sourceTree = "<group>"; };
 		355BB74E21297782009A7837 /* NothingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NothingTableViewCell.swift; path = Number/Home/DetailHome/NothingTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		355BB74F21297782009A7837 /* NothingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NothingTableViewCell.xib; path = Number/Home/DetailHome/NothingTableViewCell.xib; sourceTree = SOURCE_ROOT; };
+		355BB7522129E625009A7837 /* LogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
+		355BB7542129E63C009A7837 /* Logout.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Logout.storyboard; sourceTree = "<group>"; };
+		355BB7562129E766009A7837 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Number/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		355F0A722108E96C00715E3F /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		355F0A742108E99D00715E3F /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		3565D4422128291B000D70D2 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
@@ -91,7 +96,6 @@
 		35ECDEEF2103B1B700308080 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35ECDEF12103B1B700308080 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		35ECDEF42103B1B700308080 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		35ECDEF62103B1BA00308080 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		35ECDEF92103B1BA00308080 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		35ECDEFB2103B1BA00308080 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		35ECDF0821046EB600308080 /* CodeNum.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CodeNum.storyboard; sourceTree = "<group>"; };
@@ -215,6 +219,8 @@
 				354EA796210C8FEC00D16A80 /* Delete */,
 				355F0A722108E96C00715E3F /* Setting.storyboard */,
 				355F0A742108E99D00715E3F /* SettingTableViewController.swift */,
+				355BB7522129E625009A7837 /* LogoutViewController.swift */,
+				355BB7542129E63C009A7837 /* Logout.storyboard */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -246,7 +252,7 @@
 				35ECDEEF2103B1B700308080 /* AppDelegate.swift */,
 				35ECDEF12103B1B700308080 /* ViewController.swift */,
 				35ECDEF32103B1B700308080 /* Main.storyboard */,
-				35ECDEF62103B1BA00308080 /* Assets.xcassets */,
+				355BB7562129E766009A7837 /* Assets.xcassets */,
 				35ECDEF82103B1BA00308080 /* LaunchScreen.storyboard */,
 				35ECDEFB2103B1BA00308080 /* Info.plist */,
 			);
@@ -380,9 +386,10 @@
 				351AB6352105C00C0017D41A /* Login.storyboard in Resources */,
 				35ECDF16210476F200308080 /* HomeTableViewCell.xib in Resources */,
 				355BB75121297782009A7837 /* NothingTableViewCell.xib in Resources */,
+				355BB7552129E63C009A7837 /* Logout.storyboard in Resources */,
 				35ECDEFA2103B1BA00308080 /* LaunchScreen.storyboard in Resources */,
+				355BB7572129E767009A7837 /* Assets.xcassets in Resources */,
 				351AB6392105C1570017D41A /* MyPage.storyboard in Resources */,
-				35ECDEF72103B1BA00308080 /* Assets.xcassets in Resources */,
 				35ECDF10210475D800308080 /* Home.storyboard in Resources */,
 				353EC8CA210AF0D4004081D1 /* Address.storyboard in Resources */,
 				354EA790210C665600D16A80 /* GroupCreate.storyboard in Resources */,
@@ -478,6 +485,7 @@
 				351AB6362105C00C0017D41A /* LoginViewController.swift in Sources */,
 				356A58FE210D9F35003C20BB /* CustomNaviViewController.swift in Sources */,
 				3565D445212837CA000D70D2 /* SearchView.swift in Sources */,
+				355BB7532129E625009A7837 /* LogoutViewController.swift in Sources */,
 				3556196521071C01009CC356 /* DetailHomeTableViewController.swift in Sources */,
 				355F0A752108E99D00715E3F /* SettingTableViewController.swift in Sources */,
 				354EA79D210C9BD300D16A80 /* ManagerViewController.swift in Sources */,

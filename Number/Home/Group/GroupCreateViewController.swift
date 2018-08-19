@@ -16,17 +16,11 @@ class GroupCreateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         groupImage.backgroundColor = .black
+        groupImage.layer.cornerRadius = self.groupImage.frame.width/2
         groupView.layer.cornerRadius = 10
     }
 
     @IBAction func clipButtonPressed(_ sender: Any) {
-        
-//        let alert = UIAlertController(title: "Test Title", message: "Custom Fonts in Alert Controller", preferredStyle: .actionSheet)
-//        let strAction = NSMutableAttributedString(string: "Presenting the great...")
-//        strAction.addAttribute(NSAttributedStringKey.font, value: UIFont.systemFont(ofSize: 30), range: NSMakeRange(24, 11))
-//        alert.setValue(action, forKey: "attributedMessage")
-//
-        
         
         let alert = UIAlertController(title: nil, message: "그룹 코드번호가 클립보드에 복사되었습니다.", preferredStyle: .alert)
         
