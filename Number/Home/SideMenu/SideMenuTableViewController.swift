@@ -11,13 +11,15 @@ import UIKit
 class SideMenuTableViewController: UITableViewController {
 
     //api 통신전 임시 데이터
-    var newsData = ["새로운 뉴스입니다아아아어떤게 어떤게 어떤게",
-                    "새로운 그룹에 초대되셨습니다.",
-                    "방장이 그룹을 파괴하셨스빈다."]
+    var newsData = ["넥터13기 그룹의 남수민님의 번호가 변경되었습니다! 새롭게 업데이트 해주세요.",
+                    "소로록이 새롭게 업데이트가 되었습니다!",
+                    "넥터13기 그룹이 새롭게 추가되었습니다!",
+                    "어서오세요:) 소로록에 오신것을 환영합니다."]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = UITableViewAutomaticDimension
+    
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {

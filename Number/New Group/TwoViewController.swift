@@ -26,6 +26,7 @@ class TwoViewController: UIViewController {
     
     var lastContentOffset: CGFloat = 0
     var navigationBarHeight: CGFloat = 20
+    var movedView = false
     
     @IBAction func pressedSosik(_ sender: Any) {
         let nv = self.storyboard?.instantiateViewController(withIdentifier: "LeftMenuNavigationController")
@@ -93,47 +94,51 @@ class TwoViewController: UIViewController {
 extension TwoViewController : UIScrollViewDelegate {
     func changeView(){
         print("뷰 바뀐다")
-        if firstView.frame.height > navigationBarHeight{
-            firstView.frame = CGRect(x:0, y: 0, width: self.view.frame.width , height: (firstView.frame.height - (tableView.contentOffset.y * 0.1)) )
-            searchView.frame = CGRect(x: 0, y: self.firstView.frame.height , width: self.view.frame.width, height: 38)
-            tableView.frame = CGRect(x: 0, y: self.firstView.frame.height + self.searchView.frame.height, width: self.view.frame.width, height: self.view.frame.height - (firstView.frame.height + searchView.frame.height))
-            imageView.frame = CGRect(x:self.imageView.frame.minX, y: self.imageView.frame.minY - 5, width: self.imageView.frame.width , height: imageView.frame.height )
-            nameLabel.frame = CGRect(x:self.nameLabel.frame.minX, y: self.nameLabel.frame.minY  - 5, width: self.nameLabel.frame.width , height: nameLabel.frame.height )
-            nameShadow.frame = CGRect(x:self.nameShadow.frame.minX, y: self.nameShadow.frame.minY  - 5, width: self.nameShadow.frame.width , height: nameShadow.frame.height )
-            
-            if topViewCon.constant < -300 {
-                topViewCon.constant = topViewCon.constant + 2
+        if movedView == false{
+            if firstView.frame.height > navigationBarHeight{
+                firstView.frame = CGRect(x:0, y: 0, width: self.view.frame.width , height: (firstView.frame.height - (tableView.contentOffset.y * 0.1)) )
+                searchView.frame = CGRect(x: 0, y: self.firstView.frame.height , width: self.view.frame.width, height: 38)
+                tableView.frame = CGRect(x: 0, y: self.firstView.frame.height + self.searchView.frame.height, width: self.view.frame.width, height: self.view.frame.height - (firstView.frame.height + searchView.frame.height))
+                imageView.frame = CGRect(x:self.imageView.frame.minX, y: self.imageView.frame.minY - 5, width: self.imageView.frame.width , height: imageView.frame.height )
+                nameLabel.frame = CGRect(x:self.nameLabel.frame.minX, y: self.nameLabel.frame.minY  - 5, width: self.nameLabel.frame.width , height: nameLabel.frame.height )
+                nameShadow.frame = CGRect(x:self.nameShadow.frame.minX, y: self.nameShadow.frame.minY  - 5, width: self.nameShadow.frame.width , height: nameShadow.frame.height )
+                
+                if topViewCon.constant < -300 {
+                    topViewCon.constant = topViewCon.constant + 2
+                }
+                topView.alpha = topView.alpha + (tableView.contentOffset.y * 0.1)
+                imageView.alpha = imageView.alpha - (tableView.contentOffset.y * 0.001)
+                nameLabel.alpha = imageView.alpha - (tableView.contentOffset.y * 0.001)
+                nameShadow.alpha = imageView.alpha - (tableView.contentOffset.y * 0.001)
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.view.layoutIfNeeded()
+                })
             }
-            topView.alpha = topView.alpha + (tableView.contentOffset.y * 0.1)
-            imageView.alpha = imageView.alpha - (tableView.contentOffset.y * 0.001)
-            nameLabel.alpha = imageView.alpha - (tableView.contentOffset.y * 0.001)
-            nameShadow.alpha = imageView.alpha - (tableView.contentOffset.y * 0.001)
-            UIView.animate(withDuration: 0.3, animations: {
-                self.view.layoutIfNeeded()
-            })
         }
     }
     
     func changeBackView(){
-        if firstView.frame.height > navigationBarHeight{
-            print("원점회복")
-            firstView.frame = CGRect(x:0, y: 0, width: self.view.frame.width , height: (firstView.frame.height + (tableView.contentOffset.y * 0.1)) )
-            searchView.frame = CGRect(x: 0, y: self.firstView.frame.height , width: self.view.frame.width, height: 38)
-            tableView.frame = CGRect(x: 0, y: self.firstView.frame.height + self.searchView.frame.height, width: self.view.frame.width, height: self.view.frame.height + (firstView.frame.height + searchView.frame.height))
-            imageView.frame = CGRect(x:self.imageView.frame.minX, y: self.imageView.frame.minY + 5, width: self.imageView.frame.width , height: imageView.frame.height )
-            nameLabel.frame = CGRect(x:self.nameLabel.frame.minX, y: self.nameLabel.frame.minY  + 5, width: self.nameLabel.frame.width , height: nameLabel.frame.height )
-            nameShadow.frame = CGRect(x:self.nameShadow.frame.minX, y: self.nameShadow.frame.minY  + 5, width: self.nameShadow.frame.width , height: nameShadow.frame.height )
-            
-            if topViewCon.constant > -300 {
-                topViewCon.constant = topViewCon.constant - 2
+        if movedView == true {
+            if firstView.frame.height > navigationBarHeight{
+                print("원점회복")
+                firstView.frame = CGRect(x:0, y: 0, width: self.view.frame.width , height: (firstView.frame.height + (tableView.contentOffset.y * 0.1)) )
+                searchView.frame = CGRect(x: 0, y: self.firstView.frame.height , width: self.view.frame.width, height: 38)
+                tableView.frame = CGRect(x: 0, y: self.firstView.frame.height + self.searchView.frame.height, width: self.view.frame.width, height: self.view.frame.height + (firstView.frame.height + searchView.frame.height))
+                imageView.frame = CGRect(x:self.imageView.frame.minX, y: self.imageView.frame.minY + 5, width: self.imageView.frame.width , height: imageView.frame.height )
+                nameLabel.frame = CGRect(x:self.nameLabel.frame.minX, y: self.nameLabel.frame.minY  + 5, width: self.nameLabel.frame.width , height: nameLabel.frame.height )
+                nameShadow.frame = CGRect(x:self.nameShadow.frame.minX, y: self.nameShadow.frame.minY  + 5, width: self.nameShadow.frame.width , height: nameShadow.frame.height )
+                
+                if topViewCon.constant > -300 {
+                    topViewCon.constant = topViewCon.constant - 2
+                }
+                topView.alpha = topView.alpha + (tableView.contentOffset.y * 0.01)
+                imageView.alpha = imageView.alpha - 0.02
+                nameLabel.alpha = imageView.alpha - (tableView.contentOffset.y * 0.01)
+                nameShadow.alpha = imageView.alpha - (tableView.contentOffset.y * 0.01)
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.view.layoutIfNeeded()
+                })
             }
-            topView.alpha = topView.alpha + (tableView.contentOffset.y * 0.01)
-            imageView.alpha = imageView.alpha - 0.02
-            nameLabel.alpha = imageView.alpha - (tableView.contentOffset.y * 0.01)
-            nameShadow.alpha = imageView.alpha - (tableView.contentOffset.y * 0.01)
-            UIView.animate(withDuration: 0.3, animations: {
-                self.view.layoutIfNeeded()
-            })
         }
     }
     

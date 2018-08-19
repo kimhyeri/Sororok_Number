@@ -62,7 +62,7 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource, UIScr
             (result: UIAlertAction) in
             alert.removeFromParentViewController()
             let storyboard = UIStoryboard.init(name: "DetailHome", bundle: nil)
-            let nv = storyboard.instantiateViewController(withIdentifier: "DetailHome") as! DetailHomeTableViewController
+            let nv = storyboard.instantiateViewController(withIdentifier: "DetailHome") as! ContactsViewController
             self.navigationController?.pushViewController(nv, animated: true)
         }
         
