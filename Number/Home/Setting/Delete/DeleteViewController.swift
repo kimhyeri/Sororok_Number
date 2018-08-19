@@ -10,9 +10,11 @@ import UIKit
 
 class DeleteViewController: UIViewController {
 
+    @IBOutlet weak var deleteView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        deleteView.layer.cornerRadius = 10
     }
 
     override func didReceiveMemoryWarning() {
