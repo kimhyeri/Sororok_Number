@@ -10,8 +10,11 @@ import UIKit
 
 class ContactsViewController: UIViewController , UITableViewDataSource, UITableViewDelegate{
 
+    @IBOutlet weak var cellView: UIImageView!
+    @IBOutlet weak var cellSelected: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var saveLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -46,6 +49,18 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        changeView(alpha: true)
+        updateCount()
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        updateCount()
+        if tableView.indexPathsForSelectedRows?.count == nil{
+            changeView(alpha: false)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
@@ -56,5 +71,29 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     
     @objc func pressedButton(){
     
+    }
+}
+
+
+//MARK: update selected cell
+extension ContactsViewController {
+    
+    func updateCount(){
+        if let list = tableView.indexPathsForSelectedRows {
+            saveLabel.text = String(list.count)
+            print(list.count)
+        }
+    }
+    
+    func changeView(alpha: Bool){
+        if(alpha == true){
+            cellView.alpha = 1
+            saveLabel.alpha = 1
+            cellSelected.alpha = 0.5
+        }else {
+            cellView.alpha = 0
+            saveLabel.alpha = 0
+            cellSelected.alpha = 0
+        }
     }
 }

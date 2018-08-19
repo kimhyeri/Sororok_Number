@@ -50,10 +50,9 @@ class LoginViewController: UIViewController {
     @IBAction func pressLoginButton(_ sender: Any) {
         timeLimitStop()
         let storyboard = UIStoryboard.init(name: "CodeNum", bundle: nil)
-        let nv = storyboard.instantiateViewController(withIdentifier: "NV")
-//            as! CodeNumViewController
+        let nv = storyboard.instantiateViewController(withIdentifier: "ST")
         present(nv, animated: true, completion: nil)
-//        UIApplication.shared.keyWindow?.rootViewController = nv
+        UIApplication.shared.keyWindow?.rootViewController = nv
     }
  
     override func viewDidLoad() {

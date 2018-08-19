@@ -48,7 +48,6 @@
 		35ECDEFA2103B1BA00308080 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35ECDEF82103B1BA00308080 /* LaunchScreen.storyboard */; };
 		35ECDF0921046EB600308080 /* CodeNum.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35ECDF0821046EB600308080 /* CodeNum.storyboard */; };
 		35ECDF0E210475A200308080 /* CodeNumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ECDF0D210475A200308080 /* CodeNumViewController.swift */; };
-		35ECDF10210475D800308080 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35ECDF0F210475D800308080 /* Home.storyboard */; };
 		35ECDF12210475E200308080 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ECDF11210475E200308080 /* HomeViewController.swift */; };
 		35ECDF15210476F200308080 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ECDF13210476F200308080 /* HomeTableViewCell.swift */; };
 		35ECDF16210476F200308080 /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35ECDF14210476F200308080 /* HomeTableViewCell.xib */; };
@@ -100,7 +99,6 @@
 		35ECDEFB2103B1BA00308080 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		35ECDF0821046EB600308080 /* CodeNum.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CodeNum.storyboard; sourceTree = "<group>"; };
 		35ECDF0D210475A200308080 /* CodeNumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeNumViewController.swift; sourceTree = "<group>"; };
-		35ECDF0F210475D800308080 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Home.storyboard; path = Number/Home/Home.storyboard; sourceTree = SOURCE_ROOT; };
 		35ECDF11210475E200308080 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = "Number/New Group/HomeViewController.swift"; sourceTree = SOURCE_ROOT; };
 		35ECDF13210476F200308080 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		35ECDF14210476F200308080 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
@@ -296,7 +294,6 @@
 				3556196721071D39009CC356 /* DetailHome */,
 				351AB6372105C14B0017D41A /* MyPage */,
 				35ECDF11210475E200308080 /* HomeViewController.swift */,
-				35ECDF0F210475D800308080 /* Home.storyboard */,
 				35ECDF13210476F200308080 /* HomeTableViewCell.swift */,
 				35ECDF14210476F200308080 /* HomeTableViewCell.xib */,
 				3565D44621283B0A000D70D2 /* HexColor.swift */,
@@ -390,7 +387,6 @@
 				35ECDEFA2103B1BA00308080 /* LaunchScreen.storyboard in Resources */,
 				355BB7572129E767009A7837 /* Assets.xcassets in Resources */,
 				351AB6392105C1570017D41A /* MyPage.storyboard in Resources */,
-				35ECDF10210475D800308080 /* Home.storyboard in Resources */,
 				353EC8CA210AF0D4004081D1 /* Address.storyboard in Resources */,
 				354EA790210C665600D16A80 /* GroupCreate.storyboard in Resources */,
 				3556196B21071EDF009CC356 /* DetailHomeTableViewCell.xib in Resources */,

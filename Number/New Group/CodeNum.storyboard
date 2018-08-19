@@ -460,7 +460,7 @@
         <!--Custom Navi View Controller-->
         <scene sceneID="GWd-Q0-4pF">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3Xo-b1-BCa" customClass="CustomNaviViewController" customModule="Number" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ST" automaticallyAdjustsScrollViewInsets="NO" id="3Xo-b1-BCa" customClass="CustomNaviViewController" customModule="Number" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Bf5-L0-Vfa">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>

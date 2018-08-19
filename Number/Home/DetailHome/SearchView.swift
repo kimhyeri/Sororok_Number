@@ -15,7 +15,6 @@ class SearchView: UIView {
     
     override func awakeFromNib()
     {
-        // the actual search barw
         self.searchBar = UISearchBar(frame: self.frame)
         self.searchBar.clipsToBounds = true
         self.searchBar.layer.cornerRadius = 5
