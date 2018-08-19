@@ -15,6 +15,9 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var saveLabel: UILabel!
+    
+    var checkState = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -72,6 +75,26 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     @objc func pressedButton(){
     
     }
+    @IBAction func allButtonPressed(_ sender: UIButton) {
+        if checkState == false {
+            checkState = true
+            for section in 0..<tableView.numberOfSections {
+                for row in 0..<tableView.numberOfRows(inSection: section) {
+                    tableView.selectRow(at: IndexPath(row: row, section: section), animated: false, scrollPosition: .none)
+                }
+            }
+            updateCount()
+            changeView(alpha: true)
+        }else{
+            checkState = false
+            changeView(alpha: false)
+            for section in 0..<tableView.numberOfSections {
+                for row in 0..<tableView.numberOfRows(inSection: section) {
+                    tableView.deselectRow(at: IndexPath(row: row, section: section), animated: false)
+                }
+            }
+        }
+    }
 }
 
 
@@ -80,7 +103,7 @@ extension ContactsViewController {
     
     func updateCount(){
         if let list = tableView.indexPathsForSelectedRows {
-            saveLabel.text = String(list.count)
+            saveLabel.text = "\(list.count)"
             print(list.count)
         }
     }
