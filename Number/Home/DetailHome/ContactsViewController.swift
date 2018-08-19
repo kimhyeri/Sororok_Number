@@ -49,6 +49,7 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DetailHomeTableViewCell", for: indexPath) as! DetailHomeTableViewCell
+        cell.userImage?.layer.cornerRadius = (cell.userImage?.frame.width)!/2
         return cell
     }
     

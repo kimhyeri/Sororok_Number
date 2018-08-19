@@ -40,6 +40,9 @@
                 </subviews>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="userImage" destination="73G-cH-QmU" id="iKe-Pp-LR1"/>
+            </connections>
             <point key="canvasLocation" x="58" y="62.5"/>
         </tableViewCell>
     </objects>

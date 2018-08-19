@@ -7,6 +7,7 @@ target 'Number' do
     pod 'Alamofire', '~> 4.7'
     pod 'SwiftyJSON', '~> 4.0'
     pod 'SideMenu'
+pod 'Google/SignIn'
   # Pods for Number
 
 end
