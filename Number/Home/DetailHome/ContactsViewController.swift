@@ -18,9 +18,10 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
         tableView.dataSource = self
 
         tableView.register(UINib(nibName:"DetailHomeTableViewCell",bundle: nil), forCellReuseIdentifier: "DetailHomeTableViewCell")
-      
-        let rightBarButtonItem = UIBarButtonItem.init(image: UIImage(named: "btn"), style: .done, target: self, action: #selector(ContactsViewController.pressedButton))
+        
+        let rightBarButtonItem = UIBarButtonItem.init(image: UIImage(named: "btnCommListSetWh"), style: .done, target: self, action: #selector(ContactsViewController.pressedButton))
         self.navigationItem.rightBarButtonItem = rightBarButtonItem
+        self.navigationController?.navigationBar.tintColor = UIColor.white
         
     }
     
