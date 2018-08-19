@@ -10,14 +10,15 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var google: UIButton!
+    @IBOutlet weak var naver: UIButton!
+    @IBOutlet weak var kakao: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        google.layer.cornerRadius = 10
+        naver.layer.cornerRadius = 10
+        kakao.layer.cornerRadius = 10
     }
 
 
