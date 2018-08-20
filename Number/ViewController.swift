@@ -17,8 +17,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var naver: UIButton!
     @IBOutlet weak var kakao: UIButton!
     
-    let loginInstance = NaverThirdPartyLoginConnection.getSharedInstance()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         changeView()
@@ -31,6 +29,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func naverButtonPressed(_ sender: UIButton){
+        let loginInstance = NaverThirdPartyLoginConnection.getSharedInstance()
         loginInstance?.delegate = self
         loginInstance?.requestThirdPartyLogin()
     }
@@ -38,32 +37,42 @@ class ViewController: UIViewController {
 
 extension ViewController: NaverThirdPartyLoginConnectionDelegate{
     func oauth20ConnectionDidOpenInAppBrowser(forOAuth request: URLRequest!) {
+        print("1")
         let naverSignInViewController = NLoginThirdPartyOAuth20InAppBrowserViewController(request: request)!
         present(naverSignInViewController, animated: true, completion: nil)
     }
 
     func oauth20ConnectionDidFinishRequestACTokenWithAuthCode() {
+        print("2")
+
         print("Success oauth20ConnectionDidFinishRequestACTokenWithAuthCode")
         getNaverEmailFromURL()
 
     }
 
     func oauth20ConnectionDidFinishRequestACTokenWithRefreshToken() {
+        print("3")
+
         print("Success oauth20ConnectionDidFinishRequestACTokenWithRefreshToken")
         getNaverEmailFromURL()
 
     }
 
     func oauth20ConnectionDidFinishDeleteToken() {
-        
+        print("4")
+
     }
 
     func oauth20Connection(_ oauthConnection: NaverThirdPartyLoginConnection!, didFailWithError error: Error!) {
+        print("5")
+
         print(error.localizedDescription)
         print(error)
     }
 
     func getNaverEmailFromURL(){
+        print("6")
+
         guard let loginConn = NaverThirdPartyLoginConnection.getSharedInstance() else {return}
         guard let tokenType = loginConn.tokenType else {return}
         guard let accessToken = loginConn.accessToken else {return}
@@ -71,12 +80,13 @@ extension ViewController: NaverThirdPartyLoginConnectionDelegate{
         let authorization = "\(tokenType) \(accessToken)"
         Alamofire.request("https://openapi.naver.com/v1/nid/me", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["Authorization" : authorization]).responseJSON { (response) in
             guard let result = response.result.value as? [String: Any] else {return}
-            guard let object = result["response"] as? [String: Any] else {return}
-            guard let number = object["number"] as? Int else {return}
-            guard let name = object["name"] as? String else {return}
-            guard let email = object["email"] as? String else {return}
+//            guard let object = result["response"] as? [String: Any] else {return}
+//            guard let number = object["number"] as? Int else {return}
+//            guard let name = object["name"] as? String else {return}
+//            guard let email = object["email"] as? String else {return}
             print(result)
         }
+        
     }
 }
 
