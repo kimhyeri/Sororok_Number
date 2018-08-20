@@ -4,10 +4,11 @@
 target 'Number' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
-    pod 'Alamofire', '~> 4.7'
-    pod 'SwiftyJSON', '~> 4.0'
-    pod 'SideMenu'
-pod 'Google/SignIn'
+  	 pod 'Alamofire', '~> 4.7'
+   	 pod 'SwiftyJSON', '~> 4.0'
+   	 pod 'SideMenu'
+	 pod 'GoogleSignIn'
+	 pod 'naveridlogin-sdk-ios'
   # Pods for Number
 
 end

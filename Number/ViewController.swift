@@ -8,19 +8,8 @@
 
 import UIKit
 import GoogleSignIn
-import Google
 
-class ViewController: UIViewController , GIDSignInDelegate, GIDSignInUIDelegate{
-    
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        if error != nil{
-            print(error)
-            return
-        }
-        //이메일 받기
-        print(user.profile.email)
-    }
-    
+class ViewController: UIViewController {
 
     @IBOutlet weak var google: UIButton!
     @IBOutlet weak var naver: UIButton!
@@ -28,27 +17,18 @@ class ViewController: UIViewController , GIDSignInDelegate, GIDSignInUIDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         google.layer.cornerRadius = 10
         naver.layer.cornerRadius = 10
         kakao.layer.cornerRadius = 10
         
-        var error: NSError?
-        
-        GGLContext.sharedInstance().configureWithError(&error)
-        
-        if error != nil{
-            print(error)
-            return
-        }
-        
-        GIDSignIn.sharedInstance().uiDelegate = self
-        GIDSignIn.sharedInstance().delegate = self
-        
-        let googleSignInbutton = GIDSignInButton()
-        googleSignInbutton.center = view.center
-        view.addSubview(googleSignInbutton)
+//
+//        GIDSignIn.sharedInstance().uiDelegate = self
+//
+//        let googleSignInbutton = GIDSignInButton()
+//        googleSignInbutton.center = view.center
+//        view.addSubview(googleSignInbutton)
     }
-
 
 }
 
