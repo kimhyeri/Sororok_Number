@@ -21,6 +21,10 @@ import Photos
         super.viewDidLoad()
         collecionView.dataSource = self
         collecionView.delegate = self
+        let navView = UIView()
+        navView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height:             (self.navigationController?.navigationBar.frame.height)! + 20)
+        navView.backgroundColor = UIColor.init(hex: "343ACF")
+        view.addSubview(navView)
         
         let photoAuthorizationSatus = PHPhotoLibrary.authorizationStatus()
         
@@ -72,8 +76,9 @@ import Photos
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.cellIdentifier, for: indexPath) as! AlbumUICollectionViewCell
         
         if indexPath.row == 0 {
-            cell.imageView?.image = UIImage(named: "mypageUser")
-            let size = (view.frame.width - 10) / 4
+            //이미지 추가 ㄴ
+            cell.imageView?.image = UIImage(named: "")
+            let size = (view.frame.width - 10) / 5
 
             cell.imageView?.frame = CGRect(x: 0, y: 0, width: size, height: size)
             let button = UIButton()
@@ -82,7 +87,7 @@ import Photos
             cell.inputView?.addSubview(button)
         }else {
             let asset : PHAsset = fetchAlbum.object(at: indexPath.row - 1)
-            let size = (view.frame.width - 10) / 4
+            let size = (view.frame.width - 10) / 5
             
             imageManager.requestImage(for: asset,
                                       targetSize: CGSize(width: size, height: size),
@@ -96,12 +101,19 @@ import Photos
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //사진 선택했을때 전송하기
+        self.dismiss(animated: true, completion: nil)
+        print(self.fetchAlbum[indexPath.row - 1])
+        
+    }
 }
  
  extension AlbumViewController : UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
       
-        let size = (view.frame.width - 20) / 4
+        let size = (view.frame.width - 20) / 5
         
         return CGSize(width: size, height: size)
     }

@@ -220,6 +220,9 @@
                                         <rect key="frame" x="24" y="24" width="24" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="btnFloating"/>
+                                        <connections>
+                                            <action selector="createGroupButtonPressed:" destination="HAS-xI-hnj" eventType="touchUpInside" id="Yn6-ra-LKO"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.63137254901960782" blue="0.74509803921568629" alpha="1" colorSpace="calibratedRGB"/>
@@ -244,7 +247,7 @@
                         <rightBarButtonItems>
                             <barButtonItem title="Item" style="plain" id="sp3-fy-hnC">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="aCm-zn-9Rf">
-                                    <rect key="frame" x="337" y="10" width="22" height="24"/>
+                                    <rect key="frame" x="327" y="6" width="32" height="32"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" image="setting"/>
                                     <connections>
@@ -254,7 +257,7 @@
                             </barButtonItem>
                             <barButtonItem title="Item" style="plain" id="51H-J8-gas">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="7LK-F6-Ln5">
-                                    <rect key="frame" x="273" y="10" width="56" height="24"/>
+                                    <rect key="frame" x="287" y="6" width="32" height="32"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" image="noti"/>
                                     <connections>

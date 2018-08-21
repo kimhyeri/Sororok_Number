@@ -289,8 +289,8 @@
 			children = (
 				35ECDF0821046EB600308080 /* CodeNum.storyboard */,
 				358268F521262669003415F0 /* TwoViewController.swift */,
-				355BB74E21297782009A7837 /* NothingTableViewCell.swift */,
 				355BB74F21297782009A7837 /* NothingTableViewCell.xib */,
+				355BB74E21297782009A7837 /* NothingTableViewCell.swift */,
 				356A58FD210D9F35003C20BB /* CustomNaviViewController.swift */,
 			);
 			name = CodeNum;

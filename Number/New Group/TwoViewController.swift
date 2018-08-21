@@ -59,7 +59,7 @@ class TwoViewController: UIViewController {
         imageView.backgroundColor = .black
         
         tableView.register(UINib(nibName:"HomeTableViewCell",bundle: nil), forCellReuseIdentifier: "HomeTableViewCell")
-//        tableView.register(UINib(nibName:"NothingTableViewCell",bundle: nil), forCellReuseIdentifier: "NothingTableViewCell")
+        tableView.register(UINib(nibName:"NothingTableViewCell",bundle: nil), forCellReuseIdentifier: "NothingTableViewCell")
         
         let menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as! UISideMenuNavigationController
         SideMenuManager.default.menuLeftNavigationController = menuLeftNavigationController
@@ -68,15 +68,15 @@ class TwoViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
     }
-
-    @objc func createGroup(){
-        let storyboard = UIStoryboard(name: "GroupCreate", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "GroupCreate") as! GroupCreateViewController
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
     
     @objc func buttonPressed(){
         let vc = UIViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func createGroupButtonPressed(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "GroupCreate", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "GroupCreate") as! GroupCreateViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -158,18 +158,15 @@ extension TwoViewController : UIScrollViewDelegate {
 extension TwoViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "NothingTableView", for: indexPath) as! NothingTableViewCell
+ 
+//        데이터 아무것도 없을 경우
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "NothingTableViewCell", for: indexPath)
 //        return cell
-//데이터 아무것도 없을 경우
-//        if(indexPath.row == 0){
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "NothingTableView", for: indexPath) as! NothingTableViewCell
-//            return cell
-//        }
-//        
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath) as! HomeTableViewCell
         cell.cellView.layer.cornerRadius = 10
         cell.cellView.layer.borderWidth = 1
@@ -180,6 +177,7 @@ extension TwoViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.view.endEditing(true)
+        //데이터가 있을 경우만 활성화 시킴
         createAlert()
     }
     

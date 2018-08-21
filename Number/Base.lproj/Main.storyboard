@@ -129,14 +129,6 @@
                                     <constraint firstAttribute="width" constant="375" id="LK6-8P-Vv2"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbs-Xn-cXF">
-                                <rect key="frame" x="313" y="171" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="6xd-e5-DFU" kind="show" id="aRa-dw-6ON"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.20392156859999999" green="0.2274509804" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -161,21 +153,13 @@
             </objects>
             <point key="canvasLocation" x="36" y="32.833583208395808"/>
         </scene>
-        <!--Login-->
-        <scene sceneID="hru-Ti-eWU">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Login" id="6xd-e5-DFU" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XdC-RU-0DQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="593" y="3"/>
-        </scene>
         <!--CodeNum-->
         <scene sceneID="nUG-Te-xmE">
             <objects>
                 <viewControllerPlaceholder storyboardName="CodeNum" id="oM8-a9-Bzs" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bxX-ym-2UL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="582" y="54"/>
+            <point key="canvasLocation" x="517" y="32"/>
         </scene>
     </scenes>
     <resources>
