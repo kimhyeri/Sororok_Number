@@ -34,7 +34,6 @@ class SideMenuTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SideMenuCell
         cell.news.text = newsData[indexPath.row]
-        cell.newsView.layer.cornerRadius = 10
         return cell
     }
     
@@ -45,6 +44,5 @@ class SideMenuTableViewController: UITableViewController {
 
 class SideMenuCell: UITableViewCell {
     
-    @IBOutlet weak var newsView: UIView!
     @IBOutlet weak var news: UILabel!
 }

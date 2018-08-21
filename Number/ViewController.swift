@@ -11,7 +11,7 @@ import Alamofire
 import GoogleSignIn
 import NaverThirdPartyLogin
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, GIDSignInUIDelegate {
     
     @IBOutlet weak var google: UIButton!
     @IBOutlet weak var naver: UIButton!
@@ -19,6 +19,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        GIDSignIn.sharedInstance().uiDelegate = self
+
         changeView()
     }
     
@@ -37,6 +39,11 @@ class ViewController: UIViewController {
         loginInstance?.delegate = self
         loginInstance?.requestThirdPartyLogin()
     }
+    
+    @IBAction func googleButtonPressed(_ sender: Any) {
+        
+    }
+    
     @IBAction func kakaoButtonPressed(_ sender: Any) {
         let session :KOSession = KOSession.shared()
         
@@ -133,3 +140,18 @@ extension ViewController: NaverThirdPartyLoginConnectionDelegate{
     }
 }
 
+//google
+extension ViewController {
+ 
+    // Present a view that prompts the user to sign in with Google
+    func signIn(signIn: GIDSignIn!,
+                presentViewController viewController: UIViewController!) {
+        self.present(viewController, animated: true, completion: nil)
+    }
+    
+    // Dismiss the "Sign in with Google" view
+    func signIn(signIn: GIDSignIn!,
+                dismissViewController viewController: UIViewController!) {
+        self.dismiss(animated: true, completion: nil)
+    }
+}

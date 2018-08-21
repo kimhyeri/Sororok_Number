@@ -15,7 +15,7 @@ import KakaoOpenSDK
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         let instance = NaverThirdPartyLoginConnection.getSharedInstance()
         instance?.isInAppOauthEnable = true
@@ -29,14 +29,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    
     @available(iOS 9.0, *)
     
     func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
         
+        //카카오면
         if KOSession.isKakaoAccountLoginCallback(url) {
             return KOSession.handleOpen(url)
-        }else{
-            return true
+        }//구글이면
+        else{
+            return GIDSignIn.sharedInstance().handle(url as URL?,
+                                                     sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+                                                     annotation: options[UIApplicationOpenURLOptionsKey.annotation])
         }
         
     }
@@ -48,7 +53,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         return true
     }
-    
     
     
     func applicationWillResignActive(_ application: UIApplication) {
@@ -73,6 +77,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
+    
+}
+
+extension AppDelegate :  GIDSignInDelegate{
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if let error = error {
+            print("\(error.localizedDescription)")
+        } else {
+            // Perform any operations on signed in user here.
+            let userId = user.userID                  // For client-side use only!
+            let idToken = user.authentication.idToken // Safe to send to the server
+            let fullName = user.profile.name
+            let givenName = user.profile.givenName
+            let familyName = user.profile.familyName
+            let email = user.profile.email
+            // ...
+        }
+    }
+    
+    func application(application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        GIDSignIn.sharedInstance().clientID = "1060491275802-54qggq2k068n6tjqrdus81a0s5bm3k88.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance().delegate = self
+        
+        return true
+    }
+    
+//    func application(application: UIApplication,
+//                     openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+//        var options: [String: AnyObject] = [UIApplicationOpenURLOptionsKey: sourceApplication,
+//                                            UIApplicationOpenURLOptionsAnnotationKey: annotation]
+//        return GIDSignIn.sharedInstance().handleURL(url,
+//                                                    sourceApplication: sourceApplication,
+//                                                    annotation: annotation)
+//    }
     
 }
 

@@ -14,7 +14,7 @@
         <scene sceneID="rTb-CL-65U">
             <objects>
                 <tableViewController id="tiK-87-Oxg" customClass="SideMenuTableViewController" customModule="Number" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Aie-iY-gp5">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Aie-iY-gp5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -28,23 +28,43 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="73"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wQK-OZ-YHV" id="boK-vP-q1t">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="73"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="72.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="efC-2y-cEw">
                                             <rect key="frame" x="10" y="10" width="355" height="52.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XNb-Le-hGj">
-                                                    <rect key="frame" x="10" y="10" width="335" height="32.5"/>
+                                                    <rect key="frame" x="58" y="10" width="287" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.1764705882352941" green="0.12156862745098039" blue="0.72156862745098038" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icnNotiNotice" translatesAutoresizingMaskIntoConstraints="NO" id="Bxo-Es-tRC">
+                                                    <rect key="frame" x="8" y="6" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="AKQ-VJ-GYV"/>
+                                                        <constraint firstAttribute="height" constant="40" id="Ru8-yi-qbt"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018.08.20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jvc-my-ORq">
+                                                    <rect key="frame" x="58" y="35" width="73" height="17"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="73" id="Lnd-I6-r4P"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.74509803919999995" green="0.76078431369999999" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.73333333333333328" green="0.74509803921568629" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="XNb-Le-hGj" firstAttribute="leading" secondItem="efC-2y-cEw" secondAttribute="leading" constant="10" id="7YI-1v-QLA"/>
-                                                <constraint firstAttribute="bottom" secondItem="XNb-Le-hGj" secondAttribute="bottom" constant="10" id="oyy-Ro-I0I"/>
+                                                <constraint firstAttribute="bottom" secondItem="jvc-my-ORq" secondAttribute="bottom" id="6Bk-wB-UPA"/>
+                                                <constraint firstItem="Bxo-Es-tRC" firstAttribute="top" secondItem="efC-2y-cEw" secondAttribute="top" constant="6" id="6te-LI-Eii"/>
+                                                <constraint firstItem="jvc-my-ORq" firstAttribute="top" secondItem="XNb-Le-hGj" secondAttribute="bottom" constant="4.5" id="7QW-5c-Snk"/>
+                                                <constraint firstItem="XNb-Le-hGj" firstAttribute="leading" secondItem="Bxo-Es-tRC" secondAttribute="trailing" constant="10" id="Sc0-Nv-3Qb"/>
+                                                <constraint firstItem="jvc-my-ORq" firstAttribute="leading" secondItem="Bxo-Es-tRC" secondAttribute="trailing" constant="10" id="ZjB-pF-27c"/>
+                                                <constraint firstItem="Bxo-Es-tRC" firstAttribute="leading" secondItem="efC-2y-cEw" secondAttribute="leading" constant="8" id="gZ2-45-dcR"/>
                                                 <constraint firstAttribute="trailing" secondItem="XNb-Le-hGj" secondAttribute="trailing" constant="10" id="pu2-hB-DZE"/>
                                                 <constraint firstItem="XNb-Le-hGj" firstAttribute="top" secondItem="efC-2y-cEw" secondAttribute="top" constant="10" id="ucd-0R-jrv"/>
                                             </constraints>
@@ -59,7 +79,6 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="news" destination="XNb-Le-hGj" id="W8t-YM-Fgb"/>
-                                    <outlet property="newsView" destination="efC-2y-cEw" id="ZQT-Ll-zdP"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -488,6 +507,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="icnNotiNotice" width="40" height="40"/>
         <image name="noti" width="24" height="24"/>
         <image name="setting" width="22" height="24"/>
     </resources>
