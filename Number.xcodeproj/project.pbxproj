@@ -34,6 +34,8 @@
 		35572C1D212BEF7000A919C7 /* ManagerGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35572C1C212BEF7000A919C7 /* ManagerGroupViewController.swift */; };
 		35572C1F212BF1F000A919C7 /* ManagerCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35572C1E212BF1F000A919C7 /* ManagerCellTableViewCell.swift */; };
 		35572C21212C030800A919C7 /* AdminGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35572C20212C030800A919C7 /* AdminGroupViewController.swift */; };
+		35572C24212C06BB00A919C7 /* NotSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35572C22212C06BB00A919C7 /* NotSearchTableViewCell.swift */; };
+		35572C25212C06BB00A919C7 /* NotSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35572C23212C06BB00A919C7 /* NotSearchTableViewCell.xib */; };
 		355BB75021297782009A7837 /* NothingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355BB74E21297782009A7837 /* NothingTableViewCell.swift */; };
 		355BB75121297782009A7837 /* NothingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 355BB74F21297782009A7837 /* NothingTableViewCell.xib */; };
 		355BB7532129E625009A7837 /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355BB7522129E625009A7837 /* LogoutViewController.swift */; };
@@ -89,6 +91,8 @@
 		35572C1C212BEF7000A919C7 /* ManagerGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerGroupViewController.swift; sourceTree = "<group>"; };
 		35572C1E212BF1F000A919C7 /* ManagerCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerCellTableViewCell.swift; sourceTree = "<group>"; };
 		35572C20212C030800A919C7 /* AdminGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminGroupViewController.swift; sourceTree = "<group>"; };
+		35572C22212C06BB00A919C7 /* NotSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotSearchTableViewCell.swift; sourceTree = "<group>"; };
+		35572C23212C06BB00A919C7 /* NotSearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotSearchTableViewCell.xib; sourceTree = "<group>"; };
 		355BB74E21297782009A7837 /* NothingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NothingTableViewCell.swift; path = Number/Home/DetailHome/NothingTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		355BB74F21297782009A7837 /* NothingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NothingTableViewCell.xib; path = Number/Home/DetailHome/NothingTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 		355BB7522129E625009A7837 /* LogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
@@ -220,6 +224,8 @@
 			isa = PBXGroup;
 			children = (
 				3556196121071BDE009CC356 /* DetailHome.storyboard */,
+				35572C22212C06BB00A919C7 /* NotSearchTableViewCell.swift */,
+				35572C23212C06BB00A919C7 /* NotSearchTableViewCell.xib */,
 				3565D444212837CA000D70D2 /* SearchView.swift */,
 				3565D4422128291B000D70D2 /* ContactsViewController.swift */,
 				3556196321071C01009CC356 /* DetailHomeTableViewController.swift */,
@@ -413,6 +419,7 @@
 				353EC8CA210AF0D4004081D1 /* Address.storyboard in Resources */,
 				354EA790210C665600D16A80 /* GroupCreate.storyboard in Resources */,
 				3556196B21071EDF009CC356 /* DetailHomeTableViewCell.xib in Resources */,
+				35572C25212C06BB00A919C7 /* NotSearchTableViewCell.xib in Resources */,
 				35ECDEF52103B1B700308080 /* Main.storyboard in Resources */,
 				35572C1B212BEF6200A919C7 /* ManagerGroup.storyboard in Resources */,
 				35ACD19B212B5E890046B541 /* GoogleService-Info.plist in Resources */,
@@ -500,6 +507,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				35572C1D212BEF7000A919C7 /* ManagerGroupViewController.swift in Sources */,
+				35572C24212C06BB00A919C7 /* NotSearchTableViewCell.swift in Sources */,
 				35572C21212C030800A919C7 /* AdminGroupViewController.swift in Sources */,
 				353EC8C4210A2BBF004081D1 /* AlbumViewController.swift in Sources */,
 				35ECDF15210476F200308080 /* HomeTableViewCell.swift in Sources */,
