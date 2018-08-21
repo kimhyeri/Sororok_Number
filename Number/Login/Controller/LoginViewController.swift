@@ -9,59 +9,62 @@
 import UIKit
 
 class LoginViewController: UIViewController {
+
+    @IBOutlet weak var imgProfile: UIImageView!
+    @IBOutlet weak var nameText: UITextField!
+    @IBOutlet weak var numberText: UITextField!
+    @IBOutlet weak var emailText: UITextField!
     
-    @IBOutlet weak var numTextField: UITextField!
+ 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setNavigationBar()
+        getDelegate()
+        defaultPage()
+    }
+}
+
+extension LoginViewController {
     
-    @IBOutlet weak var nameTextField: UITextField!
+    //네비게이션 설정 해야함 사용자 정보 받기 성공했을 경우
     
-    @IBOutlet weak var emailTextField: UITextField!
-    
-    @IBOutlet weak var timeDown: UILabel!
-    
-    var time = 180
-    var timer = Timer()
-    var startTimer = false
-    
-    @IBAction func numberEditing(_ sender: UITextField) {
-        if (sender.text?.count)! == 3 || (sender.text?.count)! == 8 {
-            sender.text?.append("-")
-        }
-        
-//        if (sender.text?.count)! == 0 {
-//            sender.backgroundColor = .white
-//            sender.textColor = .lightGray
-//
-//        }else {
-//            sender.backgroundColor = .lightGray
-//            sender.textColor = .white
-//        }
+    func setNavigationBar() {
+        let screenSize: CGRect = UIScreen.main.bounds
+        let navBar = UINavigationBar(frame: CGRect(x: 0, y: 20, width: screenSize.width, height: 44))
+        let navItem = UINavigationItem(title: "")
+        navBar.setBackgroundImage(UIImage(), for: .default)
+        navBar.shadowImage = UIImage()
+        let backbutton = UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: #selector(back))
+        navItem.leftBarButtonItem = backbutton
+        let doneItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: nil, action: #selector(done))
+        navItem.rightBarButtonItem = doneItem
+        navBar.setItems([navItem], animated: false)
+        self.view.addSubview(navBar)
     }
     
-    //인증번호 전송
-    @IBAction func pressedButton(_ sender: UIButton) {
-        sender.setTitle("메일 재전송", for: UIControlState.normal)
-        if startTimer == false {
-            startTimer = true
-            timeLimitStart()
-        }
-    }
-    
-    //로그인 버튼 눌렀을 때 -> 다음화면으로 전환 
-    @IBAction func pressLoginButton(_ sender: Any) {
-        timeLimitStop()
+    @objc func done() {
         let storyboard = UIStoryboard.init(name: "CodeNum", bundle: nil)
         let nv = storyboard.instantiateViewController(withIdentifier: "ST")
         present(nv, animated: true, completion: nil)
         UIApplication.shared.keyWindow?.rootViewController = nv
     }
- 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        numTextField.delegate = self
-        
+    
+    @objc func back(){
+        self.dismiss(animated: true, completion: nil)
     }
+    
+    func defaultPage() {
+        
+        self.imgProfile.layer.cornerRadius = imgProfile.frame.width/2
+    }
+    
+    func getDelegate(){
+        nameText.delegate = self
+        numberText.delegate = self
+        emailText.delegate = self
+    }
+    
 }
-
 
 //MARK: TextField Delegate extension part
 extension LoginViewController : UITextFieldDelegate {
