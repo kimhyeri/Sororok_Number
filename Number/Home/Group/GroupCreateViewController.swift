@@ -10,11 +10,13 @@ import UIKit
 
 class GroupCreateViewController: UIViewController {
 
+    @IBOutlet weak var groupCode: UIButton!
     @IBOutlet weak var groupImage: UIImageView!
     @IBOutlet weak var groupView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        groupCode.layer.cornerRadius = 10
         groupImage.backgroundColor = .black
         groupImage.layer.cornerRadius = self.groupImage.frame.width/2
         groupView.layer.cornerRadius = 10
@@ -23,7 +25,6 @@ class GroupCreateViewController: UIViewController {
     @IBAction func clipButtonPressed(_ sender: Any) {
         
         let alert = UIAlertController(title: nil, message: "그룹 코드번호가 클립보드에 복사되었습니다.", preferredStyle: .alert)
-        
         let OKAlert = UIAlertAction(title: "OK", style: UIAlertActionStyle.default){
             (result: UIAlertAction) in
             alert.removeFromParentViewController()
