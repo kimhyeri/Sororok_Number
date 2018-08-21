@@ -41,5 +41,13 @@ extension ManagerGroupViewController : UITableViewDelegate, UITableViewDataSourc
         cell.label.text = manager[indexPath.row]
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 2 {
+            let storyboard = UIStoryboard.init(name: "Manager", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "ChangeManager")
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
 }
 
