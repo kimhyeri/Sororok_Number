@@ -11,6 +11,7 @@ import SideMenu
 
 class TwoViewController: UIViewController {
     
+    @IBOutlet weak var floatingView: UIView!
     @IBOutlet weak var imageSecondView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nothingLabel1: UILabel!
@@ -43,12 +44,11 @@ class TwoViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         defaultView()
-        addButton()
     }
     
     func defaultView(){
         self.navigationController!.navigationBar.topItem!.title = ""
-        
+        floatingView.layer.cornerRadius = floatingView.frame.width/2
         topView.frame = CGRect(x: 0, y: -100 , width: self.view.frame.width, height: navigationBarHeight)
         navigationBarHeight = navigationBarHeight + (self.navigationController?.navigationBar.frame.height)!
         imageView.layer.cornerRadius = self.imageView.frame.size.width / 2
@@ -68,15 +68,7 @@ class TwoViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
     }
-    
-    func addButton() {
-        let groupCreate = UIButton()
-        groupCreate.backgroundColor = UIColor.init(red: 255/255, green: 161/255, blue: 190/255, alpha: 1)
-        groupCreate.frame = CGRect(x: view.frame.width - 80, y: view.frame.height - 80, width: 50, height: 50)
-        self.view.addSubview(groupCreate)
-        groupCreate.addTarget(self, action: #selector(self.createGroup), for: UIControlEvents.touchUpInside)
-    }
-    
+
     @objc func createGroup(){
         let storyboard = UIStoryboard(name: "GroupCreate", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "GroupCreate") as! GroupCreateViewController
@@ -166,17 +158,18 @@ extension TwoViewController : UIScrollViewDelegate {
 extension TwoViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "NothingTableView", for: indexPath) as! NothingTableViewCell
+//        return cell
 //데이터 아무것도 없을 경우
 //        if(indexPath.row == 0){
 //            let cell = tableView.dequeueReusableCell(withIdentifier: "NothingTableView", for: indexPath) as! NothingTableViewCell
 //            return cell
 //        }
-        
+//        
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath) as! HomeTableViewCell
         cell.cellView.layer.cornerRadius = 10
         cell.cellView.layer.borderWidth = 1

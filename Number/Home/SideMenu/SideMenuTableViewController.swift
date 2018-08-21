@@ -19,7 +19,6 @@ class SideMenuTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = UITableViewAutomaticDimension
-    
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -43,6 +42,5 @@ class SideMenuTableViewController: UITableViewController {
 }
 
 class SideMenuCell: UITableViewCell {
-    
     @IBOutlet weak var news: UILabel!
 }

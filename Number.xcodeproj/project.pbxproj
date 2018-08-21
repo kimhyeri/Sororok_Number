@@ -36,6 +36,7 @@
 		35572C21212C030800A919C7 /* AdminGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35572C20212C030800A919C7 /* AdminGroupViewController.swift */; };
 		35572C24212C06BB00A919C7 /* NotSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35572C22212C06BB00A919C7 /* NotSearchTableViewCell.swift */; };
 		35572C25212C06BB00A919C7 /* NotSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35572C23212C06BB00A919C7 /* NotSearchTableViewCell.xib */; };
+		35572C27212C342500A919C7 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35572C26212C342500A919C7 /* SettingViewController.swift */; };
 		355BB75021297782009A7837 /* NothingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355BB74E21297782009A7837 /* NothingTableViewCell.swift */; };
 		355BB75121297782009A7837 /* NothingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 355BB74F21297782009A7837 /* NothingTableViewCell.xib */; };
 		355BB7532129E625009A7837 /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355BB7522129E625009A7837 /* LogoutViewController.swift */; };
@@ -93,6 +94,7 @@
 		35572C20212C030800A919C7 /* AdminGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminGroupViewController.swift; sourceTree = "<group>"; };
 		35572C22212C06BB00A919C7 /* NotSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotSearchTableViewCell.swift; sourceTree = "<group>"; };
 		35572C23212C06BB00A919C7 /* NotSearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotSearchTableViewCell.xib; sourceTree = "<group>"; };
+		35572C26212C342500A919C7 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		355BB74E21297782009A7837 /* NothingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NothingTableViewCell.swift; path = Number/Home/DetailHome/NothingTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		355BB74F21297782009A7837 /* NothingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NothingTableViewCell.xib; path = Number/Home/DetailHome/NothingTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 		355BB7522129E625009A7837 /* LogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 				354EA796210C8FEC00D16A80 /* Delete */,
 				355F0A722108E96C00715E3F /* Setting.storyboard */,
 				355F0A742108E99D00715E3F /* SettingTableViewController.swift */,
+				35572C26212C342500A919C7 /* SettingViewController.swift */,
 				355BB7522129E625009A7837 /* LogoutViewController.swift */,
 				355BB7542129E63C009A7837 /* Logout.storyboard */,
 			);
@@ -529,6 +532,7 @@
 				3565D445212837CA000D70D2 /* SearchView.swift in Sources */,
 				355BB7532129E625009A7837 /* LogoutViewController.swift in Sources */,
 				3556196521071C01009CC356 /* DetailHomeTableViewController.swift in Sources */,
+				35572C27212C342500A919C7 /* SettingViewController.swift in Sources */,
 				355F0A752108E99D00715E3F /* SettingTableViewController.swift in Sources */,
 				354EA79D210C9BD300D16A80 /* ManagerViewController.swift in Sources */,
 				35572C1F212BF1F000A919C7 /* ManagerCellTableViewCell.swift in Sources */,

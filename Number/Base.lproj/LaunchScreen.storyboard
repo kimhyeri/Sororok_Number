@@ -17,24 +17,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1v1-zU-Vx6">
-                                <rect key="frame" x="19" y="156" width="116" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1v1-zU-Vx6">
+                                <rect key="frame" x="19.5" y="156.5" width="116" height="18"/>
                                 <color key="backgroundColor" red="1" green="0.63137254899999995" blue="0.74509803919999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="Xsh-CO-OWc"/>
+                                    <constraint firstAttribute="width" constant="116" id="mvB-ha-3PW"/>
+                                </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sororok에 어서와요! :)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1rW-ss-AUf">
-                                <rect key="frame" x="24" y="135" width="132" height="108"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sororok에 어서와요! :)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1rW-ss-AUf" userLabel="Sororok에 어서와요! :)">
+                                <rect key="frame" x="24.5" y="137" width="126" height="107.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="w8m-rQ-0fg">
-                                <rect key="frame" x="111" y="334" width="153" height="146"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="dY9-Nl-BRV">
+                                <rect key="frame" x="136" y="317" width="104" height="99"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="104" id="Z3Z-IO-Lzy"/>
+                                    <constraint firstAttribute="height" constant="99" id="saE-Lc-XBK"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.20392156862745098" green="0.22745098039215686" blue="0.81176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="1v1-zU-Vx6" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-168" id="Ipu-Xr-iJX"/>
+                            <constraint firstItem="1rW-ss-AUf" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-143" id="Mwc-OM-aGS"/>
+                            <constraint firstItem="dY9-Nl-BRV" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="33" id="SMh-st-d4R"/>
+                            <constraint firstItem="1v1-zU-Vx6" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" constant="-110" id="Tij-6Z-jBx"/>
+                            <constraint firstItem="1rW-ss-AUf" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" constant="-100" id="aFe-DF-7kK"/>
+                            <constraint firstItem="dY9-Nl-BRV" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="qFx-zg-QfU"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
