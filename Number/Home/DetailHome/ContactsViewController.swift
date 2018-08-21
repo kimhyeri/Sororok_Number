@@ -74,9 +74,16 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     }
     
     @objc func pressedButton(){
-    
+        let storyboard = UIStoryboard.init(name: "ManagerGroup", bundle: nil)
+        let uv = storyboard.instantiateViewController(withIdentifier: "ManagerGroup") as! ManagerGroupViewController
+        self.navigationController?.pushViewController(uv, animated: true)
     }
+    
     @IBAction func allButtonPressed(_ sender: UIButton) {
+        if sender.tag == 1 {
+            sender.setImage(UIImage(named: "icnListCheckOn"), for: .normal)
+            sender.setImage(UIImage(named: "icnListCheckOff"), for: .selected)
+        }
         if checkState == false {
             checkState = true
             for section in 0..<tableView.numberOfSections {
@@ -105,7 +112,6 @@ extension ContactsViewController {
     func updateCount(){
         if let list = tableView.indexPathsForSelectedRows {
             saveLabel.text = "\(list.count)"
-            print(list.count)
         }
     }
     

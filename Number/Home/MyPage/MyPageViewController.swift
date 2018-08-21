@@ -16,6 +16,7 @@ class MyPageViewController: UIViewController {
         super.viewDidLoad()
         myImage.layer.cornerRadius = myImage.frame.width/2
         myImage.backgroundColor = .black
+        self.navigationController?.navigationBar.tintColor = UIColor.white
     }
 
     @IBAction func buttonPressed(_ sender: Any) {
