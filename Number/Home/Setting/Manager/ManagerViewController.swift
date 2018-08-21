@@ -14,6 +14,7 @@ class ManagerViewController: UIViewController {
     @IBOutlet weak var becomeManagerView: UIView!
     @IBOutlet weak var becomeManager: UIImageView!
     @IBOutlet weak var beforeManager: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         becomeManagerView.layer.cornerRadius = becomeManagerView.frame.width/2

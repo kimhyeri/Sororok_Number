@@ -43,7 +43,12 @@ extension ManagerGroupViewController : UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 2 {
+        if indexPath.row == 1 {
+            let storyboard = UIStoryboard.init(name: "Manager", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "ManageGroup")
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        else if indexPath.row == 2 {
             let storyboard = UIStoryboard.init(name: "Manager", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "ChangeManager")
             self.navigationController?.pushViewController(vc, animated: true)

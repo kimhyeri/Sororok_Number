@@ -33,6 +33,7 @@
 		35572C1B212BEF6200A919C7 /* ManagerGroup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35572C1A212BEF6200A919C7 /* ManagerGroup.storyboard */; };
 		35572C1D212BEF7000A919C7 /* ManagerGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35572C1C212BEF7000A919C7 /* ManagerGroupViewController.swift */; };
 		35572C1F212BF1F000A919C7 /* ManagerCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35572C1E212BF1F000A919C7 /* ManagerCellTableViewCell.swift */; };
+		35572C21212C030800A919C7 /* AdminGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35572C20212C030800A919C7 /* AdminGroupViewController.swift */; };
 		355BB75021297782009A7837 /* NothingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355BB74E21297782009A7837 /* NothingTableViewCell.swift */; };
 		355BB75121297782009A7837 /* NothingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 355BB74F21297782009A7837 /* NothingTableViewCell.xib */; };
 		355BB7532129E625009A7837 /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355BB7522129E625009A7837 /* LogoutViewController.swift */; };
@@ -87,6 +88,7 @@
 		35572C1A212BEF6200A919C7 /* ManagerGroup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ManagerGroup.storyboard; sourceTree = "<group>"; };
 		35572C1C212BEF7000A919C7 /* ManagerGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerGroupViewController.swift; sourceTree = "<group>"; };
 		35572C1E212BF1F000A919C7 /* ManagerCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerCellTableViewCell.swift; sourceTree = "<group>"; };
+		35572C20212C030800A919C7 /* AdminGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminGroupViewController.swift; sourceTree = "<group>"; };
 		355BB74E21297782009A7837 /* NothingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NothingTableViewCell.swift; path = Number/Home/DetailHome/NothingTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		355BB74F21297782009A7837 /* NothingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NothingTableViewCell.xib; path = Number/Home/DetailHome/NothingTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 		355BB7522129E625009A7837 /* LogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				354EA79C210C9BD300D16A80 /* ManagerViewController.swift */,
+				35572C20212C030800A919C7 /* AdminGroupViewController.swift */,
 				354EA79E210C9BDA00D16A80 /* Manager.storyboard */,
 			);
 			path = Manager;
@@ -497,6 +500,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				35572C1D212BEF7000A919C7 /* ManagerGroupViewController.swift in Sources */,
+				35572C21212C030800A919C7 /* AdminGroupViewController.swift in Sources */,
 				353EC8C4210A2BBF004081D1 /* AlbumViewController.swift in Sources */,
 				35ECDF15210476F200308080 /* HomeTableViewCell.swift in Sources */,
 				3551E839210CD582009DF002 /* Interactor.swift in Sources */,
