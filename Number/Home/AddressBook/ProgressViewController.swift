@@ -10,7 +10,6 @@ import UIKit
 
 class ProgressViewController: UIViewController {
 
-    @IBOutlet weak var mentionLabel: UILabel!
     @IBOutlet weak var iconView: UIView!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var currentLabel: UILabel!
