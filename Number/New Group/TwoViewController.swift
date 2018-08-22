@@ -203,7 +203,6 @@ extension TwoViewController {
             alert.removeFromParentViewController()
             let storyboard = UIStoryboard.init(name: "DetailHome", bundle: nil)
             let nv = storyboard.instantiateViewController(withIdentifier: "DetailHome") as! ContactsViewController
-            nv.viewWillAppear(true)
             self.navigationController?.pushViewController(nv, animated: true)
         }
         

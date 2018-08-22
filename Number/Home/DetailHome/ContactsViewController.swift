@@ -24,10 +24,10 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     @IBOutlet weak var saveLabel: UILabel!
     
     var checkState = false
-    var arrIndexSection : NSArray = ["ㄱ","ㄴ","ㄷ","ㄹ","ㅁ","ㅂ","ㅅ","ㅇ","ㅈ","ㅋ","ㅍ","ㅌ","ㅎ","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+    var arrIndexSection : NSArray = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","ㄱ","ㄴ","ㄷ","ㄹ","ㅁ","ㅂ","ㅅ","ㅇ","ㅈ","ㅋ","ㅍ","ㅌ","ㅎ"]
     var newArr = [Any]()
     var array:[String:String] = ["가혜리":"010-1234-1234", "박혜리":"010-1234-1234","정혜리":"010-1234-1234","미혜리":"010-1234-1234","어혜리":"010-1234-1234","푸혜리":"010-1234-1234", "타혜리":"010-1234-1234" ,"Kim":"010-123-1123","park":"010-123-1123","dim":"010-123-1123","fim":"010-123-1123"]
-    var array1:[String:String] = ["가혜리":"010-1234-1234", "박혜리":"010-1234-1234","정혜리":"010-1234-1234","미혜리":"010-1234-1234","어혜리":"010-1234-1234","푸혜리":"010-1234-1234", "타혜리":"010-1234-1234" ,"Kim":"010-123-1123","park":"010-123-1123","dim":"010-123-1123","fim":"010-123-1123"]
+    public var array1:[String:String] = ["가혜리":"010-1234-1234", "박혜리":"010-1234-1234","정혜리":"010-1234-1234","미혜리":"010-1234-1234","어혜리":"010-1234-1234","푸혜리":"010-1234-1234", "타혜리":"010-1234-1234" ,"Kim":"010-123-1123","park":"010-123-1123","dim":"010-123-1123","fim":"010-123-1123"]
 
     override func viewWillAppear(_ animated: Bool) {
         let dac = array.map { return $0.key }
@@ -35,13 +35,18 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
             let name = dac[j]
             let text = dac[j].first
             let val = UnicodeScalar(String(text!))?.value
-            print("\(name)\(val)")
             if ( val! >= 0xAC00 && val! <= 0xD7A3 ) {
                 let x = (val! - 0xac00) / 28 / 21
                 let i = UnicodeScalar(0x1100 + x)
+                print("\(name)\(val)")
+
                 array1.changeKey(from: name, to: "\(i!)\(name)")
             }
+//            OperationQueue.main.addOperation {
+//                self.tableView.reloadData()
+//            }
         }
+        print("finish1")
     }
     
     override func viewDidLoad() {
@@ -59,7 +64,8 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //데이터 없을때
-        
+        print("finish2")
+
         //let cell = tableView.dequeueReusableCell(withIdentifier: "NotSearchTableViewCell", for: indexPath) as! NotSearchTableViewCell
         //return cell
         let cell = tableView.dequeueReusableCell(withIdentifier: "DetailHomeTableViewCell", for: indexPath) as! DetailHomeTableViewCell
@@ -87,6 +93,8 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("finish3")
+        print(array1)
         let predicate = NSPredicate(format: "SELF beginswith[c] %@", arrIndexSection.object(at: section) as! CVarArg)
         let dic = array1.map { return $0.key }
         let arrContacts = (dic as NSArray).filtered(using: predicate) as NSArray
