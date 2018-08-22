@@ -123,6 +123,9 @@
                                 <state key="normal" title="저장">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="saveButtonPressed:" destination="ykk-dn-5O9" eventType="touchUpInside" id="OJ1-05-KV9"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rectangle" translatesAutoresizingMaskIntoConstraints="NO" id="QUg-K9-0Ph">
                                 <rect key="frame" x="163" y="575" width="48" height="24"/>

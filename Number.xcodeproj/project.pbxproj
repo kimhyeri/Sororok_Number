@@ -15,6 +15,8 @@
 		353EC8C6210A3169004081D1 /* AlbumUICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353EC8C5210A3169004081D1 /* AlbumUICollectionViewCell.swift */; };
 		353EC8CA210AF0D4004081D1 /* Address.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 353EC8C9210AF0D4004081D1 /* Address.storyboard */; };
 		353EC8CC210AF0F1004081D1 /* AddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353EC8CB210AF0F1004081D1 /* AddressViewController.swift */; };
+		35444631212D69180075116C /* Progress.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35444630212D69180075116C /* Progress.storyboard */; };
+		35444633212D69210075116C /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35444632212D69210075116C /* ProgressViewController.swift */; };
 		354EA790210C665600D16A80 /* GroupCreate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 354EA78F210C665600D16A80 /* GroupCreate.storyboard */; };
 		354EA792210C6A2500D16A80 /* GroupCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354EA791210C6A2500D16A80 /* GroupCreateViewController.swift */; };
 		354EA795210C877300D16A80 /* SideMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354EA794210C877300D16A80 /* SideMenuTableViewController.swift */; };
@@ -67,6 +69,8 @@
 		353EC8C5210A3169004081D1 /* AlbumUICollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumUICollectionViewCell.swift; sourceTree = "<group>"; };
 		353EC8C9210AF0D4004081D1 /* Address.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Address.storyboard; sourceTree = "<group>"; };
 		353EC8CB210AF0F1004081D1 /* AddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressViewController.swift; sourceTree = "<group>"; };
+		35444630212D69180075116C /* Progress.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Progress.storyboard; sourceTree = "<group>"; };
+		35444632212D69210075116C /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
 		354EA78F210C665600D16A80 /* GroupCreate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GroupCreate.storyboard; sourceTree = "<group>"; };
 		354EA791210C6A2500D16A80 /* GroupCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateViewController.swift; sourceTree = "<group>"; };
 		354EA794210C877300D16A80 /* SideMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewController.swift; sourceTree = "<group>"; };
@@ -166,6 +170,8 @@
 			children = (
 				353EC8C9210AF0D4004081D1 /* Address.storyboard */,
 				353EC8CB210AF0F1004081D1 /* AddressViewController.swift */,
+				35444630212D69180075116C /* Progress.storyboard */,
+				35444632212D69210075116C /* ProgressViewController.swift */,
 			);
 			path = AddressBook;
 			sourceTree = "<group>";
@@ -400,6 +406,7 @@
 				355BB7552129E63C009A7837 /* Logout.storyboard in Resources */,
 				35ECDEFA2103B1BA00308080 /* LaunchScreen.storyboard in Resources */,
 				355BB7572129E767009A7837 /* Assets.xcassets in Resources */,
+				35444631212D69180075116C /* Progress.storyboard in Resources */,
 				351AB6392105C1570017D41A /* MyPage.storyboard in Resources */,
 				353EC8CA210AF0D4004081D1 /* Address.storyboard in Resources */,
 				354EA790210C665600D16A80 /* GroupCreate.storyboard in Resources */,
@@ -494,6 +501,7 @@
 				35572C1D212BEF7000A919C7 /* ManagerGroupViewController.swift in Sources */,
 				35572C24212C06BB00A919C7 /* NotSearchTableViewCell.swift in Sources */,
 				35572C21212C030800A919C7 /* AdminGroupViewController.swift in Sources */,
+				35444633212D69210075116C /* ProgressViewController.swift in Sources */,
 				353EC8C4210A2BBF004081D1 /* AlbumViewController.swift in Sources */,
 				35ECDF15210476F200308080 /* HomeTableViewCell.swift in Sources */,
 				353EC8C6210A3169004081D1 /* AlbumUICollectionViewCell.swift in Sources */,

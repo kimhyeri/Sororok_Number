@@ -109,6 +109,12 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
             }
         }
     }
+    
+    @IBAction func saveButtonPressed(_ sender: Any) {
+        let storyboard = UIStoryboard.init(name: "Progress", bundle: nil)
+        let nv = storyboard.instantiateViewController(withIdentifier: "Progress") as! ProgressViewController
+        self.navigationController?.pushViewController(nv, animated: true)
+    }
 }
 
 
