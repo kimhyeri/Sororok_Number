@@ -22,9 +22,10 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-
+    
         tableView.register(UINib(nibName:"DetailHomeTableViewCell",bundle: nil), forCellReuseIdentifier: "DetailHomeTableViewCell")
-        
+        tableView.register(UINib(nibName:"NotSearchTableViewCell",bundle: nil), forCellReuseIdentifier: "NotSearchTableViewCell")
+
         let rightBarButtonItem = UIBarButtonItem.init(image: UIImage(named: "btnCommListSetWh"), style: .done, target: self, action: #selector(ContactsViewController.pressedButton))
         self.navigationItem.rightBarButtonItem = rightBarButtonItem
         self.navigationController?.navigationBar.tintColor = UIColor.white
@@ -48,6 +49,11 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //데이터 없을때
+        
+        //let cell = tableView.dequeueReusableCell(withIdentifier: "NotSearchTableViewCell", for: indexPath) as! NotSearchTableViewCell
+        //return cell
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "DetailHomeTableViewCell", for: indexPath) as! DetailHomeTableViewCell
         cell.userImage?.layer.cornerRadius = (cell.userImage?.frame.width)!/2
         return cell

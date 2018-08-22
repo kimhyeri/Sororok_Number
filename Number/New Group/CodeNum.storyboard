@@ -91,7 +91,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dhQ-uJ-Ll0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2732" y="-413"/>
+            <point key="canvasLocation" x="3423" y="-1095"/>
         </scene>
         <!--Side Menu Navigation Controller-->
         <scene sceneID="TXr-mB-nAZ">
@@ -110,15 +110,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lyi-17-5bl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2081" y="-413"/>
-        </scene>
-        <!--Setting-->
-        <scene sceneID="FGY-wG-O5q">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Setting" id="9LJ-gx-vmk" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fAz-a7-FpE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2024" y="-388.60569715142429"/>
+            <point key="canvasLocation" x="2761" y="-1095"/>
         </scene>
         <!--Two View Controller-->
         <scene sceneID="Dqv-qO-EQI">

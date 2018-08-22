@@ -155,7 +155,7 @@
                                 <rect key="frame" x="32" y="409" width="311" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="관리자 권한이 변경될 시, 기존 관리자는  그룹원으로 자동 변경됩니다." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOl-rD-QZR">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="관리자 권한이 변경될 시, 기존 관리자는  그룹원으로 자동 변경됩니다." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOl-rD-QZR">
                                         <rect key="frame" x="24" y="16" width="262" height="49"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -172,6 +172,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="imgSettingGroupPoint" translatesAutoresizingMaskIntoConstraints="NO" id="0fv-IQ-hgL">
+                                <rect key="frame" x="175" y="232" width="24" height="8"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="UW2-yx-Crr"/>
@@ -190,6 +194,7 @@
     </scenes>
     <resources>
         <image name="imgSettingEmptyAdmin" width="61" height="61"/>
+        <image name="imgSettingGroupPoint" width="28" height="12"/>
         <image name="rectangle7" width="48" height="24"/>
     </resources>
 </document>

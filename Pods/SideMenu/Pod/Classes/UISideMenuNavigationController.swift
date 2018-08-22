@@ -178,11 +178,14 @@ open class UISideMenuNavigationController: UINavigationController {
             if let mainView = transition.mainViewController?.view {
                 switch sideMenuManager.menuPresentMode {
                 case .viewSlideOut, .viewSlideInOut:
+                    print("3")
                     mainView.superview?.insertSubview(view, belowSubview: mainView)
                 case .menuSlideIn, .menuDissolveIn:
                     if let tapView = transition.tapView {
+                        print("1")
                         mainView.superview?.insertSubview(view, aboveSubview: tapView)
                     } else {
+                        print("2")
                         mainView.superview?.insertSubview(view, aboveSubview: mainView)
                     }
                 }
