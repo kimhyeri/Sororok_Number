@@ -17,7 +17,8 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     @IBOutlet weak var saveLabel: UILabel!
     
     var checkState = false
-    var arrIndexSection : NSArray = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+    var arrIndexSection : NSArray = ["ㄱ","ㄴ","ㄷ","ㄹ","ㅁ","ㅂ","ㅅ","ㅇ","ㅈ","ㅋ","ㅍ","ㅌ","ㅎ","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+    var array:[String:String] = ["김혜리":"010-1234-1234", "김호호":"010","박":"-1-1-","이하하":"1-1-1-", "Ab":"dfdf", "DfDF":"-1--10010"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,18 +33,6 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
         self.navigationController?.navigationBar.tintColor = UIColor.white
         
     }
-    
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let label = UILabel()
-//        if section == 0 {
-//            label.text = " ㄱ"
-//            label.backgroundColor = UIColor.white
-//        }else{
-//            label.text = " ㄴ"
-//            label.backgroundColor = UIColor.lightGray
-//        }
-//        return label
-//    }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //데이터 없을때
@@ -52,7 +41,13 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
         //return cell
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "DetailHomeTableViewCell", for: indexPath) as! DetailHomeTableViewCell
+        let predicate = NSPredicate(format: "SELF beginswith[c] %@", arrIndexSection.object(at: indexPath.section) as! CVarArg)
+
         cell.userImage?.layer.cornerRadius = (cell.userImage?.frame.width)!/2
+        let dic = array.map { return $0.key }
+        let arrContacts = (dic as NSArray).filtered(using: predicate) as NSArray
+        cell.nameLabel?.text = arrContacts.object(at: indexPath.row) as? String        
+        
         return cell
     }
     
@@ -69,7 +64,10 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        let predicate = NSPredicate(format: "SELF beginswith[c] %@", arrIndexSection.object(at: section) as! CVarArg)
+        let dic = array.map { return $0.key }
+        let arrContacts = (dic as NSArray).filtered(using: predicate) as NSArray
+        return arrContacts.count
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
@@ -140,17 +138,16 @@ extension ContactsViewController {
 extension ContactsViewController {
     
     public func numberOfSections(in tableView: UITableView) -> Int {
-        return 26
+        return arrIndexSection.count
     }
     
     public func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return self.arrIndexSection as? [String] //Side Section title
+        return self.arrIndexSection as? [String]
     }
     
     public func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
         return index
     }
-    
     
     public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return arrIndexSection.object(at: section) as? String
