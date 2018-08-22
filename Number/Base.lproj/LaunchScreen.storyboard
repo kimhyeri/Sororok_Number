@@ -31,22 +31,22 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="dY9-Nl-BRV">
-                                <rect key="frame" x="136" y="317" width="104" height="99"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgSplashLogo" translatesAutoresizingMaskIntoConstraints="NO" id="dY9-Nl-BRV">
+                                <rect key="frame" x="112" y="277.5" width="152" height="152"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="104" id="Z3Z-IO-Lzy"/>
-                                    <constraint firstAttribute="height" constant="99" id="saE-Lc-XBK"/>
+                                    <constraint firstAttribute="width" constant="152" id="mkA-JM-Hhh"/>
+                                    <constraint firstAttribute="height" constant="152" id="nIg-mX-8JU"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.20392156862745098" green="0.22745098039215686" blue="0.81176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="dY9-Nl-BRV" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="96t-kK-vHk"/>
                             <constraint firstItem="1v1-zU-Vx6" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-168" id="Ipu-Xr-iJX"/>
                             <constraint firstItem="1rW-ss-AUf" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-143" id="Mwc-OM-aGS"/>
-                            <constraint firstItem="dY9-Nl-BRV" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="33" id="SMh-st-d4R"/>
                             <constraint firstItem="1v1-zU-Vx6" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" constant="-110" id="Tij-6Z-jBx"/>
                             <constraint firstItem="1rW-ss-AUf" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" constant="-100" id="aFe-DF-7kK"/>
-                            <constraint firstItem="dY9-Nl-BRV" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="qFx-zg-QfU"/>
+                            <constraint firstItem="dY9-Nl-BRV" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="20" id="rjn-NB-Rov"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -57,6 +57,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon" width="128" height="128"/>
+        <image name="imgSplashLogo" width="152" height="152"/>
     </resources>
 </document>
