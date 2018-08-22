@@ -17,6 +17,7 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     @IBOutlet weak var saveLabel: UILabel!
     
     var checkState = false
+    var arrIndexSection : NSArray = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,21 +33,17 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
         
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let label = UILabel()
-        if section == 0 {
-            label.text = " ㄱ"
-            label.backgroundColor = UIColor.white
-        }else{
-            label.text = " ㄴ"
-            label.backgroundColor = UIColor.lightGray
-        }
-        return label
-    }
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let label = UILabel()
+//        if section == 0 {
+//            label.text = " ㄱ"
+//            label.backgroundColor = UIColor.white
+//        }else{
+//            label.text = " ㄴ"
+//            label.backgroundColor = UIColor.lightGray
+//        }
+//        return label
+//    }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //데이터 없을때
@@ -138,4 +135,25 @@ extension ContactsViewController {
             cellSelected.alpha = 0
         }
     }
+}
+
+extension ContactsViewController {
+    
+    public func numberOfSections(in tableView: UITableView) -> Int {
+        return 26
+    }
+    
+    public func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return self.arrIndexSection as? [String] //Side Section title
+    }
+    
+    public func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+        return index
+    }
+    
+    
+    public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return arrIndexSection.object(at: section) as? String
+    }
+    
 }
