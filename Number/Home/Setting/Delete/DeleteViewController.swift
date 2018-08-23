@@ -18,8 +18,8 @@ class DeleteViewController: UIViewController {
     }
     
     @IBAction func logoutButton(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Login", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "Login")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "Main")
         self.navigationController?.popToRootViewController(animated: true)
         UIApplication.shared.keyWindow?.rootViewController = vc
     }
