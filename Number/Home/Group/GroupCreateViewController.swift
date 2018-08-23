@@ -16,6 +16,13 @@ class GroupCreateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        defaultView()
+    }
+    
+    func defaultView(){
+        initNav()
+        self.title = "그룹생성"
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         groupCode.layer.cornerRadius = 10
         groupImage.backgroundColor = .black
         groupImage.layer.cornerRadius = self.groupImage.frame.width/2
@@ -23,7 +30,6 @@ class GroupCreateViewController: UIViewController {
     }
 
     @IBAction func clipButtonPressed(_ sender: Any) {
-        
         let alert = UIAlertController(title: nil, message: "그룹 코드번호가 클립보드에 복사되었습니다.", preferredStyle: .alert)
         let OKAlert = UIAlertAction(title: "OK", style: UIAlertActionStyle.default){
             (result: UIAlertAction) in
