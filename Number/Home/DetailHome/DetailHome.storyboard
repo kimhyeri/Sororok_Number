@@ -142,12 +142,16 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="btnCommBackWh"/>
                             </button>
+                            <connections>
+                                <action selector="backButtonPressed:" destination="ykk-dn-5O9" id="2Nx-2A-imh"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="cellSelected" destination="vgY-Ar-Yvb" id="XSE-mw-1gh"/>
                         <outlet property="cellView" destination="QUg-K9-0Ph" id="YJa-a4-MGX"/>
                         <outlet property="saveLabel" destination="WGK-Eh-wIy" id="sxx-uZ-iHm"/>
+                        <outlet property="selectButton" destination="Pos-Gp-cdb" id="Xbq-QM-oVb"/>
                         <outlet property="tableView" destination="Eua-ct-xOA" id="NzL-Ax-0qD"/>
                     </connections>
                 </viewController>

@@ -16,7 +16,8 @@ extension Dictionary{
 }
 
 class ContactsViewController: UIViewController , UITableViewDataSource, UITableViewDelegate{
-
+    
+    @IBOutlet weak var selectButton: UIButton!
     @IBOutlet weak var cellView: UIImageView!
     @IBOutlet weak var cellSelected: UIButton!
     @IBOutlet weak var tableView: UITableView!
@@ -28,7 +29,7 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     var array:[String:String] = ["가혜리":"010-1234-1234", "박혜리":"010-1234-1234","정혜리":"010-1234-1234","미혜리":"010-1234-1234","어혜리":"010-1234-1234","푸혜리":"010-1234-1234", "타혜리":"010-1234-1234" ,"Kim":"010-123-1123","park":"010-123-1123","dim":"010-123-1123","fim":"010-123-1123"]
     
     var array1:[String:String] = ["가혜리":"010-1234-1234", "박혜리":"010-1234-1234","정혜리":"010-1234-1234","미혜리":"010-1234-1234","어혜리":"010-1134-1234","푸혜리":"010-1234-1234", "타혜리":"010-1234-1234" ,"Kim":"010-1243-1123","park":"110-123-1123","dim":"010-1623-1123","fim":"010-1283-1123"]
-
+    
     override func viewWillAppear(_ animated: Bool) {
         let dac = array.map { return $0.key }
         for j in 0..<dac.count{
@@ -38,15 +39,15 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
             if ( val! >= 0xAC00 && val! <= 0xD7A3 ) {
                 let first = (val! - 0xac00) / 28 / 21
                 let i = String(UnicodeScalar(0x1100 + first)!)
-
+                
                 let y = ((val! - 0xac00) / 28) % 21
                 let j =  String(UnicodeScalar(0x1161 + y)!)
-
+                
                 let z = (val! - 0xac00) % 28
                 let k = String(UnicodeScalar(0x11a6 + 1 + z)!)
                 
                 array1.changeKey(from: name, to: "\(i) \(j) \(k) "+name)
-               
+                
             }
         }
     }
@@ -57,7 +58,7 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
         guard let value = val else { return false }
         if ( value >= 0xAC00 && value <= 0xD7A3 ) {
             let x = (value - 0xac00) / 28 / 21
-
+            
             let i = UnicodeScalar(0x1100 + x) //초성
             
             print("\(x)\(i!)")
@@ -72,16 +73,16 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
         tableView.dataSource = self
         tableView.register(UINib(nibName:"DetailHomeTableViewCell",bundle: nil), forCellReuseIdentifier: "DetailHomeTableViewCell")
         tableView.register(UINib(nibName:"NotSearchTableViewCell",bundle: nil), forCellReuseIdentifier: "NotSearchTableViewCell")
-
+        
         let rightBarButtonItem = UIBarButtonItem.init(image: UIImage(named: "btnCommListSetWh"), style: .done, target: self, action: #selector(ContactsViewController.pressedButton))
         self.navigationItem.rightBarButtonItem = rightBarButtonItem
         self.navigationController?.navigationBar.tintColor = UIColor.white
         
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //데이터 없을때
-
+        
         //let cell = tableView.dequeueReusableCell(withIdentifier: "NotSearchTableViewCell", for: indexPath) as! NotSearchTableViewCell
         //return cell
         
@@ -89,7 +90,7 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
         let predicate = NSPredicate(format: "SELF beginswith[cd] %@", index.arrIndexSection.object(at: indexPath.section) as! CVarArg)
         cell.userImage?.layer.cornerRadius = (cell.userImage?.frame.width)!/2
         let dic = array1.map { return $0.key }
-//        let num = array1.map {return $0.value}
+        //        let num = array1.map {return $0.value}
         let arrContacts = (dic as NSArray).filtered(using: predicate) as NSArray
         cell.nameLabel?.text = arrContacts.object(at: indexPath.row) as? String
         return cell
@@ -106,14 +107,19 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
             changeView(alpha: false)
         }
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let predicate = NSPredicate(format: "SELF beginswith[c] %@", index.arrIndexSection.object(at: section) as! CVarArg)
         let dic = array1.map { return $0.key }
         let arrContacts = (dic as NSArray).filtered(using: predicate) as NSArray
         print(arrContacts)
         return arrContacts.count
-      
+        
+    }
+    
+    @IBAction func backButtonPressed(_ sender: Any) {
+        let bv = presentedViewController as! CustomNaviViewController
+        self.present(bv, animated: true, completion: nil)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
@@ -127,12 +133,11 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     }
     
     @IBAction func allButtonPressed(_ sender: UIButton) {
-        if sender.tag == 1 {
-            sender.setImage(UIImage(named: "icnListCheckOn"), for: .normal)
-            sender.setImage(UIImage(named: "icnListCheckOff"), for: .selected)
-        }
+     
         if checkState == false {
             checkState = true
+            selectButton.setImage(UIImage(named: "icnListCheckOn"), for: .normal)
+
             for section in 0..<tableView.numberOfSections {
                 for row in 0..<tableView.numberOfRows(inSection: section) {
                     tableView.selectRow(at: IndexPath(row: row, section: section), animated: false, scrollPosition: .none)
@@ -141,6 +146,7 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
             updateCount()
             changeView(alpha: true)
         }else{
+            selectButton.setImage(UIImage(named:"icnListCheckOff"), for: .normal)
             checkState = false
             changeView(alpha: false)
             for section in 0..<tableView.numberOfSections {
