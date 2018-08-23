@@ -47,7 +47,13 @@ extension ManagerGroupViewController : UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 1 {
+        if indexPath.row == 0 {
+            let activity = UIActivityViewController(activityItems: ["그룹코드 : \(codeLabel.text!)"], applicationActivities: nil)
+            activity.popoverPresentationController?.sourceView = self.view
+            self.present(activity, animated: true, completion: nil)
+        }
+            
+        else if indexPath.row == 1 {
             let storyboard = UIStoryboard.init(name: "Manager", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "ManageGroup")
             self.navigationController?.pushViewController(vc, animated: true)
