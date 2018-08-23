@@ -135,24 +135,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="bTz-1w-TNs"/>
                     </view>
-                    <navigationItem key="navigationItem" id="pyn-mp-rF5">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="xS3-50-RCE">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hgC-iW-K7p">
-                                <rect key="frame" x="16" y="6" width="32" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="btnCommBackWh"/>
-                            </button>
-                            <connections>
-                                <action selector="backButtonPressed:" destination="ykk-dn-5O9" id="2Nx-2A-imh"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="pyn-mp-rF5"/>
                     <connections>
                         <outlet property="cellSelected" destination="vgY-Ar-Yvb" id="XSE-mw-1gh"/>
                         <outlet property="cellView" destination="QUg-K9-0Ph" id="YJa-a4-MGX"/>
                         <outlet property="saveLabel" destination="WGK-Eh-wIy" id="sxx-uZ-iHm"/>
                         <outlet property="selectButton" destination="Pos-Gp-cdb" id="Xbq-QM-oVb"/>
                         <outlet property="tableView" destination="Eua-ct-xOA" id="NzL-Ax-0qD"/>
+                        <outlet property="totalLabel" destination="xpV-ac-oaI" id="EH8-tN-dt6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UqY-Qq-NbE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -161,7 +151,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="btnCommBackWh" width="32" height="32"/>
         <image name="icnListCheckOff" width="48" height="48"/>
         <image name="rectangle" width="48" height="24"/>
     </resources>

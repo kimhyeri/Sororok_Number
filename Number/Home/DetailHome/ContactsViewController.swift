@@ -17,6 +17,7 @@ extension Dictionary{
 
 class ContactsViewController: UIViewController , UITableViewDataSource, UITableViewDelegate{
     
+    @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var selectButton: UIButton!
     @IBOutlet weak var cellView: UIImageView!
     @IBOutlet weak var cellSelected: UIButton!
@@ -31,6 +32,7 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     var array1:[String:String] = ["가혜리":"010-1234-1234", "박혜리":"010-1234-1234","정혜리":"010-1234-1234","미혜리":"010-1234-1234","어혜리":"010-1134-1234","푸혜리":"010-1234-1234", "타혜리":"010-1234-1234" ,"Kim":"010-1243-1123","park":"110-123-1123","dim":"010-1623-1123","fim":"010-1283-1123"]
     
     override func viewWillAppear(_ animated: Bool) {
+        totalLabel.text = "총 \(array1.count)명"
         let dac = array.map { return $0.key }
         for j in 0..<dac.count{
             let name = dac[j]
@@ -73,7 +75,12 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
         tableView.dataSource = self
         tableView.register(UINib(nibName:"DetailHomeTableViewCell",bundle: nil), forCellReuseIdentifier: "DetailHomeTableViewCell")
         tableView.register(UINib(nibName:"NotSearchTableViewCell",bundle: nil), forCellReuseIdentifier: "NotSearchTableViewCell")
-        
+        defaultView()
+    }
+    
+    func defaultView(){
+        let backButton = UIBarButtonItem(image: UIImage(named: "btnCommBackWh"), style: .plain, target: self, action: #selector(ContactsViewController.backButtonPressed))
+        self.navigationItem.leftBarButtonItem = backButton
         let rightBarButtonItem = UIBarButtonItem.init(image: UIImage(named: "btnCommListSetWh"), style: .done, target: self, action: #selector(ContactsViewController.pressedButton))
         self.navigationItem.rightBarButtonItem = rightBarButtonItem
         self.navigationController?.navigationBar.tintColor = UIColor.white
@@ -117,8 +124,9 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
         
     }
     
-    @IBAction func backButtonPressed(_ sender: Any) {
-        let bv = presentedViewController as! CustomNaviViewController
+    @objc func backButtonPressed() {
+        let storyboard = UIStoryboard.init(name: "CodeNum", bundle: nil)
+        let bv = storyboard.instantiateViewController(withIdentifier: "ST") as! CustomNaviViewController
         self.present(bv, animated: true, completion: nil)
     }
     
