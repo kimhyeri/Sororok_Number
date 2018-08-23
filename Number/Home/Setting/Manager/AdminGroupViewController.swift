@@ -10,6 +10,9 @@ import UIKit
 
 class AdminGroupViewController: UIViewController , UITableViewDataSource, UITableViewDelegate{
 
+    @IBOutlet weak var cellSelected: UIButton!
+    @IBOutlet weak var savedLabel: UILabel!
+    @IBOutlet weak var cellView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -37,7 +40,15 @@ class AdminGroupViewController: UIViewController , UITableViewDataSource, UITabl
     @IBAction func outButtonPressed(_ sender: Any) {
     
     }
-   
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.view.endEditing(true)
+    }
+}
+
+//MARK: tableView
+extension AdminGroupViewController {
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DetailHomeTableViewCell", for: indexPath) as! DetailHomeTableViewCell
         cell.userImage?.layer.cornerRadius = (cell.userImage?.frame.width)!/2
@@ -48,7 +59,36 @@ class AdminGroupViewController: UIViewController , UITableViewDataSource, UITabl
         return 10
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
-        self.view.endEditing(true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        changeView(alpha: true)
+        updateCount()
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        updateCount()
+        if tableView.indexPathsForSelectedRows?.count == nil{
+            changeView(alpha: false)
+        }
+    }
+}
+
+extension AdminGroupViewController {
+    
+    func updateCount(){
+        if let list = tableView.indexPathsForSelectedRows {
+            savedLabel.text = "\(list.count)"
+        }
+    }
+    
+    func changeView(alpha: Bool){
+        if(alpha == true){
+            cellView.alpha = 1
+            savedLabel.alpha = 1
+            cellSelected.alpha = 0.5
+        }else {
+            cellView.alpha = 0
+            savedLabel.alpha = 0
+            cellSelected.alpha = 0
+        }
     }
 }
