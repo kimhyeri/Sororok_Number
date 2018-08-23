@@ -16,11 +16,18 @@ class AdminGroupViewController: UIViewController , UITableViewDataSource, UITabl
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UINib(nibName:"DetailHomeTableViewCell",bundle: nil), forCellReuseIdentifier: "DetailHomeTableViewCell")
-        let saveButton = UIBarButtonItem(title: "저장",  style: .plain, target: self, action: #selector(self.saveButton))
-        
 
+        tableView.register(UINib(nibName:"DetailHomeTableViewCell",bundle: nil), forCellReuseIdentifier: "DetailHomeTableViewCell")
+        
+        let saveButton = UIBarButtonItem(title: "저장",  style: .plain, target: self, action: #selector(self.saveButton))
+        self.navigationController?.navigationBar.tintColor = UIColor.init(hex: "343ACF")
         self.navigationItem.rightBarButtonItem = saveButton
+        
+        self.navigationController?.navigationBar.topItem?.title = ""
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.navigationBar.tintColor = UIColor.white
     }
 
     @objc func saveButton(){
@@ -40,7 +47,6 @@ class AdminGroupViewController: UIViewController , UITableViewDataSource, UITabl
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
-    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
