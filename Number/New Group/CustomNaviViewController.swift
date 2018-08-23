@@ -14,13 +14,11 @@ class CustomNaviViewController: UINavigationController {
         super.viewDidLoad()
         self.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationBar.shadowImage = UIImage()
-        
-//        self.navigationController?.navigationBar.backgroundColor = UIColor.init(hex: "343ACF")
-        self.navigationController?.navigationBar.tintColor = UIColor.init(hex: "343ACF")
-        self.navigationController?.navigationBar.isTranslucent = false
-        var image = UIImage(named: "btnCommBackWh")
-        image = image?.withRenderingMode(.alwaysOriginal)
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style:.plain, target: nil, action: nil)
+//        self.navigationController?.navigationBar.tintColor = UIColor.init(hex: "343ACF")
+//        self.navigationController?.navigationBar.isTranslucent = false
+//        var image = UIImage(named: "btnCommBackWh")
+//        image = image?.withRenderingMode(.alwaysOriginal)
+//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style:.plain, target: nil, action: nil)
     }
 
     override func didReceiveMemoryWarning() {

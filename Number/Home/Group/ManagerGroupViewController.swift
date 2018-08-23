@@ -18,7 +18,7 @@ class ManagerGroupViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        initNavigation()
+        self.navigationController?.navigationBar.topItem?.title = ""
         changeCodeView.clipsToBounds = true
         changeCodeView.layer.cornerRadius = 3
         changeCodeView.clipsToBounds = true
@@ -30,6 +30,19 @@ class ManagerGroupViewController: UIViewController{
         codeLabel.text = "FQWQ14"
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = nil
+    }
 }
 
 extension ManagerGroupViewController : UITableViewDelegate, UITableViewDataSource {
@@ -54,17 +67,6 @@ extension ManagerGroupViewController : UITableViewDelegate, UITableViewDataSourc
             let vc = storyboard.instantiateViewController(withIdentifier: "ChangeManager")
             self.navigationController?.pushViewController(vc, animated: true)
         }
-    }
-    
-    func initNavigation(){
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.tintColor = UIColor.blue
-        navigationController?.navigationBar.isTranslucent = true
-        UIApplication.shared.statusBarStyle = .default
-        var image = UIImage(named: "btnCommBackWh")
-        image = image?.withRenderingMode(.alwaysOriginal)
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style:.plain, target: nil, action: nil)
     }
 }
 

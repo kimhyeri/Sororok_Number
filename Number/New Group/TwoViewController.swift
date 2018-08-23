@@ -203,8 +203,9 @@ extension TwoViewController {
             (result: UIAlertAction) in
             alert.removeFromParentViewController()
             let storyboard = UIStoryboard.init(name: "DetailHome", bundle: nil)
-            let nv = storyboard.instantiateViewController(withIdentifier: "DetailHome") as! ContactsViewController
-            self.navigationController?.pushViewController(nv, animated: true)
+            let nv = storyboard.instantiateViewController(withIdentifier: "NV") as! ContactNaviViewController
+            self.present(nv, animated: true, completion: nil)
+//            self.navigationController?.pushViewController(nv, animated: true)
         }
         
         alert.addAction(noAlert)
