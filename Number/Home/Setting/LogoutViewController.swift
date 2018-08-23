@@ -11,19 +11,21 @@ import UIKit
 class LogoutViewController: UIViewController {
 
     @IBOutlet weak var logoutView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        logoutView.layer.cornerRadius = 10
+        defaultView()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func defaultView(){
+        logoutView.layer.cornerRadius = 10
     }
     
     @IBAction func logoutButtonPressed(_ sender: UIButton) {
-        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "Main")
+        self.navigationController?.popToRootViewController(animated: true)
+        UIApplication.shared.keyWindow?.rootViewController = vc
     }
     
     @IBAction func cancelButtonPressed(_ sender: UIButton) {

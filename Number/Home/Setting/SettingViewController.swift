@@ -33,10 +33,21 @@ class SettingViewController: UIViewController , UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let popUp = UIStoryboard(name: "Delete", bundle: nil).instantiateViewController(withIdentifier: "popUp") as! DeleteViewController
-        popUp.modalPresentationStyle = .overCurrentContext
-        self.present(popUp, animated: false, completion: nil)
+        switch indexPath.row {
+        case 2:
+            let popUp = UIStoryboard(name: "Delete", bundle: nil).instantiateViewController(withIdentifier: "popUp") as! DeleteViewController
+            popUp.modalPresentationStyle = .overCurrentContext
+            self.present(popUp, animated: false, completion: nil)
+        case 3:
+            let popUp = UIStoryboard(name: "Logout", bundle: nil).instantiateViewController(withIdentifier: "Logout") as! LogoutViewController
+            popUp.modalPresentationStyle = .overCurrentContext
+            self.present(popUp, animated: false, completion: nil)
+        case 4:
+            print("개발자에게 문의")
+        default:
+            return
+        }
+
     }
 }
 
