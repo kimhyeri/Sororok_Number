@@ -14,6 +14,7 @@
 		35325D48212E9DEB00AC3897 /* Index.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35325D47212E9DEB00AC3897 /* Index.swift */; };
 		35325D4C212F08F600AC3897 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35325D4B212F08F600AC3897 /* Helper.swift */; };
 		35325D4E212F0E4500AC3897 /* ContactNaviViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35325D4D212F0E4500AC3897 /* ContactNaviViewController.swift */; };
+		35325D50212F52B000AC3897 /* DeleteGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35325D4F212F52B000AC3897 /* DeleteGroupViewController.swift */; };
 		353EC8C4210A2BBF004081D1 /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353EC8C3210A2BBF004081D1 /* AlbumViewController.swift */; };
 		353EC8C6210A3169004081D1 /* AlbumUICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353EC8C5210A3169004081D1 /* AlbumUICollectionViewCell.swift */; };
 		353EC8CA210AF0D4004081D1 /* Address.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 353EC8C9210AF0D4004081D1 /* Address.storyboard */; };
@@ -70,6 +71,7 @@
 		35325D47212E9DEB00AC3897 /* Index.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Index.swift; sourceTree = "<group>"; };
 		35325D4B212F08F600AC3897 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		35325D4D212F0E4500AC3897 /* ContactNaviViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactNaviViewController.swift; sourceTree = "<group>"; };
+		35325D4F212F52B000AC3897 /* DeleteGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteGroupViewController.swift; sourceTree = "<group>"; };
 		353EC8C3210A2BBF004081D1 /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
 		353EC8C5210A3169004081D1 /* AlbumUICollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumUICollectionViewCell.swift; sourceTree = "<group>"; };
 		353EC8C9210AF0D4004081D1 /* Address.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Address.storyboard; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				354EA79C210C9BD300D16A80 /* ManagerViewController.swift */,
 				35572C20212C030800A919C7 /* AdminGroupViewController.swift */,
 				354EA79E210C9BDA00D16A80 /* Manager.storyboard */,
+				35325D4F212F52B000AC3897 /* DeleteGroupViewController.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -527,6 +530,7 @@
 				3556196521071C01009CC356 /* DetailHomeTableViewController.swift in Sources */,
 				35572C27212C342500A919C7 /* SettingViewController.swift in Sources */,
 				354EA79D210C9BD300D16A80 /* ManagerViewController.swift in Sources */,
+				35325D50212F52B000AC3897 /* DeleteGroupViewController.swift in Sources */,
 				35572C1F212BF1F000A919C7 /* ManagerCellTableViewCell.swift in Sources */,
 				354EA792210C6A2500D16A80 /* GroupCreateViewController.swift in Sources */,
 				35ECDEF22103B1B700308080 /* ViewController.swift in Sources */,

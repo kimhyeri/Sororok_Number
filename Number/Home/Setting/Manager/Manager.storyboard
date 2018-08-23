@@ -97,7 +97,104 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6l3-V4-9sg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1191.2" y="-296.40179910044981"/>
+            <point key="canvasLocation" x="2625" y="-287"/>
+        </scene>
+        <!--Delete Group View Controller-->
+        <scene sceneID="nhy-EM-y71">
+            <objects>
+                <viewController storyboardIdentifier="Delete" id="Wem-MD-QKz" customClass="DeleteGroupViewController" customModule="Number" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HRT-FL-YKe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sJO-R6-dpm">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="여기까지가~ 끝인가보오😢" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HEh-10-WfW">
+                                <rect key="frame" x="141.5" y="137.5" width="92.5" height="38.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tic-Qd-Acg">
+                                <rect key="frame" x="142" y="218.5" width="90" height="90"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="gQl-fC-T6c"/>
+                                    <constraint firstAttribute="width" constant="90" id="h0b-mQ-vyj"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="INL-0L-FjN">
+                                <rect key="frame" x="0.0" y="413" width="375" height="254"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="정말 그룹을 폭파하시려구요?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2pr-BE-lsK">
+                                        <rect key="frame" x="74" y="51" width="228" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="그룹에 저장된 모든 번호가 사라져요. 폭파된 그룹은 복구가 불가능해요. 관리자 변경을 추천해드립니다!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cxz-EU-7qq">
+                                        <rect key="frame" x="83" y="97" width="210" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BMd-1J-Dbo">
+                                        <rect key="frame" x="0.0" y="197" width="187.5" height="57"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.82745098039999998" green="0.83529411760000005" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="그룹삭제">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="Delete:" destination="Wem-MD-QKz" eventType="touchUpInside" id="649-Cy-tJ2"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qp5-Qp-htK">
+                                        <rect key="frame" x="187" y="197" width="187.5" height="57"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.29411764709999999" green="0.31372549020000001" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="관리자 변경">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="changeAdmin:" destination="Wem-MD-QKz" eventType="touchUpInside" id="iG7-l7-6cJ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="254" id="eZB-Lv-mE2"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="tic-Qd-Acg" firstAttribute="top" secondItem="HEh-10-WfW" secondAttribute="bottom" constant="42.5" id="9r5-Dq-3mm"/>
+                            <constraint firstItem="sJO-R6-dpm" firstAttribute="leading" secondItem="iJb-a8-3Ih" secondAttribute="leading" id="CHf-YG-jLz"/>
+                            <constraint firstItem="tic-Qd-Acg" firstAttribute="centerX" secondItem="HRT-FL-YKe" secondAttribute="centerX" id="EIM-Bu-VYw"/>
+                            <constraint firstItem="INL-0L-FjN" firstAttribute="centerX" secondItem="HRT-FL-YKe" secondAttribute="centerX" id="F1s-OT-jO0"/>
+                            <constraint firstItem="HEh-10-WfW" firstAttribute="centerX" secondItem="HRT-FL-YKe" secondAttribute="centerX" id="J6e-Nt-Ga1"/>
+                            <constraint firstItem="sJO-R6-dpm" firstAttribute="trailing" secondItem="iJb-a8-3Ih" secondAttribute="trailing" id="LHh-iQ-dSE"/>
+                            <constraint firstAttribute="trailing" secondItem="INL-0L-FjN" secondAttribute="trailing" id="WFG-vv-xy7"/>
+                            <constraint firstItem="sJO-R6-dpm" firstAttribute="top" secondItem="HRT-FL-YKe" secondAttribute="top" id="WkH-wm-Htx"/>
+                            <constraint firstItem="INL-0L-FjN" firstAttribute="centerY" secondItem="HRT-FL-YKe" secondAttribute="centerY" constant="206.5" id="fuy-T8-mSe"/>
+                            <constraint firstItem="tic-Qd-Acg" firstAttribute="centerY" secondItem="HRT-FL-YKe" secondAttribute="centerY" constant="-70" id="nXy-N0-VHV"/>
+                            <constraint firstItem="sJO-R6-dpm" firstAttribute="bottom" secondItem="iJb-a8-3Ih" secondAttribute="bottom" id="tke-Nk-GuM"/>
+                            <constraint firstItem="INL-0L-FjN" firstAttribute="leading" secondItem="HRT-FL-YKe" secondAttribute="leading" id="vZg-Jc-FKc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="iJb-a8-3Ih"/>
+                    </view>
+                    <connections>
+                        <outlet property="constraintY" destination="fuy-T8-mSe" id="m3t-JO-Ms9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vGO-GU-slN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3271.1999999999998" y="-287.40629685157421"/>
         </scene>
         <!--Manager View Controller-->
         <scene sceneID="A8N-fs-lfF">

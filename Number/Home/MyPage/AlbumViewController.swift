@@ -23,10 +23,6 @@ import Photos
         collecionView.delegate = self
         self.title = "전체보기"
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-//        let navView = UIView()
-//        navView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height:             (self.navigationController?.navigationBar.frame.height)! + 20)
-//        navView.backgroundColor = UIColor.init(hex: "343ACF")
-//        view.addSubview(navView)
         
         let photoAuthorizationSatus = PHPhotoLibrary.authorizationStatus()
         
@@ -106,8 +102,10 @@ import Photos
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row == 0 {
             print(indexPath.row)
+            
         }else {
             print(indexPath.row)
+            self.navigationController?.popViewController(animated: true)
         }
         
     }

@@ -12,7 +12,6 @@ class ManagerViewController: UIViewController {
 
     @IBOutlet weak var mentView: UIView!
     @IBOutlet weak var becomeManagerView: UIView!
-    @IBOutlet weak var becomeManager: UIImageView!
     @IBOutlet weak var beforeManager: UIImageView!
     
     override func viewDidLoad() {
@@ -20,6 +19,7 @@ class ManagerViewController: UIViewController {
         becomeManagerView.layer.cornerRadius = becomeManagerView.frame.width/2
         mentView.layer.cornerRadius = 10
         beforeManager.layer.cornerRadius = beforeManager.frame.width/2
+        self.navigationController?.navigationBar.topItem?.title = ""
     }
 
     override func didReceiveMemoryWarning() {

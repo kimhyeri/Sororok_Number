@@ -33,6 +33,7 @@ class GroupCreateViewController: UIViewController {
     
     @objc func saveButton(){
         print("Saved")
+        self.navigationController?.popViewController(animated: true)
     }
 
     @IBAction func clipButtonPressed(_ sender: Any) {

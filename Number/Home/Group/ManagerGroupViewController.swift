@@ -57,6 +57,12 @@ extension ManagerGroupViewController : UITableViewDelegate, UITableViewDataSourc
             let vc = storyboard.instantiateViewController(withIdentifier: "ChangeManager")
             self.navigationController?.pushViewController(vc, animated: true)
         }
+        else if indexPath.row == 3 {
+            let storyboard = UIStoryboard.init(name: "Manager", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "Delete")
+            vc.modalPresentationStyle = .overCurrentContext
+            self.present(vc, animated: false, completion: nil)
+        }
     }
 }
 

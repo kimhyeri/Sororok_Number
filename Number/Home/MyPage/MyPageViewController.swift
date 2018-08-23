@@ -30,6 +30,7 @@ class MyPageViewController: UIViewController {
     
     @objc func saveButton(){
         print("Saved server")
+        self.navigationController?.popViewController(animated: true)
     }
     
     
