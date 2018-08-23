@@ -11,6 +11,7 @@
 		351AB6362105C00C0017D41A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351AB6342105C00C0017D41A /* LoginViewController.swift */; };
 		351AB6392105C1570017D41A /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 351AB6382105C1570017D41A /* MyPage.storyboard */; };
 		351AB63B2105C16E0017D41A /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351AB63A2105C16E0017D41A /* MyPageViewController.swift */; };
+		35325D48212E9DEB00AC3897 /* Index.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35325D47212E9DEB00AC3897 /* Index.swift */; };
 		353EC8C4210A2BBF004081D1 /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353EC8C3210A2BBF004081D1 /* AlbumViewController.swift */; };
 		353EC8C6210A3169004081D1 /* AlbumUICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353EC8C5210A3169004081D1 /* AlbumUICollectionViewCell.swift */; };
 		353EC8CA210AF0D4004081D1 /* Address.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 353EC8C9210AF0D4004081D1 /* Address.storyboard */; };
@@ -65,6 +66,7 @@
 		351AB6342105C00C0017D41A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		351AB6382105C1570017D41A /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
 		351AB63A2105C16E0017D41A /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		35325D47212E9DEB00AC3897 /* Index.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Index.swift; sourceTree = "<group>"; };
 		353EC8C3210A2BBF004081D1 /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
 		353EC8C5210A3169004081D1 /* AlbumUICollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumUICollectionViewCell.swift; sourceTree = "<group>"; };
 		353EC8C9210AF0D4004081D1 /* Address.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Address.storyboard; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				35572C23212C06BB00A919C7 /* NotSearchTableViewCell.xib */,
 				3565D444212837CA000D70D2 /* SearchView.swift */,
 				3565D4422128291B000D70D2 /* ContactsViewController.swift */,
+				35325D47212E9DEB00AC3897 /* Index.swift */,
 				3556196321071C01009CC356 /* DetailHomeTableViewController.swift */,
 				3556196821071EDF009CC356 /* DetailHomeTableViewCell.swift */,
 				3556196921071EDF009CC356 /* DetailHomeTableViewCell.xib */,
@@ -515,6 +518,7 @@
 				351AB6362105C00C0017D41A /* LoginViewController.swift in Sources */,
 				356A58FE210D9F35003C20BB /* CustomNaviViewController.swift in Sources */,
 				3565D445212837CA000D70D2 /* SearchView.swift in Sources */,
+				35325D48212E9DEB00AC3897 /* Index.swift in Sources */,
 				355BB7532129E625009A7837 /* LogoutViewController.swift in Sources */,
 				3556196521071C01009CC356 /* DetailHomeTableViewController.swift in Sources */,
 				35572C27212C342500A919C7 /* SettingViewController.swift in Sources */,

@@ -41,6 +41,7 @@ class TwoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initNavigation()
         tableView.delegate = self
         tableView.dataSource = self
         defaultView()
@@ -209,6 +210,24 @@ extension TwoViewController {
         alert.addAction(noAlert)
         alert.addAction(okAlert)
         present(alert,animated: true, completion: nil)
+    }
+}
+
+extension TwoViewController {
+    func initNavigation(){
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+        UIApplication.shared.statusBarStyle = .default
+        
+//        let myPageImage = UIImage(named: "mypage")?.withRenderingMode(.alwaysOriginal)
+//        let rightBarButtonItem = UIBarButtonItem(image: myPageImage, style: .plain, target: self, action: nil)
+//        self.navigationItem.rightBarButtonItem = rightBarButtonItem
+//
+//        let categoryImage = UIImage(named: "categoryButton")?.withRenderingMode(.alwaysOriginal)
+//        let leftBarButtonItem = UIBarButtonItem(image: categoryImage, style: .plain, target: self, action: nil)
+//        self.navigationItem.leftBarButtonItem = leftBarButtonItem
+        
     }
 }
 

@@ -120,8 +120,7 @@ open class UISideMenuNavigationController: UINavigationController {
     
     override open func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationBar.shadowImage = UIImage()
+//        self.navigationBar.shadowImage = UIImage()
         self.navigationBar.setBackgroundImage(UIImage(), for: .default)
         
         if !locked && usingInterfaceBuilder {
@@ -135,7 +134,6 @@ open class UISideMenuNavigationController: UINavigationController {
     
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         // Dismiss keyboard to prevent weird keyboard animations from occurring during transition
         presentingViewController?.view.endEditing(true)
         

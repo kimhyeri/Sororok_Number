@@ -17,8 +17,18 @@ class SettingViewController: UIViewController , UITableViewDataSource, UITableVi
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        var image = UIImage(named: "btnCommBackWh")
+        image = image?.withRenderingMode(.alwaysOriginal)
+        self.navigationController?.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: nil, action: nil)
+    
         let height = 20 + (self.navigationController?.navigationBar.frame.height)!
         naviView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: height)
+    }
+    
+    @objc func goBack() {
+        print("go")
+        self.navigationController?.dismiss(animated: true, completion: nil)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -18,6 +18,7 @@ class ManagerGroupViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        initNavigation()
         changeCodeView.clipsToBounds = true
         changeCodeView.layer.cornerRadius = 3
         changeCodeView.clipsToBounds = true
@@ -53,6 +54,17 @@ extension ManagerGroupViewController : UITableViewDelegate, UITableViewDataSourc
             let vc = storyboard.instantiateViewController(withIdentifier: "ChangeManager")
             self.navigationController?.pushViewController(vc, animated: true)
         }
+    }
+    
+    func initNavigation(){
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.tintColor = UIColor.blue
+        navigationController?.navigationBar.isTranslucent = true
+        UIApplication.shared.statusBarStyle = .default
+        var image = UIImage(named: "btnCommBackWh")
+        image = image?.withRenderingMode(.alwaysOriginal)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style:.plain, target: nil, action: nil)
     }
 }
 
