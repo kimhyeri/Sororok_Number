@@ -49,5 +49,16 @@ class SettingViewController: UIViewController , UITableViewDataSource, UITableVi
         }
 
     }
+    
+    //업데이트 서버 연결
+    @IBAction func updateButtonPressed(_ sender: Any) {
+        print("update")
+    }
+    
+    //노티 서버 연결
+    @IBAction func notiButtonPressed(_ sender: Any) {
+        print("noti")
+    }
+    
 }
 

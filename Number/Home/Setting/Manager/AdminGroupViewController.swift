@@ -17,8 +17,16 @@ class AdminGroupViewController: UIViewController , UITableViewDataSource, UITabl
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName:"DetailHomeTableViewCell",bundle: nil), forCellReuseIdentifier: "DetailHomeTableViewCell")
+        let saveButton = UIBarButtonItem(title: "저장",  style: .plain, target: self, action: #selector(self.saveButton))
+        
+
+        self.navigationItem.rightBarButtonItem = saveButton
     }
 
+    @objc func saveButton(){
+        print("saved")
+    }
+    
     @IBAction func outButtonPressed(_ sender: Any) {
     
     }

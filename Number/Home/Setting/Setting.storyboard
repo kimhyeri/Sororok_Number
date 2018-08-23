@@ -64,6 +64,9 @@
                                                     <rect key="frame" x="336" y="11" width="26" height="28"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" image="btnCommRefreshBk"/>
+                                                    <connections>
+                                                        <action selector="updateButtonPressed:" destination="Kux-5Q-tLB" eventType="touchUpInside" id="5xh-TQ-gEQ"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -93,6 +96,9 @@
                                                     <rect key="frame" x="313" y="11" width="49" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="onTintColor" red="0.20392156859999999" green="0.2274509804" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <connections>
+                                                        <action selector="notiButtonPressed:" destination="Kux-5Q-tLB" eventType="valueChanged" id="R7o-cc-giz"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                         </tableViewCellContentView>

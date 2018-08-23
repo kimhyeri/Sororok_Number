@@ -18,6 +18,10 @@ class ManagerGroupViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "btnCommBackBl")
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "btnCommBackBl")
+        
         self.navigationController?.navigationBar.topItem?.title = ""
         changeCodeView.clipsToBounds = true
         changeCodeView.layer.cornerRadius = 3
@@ -28,20 +32,6 @@ class ManagerGroupViewController: UIViewController{
     
     @IBAction func changeCodeButtonPressed(_ sender: Any) {
         codeLabel.text = "FQWQ14"
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        self.navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = nil
     }
 }
 

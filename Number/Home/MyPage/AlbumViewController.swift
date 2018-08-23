@@ -21,10 +21,12 @@ import Photos
         super.viewDidLoad()
         collecionView.dataSource = self
         collecionView.delegate = self
-        let navView = UIView()
-        navView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height:             (self.navigationController?.navigationBar.frame.height)! + 20)
-        navView.backgroundColor = UIColor.init(hex: "343ACF")
-        view.addSubview(navView)
+        self.title = "전체보기"
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+//        let navView = UIView()
+//        navView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height:             (self.navigationController?.navigationBar.frame.height)! + 20)
+//        navView.backgroundColor = UIColor.init(hex: "343ACF")
+//        view.addSubview(navView)
         
         let photoAuthorizationSatus = PHPhotoLibrary.authorizationStatus()
         
@@ -76,8 +78,7 @@ import Photos
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.cellIdentifier, for: indexPath) as! AlbumUICollectionViewCell
         
         if indexPath.row == 0 {
-            //이미지 추가 ㄴ
-            cell.imageView?.image = UIImage(named: "")
+            cell.imageView?.image = UIImage(named:"") 
             let size = (view.frame.width - 10) / 5
 
             cell.imageView?.frame = CGRect(x: 0, y: 0, width: size, height: size)
@@ -103,9 +104,11 @@ import Photos
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //사진 선택했을때 전송하기
-        self.dismiss(animated: true, completion: nil)
-        print(self.fetchAlbum[indexPath.row - 1])
+        if indexPath.row == 0 {
+            print(indexPath.row)
+        }else {
+            print(indexPath.row)
+        }
         
     }
 }
