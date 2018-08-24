@@ -29,31 +29,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    
-    @available(iOS 9.0, *)
-    
-    func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
-        
-        //카카오면
-        if KOSession.isKakaoAccountLoginCallback(url) {
-            return KOSession.handleOpen(url)
-        }//구글이면
-        else{
-            return GIDSignIn.sharedInstance().handle(url as URL?,
-                                                     sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
-                                                     annotation: options[UIApplicationOpenURLOptionsKey.annotation])
-        }
-        
-    }
-    
-    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        
-        if KOSession.isKakaoAccountLoginCallback(url) {
-            return KOSession.handleOpen(url)
-        }
+    func application(application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        // Initialize sign-in
+        var configureError: NSError?
+//        GGLContext.sharedInstance().configureWithError(&configureError)
+        assert(configureError == nil, "Error configuring Google services: \(configureError)")
+        GIDSignIn.sharedInstance().delegate = self
         return true
     }
-    
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -93,17 +77,13 @@ extension AppDelegate :  GIDSignInDelegate{
             let givenName = user.profile.givenName
             let familyName = user.profile.familyName
             let email = user.profile.email
-            // ...
+            print("Sign-in Success \(email)")
+            
+    
         }
     }
     
-    func application(application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        GIDSignIn.sharedInstance().clientID = "1060491275802-54qggq2k068n6tjqrdus81a0s5bm3k88.apps.googleusercontent.com"
-        GIDSignIn.sharedInstance().delegate = self
-        
-        return true
-    }
+
     
 //    func application(application: UIApplication,
 //                     openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
@@ -113,6 +93,36 @@ extension AppDelegate :  GIDSignInDelegate{
 //                                                    sourceApplication: sourceApplication,
 //                                                    annotation: annotation)
 //    }
+    
+}
+
+//MARK: KAKAO
+extension AppDelegate {
+    
+    @available(iOS 9.0, *)
+    
+    func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
+        
+        //카카오면
+        if KOSession.isKakaoAccountLoginCallback(url) {
+            return KOSession.handleOpen(url)
+        }//구글이면
+        else{
+            return GIDSignIn.sharedInstance().handle(url as URL?,sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+        }
+        
+    }
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        
+        if KOSession.isKakaoAccountLoginCallback(url) {
+            return KOSession.handleOpen(url)
+        }
+        let googleSession = GIDSignIn.sharedInstance().handle(url,sourceApplication: sourceApplication, annotation: annotation)
+        return googleSession
+    }
+    
+
     
 }
 

@@ -41,17 +41,17 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
     
     @IBAction func googleButtonPressed(_ sender: Any) {
         
-        let parameters : Parameters = [
-            "type": "0",
-            "uid": UserInfo.getUid(),
-        ]
-        
-        APICollection.sharedAPI.RegisteredCheck(parameters: parameters, completion: { result -> (Void) in
-            let storybaord = UIStoryboard.init(name: "CodeNum", bundle: nil)
-            let vc = storybaord.instantiateViewController(withIdentifier: "ST")
-            self.present(vc, animated: true, completion: nil)
-            
-        })
+//        let parameters : Parameters = [
+//            "type": "0",
+//            "uid": UserInfo.getUid(),
+//        ]
+//
+//        APICollection.sharedAPI.registeredCheck(parameters: parameters, completion: { result -> (Void) in
+//            let storybaord = UIStoryboard.init(name: "CodeNum", bundle: nil)
+//            let vc = storybaord.instantiateViewController(withIdentifier: "ST")
+//            self.present(vc, animated: true, completion: nil)
+//
+//        })
     }
     
     @IBAction func kakaoButtonPressed(_ sender: Any) {
@@ -63,25 +63,30 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
         
         session.presentingViewController = self
         session.open(completionHandler: {(error) -> Void in
-            
+            print("hello")
             if error != nil {
                 print(error?.localizedDescription ?? "")
             }else if session.isOpen() {
+                print("카카오 로그인 성공")
+
                 KOSessionTask.meTask(completionHandler: {(profile, error) -> Void in
                     
                     if profile != nil {
                         DispatchQueue.main.async(execute: { () -> Void in
                             let kakao : KOUser = profile as! KOUser
+                            print(String(describing: kakao.id))
                             guard (self.getAppDelegate()) != nil else{
                                 return
                             }
                             
                             if let value = kakao.properties?["nickname"] as? String{
-                                print(value)
+                                print("nicknam = \(value)")
                             }
-                            
+                            if let value = kakao.properties?["profile_image"] as? String {
+                                print("profile image = \(value)")
+                            }
                             if let value = kakao.email{
-                                print("kakao email : \(value)\r\n")
+                                print("kakao email : \(value)")
                             }
                             let appDelegate = self.getAppDelegate()
                             
@@ -89,7 +94,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
                     }
                 })
             } else {
-                print("isNotOpen")
+                print("not open")
             }
         })
     }
