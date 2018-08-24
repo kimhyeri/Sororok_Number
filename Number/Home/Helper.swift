@@ -25,3 +25,9 @@ extension UIViewController {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
     }
 }
+
+enum typeCase : String {
+    case google = "0"
+    case kakao = "1"
+    case naver = "2"
+}

@@ -91,8 +91,9 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
                             let st = UIStoryboard.init(name: "Login", bundle: nil)
                             let nv = st.instantiateViewController(withIdentifier: "Login") as! LoginViewController
                             nv.param = ["nickname" : kakao.properties?["nickname"],
-                                        "profile": kakao.properties?["profile_image"]]
-                            self.present(nv, animated: true, completion: nil)
+                                        "profile": kakao.properties?["profile_image"],
+                                        "type": typeCase.kakao.hashValue]
+                            self.present(nv, animated: false, completion: nil)
                             let appDelegate = self.getAppDelegate()
 
                         })
