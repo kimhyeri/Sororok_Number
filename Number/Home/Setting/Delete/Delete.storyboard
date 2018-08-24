@@ -38,7 +38,7 @@
                                         <rect key="frame" x="177" y="244" width="150" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" image="btnLogoutAccount"/>
+                                        <state key="normal" image="btnCancleLogout"/>
                                         <connections>
                                             <action selector="logoutButton:" destination="hT3-2t-ROs" eventType="touchUpInside" id="gTt-pd-C1m"/>
                                         </connections>
@@ -85,7 +85,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="btnCancleLogout" width="150" height="50"/>
         <image name="btnDeleteAccount" width="150" height="50"/>
-        <image name="btnLogoutAccount" width="150" height="50"/>
     </resources>
 </document>

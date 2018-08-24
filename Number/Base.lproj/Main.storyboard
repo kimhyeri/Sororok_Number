@@ -47,7 +47,6 @@
                                         </state>
                                         <connections>
                                             <action selector="googleButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LRb-ZP-J8g"/>
-                                            <segue destination="oM8-a9-Bzs" kind="show" id="tUS-5m-wKW"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z38-sJ-EO3">
@@ -114,6 +113,9 @@
                                                 </fragment>
                                             </attributedString>
                                         </state>
+                                        <connections>
+                                            <segue destination="oM8-a9-Bzs" kind="show" id="mBU-oT-1AQ"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="이미 회원이신가요?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Il-BB-Qep">
                                         <rect key="frame" x="99" y="0.0" width="108" height="17"/>

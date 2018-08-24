@@ -20,7 +20,6 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         GIDSignIn.sharedInstance().uiDelegate = self
-
         changeView()
     }
     
@@ -42,6 +41,17 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
     
     @IBAction func googleButtonPressed(_ sender: Any) {
         
+        let parameters : Parameters = [
+            "type": "0",
+            "uid": UserInfo.getUid(),
+        ]
+        
+        APICollection.sharedAPI.RegisteredCheck(parameters: parameters, completion: { result -> (Void) in
+            let storybaord = UIStoryboard.init(name: "CodeNum", bundle: nil)
+            let vc = storybaord.instantiateViewController(withIdentifier: "ST")
+            self.present(vc, animated: true, completion: nil)
+            
+        })
     }
     
     @IBAction func kakaoButtonPressed(_ sender: Any) {

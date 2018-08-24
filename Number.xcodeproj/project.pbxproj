@@ -21,6 +21,8 @@
 		353EC8CC210AF0F1004081D1 /* AddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353EC8CB210AF0F1004081D1 /* AddressViewController.swift */; };
 		35444631212D69180075116C /* Progress.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35444630212D69180075116C /* Progress.storyboard */; };
 		35444633212D69210075116C /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35444632212D69210075116C /* ProgressViewController.swift */; };
+		354E6CE721307D3C00C6C526 /* GetUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354E6CE621307D3C00C6C526 /* GetUserInfo.swift */; };
+		354E6CE9213080CB00C6C526 /* APICollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354E6CE8213080CB00C6C526 /* APICollection.swift */; };
 		354EA790210C665600D16A80 /* GroupCreate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 354EA78F210C665600D16A80 /* GroupCreate.storyboard */; };
 		354EA792210C6A2500D16A80 /* GroupCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354EA791210C6A2500D16A80 /* GroupCreateViewController.swift */; };
 		354EA795210C877300D16A80 /* SideMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354EA794210C877300D16A80 /* SideMenuTableViewController.swift */; };
@@ -78,6 +80,8 @@
 		353EC8CB210AF0F1004081D1 /* AddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressViewController.swift; sourceTree = "<group>"; };
 		35444630212D69180075116C /* Progress.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Progress.storyboard; sourceTree = "<group>"; };
 		35444632212D69210075116C /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
+		354E6CE621307D3C00C6C526 /* GetUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserInfo.swift; sourceTree = "<group>"; };
+		354E6CE8213080CB00C6C526 /* APICollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICollection.swift; sourceTree = "<group>"; };
 		354EA78F210C665600D16A80 /* GroupCreate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GroupCreate.storyboard; sourceTree = "<group>"; };
 		354EA791210C6A2500D16A80 /* GroupCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateViewController.swift; sourceTree = "<group>"; };
 		354EA794210C877300D16A80 /* SideMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewController.swift; sourceTree = "<group>"; };
@@ -284,6 +288,7 @@
 				355BB7562129E766009A7837 /* Assets.xcassets */,
 				35ECDEF82103B1BA00308080 /* LaunchScreen.storyboard */,
 				35ECDEFB2103B1BA00308080 /* Info.plist */,
+				354E6CE8213080CB00C6C526 /* APICollection.swift */,
 			);
 			path = Number;
 			sourceTree = "<group>";
@@ -294,6 +299,7 @@
 				351AB63F2105F4520017D41A /* Model */,
 				351AB63E2105F43E0017D41A /* Controller */,
 				351AB63C2105F42B0017D41A /* View */,
+				354E6CE621307D3C00C6C526 /* GetUserInfo.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -530,10 +536,12 @@
 				3556196521071C01009CC356 /* DetailHomeTableViewController.swift in Sources */,
 				35572C27212C342500A919C7 /* SettingViewController.swift in Sources */,
 				354EA79D210C9BD300D16A80 /* ManagerViewController.swift in Sources */,
+				354E6CE721307D3C00C6C526 /* GetUserInfo.swift in Sources */,
 				35325D50212F52B000AC3897 /* DeleteGroupViewController.swift in Sources */,
 				35572C1F212BF1F000A919C7 /* ManagerCellTableViewCell.swift in Sources */,
 				354EA792210C6A2500D16A80 /* GroupCreateViewController.swift in Sources */,
 				35ECDEF22103B1B700308080 /* ViewController.swift in Sources */,
+				354E6CE9213080CB00C6C526 /* APICollection.swift in Sources */,
 				35ECDEF02103B1B700308080 /* AppDelegate.swift in Sources */,
 				354EA79A210C900900D16A80 /* DeleteViewController.swift in Sources */,
 				351AB63B2105C16E0017D41A /* MyPageViewController.swift in Sources */,
