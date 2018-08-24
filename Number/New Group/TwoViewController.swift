@@ -11,6 +11,7 @@ import SideMenu
 
 class TwoViewController: UIViewController {
     
+    @IBOutlet weak var insideView: UIView!
     @IBOutlet weak var floatingView: UIView!
     @IBOutlet weak var imageButton: UIButton!
     @IBOutlet weak var imageSecondView: UIImageView!
@@ -28,6 +29,8 @@ class TwoViewController: UIViewController {
     var movedView = false
     var tableSize : CGFloat = 0
     var defaultSize : [CGRect] = []
+    var defaultButton = 0
+    var defaultLabel = 0
     
     @IBAction func pressedSosik(_ sender: Any) {
         let nv = self.storyboard?.instantiateViewController(withIdentifier: "LeftMenuNavigationController")
@@ -52,11 +55,11 @@ class TwoViewController: UIViewController {
         defaultSize.append(imageButton.frame)
         defaultSize.append(nameLabel.frame)
         defaultSize.append(nameShadow.frame)
+        defaultButton = Int(self.imageButton.frame.origin.y)
+        defaultLabel = Int(self.nameLabel.frame.origin.y)
         
         self.navigationController!.navigationBar.topItem!.title = ""
         floatingView.layer.cornerRadius = floatingView.frame.width/2
-        //        topView.frame = CGRect(x: 0, y: -65 , width: self.view.frame.width, height: 65)
-        //        tableSize = tableView.frame.height
         navigationBarHeight = navigationBarHeight + (self.navigationController?.navigationBar.frame.height)!
         imageSecondView.layer.cornerRadius = self.imageSecondView.frame.size.width / 2
         nothingLabel1.alpha = 0
@@ -92,45 +95,35 @@ extension TwoViewController : UIScrollViewDelegate {
         if movedView == false{
             searchView.frame = CGRect(x: 0, y: self.firstView.frame.height , width: self.view.frame.width, height: 38)
             tableView.frame = CGRect(x: 0, y: self.firstView.frame.height + self.searchView.frame.height, width: self.view.frame.width, height: self.view.frame.height - (firstView.frame.height + searchView.frame.height))
-            
-            //            imageButton.frame = CGRect(x:self.imageButton.frame.minX, y: self.imageButton.frame.minY - 3 , width: self.imageButton.frame.width , height: imageButton.frame.height )
-            //            nameLabel.frame = CGRect(x:self.nameLabel.frame.minX, y: self.nameLabel.frame.minY  - 3, width: self.nameLabel.frame.width , height: nameLabel.frame.height )
-            //            nameShadow.frame = CGRect(x:self.nameShadow.frame.minX, y: self.nameShadow.frame.minY  - 3, width: self.nameShadow.frame.width , height: nameShadow.frame.height )
-            print(imageButton.frame)
-            print(firstView.frame)
-            
-            topView.alpha = topView.alpha + (tableView.contentOffset.y * 0.001)
-            imageButton.alpha = imageButton.alpha - (tableView.contentOffset.y * 0.001)
-            nameLabel.alpha = nameLabel.alpha - (tableView.contentOffset.y * 0.001)
-            nameShadow.alpha = nameLabel.alpha - (tableView.contentOffset.y * 0.001)
         }
     }
     
-    
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        self.lastContentOffset = scrollView.contentOffset.y
+    }
+ 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         scrollView.decelerationRate = UIScrollViewDecelerationRateFast
         let y = 227 - scrollView.contentOffset.y
         let h = max(65, y)
-        print(h)
         let rect = CGRect(x: 0, y: 0, width: view.bounds.width, height: h)
         firstView.frame = rect
         
-        changeView()
+        let x = 65 + -scrollView.contentOffset.y
+        let a = min(x, 90)
+        let rect1 = CGRect(x: 10, y: a, width: 355, height: 146)
+        insideView.frame = rect1
         
-        if h < 130 {
+        changeView()
+        if (h < 130) {
             let rect2 = CGRect(x: 0, y: 65 - h , width: view.bounds.width, height: 65)
             topView.frame = rect2
         }
         
-        if h == 227 {
-            imageButton.frame = defaultSize[0]
-            nameLabel.frame = defaultSize[1]
-            nameShadow.frame = defaultSize[2]
-            imageButton.alpha = 1
-            nameLabel.alpha = 1
-            nameShadow.alpha = 1
+        if (self.lastContentOffset < scrollView.contentOffset.y) {
+            insideView.alpha = 1 - ( tableView.contentOffset.y * 0.01)
+            print(insideView.alpha)
         }
-        
     }
 }
 
@@ -139,7 +132,7 @@ extension TwoViewController : UIScrollViewDelegate {
 extension TwoViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -185,7 +178,6 @@ extension TwoViewController {
             let storyboard = UIStoryboard.init(name: "DetailHome", bundle: nil)
             let nv = storyboard.instantiateViewController(withIdentifier: "NV") as! ContactNaviViewController
             self.present(nv, animated: true, completion: nil)
-            //            self.navigationController?.pushViewController(nv, animated: true)
         }
         
         alert.addAction(noAlert)
@@ -200,15 +192,6 @@ extension TwoViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
         UIApplication.shared.statusBarStyle = .default
-        
-        //        let myPageImage = UIImage(named: "mypage")?.withRenderingMode(.alwaysOriginal)
-        //        let rightBarButtonItem = UIBarButtonItem(image: myPageImage, style: .plain, target: self, action: nil)
-        //        self.navigationItem.rightBarButtonItem = rightBarButtonItem
-        //
-        //        let categoryImage = UIImage(named: "categoryButton")?.withRenderingMode(.alwaysOriginal)
-        //        let leftBarButtonItem = UIBarButtonItem(image: categoryImage, style: .plain, target: self, action: nil)
-        //        self.navigationItem.leftBarButtonItem = leftBarButtonItem
-        
     }
 }
 
