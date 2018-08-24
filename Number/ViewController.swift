@@ -88,8 +88,13 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
                             if let value = kakao.email{
                                 print("kakao email : \(value)")
                             }
+                            let st = UIStoryboard.init(name: "Login", bundle: nil)
+                            let nv = st.instantiateViewController(withIdentifier: "Login") as! LoginViewController
+                            nv.param = ["nickname" : kakao.properties?["nickname"],
+                                        "profile": kakao.properties?["profile_image"]]
+                            self.present(nv, animated: true, completion: nil)
                             let appDelegate = self.getAppDelegate()
-                            
+
                         })
                     }
                 })

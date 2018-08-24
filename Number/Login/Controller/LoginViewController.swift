@@ -16,11 +16,13 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailText: UITextField!
     
  
+    var param : [String:Any] = [:]
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
         getDelegate()
         defaultPage()
+        print(param)
     }
 }
 
@@ -54,8 +56,18 @@ extension LoginViewController {
     }
     
     func defaultPage() {
-        
+        let dic = param.map{ $1 }
+        do {
+            let a = dic[1] as! String
+            let url = URL(string: a)
+            let data = try Data(contentsOf: url!)
+            self.imgProfile.image = UIImage(data: data)
+        }
+        catch{
+            print(error)
+        }
         self.imgProfile.layer.cornerRadius = imgProfile.frame.width/2
+        self.nameText.text = (dic[0]) as! String
     }
     
     func getDelegate(){
