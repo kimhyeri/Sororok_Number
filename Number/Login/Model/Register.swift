@@ -20,11 +20,11 @@ struct Param {
     init() {
         phone = ""
         name = ""
-        email: ""
-        loginType: ""
-        loginUid: ""
-        memberImage:""
-        imageUrl: ""
+        email = ""
+        loginType = ""
+        loginUid = ""
+        memberImage = ""
+        imageUrl = ""
     }
     
 }

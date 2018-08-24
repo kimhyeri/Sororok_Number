@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import StoreKit
 
 class SettingViewController: UIViewController , UITableViewDataSource, UITableViewDelegate{
 
@@ -34,14 +35,19 @@ class SettingViewController: UIViewController , UITableViewDataSource, UITableVi
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
-        case 2:
+        case 1:
             let popUp = UIStoryboard(name: "Delete", bundle: nil).instantiateViewController(withIdentifier: "popUp") as! DeleteViewController
             popUp.modalPresentationStyle = .overCurrentContext
             self.present(popUp, animated: false, completion: nil)
-        case 3:
+        case 2:
             let popUp = UIStoryboard(name: "Logout", bundle: nil).instantiateViewController(withIdentifier: "Logout") as! LogoutViewController
             popUp.modalPresentationStyle = .overCurrentContext
             self.present(popUp, animated: false, completion: nil)
+        case 3:
+            SKStoreReviewController.requestReview()
+
+//            let vc = self.storyboard?.instantiateViewController(withIdentifier: "Review") as! ReviewViewController
+//            self.present(vc, animated: true, completion: nil)
         case 4:
             print("개발자에게 문의")
         default:
@@ -50,15 +56,6 @@ class SettingViewController: UIViewController , UITableViewDataSource, UITableVi
 
     }
     
-    //업데이트 서버 연결
-    @IBAction func updateButtonPressed(_ sender: Any) {
-        print("update")
-    }
-    
-    //노티 서버 연결
-    @IBAction func notiButtonPressed(_ sender: Any) {
-        print("noti")
-    }
-    
+
 }
 

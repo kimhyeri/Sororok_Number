@@ -24,6 +24,7 @@
 		354E6CE721307D3C00C6C526 /* GetUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354E6CE621307D3C00C6C526 /* GetUserInfo.swift */; };
 		354E6CE9213080CB00C6C526 /* APICollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354E6CE8213080CB00C6C526 /* APICollection.swift */; };
 		354E6CEB2130BD0700C6C526 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354E6CEA2130BD0700C6C526 /* Register.swift */; };
+		354E6CED2130BFE700C6C526 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354E6CEC2130BFE600C6C526 /* ReviewViewController.swift */; };
 		354EA790210C665600D16A80 /* GroupCreate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 354EA78F210C665600D16A80 /* GroupCreate.storyboard */; };
 		354EA792210C6A2500D16A80 /* GroupCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354EA791210C6A2500D16A80 /* GroupCreateViewController.swift */; };
 		354EA795210C877300D16A80 /* SideMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354EA794210C877300D16A80 /* SideMenuTableViewController.swift */; };
@@ -84,6 +85,7 @@
 		354E6CE621307D3C00C6C526 /* GetUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserInfo.swift; sourceTree = "<group>"; };
 		354E6CE8213080CB00C6C526 /* APICollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICollection.swift; sourceTree = "<group>"; };
 		354E6CEA2130BD0700C6C526 /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
+		354E6CEC2130BFE600C6C526 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		354EA78F210C665600D16A80 /* GroupCreate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GroupCreate.storyboard; sourceTree = "<group>"; };
 		354EA791210C6A2500D16A80 /* GroupCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateViewController.swift; sourceTree = "<group>"; };
 		354EA794210C877300D16A80 /* SideMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewController.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				354EA79B210C9BC200D16A80 /* Manager */,
 				354EA796210C8FEC00D16A80 /* Delete */,
 				355F0A722108E96C00715E3F /* Setting.storyboard */,
+				354E6CEC2130BFE600C6C526 /* ReviewViewController.swift */,
 				35572C26212C342500A919C7 /* SettingViewController.swift */,
 				355BB7522129E625009A7837 /* LogoutViewController.swift */,
 				355BB7542129E63C009A7837 /* Logout.storyboard */,
@@ -518,6 +521,7 @@
 			files = (
 				35572C1D212BEF7000A919C7 /* ManagerGroupViewController.swift in Sources */,
 				35572C24212C06BB00A919C7 /* NotSearchTableViewCell.swift in Sources */,
+				354E6CED2130BFE700C6C526 /* ReviewViewController.swift in Sources */,
 				35572C21212C030800A919C7 /* AdminGroupViewController.swift in Sources */,
 				35444633212D69210075116C /* ProgressViewController.swift in Sources */,
 				353EC8C4210A2BBF004081D1 /* AlbumViewController.swift in Sources */,
