@@ -12,12 +12,14 @@ import SwiftyJSON
 
 class LoginViewController: UIViewController {
     
+    @IBOutlet weak var textView: UIView!
     @IBOutlet weak var imgProfile: UIImageView!
     @IBOutlet weak var nameText: UITextField!
     @IBOutlet weak var numberText: UITextField!
     @IBOutlet weak var emailText: UITextField!
     
-    
+    var defaultFrame : CGRect?
+
     var param : [String:Any] = [:]
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +77,11 @@ extension LoginViewController {
     }
     
     func defaultPage() {
+        defaultFrame = textView.frame
+        emailText.delegate = self
+        numberText.delegate = self
+        nameText.delegate = self
+        
         let dic = param.map{ $1 }
         do {
             let a = param["profile"] as! String
@@ -102,5 +109,14 @@ extension LoginViewController : UITextFieldDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
+        textView.frame = defaultFrame!
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        viewUp()
+    }
+    
+    func viewUp() {
+        textView.frame = CGRect(x: 0, y: 65, width: self.view.frame.width, height: textView.frame.height)
     }
 }

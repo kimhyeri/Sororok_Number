@@ -31,11 +31,12 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     
     var array:[String:String] = ["가혜리":"010-1234-1234", "박혜리":"010-1234-1234","정혜리":"010-1234-1234","미혜리":"010-1234-1234","어혜리":"010-1234-1234","푸혜리":"010-1234-1234", "타혜리":"010-1234-1234" ,"Kim":"010-123-1123","park":"010-123-1123","dim":"010-123-1123","fim":"010-123-1123"]
     
-    var array1:[String:String] = ["a가혜리":"010-1234-1234", "a박혜리":"010-1234-4234","a정혜리":"010-1034-1234","a미혜리":"010-1234-1234","a어혜리":"010-1134-1234","a푸혜리":"010-1241-1234", "타혜리":"010-1234-1234" ,"aKim":"010-1243-1123","apark":"110-123-1123","adim":"010-1623-1123","afim":"010-1283-1123"]
+    var array1:[String:String] = ["a가혜리":"010-1234-1234", "a박혜리":"010-1234-4234", "a정혜리":"010-1034-1234","a미혜리":"010-1234-1234","a어혜리":"010-1134-1234","a푸혜리":"010-1241-1234", "타혜리":"010-1234-1234" ,"aKim":"010-1243-1123","apark":"110-123-1123","adim":"010-1623-1123","afim":"010-1283-1123"]
     var selectedArray : [String:String] = [:]
     
     override func viewWillAppear(_ animated: Bool) {
         totalLabel.text = "총 \(array1.count)명"
+        
         let dac = array.map { return $0.key }
         for j in 0..<dac.count{
             let name = dac[j]

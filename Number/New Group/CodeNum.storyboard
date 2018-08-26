@@ -88,7 +88,13 @@
                             <outlet property="delegate" destination="tiK-87-Oxg" id="IuI-3W-YIs"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="소식" id="uv0-Zy-QAU"/>
+                    <navigationItem key="navigationItem" title="소식" id="uv0-Zy-QAU">
+                        <barButtonItem key="rightBarButtonItem" image="icnNotiClose" id="OEh-Sw-vko">
+                            <connections>
+                                <action selector="exitButtonPressed:" destination="tiK-87-Oxg" id="ar4-tK-Cbd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dhQ-uJ-Ll0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -323,6 +329,7 @@
     </scenes>
     <resources>
         <image name="btnFloating" width="24" height="24"/>
+        <image name="icnNotiClose" width="32" height="32"/>
         <image name="icnNotiNotice" width="40" height="40"/>
         <image name="man0152" width="52" height="52"/>
         <image name="noti" width="24" height="24"/>
