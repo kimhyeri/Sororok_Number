@@ -42,7 +42,9 @@ class GroupCreateViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
 
-    @IBAction func clipButtonPressed(_ sender: Any) {
+    @IBAction func clipButtonPressed(_ sender: UIButton) {
+        copyToClipBoard(textToCopy: (groupCode.titleLabel?.text)!)
+
         let alert = UIAlertController(title: nil, message: "그룹 코드번호가 클립보드에 복사되었습니다.", preferredStyle: .alert)
         let OKAlert = UIAlertAction(title: "OK", style: UIAlertActionStyle.default){
             (result: UIAlertAction) in
@@ -51,6 +53,7 @@ class GroupCreateViewController: UIViewController {
     
         alert.addAction(OKAlert)
         present(alert,animated: true, completion: nil)
+    
     }
     
     @IBAction func AlbumPressed(_ sender: Any) {
@@ -62,5 +65,9 @@ class GroupCreateViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
     }
-    
+ 
+    func copyToClipBoard(textToCopy: String) {
+        UIPasteboard.general.string = textToCopy
+        
+    }
 }
