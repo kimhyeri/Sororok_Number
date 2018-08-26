@@ -8,8 +8,9 @@
 
 import UIKit
 import StoreKit
+import MessageUI
 
-class SettingViewController: UIViewController , UITableViewDataSource, UITableViewDelegate{
+class SettingViewController: UIViewController , UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate{
 
     @IBOutlet weak var naviView: UIView!
     @IBOutlet weak var tableView: UITableView!
@@ -53,11 +54,13 @@ class SettingViewController: UIViewController , UITableViewDataSource, UITableVi
             self.present(popUp, animated: false, completion: nil)
         case 3:
             SKStoreReviewController.requestReview()
-
-//            let vc = self.storyboard?.instantiateViewController(withIdentifier: "Review") as! ReviewViewController
-//            self.present(vc, animated: true, completion: nil)
         case 4:
             print("개발자에게 문의")
+            let message : MFMailComposeViewController = MFMailComposeViewController()
+            message.mailComposeDelegate = self
+            message.setToRecipients(["hyer1k@naver.com"])
+            message.setSubject("소로록 문의")
+            self.present(message, animated: true, completion: nil)
         default:
             return
         }
@@ -68,5 +71,12 @@ class SettingViewController: UIViewController , UITableViewDataSource, UITableVi
         return UITableViewAutomaticDimension
     }
 
+}
+
+//MARK: Email
+extension SettingViewController {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
 

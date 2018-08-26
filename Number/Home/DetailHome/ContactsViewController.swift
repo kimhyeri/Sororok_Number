@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Contacts
 
 extension Dictionary{
     mutating func changeKey(from: Key, to: Key){
@@ -26,10 +27,12 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     
     var checkState = false
     var index = DefualtIndex()
+    let contact = CNMutableContact()
     
     var array:[String:String] = ["가혜리":"010-1234-1234", "박혜리":"010-1234-1234","정혜리":"010-1234-1234","미혜리":"010-1234-1234","어혜리":"010-1234-1234","푸혜리":"010-1234-1234", "타혜리":"010-1234-1234" ,"Kim":"010-123-1123","park":"010-123-1123","dim":"010-123-1123","fim":"010-123-1123"]
     
-    var array1:[String:String] = ["가혜리":"010-1234-1234", "박혜리":"010-1234-1234","정혜리":"010-1234-1234","미혜리":"010-1234-1234","어혜리":"010-1134-1234","푸혜리":"010-1234-1234", "타혜리":"010-1234-1234" ,"Kim":"010-1243-1123","park":"110-123-1123","dim":"010-1623-1123","fim":"010-1283-1123"]
+    var array1:[String:String] = ["a가혜리":"010-1234-1234", "a박혜리":"010-1234-4234","a정혜리":"010-1034-1234","a미혜리":"010-1234-1234","a어혜리":"010-1134-1234","a푸혜리":"010-1241-1234", "타혜리":"010-1234-1234" ,"aKim":"010-1243-1123","apark":"110-123-1123","adim":"010-1623-1123","afim":"010-1283-1123"]
+    var selectedArray : [String:String] = [:]
     
     override func viewWillAppear(_ animated: Bool) {
         totalLabel.text = "총 \(array1.count)명"
@@ -120,7 +123,6 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
         let predicate = NSPredicate(format: "SELF beginswith[c] %@", index.arrIndexSection.object(at: section) as! CVarArg)
         let dic = array1.map { return $0.key }
         let arrContacts = (dic as NSArray).filtered(using: predicate) as NSArray
-        print(arrContacts)
         return arrContacts.count
         
     }
@@ -167,6 +169,7 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     }
     
     @IBAction func saveButtonPressed(_ sender: Any) {
+        sort()
         let storyboard = UIStoryboard.init(name: "Progress", bundle: nil)
         let nv = storyboard.instantiateViewController(withIdentifier: "Progress") as! ProgressViewController
         self.present(nv, animated: true, completion: nil)
@@ -214,4 +217,31 @@ extension ContactsViewController {
         return index.arrIndexSection.object(at: section) as? String
     }
     
+    
+    
+}
+
+extension ContactsViewController{
+    
+    func sort() {
+        let name = array1.map { return $0.key }
+        let number = array1.map { return $0.value }
+        for i in 0..<array1.count {
+            contact.givenName = name[i]
+            //contact.familyName = "성"
+            
+            contact.phoneNumbers = [CNLabeledValue(
+                    label:CNLabelPhoneNumberMain, value:CNPhoneNumber(stringValue: number[i]))]
+            
+            self.contactSave()
+        }
+
+    }
+    
+    func contactSave(){
+        let store = CNContactStore()
+        let saveRequest = CNSaveRequest()
+        saveRequest.add(contact, toContainerWithIdentifier:nil)
+        try! store.execute(saveRequest)
+    }
 }

@@ -43,6 +43,7 @@
 		35572C25212C06BB00A919C7 /* NotSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35572C23212C06BB00A919C7 /* NotSearchTableViewCell.xib */; };
 		35572C27212C342500A919C7 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35572C26212C342500A919C7 /* SettingViewController.swift */; };
 		355B6994213296730002FD80 /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = 355B6993213296720002FD80 /* credentials.plist */; };
+		355B69962132BDED0002FD80 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 355B69952132BDEC0002FD80 /* MessageUI.framework */; };
 		355BB75021297782009A7837 /* NothingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355BB74E21297782009A7837 /* NothingTableViewCell.swift */; };
 		355BB75121297782009A7837 /* NothingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 355BB74F21297782009A7837 /* NothingTableViewCell.xib */; };
 		355BB7532129E625009A7837 /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355BB7522129E625009A7837 /* LogoutViewController.swift */; };
@@ -104,6 +105,7 @@
 		35572C23212C06BB00A919C7 /* NotSearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotSearchTableViewCell.xib; sourceTree = "<group>"; };
 		35572C26212C342500A919C7 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		355B6993213296720002FD80 /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = credentials.plist; sourceTree = "<group>"; };
+		355B69952132BDEC0002FD80 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		355BB74E21297782009A7837 /* NothingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NothingTableViewCell.swift; path = Number/Home/DetailHome/NothingTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		355BB74F21297782009A7837 /* NothingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NothingTableViewCell.xib; path = Number/Home/DetailHome/NothingTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 		355BB7522129E625009A7837 /* LogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				355B69962132BDED0002FD80 /* MessageUI.framework in Frameworks */,
 				35ACD199212B52F80046B541 /* KakaoOpenSDK.framework in Frameworks */,
 				9A12B48230E7577C9E7159CA /* Pods_Number.framework in Frameworks */,
 			);
@@ -352,6 +355,7 @@
 		AA24B5033219F2AE898B2745 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				355B69952132BDEC0002FD80 /* MessageUI.framework */,
 				3598EBD6212AB21900906BF2 /* KakaoOpenSDK.framework */,
 				35ACD198212B52F80046B541 /* KakaoOpenSDK.framework */,
 				DDD04C5D158AE3D2E5D532A9 /* Pods_Number.framework */,

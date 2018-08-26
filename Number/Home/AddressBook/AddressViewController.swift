@@ -16,13 +16,9 @@ class AddressViewController: UIViewController {
     @IBAction func buttonPressed(_ sender: Any) {
         contact.givenName = "이름"
         contact.familyName = "성"
-//        contact.emailAddresses =
         
         contact.phoneNumbers = [CNLabeledValue(
-            //뭐로 저장시키지? 회의해봐야할듯
-//            label:CNLabelPhoneNumberiPhone,
-            label:CNLabelPhoneNumberMain,
-            value:CNPhoneNumber(stringValue:"010-1231-0126"))]
+            label:CNLabelPhoneNumberMain, value:CNPhoneNumber(stringValue:"010-1231-0126"))]
         
         self.contactSave()
     }
