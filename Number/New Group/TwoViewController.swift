@@ -14,7 +14,7 @@ class TwoViewController: UIViewController {
     @IBOutlet weak var insideView: UIView!
     @IBOutlet weak var floatingView: UIView!
     @IBOutlet weak var imageButton: UIButton!
-    @IBOutlet weak var imageSecondView: UIImageView!
+    @IBOutlet weak var imageSecondView: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nothingLabel1: UILabel!
     @IBOutlet weak var nothingLabel2: UILabel!
@@ -32,7 +32,7 @@ class TwoViewController: UIViewController {
     var defaultButton = 0
     var defaultLabel = 0
     
-    @IBAction func pressedSosik(_ sender: Any) {
+    @IBAction func pressedSosik(_ sender: Any) {        
         let nv = self.storyboard?.instantiateViewController(withIdentifier: "LeftMenuNavigationController")
         present(nv!, animated: true, completion: nil)
     }

@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -117,9 +118,9 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tic-Qd-Acg">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgGroupDelete" translatesAutoresizingMaskIntoConstraints="NO" id="tic-Qd-Acg">
                                 <rect key="frame" x="142" y="218.5" width="90" height="90"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="gQl-fC-T6c"/>
                                     <constraint firstAttribute="width" constant="90" id="h0b-mQ-vyj"/>
@@ -306,6 +307,11 @@
                                 <color key="textColor" red="0.16862745100000001" green="0.18039215689999999" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qGx-Qx-JwI">
+                                <rect key="frame" x="60" y="187" width="90" height="90"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.043137254899999998" green="0.050980392159999999" blue="0.058823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="UW2-yx-Crr"/>
@@ -314,6 +320,7 @@
                         <outlet property="becomeManagerView" destination="J53-i6-PXx" id="IHD-Ej-Eq1"/>
                         <outlet property="beforeManager" destination="Qhz-td-3g5" id="Kij-RG-Es4"/>
                         <outlet property="mentView" destination="N20-H1-CNn" id="0Yi-Xe-DAu"/>
+                        <outlet property="myImage" destination="qGx-Qx-JwI" id="kTT-k0-p4q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gCH-cx-EcQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -322,6 +329,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="imgGroupDelete" width="82" height="98"/>
         <image name="imgSettingEmptyAdmin" width="61" height="61"/>
         <image name="imgSettingGroupPoint" width="28" height="12"/>
         <image name="rectangle" width="48" height="24"/>

@@ -39,6 +39,10 @@ class SettingViewController: UIViewController , UITableViewDataSource, UITableVi
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
+        case 0:
+            let myPage = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "MyPage") as! MyPageViewController
+            self.navigationController?.pushViewController(myPage, animated: true)
+            
         case 1:
             let popUp = UIStoryboard(name: "Delete", bundle: nil).instantiateViewController(withIdentifier: "popUp") as! DeleteViewController
             popUp.modalPresentationStyle = .overCurrentContext

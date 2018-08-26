@@ -10,12 +10,15 @@ import UIKit
 
 class GroupCreateViewController: UIViewController {
 
+    @IBOutlet weak var groupInfoText: UITextField!
+    @IBOutlet weak var groupNameText: UITextField!
     @IBOutlet weak var groupCode: UIButton!
     @IBOutlet weak var groupImage: UIImageView!
     @IBOutlet weak var groupView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         defaultView()
     }
     
@@ -29,6 +32,9 @@ class GroupCreateViewController: UIViewController {
         groupImage.backgroundColor = .black
         groupImage.layer.cornerRadius = self.groupImage.frame.width/2
         groupView.layer.cornerRadius = 10
+        
+        groupInfoText.attributedPlaceholder = NSAttributedString(string: "그룹명을 적어주세요", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
+        groupNameText.attributedPlaceholder = NSAttributedString(string: "그룹설명을 적어주세요", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
     }
     
     @objc func saveButton(){

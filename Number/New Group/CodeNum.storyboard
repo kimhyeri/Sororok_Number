@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -211,11 +212,6 @@
                                 <rect key="frame" x="0.0" y="-65" width="375" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="chK-BJ-eEH">
-                                        <rect key="frame" x="22" y="25" width="32" height="32"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="치와와님" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ei-OK-JaP">
                                         <rect key="frame" x="60" y="28" width="182" height="26"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -223,6 +219,14 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qua-B4-AxD">
+                                        <rect key="frame" x="22" y="25" width="32" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.043137254899999998" green="0.050980392159999999" blue="0.058823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="profilePressed:" destination="HAS-xI-hnj" eventType="touchUpInside" id="eYv-fc-3Be"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -272,7 +276,7 @@
                         <outlet property="firstView" destination="UHI-GQ-NIg" id="s7U-hy-yF6"/>
                         <outlet property="floatingView" destination="dtD-a4-OE9" id="XHD-vn-dFw"/>
                         <outlet property="imageButton" destination="cT8-P0-tSN" id="l4q-L3-kI6"/>
-                        <outlet property="imageSecondView" destination="chK-BJ-eEH" id="TIi-NA-77X"/>
+                        <outlet property="imageSecondView" destination="Qua-B4-AxD" id="eMH-UY-K0b"/>
                         <outlet property="insideView" destination="Gdc-9h-F4u" id="2BC-DI-Cr9"/>
                         <outlet property="nameLabel" destination="q7T-yr-8cW" id="YDS-uj-dTB"/>
                         <outlet property="nameShadow" destination="SMh-zf-Hcx" id="EhD-rL-JGz"/>
