@@ -16,6 +16,7 @@ import Photos
     var fetchAlbum : PHFetchResult<PHAsset>!
     let imageManager : PHCachingImageManager = PHCachingImageManager()
     let cellIdentifier : String = "Cell"
+    var albumSelectionDelegate : AlbumSelectionDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,11 +101,17 @@ import Photos
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.cellIdentifier, for: indexPath) as! AlbumUICollectionViewCell
+        
         if indexPath.row == 0 {
             print(indexPath.row)
             
         }else {
+            albumSelectionDelegate.didSelectImage(asset: fetchAlbum.object(at: indexPath.row - 1))
             print(indexPath.row)
+            let asset : PHAsset = fetchAlbum.object(at: indexPath.row - 1)
+            print(asset)
+             
             self.navigationController?.popViewController(animated: true)
         }
         
@@ -120,4 +127,10 @@ import Photos
     }
  }
  
+ 
+ protocol AlbumSelectionDelegate {
+    func didSelectImage(asset: PHAsset)
+ }
+ 
+
 
