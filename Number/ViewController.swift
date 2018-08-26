@@ -11,15 +11,18 @@ import Alamofire
 import GoogleSignIn
 import NaverThirdPartyLogin
 
-class ViewController: UIViewController, GIDSignInUIDelegate {
+class ViewController: UIViewController{
     
     @IBOutlet weak var google: UIButton!
     @IBOutlet weak var naver: UIButton!
     @IBOutlet weak var kakao: UIButton!
-    
+    var param = Param()
+    let loginInstance = NaverThirdPartyLoginConnection.getSharedInstance()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().delegate = self
         changeView()
     }
     
@@ -34,13 +37,24 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
     }
     
     @IBAction func naverButtonPressed(_ sender: UIButton){
-        let loginInstance = NaverThirdPartyLoginConnection.getSharedInstance()
         loginInstance?.delegate = self
         loginInstance?.requestThirdPartyLogin()
+//        
+//        let st = UIStoryboard.init(name: "Login", bundle: nil)
+//        let nv = st.instantiateViewController(withIdentifier: "Login") as! LoginViewController
+//        
+//        
+//        self.present(nv, animated: false, completion: nil)
+//        let appDelegate = self.getAppDelegate()
+        
     }
     
     @IBAction func googleButtonPressed(_ sender: Any) {
-        
+        var error : NSError?
+      
+        let googleSignInButton = GIDSignInButton()
+        googleSignInButton.center = view.center
+        view.addSubview(googleSignInButton)
 //        let parameters : Parameters = [
 //            "type": "0",
 //            "uid": UserInfo.getUid(),
@@ -80,7 +94,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
                             }
                             
                             if let value = kakao.properties?["nickname"] as? String{
-                                print("nicknam = \(value)")
+                                print("nickname = \(value)")
                             }
                             if let value = kakao.properties?["profile_image"] as? String {
                                 print("profile image = \(value)")
@@ -90,6 +104,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
                             }
                             let st = UIStoryboard.init(name: "Login", bundle: nil)
                             let nv = st.instantiateViewController(withIdentifier: "Login") as! LoginViewController
+                            
                             nv.param = ["nickname" : kakao.properties?["nickname"],
                                         "profile": kakao.properties?["profile_image"],
                                         "type": typeCase.kakao.hashValue]
@@ -162,7 +177,7 @@ extension ViewController: NaverThirdPartyLoginConnectionDelegate{
 }
 
 //google
-extension ViewController {
+extension ViewController : GIDSignInUIDelegate , GIDSignInDelegate{
  
     // Present a view that prompts the user to sign in with Google
     func signIn(signIn: GIDSignIn!,
@@ -174,5 +189,20 @@ extension ViewController {
     func signIn(signIn: GIDSignIn!,
                 dismissViewController viewController: UIViewController!) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if let error = error {
+            print("\(error.localizedDescription)")
+        } else {
+            // Perform any operations on signed in user here.
+            let userId = user.userID                  // For client-side use only!
+            let idToken = user.authentication.idToken // Safe to send to the server
+            let fullName = user.profile.name
+            let givenName = user.profile.givenName
+            let familyName = user.profile.familyName
+            let email = user.profile.email
+            print("Sign-in Success \(email)")
+        }
     }
 }

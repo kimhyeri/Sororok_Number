@@ -24,7 +24,6 @@
 		354E6CE721307D3C00C6C526 /* GetUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354E6CE621307D3C00C6C526 /* GetUserInfo.swift */; };
 		354E6CE9213080CB00C6C526 /* APICollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354E6CE8213080CB00C6C526 /* APICollection.swift */; };
 		354E6CEB2130BD0700C6C526 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354E6CEA2130BD0700C6C526 /* Register.swift */; };
-		354E6CED2130BFE700C6C526 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354E6CEC2130BFE600C6C526 /* ReviewViewController.swift */; };
 		354EA790210C665600D16A80 /* GroupCreate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 354EA78F210C665600D16A80 /* GroupCreate.storyboard */; };
 		354EA792210C6A2500D16A80 /* GroupCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354EA791210C6A2500D16A80 /* GroupCreateViewController.swift */; };
 		354EA795210C877300D16A80 /* SideMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354EA794210C877300D16A80 /* SideMenuTableViewController.swift */; };
@@ -43,6 +42,7 @@
 		35572C24212C06BB00A919C7 /* NotSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35572C22212C06BB00A919C7 /* NotSearchTableViewCell.swift */; };
 		35572C25212C06BB00A919C7 /* NotSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35572C23212C06BB00A919C7 /* NotSearchTableViewCell.xib */; };
 		35572C27212C342500A919C7 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35572C26212C342500A919C7 /* SettingViewController.swift */; };
+		355B6994213296730002FD80 /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = 355B6993213296720002FD80 /* credentials.plist */; };
 		355BB75021297782009A7837 /* NothingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355BB74E21297782009A7837 /* NothingTableViewCell.swift */; };
 		355BB75121297782009A7837 /* NothingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 355BB74F21297782009A7837 /* NothingTableViewCell.xib */; };
 		355BB7532129E625009A7837 /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355BB7522129E625009A7837 /* LogoutViewController.swift */; };
@@ -85,7 +85,6 @@
 		354E6CE621307D3C00C6C526 /* GetUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserInfo.swift; sourceTree = "<group>"; };
 		354E6CE8213080CB00C6C526 /* APICollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICollection.swift; sourceTree = "<group>"; };
 		354E6CEA2130BD0700C6C526 /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
-		354E6CEC2130BFE600C6C526 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		354EA78F210C665600D16A80 /* GroupCreate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GroupCreate.storyboard; sourceTree = "<group>"; };
 		354EA791210C6A2500D16A80 /* GroupCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateViewController.swift; sourceTree = "<group>"; };
 		354EA794210C877300D16A80 /* SideMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +103,7 @@
 		35572C22212C06BB00A919C7 /* NotSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotSearchTableViewCell.swift; sourceTree = "<group>"; };
 		35572C23212C06BB00A919C7 /* NotSearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotSearchTableViewCell.xib; sourceTree = "<group>"; };
 		35572C26212C342500A919C7 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		355B6993213296720002FD80 /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = credentials.plist; sourceTree = "<group>"; };
 		355BB74E21297782009A7837 /* NothingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NothingTableViewCell.swift; path = Number/Home/DetailHome/NothingTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		355BB74F21297782009A7837 /* NothingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NothingTableViewCell.xib; path = Number/Home/DetailHome/NothingTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 		355BB7522129E625009A7837 /* LogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
@@ -254,7 +254,6 @@
 				354EA79B210C9BC200D16A80 /* Manager */,
 				354EA796210C8FEC00D16A80 /* Delete */,
 				355F0A722108E96C00715E3F /* Setting.storyboard */,
-				354E6CEC2130BFE600C6C526 /* ReviewViewController.swift */,
 				35572C26212C342500A919C7 /* SettingViewController.swift */,
 				355BB7522129E625009A7837 /* LogoutViewController.swift */,
 				355BB7542129E63C009A7837 /* Logout.storyboard */,
@@ -284,6 +283,7 @@
 		35ECDEEE2103B1B700308080 /* Number */ = {
 			isa = PBXGroup;
 			children = (
+				355B6993213296720002FD80 /* credentials.plist */,
 				35ACD19A212B5E890046B541 /* GoogleService-Info.plist */,
 				35ECDF0C2104759400308080 /* Home */,
 				35ECDF0721046E5F00308080 /* CodeNum */,
@@ -439,6 +439,7 @@
 				355F0A732108E96C00715E3F /* Setting.storyboard in Resources */,
 				35ECDF0921046EB600308080 /* CodeNum.storyboard in Resources */,
 				354EA798210C8FF900D16A80 /* Delete.storyboard in Resources */,
+				355B6994213296730002FD80 /* credentials.plist in Resources */,
 				354EA79F210C9BDA00D16A80 /* Manager.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -521,7 +522,6 @@
 			files = (
 				35572C1D212BEF7000A919C7 /* ManagerGroupViewController.swift in Sources */,
 				35572C24212C06BB00A919C7 /* NotSearchTableViewCell.swift in Sources */,
-				354E6CED2130BFE700C6C526 /* ReviewViewController.swift in Sources */,
 				35572C21212C030800A919C7 /* AdminGroupViewController.swift in Sources */,
 				35444633212D69210075116C /* ProgressViewController.swift in Sources */,
 				353EC8C4210A2BBF004081D1 /* AlbumViewController.swift in Sources */,
@@ -705,7 +705,7 @@
 					"$(PROJECT_DIR)/Pods",
 				);
 				INFOPLIST_FILE = Number/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -767,7 +767,7 @@
 					"$(PROJECT_DIR)/Pods",
 				);
 				INFOPLIST_FILE = Number/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

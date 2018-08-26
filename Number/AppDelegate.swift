@@ -26,6 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         instance?.consumerSecret = kConsumerSecret
         instance?.appName = kServiceAppName
         
+        GIDSignIn.sharedInstance().clientID = "1060491275802-ojo1cb5q1ept9ma65h1fujb0sk4eji9f.apps.googleusercontent.com"
+//        GIDSignIn.sharedInstance().clientID = "1060491275802-54qggq2k068n6tjqrdus81a0s5bm3k88.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance().delegate = self
         return true
     }
     
@@ -64,7 +67,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 }
 
-extension AppDelegate :  GIDSignInDelegate{
+
+//MARK: Google
+extension AppDelegate :  GIDSignInDelegate, GIDSignInUIDelegate {
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let error = error {
@@ -78,13 +83,15 @@ extension AppDelegate :  GIDSignInDelegate{
             let familyName = user.profile.familyName
             let email = user.profile.email
             print("Sign-in Success \(email)")
-            
-    
         }
     }
     
-
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,
+              withError error: Error!) {
+        print(error)
+    }
     
+    //For app to run on iOS 8
 //    func application(application: UIApplication,
 //                     openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
 //        var options: [String: AnyObject] = [UIApplicationOpenURLOptionsKey: sourceApplication,
@@ -93,7 +100,7 @@ extension AppDelegate :  GIDSignInDelegate{
 //                                                    sourceApplication: sourceApplication,
 //                                                    annotation: annotation)
 //    }
-    
+//
 }
 
 //MARK: KAKAO

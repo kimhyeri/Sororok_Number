@@ -16,11 +16,15 @@ class SettingViewController: UIViewController , UITableViewDataSource, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+   
         tableView.delegate = self
         tableView.dataSource = self
         initNav()
         let height = 20 + (self.navigationController?.navigationBar.frame.height)!
         naviView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: height)
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = UITableViewAutomaticDimension
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -56,6 +60,9 @@ class SettingViewController: UIViewController , UITableViewDataSource, UITableVi
 
     }
     
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
 
 }
 
