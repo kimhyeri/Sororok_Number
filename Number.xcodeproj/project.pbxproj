@@ -31,6 +31,7 @@
 		354EA79A210C900900D16A80 /* DeleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354EA799210C900900D16A80 /* DeleteViewController.swift */; };
 		354EA79D210C9BD300D16A80 /* ManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354EA79C210C9BD300D16A80 /* ManagerViewController.swift */; };
 		354EA79F210C9BDA00D16A80 /* Manager.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 354EA79E210C9BDA00D16A80 /* Manager.storyboard */; };
+		3555AB0C2133C067003FE3AD /* StringKorean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3555AB0B2133C067003FE3AD /* StringKorean.swift */; };
 		3556196221071BDE009CC356 /* DetailHome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3556196121071BDE009CC356 /* DetailHome.storyboard */; };
 		3556196521071C01009CC356 /* DetailHomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3556196321071C01009CC356 /* DetailHomeTableViewController.swift */; };
 		3556196A21071EDF009CC356 /* DetailHomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3556196821071EDF009CC356 /* DetailHomeTableViewCell.swift */; };
@@ -44,7 +45,6 @@
 		35572C27212C342500A919C7 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35572C26212C342500A919C7 /* SettingViewController.swift */; };
 		355B6994213296730002FD80 /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = 355B6993213296720002FD80 /* credentials.plist */; };
 		355B69962132BDED0002FD80 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 355B69952132BDEC0002FD80 /* MessageUI.framework */; };
-		355B699A213317830002FD80 /* Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B6999213317830002FD80 /* Delegate.swift */; };
 		355BB75021297782009A7837 /* NothingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355BB74E21297782009A7837 /* NothingTableViewCell.swift */; };
 		355BB75121297782009A7837 /* NothingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 355BB74F21297782009A7837 /* NothingTableViewCell.xib */; };
 		355BB7532129E625009A7837 /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355BB7522129E625009A7837 /* LogoutViewController.swift */; };
@@ -94,6 +94,7 @@
 		354EA799210C900900D16A80 /* DeleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteViewController.swift; sourceTree = "<group>"; };
 		354EA79C210C9BD300D16A80 /* ManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerViewController.swift; sourceTree = "<group>"; };
 		354EA79E210C9BDA00D16A80 /* Manager.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Manager.storyboard; sourceTree = "<group>"; };
+		3555AB0B2133C067003FE3AD /* StringKorean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringKorean.swift; sourceTree = "<group>"; };
 		3556196121071BDE009CC356 /* DetailHome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailHome.storyboard; sourceTree = "<group>"; };
 		3556196321071C01009CC356 /* DetailHomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHomeTableViewController.swift; sourceTree = "<group>"; };
 		3556196821071EDF009CC356 /* DetailHomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHomeTableViewCell.swift; sourceTree = "<group>"; };
@@ -107,7 +108,6 @@
 		35572C26212C342500A919C7 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		355B6993213296720002FD80 /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = credentials.plist; sourceTree = "<group>"; };
 		355B69952132BDEC0002FD80 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		355B6999213317830002FD80 /* Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegate.swift; sourceTree = "<group>"; };
 		355BB74E21297782009A7837 /* NothingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NothingTableViewCell.swift; path = Number/Home/DetailHome/NothingTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		355BB74F21297782009A7837 /* NothingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NothingTableViewCell.xib; path = Number/Home/DetailHome/NothingTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 		355BB7522129E625009A7837 /* LogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
@@ -341,7 +341,7 @@
 				35ECDF13210476F200308080 /* HomeTableViewCell.swift */,
 				35ECDF14210476F200308080 /* HomeTableViewCell.xib */,
 				3565D44621283B0A000D70D2 /* HexColor.swift */,
-				355B6999213317830002FD80 /* Delegate.swift */,
+				3555AB0B2133C067003FE3AD /* StringKorean.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -531,6 +531,7 @@
 				35572C24212C06BB00A919C7 /* NotSearchTableViewCell.swift in Sources */,
 				35572C21212C030800A919C7 /* AdminGroupViewController.swift in Sources */,
 				35444633212D69210075116C /* ProgressViewController.swift in Sources */,
+				3555AB0C2133C067003FE3AD /* StringKorean.swift in Sources */,
 				353EC8C4210A2BBF004081D1 /* AlbumViewController.swift in Sources */,
 				35ECDF15210476F200308080 /* HomeTableViewCell.swift in Sources */,
 				353EC8C6210A3169004081D1 /* AlbumUICollectionViewCell.swift in Sources */,
@@ -558,7 +559,6 @@
 				35ECDEF22103B1B700308080 /* ViewController.swift in Sources */,
 				354E6CE9213080CB00C6C526 /* APICollection.swift in Sources */,
 				35ECDEF02103B1B700308080 /* AppDelegate.swift in Sources */,
-				355B699A213317830002FD80 /* Delegate.swift in Sources */,
 				354EA79A210C900900D16A80 /* DeleteViewController.swift in Sources */,
 				351AB63B2105C16E0017D41A /* MyPageViewController.swift in Sources */,
 				35325D4E212F0E4500AC3897 /* ContactNaviViewController.swift in Sources */,

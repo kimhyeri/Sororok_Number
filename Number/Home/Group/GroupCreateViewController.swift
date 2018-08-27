@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 class GroupCreateViewController: UIViewController {
 
@@ -59,6 +60,7 @@ class GroupCreateViewController: UIViewController {
     @IBAction func AlbumPressed(_ sender: Any) {
         let storyboard = UIStoryboard(name: "MyPage", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "Album") as! AlbumViewController
+        vc.albumSelectionDelegate = self
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -69,5 +71,22 @@ class GroupCreateViewController: UIViewController {
     func copyToClipBoard(textToCopy: String) {
         UIPasteboard.general.string = textToCopy
         
+    }
+}
+
+extension GroupCreateViewController : AlbumSelectionDelegate{
+    func didSelectImage(asset: PHAsset) {
+        var img: UIImage?
+        let manager = PHImageManager.default()
+        let options = PHImageRequestOptions()
+        options.version = .original
+        options.isSynchronous = true
+        manager.requestImageData(for: asset, options: options) { data, _, _, _ in
+            
+            if let data = data {
+                img = UIImage(data: data)
+            }
+        }
+        groupImage.image = img
     }
 }

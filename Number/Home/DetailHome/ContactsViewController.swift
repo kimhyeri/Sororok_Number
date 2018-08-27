@@ -29,9 +29,16 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     var index = DefualtIndex()
     let contact = CNMutableContact()
     
+    func getHangul(num : Int) -> String {
+        let hangle = ["ㄱ","ㄲ","ㄴ","ㄷ","ㄸ","ㄹ","ㅁ","ㅂ","ㅃ","ㅅ","ㅆ","ㅇ","ㅈ","ㅉ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"]
+        
+        return hangle[num]
+        
+    }
     var array:[String:String] = ["가혜리":"010-1234-1234", "박혜리":"010-1234-1234","정혜리":"010-1234-1234","미혜리":"010-1234-1234","어혜리":"010-1234-1234","푸혜리":"010-1234-1234", "타혜리":"010-1234-1234" ,"Kim":"010-123-1123","park":"010-123-1123","dim":"010-123-1123","fim":"010-123-1123"]
     
-    var array1:[String:String] = ["a가혜리":"010-1234-1234", "a박혜리":"010-1234-4234", "a정혜리":"010-1034-1234","a미혜리":"010-1234-1234","a어혜리":"010-1134-1234","a푸혜리":"010-1241-1234", "타혜리":"010-1234-1234" ,"aKim":"010-1243-1123","apark":"110-123-1123","adim":"010-1623-1123","afim":"010-1283-1123"]
+    var array1:[String:String] = ["가혜리":"010-1234-1234", "ㄱA박혜리":"010-1234-4234", "Aㅃa정혜리":"010-1034-1234","a미혜리":"010-1234-1234","a어혜리":"010-1134-1234","a푸혜리":"010-1241-1234", "타혜리":"010-1234-1234" ,"aKim":"010-1243-1123","apark":"110-123-1123","adim":"010-1623-1123","afim":"010-1283-1123"]
+    
     var selectedArray : [String:String] = [:]
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,33 +51,10 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
             let val = UnicodeScalar(String(text!))?.value
             if ( val! >= 0xAC00 && val! <= 0xD7A3 ) {
                 let first = (val! - 0xac00) / 28 / 21
-                let i = String(UnicodeScalar(0x1100 + first)!)
-                
-                let y = ((val! - 0xac00) / 28) % 21
-                let j =  String(UnicodeScalar(0x1161 + y)!)
-                
-                let z = (val! - 0xac00) % 28
-                let k = String(UnicodeScalar(0x11a6 + 1 + z)!)
-                
-                array1.changeKey(from: name, to: "\(i) \(j) \(k) "+name)
-                
+                let getValue: String =  getHangul(num: Int(first))
+                array1.changeKey(from: name, to: getValue+name)
             }
         }
-    }
-    
-    func splitText(text: String) -> Bool {
-        guard let text = text.last else { return false }
-        let val = UnicodeScalar(String(text))?.value
-        guard let value = val else { return false }
-        if ( value >= 0xAC00 && value <= 0xD7A3 ) {
-            let x = (value - 0xac00) / 28 / 21
-            
-            let i = UnicodeScalar(0x1100 + x) //초성
-            
-            print("\(x)\(i!)")
-            
-        }
-        return true
     }
     
     override func viewDidLoad() {
@@ -99,7 +83,7 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
         //return cell
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "DetailHomeTableViewCell", for: indexPath) as! DetailHomeTableViewCell
-        let predicate = NSPredicate(format: "SELF beginswith[cd] %@", index.arrIndexSection.object(at: indexPath.section) as! CVarArg)
+        let predicate = NSPredicate(format: "SELF beginswith[c] %@", index.arrIndexSection.object(at: indexPath.section) as! CVarArg)
         cell.userImage?.layer.cornerRadius = (cell.userImage?.frame.width)!/2
         let dic = array1.map { return $0.key }
         //        let num = array1.map {return $0.value}
@@ -124,6 +108,7 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
         let predicate = NSPredicate(format: "SELF beginswith[c] %@", index.arrIndexSection.object(at: section) as! CVarArg)
         let dic = array1.map { return $0.key }
         let arrContacts = (dic as NSArray).filtered(using: predicate) as NSArray
+        print(arrContacts)
         return arrContacts.count
         
     }
