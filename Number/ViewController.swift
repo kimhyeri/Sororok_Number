@@ -49,12 +49,16 @@ class ViewController: UIViewController{
         
     }
     
-    @IBAction func googleButtonPressed(_ sender: Any) {
+    @IBAction func googleButtonPressed(_ sender: UIButton) {
         var error : NSError?
-      
-        let googleSignInButton = GIDSignInButton()
-        googleSignInButton.center = view.center
-        view.addSubview(googleSignInButton)
+        GIDSignIn.sharedInstance().delegate=self
+        GIDSignIn.sharedInstance().uiDelegate=self
+        GIDSignIn.sharedInstance().signIn()
+        
+//        let googleSignInButton = GIDSignInButton()
+//        googleSignInButton.frame = sender.frame
+//        googleSignInButton.backgroundColor = UIColor.clear
+//        sender.addSubview(googleSignInButton)
 //        let parameters : Parameters = [
 //            "type": "0",
 //            "uid": UserInfo.getUid(),
@@ -106,7 +110,7 @@ class ViewController: UIViewController{
                             let nv = st.instantiateViewController(withIdentifier: "Login") as! LoginViewController
                             
                             nv.param = ["nickname" : kakao.properties?["nickname"],
-                                        "profile": kakao.properties?["profile_image"],
+                                        "profile": kakao.properties?["profile_image"]!,
                                         "type": typeCase.kakao.hashValue]
                             self.present(nv, animated: false, completion: nil)
                             let appDelegate = self.getAppDelegate()
@@ -203,6 +207,17 @@ extension ViewController : GIDSignInUIDelegate , GIDSignInDelegate{
             let familyName = user.profile.familyName
             let email = user.profile.email
             print("Sign-in Success \(email)")
+            print(fullName)
+            print(user.profile.imageURL(withDimension: 400))
+            
+            let st = UIStoryboard.init(name: "Login", bundle: nil)
+            let nv = st.instantiateViewController(withIdentifier: "Login") as! LoginViewController
+            
+            nv.param = ["nickname" : fullName,
+                        "profile": user.profile.imageURL(withDimension: 400),
+                        "type": typeCase.google.hashValue]
+            self.present(nv, animated: false, completion: nil)
+            
         }
     }
 }

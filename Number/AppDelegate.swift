@@ -29,7 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
          GIDSignIn.sharedInstance().clientID = "485287400995-no0nk4j0g2lpk3v5n0h6pu8evqun5tvh.apps.googleusercontent.com"
 
-        GIDSignIn.sharedInstance().delegate = self
         return true
     }
     
@@ -39,7 +38,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var configureError: NSError?
 //        GGLContext.sharedInstance().configureWithError(&configureError)
         assert(configureError == nil, "Error configuring Google services: \(configureError)")
-        GIDSignIn.sharedInstance().delegate = self
         return true
     }
     
@@ -70,27 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 //MARK: Google
-extension AppDelegate :  GIDSignInDelegate, GIDSignInUIDelegate {
-    
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        if let error = error {
-            print("\(error.localizedDescription)")
-        } else {
-            // Perform any operations on signed in user here.
-            let userId = user.userID                  // For client-side use only!
-            let idToken = user.authentication.idToken // Safe to send to the server
-            let fullName = user.profile.name
-            let givenName = user.profile.givenName
-            let familyName = user.profile.familyName
-            let email = user.profile.email
-            print("Sign-in Success \(email)")
-        }
-    }
-    
-    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,
-              withError error: Error!) {
-        print(error)
-    }
+extension AppDelegate :   GIDSignInUIDelegate {
     
     //For app to run on iOS 8
 //    func application(application: UIApplication,

@@ -92,9 +92,12 @@ extension LoginViewController {
         
         let dic = param.map{ $1 }
         do {
-            let a = param["profile"] as! String
-            let url = URL(string: a)
-            let data = try Data(contentsOf: url!)
+            //카카오
+//            let a = param["profile"]
+//            let url = URL(string: a)
+            //구글 
+            let url : URL = param["profile"] as! URL
+            let data = try Data(contentsOf: url)
             self.imgProfile.image = UIImage(data: data)
         }
         catch{
