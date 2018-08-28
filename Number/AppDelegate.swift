@@ -15,6 +15,7 @@ import KakaoOpenSDK
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+   
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         let instance = NaverThirdPartyLoginConnection.getSharedInstance()
@@ -26,8 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         instance?.consumerSecret = kConsumerSecret
         instance?.appName = kServiceAppName
         
-        GIDSignIn.sharedInstance().clientID = "1060491275802-ojo1cb5q1ept9ma65h1fujb0sk4eji9f.apps.googleusercontent.com"
-//        GIDSignIn.sharedInstance().clientID = "1060491275802-54qggq2k068n6tjqrdus81a0s5bm3k88.apps.googleusercontent.com"
+         GIDSignIn.sharedInstance().clientID = "485287400995-no0nk4j0g2lpk3v5n0h6pu8evqun5tvh.apps.googleusercontent.com"
+
         GIDSignIn.sharedInstance().delegate = self
         return true
     }

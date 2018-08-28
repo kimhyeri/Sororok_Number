@@ -9,6 +9,7 @@ target 'Number' do
    	 pod 'SideMenu'
 	 pod 'GoogleSignIn'
 	 pod 'naveridlogin-sdk-ios'
+ 
   # Pods for Number
 
 end

@@ -31,16 +31,17 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     
     func getHangul(num : Int) -> String {
         let hangle = ["ㄱ","ㄲ","ㄴ","ㄷ","ㄸ","ㄹ","ㅁ","ㅂ","ㅃ","ㅅ","ㅆ","ㅇ","ㅈ","ㅉ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"]
-        
         return hangle[num]
         
     }
+    
     var array:[String:String] = ["가혜리":"010-1234-1234", "박혜리":"010-1234-1234","정혜리":"010-1234-1234","미혜리":"010-1234-1234","어혜리":"010-1234-1234","푸혜리":"010-1234-1234", "타혜리":"010-1234-1234" ,"Kim":"010-123-1123","park":"010-123-1123","dim":"010-123-1123","fim":"010-123-1123"]
     
-    var array1:[String:String] = ["가혜리":"010-1234-1234", "ㄱA박혜리":"010-1234-4234", "Aㅃa정혜리":"010-1034-1234","a미혜리":"010-1234-1234","a어혜리":"010-1134-1234","a푸혜리":"010-1241-1234", "타혜리":"010-1234-1234" ,"aKim":"010-1243-1123","apark":"110-123-1123","adim":"010-1623-1123","afim":"010-1283-1123"]
+    var array1:[String:String] = ["가혜리":"010-1234-1234", "ㄱA박혜리":"010-1234-4234", "Aㅃa정혜리":"010-1034-1234","미혜리":"010-1234-1234","어혜리":"010-1134-1234","푸혜리":"010-1241-1234", "타혜리":"010-1234-1234" ,"Kim":"010-1243-1123","apark":"110-123-1123","adim":"010-1623-1123","afim":"010-1283-1123"]
     
     var selectedArray : [String:String] = [:]
     
+
     override func viewWillAppear(_ animated: Bool) {
         totalLabel.text = "총 \(array1.count)명"
         
@@ -130,11 +131,11 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     }
     
     @IBAction func allButtonPressed(_ sender: UIButton) {
-     
+        
         if checkState == false {
             checkState = true
             selectButton.setImage(UIImage(named: "icnListCheckOn"), for: .normal)
-
+            
             for section in 0..<tableView.numberOfSections {
                 for row in 0..<tableView.numberOfRows(inSection: section) {
                     tableView.selectRow(at: IndexPath(row: row, section: section), animated: false, scrollPosition: .none)
@@ -203,8 +204,6 @@ extension ContactsViewController {
         return index.arrIndexSection.object(at: section) as? String
     }
     
-    
-    
 }
 
 extension ContactsViewController{
@@ -217,11 +216,11 @@ extension ContactsViewController{
             //contact.familyName = "성"
             
             contact.phoneNumbers = [CNLabeledValue(
-                    label:CNLabelPhoneNumberMain, value:CNPhoneNumber(stringValue: number[i]))]
+                label:CNLabelPhoneNumberMain, value:CNPhoneNumber(stringValue: number[i]))]
             
             self.contactSave()
         }
-
+        
     }
     
     func contactSave(){

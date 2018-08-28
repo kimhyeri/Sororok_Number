@@ -43,7 +43,6 @@
 		35572C24212C06BB00A919C7 /* NotSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35572C22212C06BB00A919C7 /* NotSearchTableViewCell.swift */; };
 		35572C25212C06BB00A919C7 /* NotSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35572C23212C06BB00A919C7 /* NotSearchTableViewCell.xib */; };
 		35572C27212C342500A919C7 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35572C26212C342500A919C7 /* SettingViewController.swift */; };
-		355B6994213296730002FD80 /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = 355B6993213296720002FD80 /* credentials.plist */; };
 		355B69962132BDED0002FD80 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 355B69952132BDEC0002FD80 /* MessageUI.framework */; };
 		355BB75021297782009A7837 /* NothingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355BB74E21297782009A7837 /* NothingTableViewCell.swift */; };
 		355BB75121297782009A7837 /* NothingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 355BB74F21297782009A7837 /* NothingTableViewCell.xib */; };
@@ -55,9 +54,9 @@
 		3565D445212837CA000D70D2 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3565D444212837CA000D70D2 /* SearchView.swift */; };
 		3565D44721283B0A000D70D2 /* HexColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3565D44621283B0A000D70D2 /* HexColor.swift */; };
 		356A58FE210D9F35003C20BB /* CustomNaviViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356A58FD210D9F35003C20BB /* CustomNaviViewController.swift */; };
+		356D84372135F90E00F653B2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 356D84362135F90D00F653B2 /* GoogleService-Info.plist */; };
 		358268F621262669003415F0 /* TwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358268F521262669003415F0 /* TwoViewController.swift */; };
 		35ACD199212B52F80046B541 /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35ACD198212B52F80046B541 /* KakaoOpenSDK.framework */; };
-		35ACD19B212B5E890046B541 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 35ACD19A212B5E890046B541 /* GoogleService-Info.plist */; };
 		35ECDEF02103B1B700308080 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ECDEEF2103B1B700308080 /* AppDelegate.swift */; };
 		35ECDEF22103B1B700308080 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ECDEF12103B1B700308080 /* ViewController.swift */; };
 		35ECDEF52103B1B700308080 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35ECDEF32103B1B700308080 /* Main.storyboard */; };
@@ -106,7 +105,6 @@
 		35572C22212C06BB00A919C7 /* NotSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotSearchTableViewCell.swift; sourceTree = "<group>"; };
 		35572C23212C06BB00A919C7 /* NotSearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotSearchTableViewCell.xib; sourceTree = "<group>"; };
 		35572C26212C342500A919C7 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
-		355B6993213296720002FD80 /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = credentials.plist; sourceTree = "<group>"; };
 		355B69952132BDEC0002FD80 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		355BB74E21297782009A7837 /* NothingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NothingTableViewCell.swift; path = Number/Home/DetailHome/NothingTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		355BB74F21297782009A7837 /* NothingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NothingTableViewCell.xib; path = Number/Home/DetailHome/NothingTableViewCell.xib; sourceTree = SOURCE_ROOT; };
@@ -118,11 +116,11 @@
 		3565D444212837CA000D70D2 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		3565D44621283B0A000D70D2 /* HexColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexColor.swift; sourceTree = "<group>"; };
 		356A58FD210D9F35003C20BB /* CustomNaviViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNaviViewController.swift; sourceTree = "<group>"; };
+		356D84362135F90D00F653B2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		358268F521262669003415F0 /* TwoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoViewController.swift; sourceTree = "<group>"; };
 		3598EBD6212AB21900906BF2 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KakaoOpenSDK.framework; path = "../kakao-ios-sdk-1.9.0/KakaoOpenSDK.framework"; sourceTree = "<group>"; };
 		3598EBD8212AB49000906BF2 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		35ACD198212B52F80046B541 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KakaoOpenSDK.framework; path = Pods/KakaoOpenSDK.framework; sourceTree = "<group>"; };
-		35ACD19A212B5E890046B541 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		35ECDEEC2103B1B700308080 /* Number.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Number.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35ECDEEF2103B1B700308080 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35ECDEF12103B1B700308080 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -288,8 +286,7 @@
 		35ECDEEE2103B1B700308080 /* Number */ = {
 			isa = PBXGroup;
 			children = (
-				355B6993213296720002FD80 /* credentials.plist */,
-				35ACD19A212B5E890046B541 /* GoogleService-Info.plist */,
+				356D84362135F90D00F653B2 /* GoogleService-Info.plist */,
 				35ECDF0C2104759400308080 /* Home */,
 				35ECDF0721046E5F00308080 /* CodeNum */,
 				35ECDF012103B1CB00308080 /* Login */,
@@ -442,11 +439,10 @@
 				35572C25212C06BB00A919C7 /* NotSearchTableViewCell.xib in Resources */,
 				35ECDEF52103B1B700308080 /* Main.storyboard in Resources */,
 				35572C1B212BEF6200A919C7 /* ManagerGroup.storyboard in Resources */,
-				35ACD19B212B5E890046B541 /* GoogleService-Info.plist in Resources */,
 				355F0A732108E96C00715E3F /* Setting.storyboard in Resources */,
 				35ECDF0921046EB600308080 /* CodeNum.storyboard in Resources */,
+				356D84372135F90E00F653B2 /* GoogleService-Info.plist in Resources */,
 				354EA798210C8FF900D16A80 /* Delete.storyboard in Resources */,
-				355B6994213296730002FD80 /* credentials.plist in Resources */,
 				354EA79F210C9BDA00D16A80 /* Manager.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
