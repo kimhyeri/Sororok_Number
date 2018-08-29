@@ -31,6 +31,7 @@ class TwoViewController: UIViewController {
     var defaultSize : [CGRect] = []
     var defaultButton = 0
     var defaultLabel = 0
+    var groupDefaultImages = ["imgDefaultGroup01","imgDefaultGroup02","imgDefaultGroup03","imgDefaultGroup04","imgDefaultGroup05","imgDefaultGroup06"]
     
     @IBAction func pressedSosik(_ sender: Any) {        
         let nv = self.storyboard?.instantiateViewController(withIdentifier: "LeftMenuNavigationController")
@@ -142,6 +143,7 @@ extension TwoViewController : UITableViewDelegate, UITableViewDataSource {
         //        return cell
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath) as! HomeTableViewCell
+        cell.groupImage?.image = UIImage(named: groupDefaultImages[indexPath.row % groupDefaultImages.count])
         cell.cellView.layer.cornerRadius = 10
         cell.cellView.layer.borderWidth = 1
         cell.cellView.layer.borderColor = UIColor(red:196/255, green:197/255, blue:214/255, alpha: 1).cgColor
@@ -194,8 +196,3 @@ extension TwoViewController {
         UIApplication.shared.statusBarStyle = .default
     }
 }
-
-
-
-
-
