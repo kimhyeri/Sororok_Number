@@ -20,7 +20,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailText: UITextField!
     
     var defaultFrame : CGRect?
-
     var param : Param?
     
     override func viewDidLoad() {
