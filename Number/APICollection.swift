@@ -17,6 +17,7 @@ class APICollection{
     
     func registeredCheck(parameters: Parameters ,completion: @escaping (_ result: JSON) -> (Void)){
         Alamofire.request("\(url)member/login/", method: .post, parameters: parameters).validate(statusCode: 200..<300).responseJSON { response in
+            print(response)
             let json = JSON(response.result.value)
             print(json)
             switch response.result {

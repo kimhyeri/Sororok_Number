@@ -27,7 +27,6 @@ class LoginViewController: UIViewController {
         setNavigationBar()
         getDelegate()
         defaultPage()
-        print("param: \(param)")
     }
     
     @IBAction func albumButtonPressed(_ sender: Any) {
@@ -53,13 +52,42 @@ extension LoginViewController {
         navItem.leftBarButtonItem = backButton
         backButton.imageInsets.left = -10
         
-        let doneItem = UIBarButtonItem.init(title: "확인", style: .plain, target: nil, action: nil )
+        let doneItem = UIBarButtonItem.init(title: "확인", style: .plain, target: nil, action: #selector(done))
+        navItem.rightBarButtonItem = doneItem
         navBar.setItems([navItem], animated: false)
         navBar.tintColor = UIColor.white
         
         self.view.addSubview(navBar)
     }
+    
+    @objc func done(){
+        let parameters : [String:Any] =
+        ["phone" : numberText.text!,
+        "name" : nameText.text!,
+        "email" : emailText.text!,
+        "loginType" : param?.loginType as! String,
+        "loginUid" : param?.loginUid as! String,
+        "memberImage" : param?.memberImage as! String,
+        "imageUrl" : param?.imageUrl as! String]
+//        "imageUrl" : imgProfile.image]
         
+        let myUrl : URL = URL(string: "45.63.120.140:40005/member/join")!
+        
+        Alamofire.request(myUrl, method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: nil)
+            .responseJSON { response in
+                print(response.request as Any)  // original URL request
+                print(response.response as Any) // URL response
+                print(response.result.value as Any)   // result of response serialization
+        }
+        
+//        APICollection.sharedAPI.register(parameters: parameters, completion: { result -> (Void) in
+//            let storyboard = UIStoryboard.init(name: "CodeNum", bundle: nil)
+//            let nv = storyboard.instantiateViewController(withIdentifier: "ST")
+//            self.present(nv, animated: true, completion: nil)
+//            UIApplication.shared.keyWindow?.rootViewController = nv
+//        })
+    }
+    
     @objc func back(){
         self.dismiss(animated: true, completion: nil)
     }
