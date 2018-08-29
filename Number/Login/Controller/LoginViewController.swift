@@ -53,34 +53,13 @@ extension LoginViewController {
         navItem.leftBarButtonItem = backButton
         backButton.imageInsets.left = -10
         
-//        let doneItem = UIBarButtonItem.init(title: "확인", style: .plain, target: nil, action: #selector(done))
-        let doneItem = UIBarButtonItem.init(title: "확인", style: .plain, target: nil, action: nil)
-        navItem.rightBarButtonItem = doneItem
+        let doneItem = UIBarButtonItem.init(title: "확인", style: .plain, target: nil, action: nil )
         navBar.setItems([navItem], animated: false)
         navBar.tintColor = UIColor.white
         
         self.view.addSubview(navBar)
     }
-    
-//    @objc func done() {
-//        let parameters : Parameters = [
-//            "phone": numberText.text!,
-//            "name": nameText.text!,
-//            "email": emailText.text!,
-//            "loginType": param["type"],
-//            "loginUid": UserInfo.getUid(),
-//            "memberImage":"",
-//            "imageUrl" : "",
-//            ]
-//
-//        APICollection.sharedAPI.registeredCheck(parameters: parameters, completion: { result -> (Void) in
-//            let storyboard = UIStoryboard.init(name: "CodeNum", bundle: nil)
-//            let nv = storyboard.instantiateViewController(withIdentifier: "ST")
-//            self.present(nv, animated: true, completion: nil)
-//            UIApplication.shared.keyWindow?.rootViewController = nv
-//        })
-//    }
-    
+        
     @objc func back(){
         self.dismiss(animated: true, completion: nil)
     }
@@ -91,21 +70,24 @@ extension LoginViewController {
         numberText.delegate = self
         nameText.delegate = self
         
-//        let dic = param.map{ $1 }
-        do {
-            //카카오
-//            let a = param["profile"]
-//            let url = URL(string: a)
-            //구글 
-//            let url : URL = param["profile"] as! URL
-//            let data = try Data(contentsOf: url)
-//            self.imgProfile.image = UIImage(data: data)
+        self.imgProfile.layer.cornerRadius = imgProfile.frame.width/2
+        if param?.email != nil {
+            self.emailText.text = param?.email
         }
-        catch{
-            print(error)
+        if param?.name != nil {
+            self.nameText.text = param?.name
         }
-//        self.imgProfile.layer.cornerRadius = imgProfile.frame.width/2
-//        self.nameText.text = (param["nickname"]) as! String
+        if param?.imageUrl != nil {
+            do {
+            let img = param?.imageUrl
+            let url = URL(string: img!)
+            let data = try Data(contentsOf: url!)
+            self.imgProfile.image = UIImage(data: data)
+            }
+            catch{
+                print(error)
+            }
+        }
     }
     
     func getDelegate(){
