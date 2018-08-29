@@ -21,13 +21,14 @@ class LoginViewController: UIViewController {
     
     var defaultFrame : CGRect?
 
-    var param : [String:Any] = [:]
+    var param : Param?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
         getDelegate()
         defaultPage()
-        print(param)
+        print("param: \(param)")
     }
     
     @IBAction func albumButtonPressed(_ sender: Any) {
@@ -53,7 +54,8 @@ extension LoginViewController {
         navItem.leftBarButtonItem = backButton
         backButton.imageInsets.left = -10
         
-        let doneItem = UIBarButtonItem.init(title: "확인", style: .plain, target: nil, action: #selector(done))
+//        let doneItem = UIBarButtonItem.init(title: "확인", style: .plain, target: nil, action: #selector(done))
+        let doneItem = UIBarButtonItem.init(title: "확인", style: .plain, target: nil, action: nil)
         navItem.rightBarButtonItem = doneItem
         navBar.setItems([navItem], animated: false)
         navBar.tintColor = UIColor.white
@@ -61,24 +63,24 @@ extension LoginViewController {
         self.view.addSubview(navBar)
     }
     
-    @objc func done() {
-        let parameters : Parameters = [
-            "phone": numberText.text!,
-            "name": nameText.text!,
-            "email": emailText.text!,
-            "loginType": param["type"],
-            "loginUid": UserInfo.getUid(),
-            "memberImage":"",
-            "imageUrl" : "",
-            ]
-        
-        APICollection.sharedAPI.registeredCheck(parameters: parameters, completion: { result -> (Void) in
-            let storyboard = UIStoryboard.init(name: "CodeNum", bundle: nil)
-            let nv = storyboard.instantiateViewController(withIdentifier: "ST")
-            self.present(nv, animated: true, completion: nil)
-            UIApplication.shared.keyWindow?.rootViewController = nv
-        })
-    }
+//    @objc func done() {
+//        let parameters : Parameters = [
+//            "phone": numberText.text!,
+//            "name": nameText.text!,
+//            "email": emailText.text!,
+//            "loginType": param["type"],
+//            "loginUid": UserInfo.getUid(),
+//            "memberImage":"",
+//            "imageUrl" : "",
+//            ]
+//
+//        APICollection.sharedAPI.registeredCheck(parameters: parameters, completion: { result -> (Void) in
+//            let storyboard = UIStoryboard.init(name: "CodeNum", bundle: nil)
+//            let nv = storyboard.instantiateViewController(withIdentifier: "ST")
+//            self.present(nv, animated: true, completion: nil)
+//            UIApplication.shared.keyWindow?.rootViewController = nv
+//        })
+//    }
     
     @objc func back(){
         self.dismiss(animated: true, completion: nil)
@@ -90,7 +92,7 @@ extension LoginViewController {
         numberText.delegate = self
         nameText.delegate = self
         
-        let dic = param.map{ $1 }
+//        let dic = param.map{ $1 }
         do {
             //카카오
 //            let a = param["profile"]

@@ -17,7 +17,6 @@ class ViewController: UIViewController{
     @IBOutlet weak var google: UIButton!
     @IBOutlet weak var naver: UIButton!
     @IBOutlet weak var kakao: UIButton!
-    var param = Param()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,15 +36,20 @@ class ViewController: UIViewController{
         kakao.layer.cornerRadius = 10
     }
     
+    func goNextPage(param:Param){
+        let st = UIStoryboard.init(name: "Login", bundle: nil)
+        let nv = st.instantiateViewController(withIdentifier: "Login") as! LoginViewController
+        nv.param = param
+        self.present(nv, animated: false, completion: nil)
+    }
+    
     @IBAction func naverButtonPressed(_ sender: UIButton){
         let loginInstance = NaverThirdPartyLoginConnection.getSharedInstance()
         loginInstance?.delegate = self
         loginInstance?.requestThirdPartyLogin()
-    
     }
     
     @IBAction func googleButtonPressed(_ sender: UIButton) {
-        var error : NSError?
         GIDSignIn.sharedInstance().delegate=self
         GIDSignIn.sharedInstance().uiDelegate=self
         GIDSignIn.sharedInstance().signIn()
@@ -60,133 +64,108 @@ class ViewController: UIViewController{
         
         session.presentingViewController = self
         session.open(completionHandler: {(error) -> Void in
-            print("hello")
-            if error != nil {
-                print(error?.localizedDescription ?? "")
-            }else if session.isOpen() {
-                print("카카오 로그인 성공")
-                
-                KOSessionTask.meTask(completionHandler: {(profile, error) -> Void in
+            
+        if error != nil {
+            print(error?.localizedDescription ?? "")
+        }else if session.isOpen() {
+            KOSessionTask.meTask(completionHandler: {(profile, error) -> Void in
                     
-                    if profile != nil {
-                        DispatchQueue.main.async(execute: { () -> Void in
-                            let kakao : KOUser = profile as! KOUser
-                            print(String(describing: kakao.id))
-                            guard (self.getAppDelegate()) != nil else{
-                                return
-                            }
+                if profile != nil {
+                    DispatchQueue.main.async(execute: { () -> Void in
+                        let kakao : KOUser = profile as! KOUser
+                        guard (self.getAppDelegate()) != nil else{
+                            return
+                        }
+                        var sendParam = Param()
+                        if let name = kakao.properties?["nickname"] as? String{
+                            sendParam.name = name
+                        }
+                        if let profile = kakao.properties?["profile_image"] as? String {
+                            sendParam.imageUrl = profile
+                        }
+                        if let email = kakao.properties?["email"] as? String {
+                            sendParam.email = email
+                        }
                             
-                            if let value = kakao.properties?["nickname"] as? String{
-                                print("nickname = \(value)")
-                            }
-                            if let value = kakao.properties?["profile_image"] as? String {
-                                print("profile image = \(value)")
-                            }
-                            if let value = kakao.email{
-                                print("kakao email : \(value)")
-                            }
-                            let st = UIStoryboard.init(name: "Login", bundle: nil)
-                            let nv = st.instantiateViewController(withIdentifier: "Login") as! LoginViewController
-                            
-                            nv.param = ["nickname" : kakao.properties?["nickname"],
-                                        "profile": kakao.properties?["profile_image"]!,
-                                        "type": typeCase.kakao.hashValue]
-                            self.present(nv, animated: false, completion: nil)
-                            let appDelegate = self.getAppDelegate()
-                            
+                        sendParam.loginType = typeCase.kakao.rawValue
+                        sendParam.loginUid = UserInfo.getUid()
+                        
+                        self.goNextPage(param: sendParam)
+                        _ = self.getAppDelegate()
                         })
                     }
                 })
-            } else {
-                print("not open")
-            }
+            } else { print("not open") }
         })
     }
 }
 
+//MARK: Naver Login
 extension ViewController: NaverThirdPartyLoginConnectionDelegate{
-   
-        func oauth20ConnectionDidOpenInAppBrowser(forOAuth request: URLRequest!) {
-            let naverSignInViewController = NLoginThirdPartyOAuth20InAppBrowserViewController(request: request)!
-            present(naverSignInViewController, animated: true, completion: nil)
-        }
-        // ---- 4
-        func oauth20ConnectionDidFinishRequestACTokenWithAuthCode() {
-            print("Success oauth20ConnectionDidFinishRequestACTokenWithAuthCode")
-            getNaverEmailFromURL()
-         
-        }
-        // ---- 5
-        func oauth20ConnectionDidFinishRequestACTokenWithRefreshToken() {
-            print("Success oauth20ConnectionDidFinishRequestACTokenWithRefreshToken")
-            getNaverEmailFromURL()
-       
-        }
-        // ---- 6
-        func oauth20ConnectionDidFinishDeleteToken() {
-            
-        }
-        // ---- 7
-        func oauth20Connection(_ oauthConnection: NaverThirdPartyLoginConnection!, didFailWithError error: Error!) {
-            print(error.localizedDescription)
-            print(error)
-        }
-        // ---- 8
-        func getNaverEmailFromURL(){
-            guard let loginConn = NaverThirdPartyLoginConnection.getSharedInstance() else {return}
-            guard let tokenType = loginConn.tokenType else {return}
-            guard let accessToken = loginConn.accessToken else {return}
-            
-            let authorization = "\(tokenType) \(accessToken)"
-            Alamofire.request("https://openapi.naver.com/v1/nid/me", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["Authorization" : authorization]).responseJSON { (response) in
-                guard let result = response.result.value as? [String: Any] else {return}
-                guard let object = result["response"] as? [String: Any] else {return}
-                guard let name = object["name"] as? String else {return}
-                guard let email = object["email"] as? String else {return}
-                guard let profile = object["profile_image"] as? String else {return}
-                print(object)
-              
-                let st = UIStoryboard.init(name: "Login", bundle: nil)
-                let nv = st.instantiateViewController(withIdentifier: "Login") as! LoginViewController
-                
-                self.present(nv, animated: false, completion: nil)
-            }
-        }
+    
+    func oauth20ConnectionDidOpenInAppBrowser(forOAuth request: URLRequest!) {
+        let naverSignInViewController = NLoginThirdPartyOAuth20InAppBrowserViewController(request: request)!
+        present(naverSignInViewController, animated: true, completion: nil)
     }
     
-//    func getNaverEmailFromURL(){
-//        print("6")
-//
-//        guard let loginConn = NaverThirdPartyLoginConnection.getSharedInstance() else {return}
-//        guard let tokenType = loginConn.tokenType else {return}
-//        guard let accessToken = loginConn.accessToken else {return}
-//
-//        let authorization = "\(tokenType) \(accessToken)"
-//        print(authorization)
-//        Alamofire.request("https://openapi.naver.com/v1/nid/me", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["Authorization" : authorization]).responseJSON { (response) in
-//            guard let result = response.result.value as? [String: Any] else {return}
-//            guard let object = result["response"] as? [String: Any] else {return}
-//            guard let number = object["number"] as? Int else {return}
-//            guard let name = object["name"] as? String else {return}
-//            guard let email = object["email"] as? String else {return}
-//
-//            print(result)
-//        }
-//    }
-//}
+    func oauth20ConnectionDidFinishRequestACTokenWithAuthCode() {
+        print("Success oauth20ConnectionDidFinishRequestACTokenWithAuthCode")
+        getNaverEmailFromURL()
+        
+    }
+    
+    func oauth20ConnectionDidFinishRequestACTokenWithRefreshToken() {
+        print("Success oauth20ConnectionDidFinishRequestACTokenWithRefreshToken")
+        getNaverEmailFromURL()
+        
+    }
+    
+    func oauth20ConnectionDidFinishDeleteToken() {
+        
+    }
+    
+    func oauth20Connection(_ oauthConnection: NaverThirdPartyLoginConnection!, didFailWithError error: Error!) {
+        print(error.localizedDescription)
+        print(error)
+    }
+    
+    func getNaverEmailFromURL(){
+        guard let loginConn = NaverThirdPartyLoginConnection.getSharedInstance() else {return}
+        guard let tokenType = loginConn.tokenType else {return}
+        guard let accessToken = loginConn.accessToken else {return}
+        
+        let authorization = "\(tokenType) \(accessToken)"
+        Alamofire.request("https://openapi.naver.com/v1/nid/me", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["Authorization" : authorization]).responseJSON { (response) in
+            guard let result = response.result.value as? [String: Any] else {return}
+            guard let object = result["response"] as? [String: Any] else {return}
+            var sendParam = Param()
+            if let name = object["name"] as? String {
+                sendParam.name = name
+            }
+            if let email = object["email"] as? String {
+                sendParam.email = email
+            }
+            if let profile = object["profile_image"] as? String {
+                sendParam.imageUrl = profile
+            }
+            sendParam.loginType = typeCase.naver.rawValue
+            sendParam.loginUid = UserInfo.getUid()
+            
+            self.goNextPage(param: sendParam)
+        }
+    }
+}
 
-//google
+//MARK: Google Login
 extension ViewController : GIDSignInUIDelegate , GIDSignInDelegate{
     
-    // Present a view that prompts the user to sign in with Google
-    func signIn(signIn: GIDSignIn!,
-                presentViewController viewController: UIViewController!) {
+    func sign(_ signIn: GIDSignIn!,
+              present viewController: UIViewController!) {
         self.present(viewController, animated: true, completion: nil)
     }
     
-    // Dismiss the "Sign in with Google" view
-    func signIn(signIn: GIDSignIn!,
-                dismissViewController viewController: UIViewController!) {
+    func sign(_ signIn: GIDSignIn!,
+              dismiss viewController: UIViewController!) {
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -194,25 +173,20 @@ extension ViewController : GIDSignInUIDelegate , GIDSignInDelegate{
         if let error = error {
             print("\(error.localizedDescription)")
         } else {
-            // Perform any operations on signed in user here.
-            let userId = user.userID                  // For client-side use only!
-            let idToken = user.authentication.idToken // Safe to send to the server
-            let fullName = user.profile.name
-            let givenName = user.profile.givenName
-            let familyName = user.profile.familyName
-            let email = user.profile.email
-            print("Sign-in Success \(email)")
-            print(fullName)
-            print(user.profile.imageURL(withDimension: 400))
-            
-            let st = UIStoryboard.init(name: "Login", bundle: nil)
-            let nv = st.instantiateViewController(withIdentifier: "Login") as! LoginViewController
-            
-            nv.param = ["nickname" : fullName,
-                        "profile": user.profile.imageURL(withDimension: 400),
-                        "type": typeCase.google.hashValue]
-            self.present(nv, animated: false, completion: nil)
-            
+            var sendParam = Param()
+            if let fullName = user.profile.name {
+                sendParam.name = fullName
+            }
+            if let email = user.profile.email {
+                sendParam.email = email
+            }
+            if let profile = user.profile.imageURL(withDimension: 400) {
+                sendParam.imageUrl = try? String(contentsOf: profile)
+            }
+            sendParam.loginType = typeCase.google.rawValue
+            sendParam.loginUid = UserInfo.getUid()
+
+            self.goNextPage(param: sendParam)
         }
     }
 }
