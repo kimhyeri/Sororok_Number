@@ -118,6 +118,7 @@
 		356A58FD210D9F35003C20BB /* CustomNaviViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNaviViewController.swift; sourceTree = "<group>"; };
 		356D84362135F90D00F653B2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		358268F521262669003415F0 /* TwoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoViewController.swift; sourceTree = "<group>"; };
+		358AE5262136D741005B0454 /* Number.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Number.entitlements; sourceTree = "<group>"; };
 		3598EBD6212AB21900906BF2 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KakaoOpenSDK.framework; path = "../kakao-ios-sdk-1.9.0/KakaoOpenSDK.framework"; sourceTree = "<group>"; };
 		3598EBD8212AB49000906BF2 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		35ACD198212B52F80046B541 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KakaoOpenSDK.framework; path = Pods/KakaoOpenSDK.framework; sourceTree = "<group>"; };
@@ -286,6 +287,7 @@
 		35ECDEEE2103B1B700308080 /* Number */ = {
 			isa = PBXGroup;
 			children = (
+				358AE5262136D741005B0454 /* Number.entitlements */,
 				356D84362135F90D00F653B2 /* GoogleService-Info.plist */,
 				35ECDF0C2104759400308080 /* Home */,
 				35ECDF0721046E5F00308080 /* CodeNum */,
@@ -398,6 +400,11 @@
 				TargetAttributes = {
 					35ECDEEB2103B1B700308080 = {
 						CreatedOnToolsVersion = 9.3.1;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};

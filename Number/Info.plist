@@ -63,7 +63,7 @@
 	<string>1</string>
 	<key>KAKAO_APP_KEY</key>
 	<string>b95622061a455f70be52b415243fe7fe</string>
-	<key>LSApplicationQueriesSchemes</key>
+    <key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>naversearchapp</string>
 		<string>naversearchthirdlogin</string>

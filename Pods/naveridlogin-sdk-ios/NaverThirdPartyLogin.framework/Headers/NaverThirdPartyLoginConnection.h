@@ -14,9 +14,8 @@
 @interface NaverThirdPartyLoginConnection : NSObject <UIAlertViewDelegate, UIApplicationDelegate>
 @property (nonatomic, weak) id<NaverThirdPartyLoginConnectionDelegate> delegate;
 
-@property (nonatomic) BOOL isNaverAppOauthEnable;
 @property (nonatomic) BOOL isInAppOauthEnable;
-
+@property (nonatomic) BOOL isNaverAppOauthEnable;
 @property (nonatomic, strong) NSString *consumerKey;
 @property (nonatomic, strong) NSString *consumerSecret;
 @property (nonatomic, strong) NSString *appName;

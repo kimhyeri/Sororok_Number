@@ -1,3 +1,4 @@
+
 //
 //  ViewController.swift
 //  Number
@@ -17,12 +18,12 @@ class ViewController: UIViewController{
     @IBOutlet weak var naver: UIButton!
     @IBOutlet weak var kakao: UIButton!
     var param = Param()
-    let loginInstance = NaverThirdPartyLoginConnection.getSharedInstance()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().delegate = self
+        
         changeView()
     }
     
@@ -37,16 +38,10 @@ class ViewController: UIViewController{
     }
     
     @IBAction func naverButtonPressed(_ sender: UIButton){
+        let loginInstance = NaverThirdPartyLoginConnection.getSharedInstance()
         loginInstance?.delegate = self
         loginInstance?.requestThirdPartyLogin()
-//        
-//        let st = UIStoryboard.init(name: "Login", bundle: nil)
-//        let nv = st.instantiateViewController(withIdentifier: "Login") as! LoginViewController
-//        
-//        
-//        self.present(nv, animated: false, completion: nil)
-//        let appDelegate = self.getAppDelegate()
-        
+    
     }
     
     @IBAction func googleButtonPressed(_ sender: UIButton) {
@@ -54,22 +49,6 @@ class ViewController: UIViewController{
         GIDSignIn.sharedInstance().delegate=self
         GIDSignIn.sharedInstance().uiDelegate=self
         GIDSignIn.sharedInstance().signIn()
-        
-//        let googleSignInButton = GIDSignInButton()
-//        googleSignInButton.frame = sender.frame
-//        googleSignInButton.backgroundColor = UIColor.clear
-//        sender.addSubview(googleSignInButton)
-//        let parameters : Parameters = [
-//            "type": "0",
-//            "uid": UserInfo.getUid(),
-//        ]
-//
-//        APICollection.sharedAPI.registeredCheck(parameters: parameters, completion: { result -> (Void) in
-//            let storybaord = UIStoryboard.init(name: "CodeNum", bundle: nil)
-//            let vc = storybaord.instantiateViewController(withIdentifier: "ST")
-//            self.present(vc, animated: true, completion: nil)
-//
-//        })
     }
     
     @IBAction func kakaoButtonPressed(_ sender: Any) {
@@ -86,7 +65,7 @@ class ViewController: UIViewController{
                 print(error?.localizedDescription ?? "")
             }else if session.isOpen() {
                 print("카카오 로그인 성공")
-
+                
                 KOSessionTask.meTask(completionHandler: {(profile, error) -> Void in
                     
                     if profile != nil {
@@ -114,7 +93,7 @@ class ViewController: UIViewController{
                                         "type": typeCase.kakao.hashValue]
                             self.present(nv, animated: false, completion: nil)
                             let appDelegate = self.getAppDelegate()
-
+                            
                         })
                     }
                 })
@@ -126,63 +105,79 @@ class ViewController: UIViewController{
 }
 
 extension ViewController: NaverThirdPartyLoginConnectionDelegate{
-    func oauth20ConnectionDidOpenInAppBrowser(forOAuth request: URLRequest!) {
-        print("1")
-        let naverSignInViewController = NLoginThirdPartyOAuth20InAppBrowserViewController(request: request)!
-        present(naverSignInViewController, animated: true, completion: nil)
-    }
-    
-    func oauth20ConnectionDidFinishRequestACTokenWithAuthCode() {
-        print("2")
-        
-        print("Success oauth20ConnectionDidFinishRequestACTokenWithAuthCode")
-        getNaverEmailFromURL()
-        
-    }
-    
-    func oauth20ConnectionDidFinishRequestACTokenWithRefreshToken() {
-        print("3")
-        
-        print("Success oauth20ConnectionDidFinishRequestACTokenWithRefreshToken")
-        getNaverEmailFromURL()
-        
-    }
-    
-    func oauth20ConnectionDidFinishDeleteToken() {
-        print("4")
-        
-    }
-    
-    func oauth20Connection(_ oauthConnection: NaverThirdPartyLoginConnection!, didFailWithError error: Error!) {
-        print("5")
-        
-        print(error.localizedDescription)
-        print(error)
-    }
-    
-    func getNaverEmailFromURL(){
-        print("6")
-        
-        guard let loginConn = NaverThirdPartyLoginConnection.getSharedInstance() else {return}
-        guard let tokenType = loginConn.tokenType else {return}
-        guard let accessToken = loginConn.accessToken else {return}
-        
-        let authorization = "\(tokenType) \(accessToken)"
-        Alamofire.request("https://openapi.naver.com/v1/nid/me", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["Authorization" : authorization]).responseJSON { (response) in
-            guard let result = response.result.value as? [String: Any] else {return}
-            //            guard let object = result["response"] as? [String: Any] else {return}
-            //            guard let number = object["number"] as? Int else {return}
-            //            guard let name = object["name"] as? String else {return}
-            //            guard let email = object["email"] as? String else {return}
-            print(result)
+   
+        func oauth20ConnectionDidOpenInAppBrowser(forOAuth request: URLRequest!) {
+            let naverSignInViewController = NLoginThirdPartyOAuth20InAppBrowserViewController(request: request)!
+            present(naverSignInViewController, animated: true, completion: nil)
         }
-        
+        // ---- 4
+        func oauth20ConnectionDidFinishRequestACTokenWithAuthCode() {
+            print("Success oauth20ConnectionDidFinishRequestACTokenWithAuthCode")
+            getNaverEmailFromURL()
+         
+        }
+        // ---- 5
+        func oauth20ConnectionDidFinishRequestACTokenWithRefreshToken() {
+            print("Success oauth20ConnectionDidFinishRequestACTokenWithRefreshToken")
+            getNaverEmailFromURL()
+       
+        }
+        // ---- 6
+        func oauth20ConnectionDidFinishDeleteToken() {
+            
+        }
+        // ---- 7
+        func oauth20Connection(_ oauthConnection: NaverThirdPartyLoginConnection!, didFailWithError error: Error!) {
+            print(error.localizedDescription)
+            print(error)
+        }
+        // ---- 8
+        func getNaverEmailFromURL(){
+            guard let loginConn = NaverThirdPartyLoginConnection.getSharedInstance() else {return}
+            guard let tokenType = loginConn.tokenType else {return}
+            guard let accessToken = loginConn.accessToken else {return}
+            
+            let authorization = "\(tokenType) \(accessToken)"
+            Alamofire.request("https://openapi.naver.com/v1/nid/me", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["Authorization" : authorization]).responseJSON { (response) in
+                guard let result = response.result.value as? [String: Any] else {return}
+                guard let object = result["response"] as? [String: Any] else {return}
+                guard let name = object["name"] as? String else {return}
+                guard let email = object["email"] as? String else {return}
+                guard let profile = object["profile_image"] as? String else {return}
+                print(object)
+              
+                let st = UIStoryboard.init(name: "Login", bundle: nil)
+                let nv = st.instantiateViewController(withIdentifier: "Login") as! LoginViewController
+                
+                self.present(nv, animated: false, completion: nil)
+            }
+        }
     }
-}
+    
+//    func getNaverEmailFromURL(){
+//        print("6")
+//
+//        guard let loginConn = NaverThirdPartyLoginConnection.getSharedInstance() else {return}
+//        guard let tokenType = loginConn.tokenType else {return}
+//        guard let accessToken = loginConn.accessToken else {return}
+//
+//        let authorization = "\(tokenType) \(accessToken)"
+//        print(authorization)
+//        Alamofire.request("https://openapi.naver.com/v1/nid/me", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["Authorization" : authorization]).responseJSON { (response) in
+//            guard let result = response.result.value as? [String: Any] else {return}
+//            guard let object = result["response"] as? [String: Any] else {return}
+//            guard let number = object["number"] as? Int else {return}
+//            guard let name = object["name"] as? String else {return}
+//            guard let email = object["email"] as? String else {return}
+//
+//            print(result)
+//        }
+//    }
+//}
 
 //google
 extension ViewController : GIDSignInUIDelegate , GIDSignInDelegate{
- 
+    
     // Present a view that prompts the user to sign in with Google
     func signIn(signIn: GIDSignIn!,
                 presentViewController viewController: UIViewController!) {

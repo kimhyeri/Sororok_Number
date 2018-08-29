@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         instance?.consumerKey = kConsumerKey
         instance?.consumerSecret = kConsumerSecret
         instance?.appName = kServiceAppName
+        return true
         
          GIDSignIn.sharedInstance().clientID = "485287400995-no0nk4j0g2lpk3v5n0h6pu8evqun5tvh.apps.googleusercontent.com"
 
@@ -88,7 +89,6 @@ extension AppDelegate {
     @available(iOS 9.0, *)
     
     func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
-        
         //카카오면
         if KOSession.isKakaoAccountLoginCallback(url) {
             return KOSession.handleOpen(url)

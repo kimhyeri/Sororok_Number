@@ -96,15 +96,15 @@ extension LoginViewController {
 //            let a = param["profile"]
 //            let url = URL(string: a)
             //구글 
-            let url : URL = param["profile"] as! URL
-            let data = try Data(contentsOf: url)
-            self.imgProfile.image = UIImage(data: data)
+//            let url : URL = param["profile"] as! URL
+//            let data = try Data(contentsOf: url)
+//            self.imgProfile.image = UIImage(data: data)
         }
         catch{
             print(error)
         }
-        self.imgProfile.layer.cornerRadius = imgProfile.frame.width/2
-        self.nameText.text = (param["nickname"]) as! String
+//        self.imgProfile.layer.cornerRadius = imgProfile.frame.width/2
+//        self.nameText.text = (param["nickname"]) as! String
     }
     
     func getDelegate(){
