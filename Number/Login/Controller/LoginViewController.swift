@@ -65,27 +65,39 @@ extension LoginViewController {
         ["phone" : numberText.text!,
         "name" : nameText.text!,
         "email" : emailText.text!,
-        "loginType" : param?.loginType as! String,
-        "loginUid" : param?.loginUid as! String,
-        "memberImage" : param?.memberImage as! String,
-        "imageUrl" : param?.imageUrl as! String]
-//        "imageUrl" : imgProfile.image]
+        "loginType" : (param?.loginType)!,
+        "loginUid" : (param?.loginUid)!,
+        "memberImage" : (param?.memberImage)!,
+        "imageUrl" : (param?.imageUrl)!]
         
-        let myUrl : URL = URL(string: "45.63.120.140:40005/member/join")!
+//        let myUrl : URL = URL(string: "45.63.120.140:40005/member/join")!
+//
+//        Alamofire.request(myUrl, method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: nil)
+//            .responseJSON { response in
+//                print(response.request as Any)
+//                print(response.response as Any)
+//                print(response.result.value as Any)
+//
+//                let storyboard = UIStoryboard.init(name: "CodeNum", bundle: nil)
+//                let nv = storyboard.instantiateViewController(withIdentifier: "ST")
+//                self.present(nv, animated: true, completion: nil)
+//                UIApplication.shared.keyWindow?.rootViewController = nv
+//        }
         
-        Alamofire.request(myUrl, method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: nil)
-            .responseJSON { response in
-                print(response.request as Any)  // original URL request
-                print(response.response as Any) // URL response
-                print(response.result.value as Any)   // result of response serialization
+        Alamofire.request("45.63.120.140:40005/member/join", method: .put , parameters: parameters).validate(statusCode: 200..<300).responseJSON {
+            response in
+            let json = JSON(response.result.value)
+            print("json \(json)")
+            switch response.result {
+            case .success:
+                print("success")
+                print(json)
+                break
+            case .failure:
+                print("fail")
+                break
+            }
         }
-        
-//        APICollection.sharedAPI.register(parameters: parameters, completion: { result -> (Void) in
-//            let storyboard = UIStoryboard.init(name: "CodeNum", bundle: nil)
-//            let nv = storyboard.instantiateViewController(withIdentifier: "ST")
-//            self.present(nv, animated: true, completion: nil)
-//            UIApplication.shared.keyWindow?.rootViewController = nv
-//        })
     }
     
     @objc func back(){

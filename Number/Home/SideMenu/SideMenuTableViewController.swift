@@ -17,7 +17,7 @@ class SideMenuTableViewController: UITableViewController {
                     "어서오세요:) 소로록에 오신것을 환영합니다."]
     
     override func viewDidLoad() {
-        super.viewDidLoad()        
+        super.viewDidLoad()
         tableView.rowHeight = UITableViewAutomaticDimension
     }
 

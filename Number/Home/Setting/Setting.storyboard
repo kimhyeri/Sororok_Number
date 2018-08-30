@@ -41,15 +41,15 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="마이페이지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1B-Dc-hRM">
-                                                    <rect key="frame" x="30" y="10" width="302" height="53.5"/>
+                                                    <rect key="frame" x="30" y="20" width="302" height="33.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                     <color key="textColor" red="0.16862745100000001" green="0.18039215689999999" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="Y1B-Dc-hRM" secondAttribute="bottom" constant="10" id="HhT-Zs-DDU"/>
-                                                <constraint firstItem="Y1B-Dc-hRM" firstAttribute="top" secondItem="CGt-mK-ita" secondAttribute="top" constant="10" id="IJY-AW-4jE"/>
+                                                <constraint firstAttribute="bottom" secondItem="Y1B-Dc-hRM" secondAttribute="bottom" constant="20" id="HhT-Zs-DDU"/>
+                                                <constraint firstItem="Y1B-Dc-hRM" firstAttribute="top" secondItem="CGt-mK-ita" secondAttribute="top" constant="20" id="IJY-AW-4jE"/>
                                                 <constraint firstItem="Y1B-Dc-hRM" firstAttribute="leading" secondItem="CGt-mK-ita" secondAttribute="leading" constant="30" id="hHF-zz-5OA"/>
                                                 <constraint firstAttribute="trailing" secondItem="Y1B-Dc-hRM" secondAttribute="trailing" constant="10" id="nTt-Ph-J7U"/>
                                             </constraints>

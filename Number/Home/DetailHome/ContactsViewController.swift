@@ -35,26 +35,36 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
         
     }
     
-    var array:[String:String] = ["가혜리":"010-1234-1234", "박혜리":"010-1234-1234","정혜리":"010-1234-1234","미혜리":"010-1234-1234","어혜리":"010-1234-1234","푸혜리":"010-1234-1234", "타혜리":"010-1234-1234" ,"Kim":"010-123-1123","park":"010-123-1123","dim":"010-123-1123","fim":"010-123-1123"]
-    
-    var array1:[String:String] = ["가혜리":"010-1234-1234", "ㄱA박혜리":"010-1234-4234", "Aㅃa정혜리":"010-1034-1234","미혜리":"010-1234-1234","어혜리":"010-1134-1234","푸혜리":"010-1241-1234", "타혜리":"010-1234-1234" ,"Kim":"010-1243-1123","apark":"110-123-1123","adim":"010-1623-1123","afim":"010-1283-1123"]
+    var array1:[String:String] = ["김혜리":"010-1234-1234", "박혜리":"010-1234-4234", "정혜리":"010-1034-1234","미혜리":"010-1234-1234","어혜리":"010-1134-1234","푸혜리":"010-1241-1234", "타혜리":"010-1234-1234" ,"Kim":"010-1243-1123","apark":"110-123-1123","adim":"010-1623-1123","afim":"010-1283-1123"]
     
     var selectedArray : [String:String] = [:]
     
 
     override func viewWillAppear(_ animated: Bool) {
         totalLabel.text = "총 \(array1.count)명"
-        
-        let dac = array.map { return $0.key }
+//        let dac = array1.map { return $0.key }
+//        for j in 0..<dac.count{
+//            let name = dac[j]
+//            let text = dac[j].first
+//            let val = UnicodeScalar(String(text!))?.value
+//            if ( val! >= 0xAC00 && val! <= 0xD7A3 ) {
+//                let first = (val! - 0xac00) / 28 / 21
+//                let getValue: String =  getHangul(num: Int(first))
+//                array1.changeKey(from: name, to: getValue+name)
+//            }
+//        }
+        checkSplit()
+    }
+    
+    func checkSplit() {
+        let dac = array1.map { return $0.key }
         for j in 0..<dac.count{
-            let name = dac[j]
-            let text = dac[j].first
-            let val = UnicodeScalar(String(text!))?.value
-            if ( val! >= 0xAC00 && val! <= 0xD7A3 ) {
-                let first = (val! - 0xac00) / 28 / 21
-                let getValue: String =  getHangul(num: Int(first))
-                array1.changeKey(from: name, to: getValue+name)
-            }
+            print(dac[j])
+            let st = dac[j].decomposedStringWithCanonicalMapping
+            let s = dac[j].precomposedStringWithCanonicalMapping
+            print(st)
+            print(s)
+           
         }
     }
     
@@ -74,43 +84,6 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
         let rightBarButtonItem = UIBarButtonItem.init(image: UIImage(named: "btnCommListSetWh"), style: .done, target: self, action: #selector(ContactsViewController.pressedButton))
         self.navigationItem.rightBarButtonItem = rightBarButtonItem
         self.navigationController?.navigationBar.tintColor = UIColor.white
-        
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //데이터 없을때
-        
-        //let cell = tableView.dequeueReusableCell(withIdentifier: "NotSearchTableViewCell", for: indexPath) as! NotSearchTableViewCell
-        //return cell
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DetailHomeTableViewCell", for: indexPath) as! DetailHomeTableViewCell
-        let predicate = NSPredicate(format: "SELF beginswith[c] %@", index.arrIndexSection.object(at: indexPath.section) as! CVarArg)
-        cell.userImage?.layer.cornerRadius = (cell.userImage?.frame.width)!/2
-        let dic = array1.map { return $0.key }
-        //        let num = array1.map {return $0.value}
-        let arrContacts = (dic as NSArray).filtered(using: predicate) as NSArray
-        cell.nameLabel?.text = arrContacts.object(at: indexPath.row) as? String
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        changeView(alpha: true)
-        updateCount()
-    }
-    
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        updateCount()
-        if tableView.indexPathsForSelectedRows?.count == nil{
-            changeView(alpha: false)
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let predicate = NSPredicate(format: "SELF beginswith[c] %@", index.arrIndexSection.object(at: section) as! CVarArg)
-        let dic = array1.map { return $0.key }
-        let arrContacts = (dic as NSArray).filtered(using: predicate) as NSArray
-        print(arrContacts)
-        return arrContacts.count
         
     }
     
@@ -163,6 +136,44 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     }
 }
 
+//MARK: tableview datasource delegate
+extension ContactsViewController {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if array1.count == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NotSearchTableViewCell", for: indexPath) as! NotSearchTableViewCell
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DetailHomeTableViewCell", for: indexPath) as! DetailHomeTableViewCell
+            let predicate = NSPredicate(format: "SELF beginswith[c] %@", index.arrIndexSection.object(at: indexPath.section) as! CVarArg)
+            cell.userImage?.layer.cornerRadius = (cell.userImage?.frame.width)!/2
+            let dic = array1.map { return $0.key }
+            let arrContacts = (dic as NSArray).filtered(using: predicate) as NSArray
+            cell.nameLabel?.text = arrContacts.object(at: indexPath.row) as? String
+            return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        changeView(alpha: true)
+        updateCount()
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        updateCount()
+        if tableView.indexPathsForSelectedRows?.count == nil{
+            changeView(alpha: false)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let predicate = NSPredicate(format: "SELF beginswith[c] %@", index.arrIndexSection.object(at: section) as! CVarArg)
+        let dic = array1.map { return $0.key }
+        let arrContacts = (dic as NSArray).filtered(using: predicate) as NSArray
+        return arrContacts.count
+        
+    }
+}
 
 //MARK: update selected cell
 extension ContactsViewController {
@@ -186,13 +197,16 @@ extension ContactsViewController {
     }
 }
 
+//MARK: contacts index header part
 extension ContactsViewController {
     
     public func numberOfSections(in tableView: UITableView) -> Int {
+ 
         return index.arrIndexSection.count
     }
     
     public func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+
         return self.index.arrIndexSection as? [String]
     }
     
@@ -206,6 +220,7 @@ extension ContactsViewController {
     
 }
 
+//MARK: save contacts
 extension ContactsViewController{
     
     func sort() {
@@ -213,8 +228,6 @@ extension ContactsViewController{
         let number = array1.map { return $0.value }
         for i in 0..<array1.count {
             contact.givenName = name[i]
-            //contact.familyName = "성"
-            
             contact.phoneNumbers = [CNLabeledValue(
                 label:CNLabelPhoneNumberMain, value:CNPhoneNumber(stringValue: number[i]))]
             
