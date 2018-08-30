@@ -60,11 +60,8 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
         let dac = array1.map { return $0.key }
         for j in 0..<dac.count{
             print(dac[j])
-            let st = dac[j].decomposedStringWithCanonicalMapping
-            let s = dac[j].precomposedStringWithCanonicalMapping
-            print(st)
-            print(s)
-           
+            let st = "김혜리"
+            print(st.decomposedStringWithCanonicalMapping)
         }
     }
     

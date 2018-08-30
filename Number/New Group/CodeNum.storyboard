@@ -79,7 +79,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="iconImage" destination="Bxo-Es-tRC" id="dcN-Al-Ej5"/>
                                     <outlet property="news" destination="XNb-Le-hGj" id="W8t-YM-Fgb"/>
+                                    <outlet property="newsTimeLabel" destination="jvc-my-ORq" id="iRk-SV-K4d"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
