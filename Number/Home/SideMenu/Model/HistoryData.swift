@@ -15,10 +15,10 @@ struct HistoryData {
     let seq_no : Int
     
     init(rawJson: Any) {
-        let json = JOSN(rawJson)
+        let json = JSON(rawJson)
         
         content = json["content"].stringValue
         date = json["date"].stringValue
-        seq_no = json["seq_no"].intVale
+        seq_no = json["seq_no"].intValue
     }
 }

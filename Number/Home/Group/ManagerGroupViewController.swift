@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class ManagerGroupViewController: UIViewController{
 
@@ -31,7 +33,19 @@ class ManagerGroupViewController: UIViewController{
     }
     
     @IBAction func changeCodeButtonPressed(_ sender: Any) {
-        codeLabel.text = "FQWQ14"
+        Alamofire.request("http://45.63.120.140:40005/repository/code").responseJSON { response in 
+            let json = JSON(response.result.value)
+            print(json)
+            switch response.result {
+            case .success:
+                print("success")
+                self.codeLabel.text = json["code"].stringValue
+                break
+            case .failure:
+                print("fail")
+                break
+            }
+        }
     }
 }
 
