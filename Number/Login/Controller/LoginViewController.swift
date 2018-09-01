@@ -64,35 +64,26 @@ extension LoginViewController {
         "name" : nameText.text!,
         "email" : emailText.text!,
         "loginType" : (param?.loginType)!,
-        "loginUid" : (param?.loginUid)!,
+        "loginUid" : (param?.loginUid)!]
 //        "memberImage" : (param?.memberImage)!,
-        "imageUrl" : (param?.imageUrl)!]
-        
-        let body : Parameters = [
-            "type" : (param?.loginType)!,
-            "uid" : (param?.loginUid)! ,
-        ]
-        
-        Alamofire.request("http://45.63.120.140:40005/member/login", method: .post, parameters: body as? [String: Any], encoding: JSONEncoding.default, headers: [:])
+//        "imageUrl" : (param?.imageUrl)!]
+
+        print(parameters)
+        Alamofire.request("http://45.63.120.140:40005/member/join", method: .put, parameters: nil, encoding: JSONEncoding.default)
             .responseJSON { response in
-                print(response.result)
-                let json = JSON(response.result.value)
-                print(json)
+                print(response)
         }
         
-//        APICollection.sharedAPI.register(parameters: parameters, completion: {_ in
-//            let storyboard = UIStoryboard.init(name: "CodeNum", bundle: nil)
-//            let nv = storyboard.instantiateViewController(withIdentifier: "ST")
-//            self.present(nv, animated: true, completion: nil)
-//            UIApplication.shared.keyWindow?.rootViewController = nv
+//        Alamofire.request("http://45.63.120.140:40005/member/join", method: .put, parameters: parameters, encoding: .JSON, headers: [:]).responseJSON(completionHandler: { response in
+//            switch response.result {
+//            case .success:
+//                print("SUCCESS")
+//                print(response.data)
+//            case .0failure(let error):
+//                print(error)
+//            }
 //        })
-//        print(parameters)
-        
-        
-//        APICollection.sharedAPI.registeredCheck(parameters: data, completion: { (result) -> (Void) in
-//
-//        })
-
+       
     }
 
     @objc func back(){

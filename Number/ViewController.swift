@@ -11,6 +11,7 @@ import UIKit
 import Alamofire
 import GoogleSignIn
 import NaverThirdPartyLogin
+import SwiftyJSON
 
 class ViewController: UIViewController{
     
@@ -22,7 +23,7 @@ class ViewController: UIViewController{
         super.viewDidLoad()
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().delegate = self
-        
+        checkLogin(memberId: 27)
         changeView()
     }
     
@@ -43,6 +44,32 @@ class ViewController: UIViewController{
         self.present(nv, animated: false, completion: nil)
     }
     
+    //로그인 했는지 체크하기
+    func checkLogin(type: String){
+        let body : Parameters = [
+            "type" : type,
+            "uid" : UserInfo.getUid() ,
+        ]
+        
+        APICollection.sharedAPI.registeredCheck(parameters: body, completion: {
+            (result) -> (Void) in
+      
+        })
+    }
+    
+    
+    //사용자 정보 들고오기
+    func checkLogin(memberId: Int){
+        let memberId : Parameters = [
+            "memberId" : memberId
+            ]
+
+        APICollection.sharedAPI.checkMemberInfo(parameter: memberId, completion: {
+            (result) -> (Void) in
+        })
+        
+    }
+    
     @IBAction func naverButtonPressed(_ sender: UIButton){
         let loginInstance = NaverThirdPartyLoginConnection.getSharedInstance()
         loginInstance?.delegate = self
@@ -57,6 +84,8 @@ class ViewController: UIViewController{
     
     @IBAction func kakaoButtonPressed(_ sender: Any) {
         let session :KOSession = KOSession.shared()
+        
+        checkLogin(type: typeCase.kakao.rawValue)
         
         if session.isOpen() {
             session.close()
