@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SwiftyJSON
+import Alamofire
 
 class SideMenuTableViewController: UITableViewController {
 
@@ -18,6 +20,7 @@ class SideMenuTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadData(memberId: 27)
         tableView.rowHeight = UITableViewAutomaticDimension
     }
 
@@ -53,6 +56,17 @@ class SideMenuTableViewController: UITableViewController {
     
     @IBAction func exitButtonPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func loadData(memberId: Int) {
+        let memberId : Parameters = [
+            "memberId" : memberId
+        ]
+        
+        APICollection.sharedAPI.memberHistory(parameter: memberId, completion: {(result) -> (Void) in
+            
+        })
+        
     }
 }
 

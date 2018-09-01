@@ -43,6 +43,7 @@
 		35572C24212C06BB00A919C7 /* NotSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35572C22212C06BB00A919C7 /* NotSearchTableViewCell.swift */; };
 		35572C25212C06BB00A919C7 /* NotSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35572C23212C06BB00A919C7 /* NotSearchTableViewCell.xib */; };
 		35572C27212C342500A919C7 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35572C26212C342500A919C7 /* SettingViewController.swift */; };
+		355A9466213B26C5005AD348 /* HistoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355A9465213B26C4005AD348 /* HistoryData.swift */; };
 		355B69962132BDED0002FD80 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 355B69952132BDEC0002FD80 /* MessageUI.framework */; };
 		355BB75021297782009A7837 /* NothingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355BB74E21297782009A7837 /* NothingTableViewCell.swift */; };
 		355BB75121297782009A7837 /* NothingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 355BB74F21297782009A7837 /* NothingTableViewCell.xib */; };
@@ -105,6 +106,7 @@
 		35572C22212C06BB00A919C7 /* NotSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotSearchTableViewCell.swift; sourceTree = "<group>"; };
 		35572C23212C06BB00A919C7 /* NotSearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotSearchTableViewCell.xib; sourceTree = "<group>"; };
 		35572C26212C342500A919C7 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		355A9465213B26C4005AD348 /* HistoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryData.swift; sourceTree = "<group>"; };
 		355B69952132BDEC0002FD80 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		355BB74E21297782009A7837 /* NothingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NothingTableViewCell.swift; path = Number/Home/DetailHome/NothingTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		355BB74F21297782009A7837 /* NothingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NothingTableViewCell.xib; path = Number/Home/DetailHome/NothingTableViewCell.xib; sourceTree = SOURCE_ROOT; };
@@ -210,6 +212,7 @@
 		354EA793210C7CDE00D16A80 /* SideMenu */ = {
 			isa = PBXGroup;
 			children = (
+				355A9464213B26AC005AD348 /* Model */,
 				354EA794210C877300D16A80 /* SideMenuTableViewController.swift */,
 			);
 			path = SideMenu;
@@ -250,6 +253,14 @@
 				3556196921071EDF009CC356 /* DetailHomeTableViewCell.xib */,
 			);
 			path = DetailHome;
+			sourceTree = "<group>";
+		};
+		355A9464213B26AC005AD348 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				355A9465213B26C4005AD348 /* HistoryData.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		355F0A712108E95600715E3F /* Setting */ = {
@@ -538,6 +549,7 @@
 				353EC8C4210A2BBF004081D1 /* AlbumViewController.swift in Sources */,
 				35ECDF15210476F200308080 /* HomeTableViewCell.swift in Sources */,
 				353EC8C6210A3169004081D1 /* AlbumUICollectionViewCell.swift in Sources */,
+				355A9466213B26C5005AD348 /* HistoryData.swift in Sources */,
 				3556196A21071EDF009CC356 /* DetailHomeTableViewCell.swift in Sources */,
 				3565D4432128291B000D70D2 /* ContactsViewController.swift in Sources */,
 				353EC8CC210AF0F1004081D1 /* AddressViewController.swift in Sources */,
