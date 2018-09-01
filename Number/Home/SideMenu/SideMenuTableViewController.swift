@@ -37,7 +37,7 @@ class SideMenuTableViewController: UITableViewController {
         if newsData.count == 0 {
             cell.iconImage.image = UIImage(named: "icnNoticeEmpty")
             cell.news.text = "최근 소식이 없습니다."
-            cell.newsTimeLabel = " "
+            cell.newsTimeLabel.text = " "
         }else {
             cell.iconImage.image = UIImage(named: "icnNotiNotice")
             cell.news.text = newsData[indexPath.row]

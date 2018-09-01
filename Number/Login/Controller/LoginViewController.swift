@@ -42,7 +42,6 @@ extension LoginViewController {
     //네비게이션 설정 해야함 사용자 정보 받기 성공했을 경우
     
     func setNavigationBar() {
-        
         let screenSize: CGRect = UIScreen.main.bounds
         let navBar = UINavigationBar(frame: CGRect(x: 0, y: 20, width: screenSize.width, height: 44))
         let navItem = UINavigationItem(title: "")
@@ -56,7 +55,6 @@ extension LoginViewController {
         navItem.rightBarButtonItem = doneItem
         navBar.setItems([navItem], animated: false)
         navBar.tintColor = UIColor.white
-        
         self.view.addSubview(navBar)
     }
     
@@ -67,39 +65,36 @@ extension LoginViewController {
         "email" : emailText.text!,
         "loginType" : (param?.loginType)!,
         "loginUid" : (param?.loginUid)!,
-        "memberImage" : (param?.memberImage)!,
+//        "memberImage" : (param?.memberImage)!,
         "imageUrl" : (param?.imageUrl)!]
         
-//        let myUrl : URL = URL(string: "45.63.120.140:40005/member/join")!
-//
-//        Alamofire.request(myUrl, method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: nil)
-//            .responseJSON { response in
-//                print(response.request as Any)
-//                print(response.response as Any)
-//                print(response.result.value as Any)
-//
-//                let storyboard = UIStoryboard.init(name: "CodeNum", bundle: nil)
-//                let nv = storyboard.instantiateViewController(withIdentifier: "ST")
-//                self.present(nv, animated: true, completion: nil)
-//                UIApplication.shared.keyWindow?.rootViewController = nv
-//        }
+        let body : Parameters = [
+            "type" : (param?.loginType)!,
+            "uid" : (param?.loginUid)! ,
+        ]
         
-        Alamofire.request("45.63.120.140:40005/member/join", method: .put , parameters: parameters).validate(statusCode: 200..<300).responseJSON {
-            response in
-            let json = JSON(response.result.value)
-            print("json \(json)")
-            switch response.result {
-            case .success:
-                print("success")
+        Alamofire.request("http://45.63.120.140:40005/member/login", method: .post, parameters: body as? [String: Any], encoding: JSONEncoding.default, headers: [:])
+            .responseJSON { response in
+                print(response.result)
+                let json = JSON(response.result.value)
                 print(json)
-                break
-            case .failure:
-                print("fail")
-                break
-            }
         }
+        
+//        APICollection.sharedAPI.register(parameters: parameters, completion: {_ in
+//            let storyboard = UIStoryboard.init(name: "CodeNum", bundle: nil)
+//            let nv = storyboard.instantiateViewController(withIdentifier: "ST")
+//            self.present(nv, animated: true, completion: nil)
+//            UIApplication.shared.keyWindow?.rootViewController = nv
+//        })
+//        print(parameters)
+        
+        
+//        APICollection.sharedAPI.registeredCheck(parameters: data, completion: { (result) -> (Void) in
+//
+//        })
+
     }
-    
+
     @objc func back(){
         self.dismiss(animated: true, completion: nil)
     }
