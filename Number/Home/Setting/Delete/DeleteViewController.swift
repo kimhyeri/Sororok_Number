@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class DeleteViewController: UIViewController {
 
@@ -19,5 +21,16 @@ class DeleteViewController: UIViewController {
     
     @IBAction func logoutButton(_ sender: Any) {
        self.dismiss(animated: false, completion: nil)
+    }
+    
+    @IBAction func memberRemove(_ sender: Any) {
+        //멤버변수에 userdefault에 저장된 memberId로 지우기
+        let memberId : Parameters = [
+            "memberId" : 30
+        ]
+        
+        APICollection.sharedAPI.memberRemove(parameter: memberId, completion: {(result) -> (Void) in
+            
+        })
     }
 }
