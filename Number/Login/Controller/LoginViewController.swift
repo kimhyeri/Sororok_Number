@@ -138,7 +138,6 @@ extension LoginViewController {
         numberText.delegate = self
         emailText.delegate = self
     }
-    
 }
 
 //MARK: TextField Delegate extension part

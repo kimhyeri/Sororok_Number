@@ -53,7 +53,7 @@ class ViewController: UIViewController{
         
         APICollection.sharedAPI.registeredCheck(parameters: body, completion: {
             (result) -> (Void) in
-      
+            //확인되면 바로 페이지 넘기기
         })
     }
     
@@ -66,6 +66,7 @@ class ViewController: UIViewController{
 
         APICollection.sharedAPI.checkMemberInfo(parameter: memberId, completion: {
             (result) -> (Void) in
+            
         })
         
     }

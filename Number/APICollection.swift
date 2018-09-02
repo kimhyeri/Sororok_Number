@@ -7,7 +7,6 @@
 //
 
 import Foundation
-
 import Alamofire
 import SwiftyJSON
 
@@ -88,7 +87,6 @@ class APICollection{
             switch response.result {
             case .success:
                 print("success")
-               
                 break
             case .failure:
                 print("fail")

@@ -8,6 +8,8 @@
 
 import UIKit
 import SideMenu
+import Alamofire
+import SwiftyJSON
 
 class TwoViewController: UIViewController {
     
@@ -33,12 +35,14 @@ class TwoViewController: UIViewController {
     var defaultLabel = 0
     var groupDefaultImages = ["imgDefaultGroup01","imgDefaultGroup02","imgDefaultGroup03","imgDefaultGroup04","imgDefaultGroup05","imgDefaultGroup06"]
     
-    @IBAction func pressedSosik(_ sender: Any) {        
+    @IBAction func pressedSosik(_ sender: Any) {
+        makeDefault()
         let nv = self.storyboard?.instantiateViewController(withIdentifier: "LeftMenuNavigationController")
         present(nv!, animated: true, completion: nil)
     }
     
     @IBAction func profilePressed(_ sender: Any) {
+        makeDefault()
         let storyboard = UIStoryboard(name: "MyPage", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "MyPage") as! MyPageViewController
         self.navigationController?.pushViewController(vc, animated: true)
@@ -50,12 +54,16 @@ class TwoViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         defaultView()
+        loadItem()
     }
     
     func defaultView(){
-        defaultSize.append(imageButton.frame)
-        defaultSize.append(nameLabel.frame)
-        defaultSize.append(nameShadow.frame)
+        defaultSize.append(topView.frame)
+        defaultSize.append(firstView.frame)
+        defaultSize.append(insideView.frame)
+        defaultSize.append(searchView.frame)
+        defaultSize.append(tableView.frame)
+        
         defaultButton = Int(self.imageButton.frame.origin.y)
         defaultLabel = Int(self.nameLabel.frame.origin.y)
         
@@ -123,7 +131,6 @@ extension TwoViewController : UIScrollViewDelegate {
         
         if (self.lastContentOffset < scrollView.contentOffset.y) {
             insideView.alpha = 1 - ( tableView.contentOffset.y * 0.01)
-            print(insideView.alpha)
         }
     }
 }
@@ -194,5 +201,33 @@ extension TwoViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
         UIApplication.shared.statusBarStyle = .default
+    }
+    
+    func makeDefault() {
+        topView.frame = defaultSize[0]
+        firstView.frame = defaultSize[1]
+        insideView.frame = defaultSize[2]
+        searchView.frame = defaultSize[3]
+        tableView.frame = defaultSize[4]
+    }
+    
+    func loadItem(){
+        let parameter = [
+            "memberId" : 27
+        ]
+        
+        Alamofire.request("http://45.63.120.140:40005/repository/list", method: .get, parameters: parameter).responseJSON {
+            response in
+            let json = JSON(response.result.value)
+            print(json)
+            switch response.result {
+            case .success:
+                print("success")
+                break
+            case .failure:
+                print("fail")
+                break
+            }
+        }
     }
 }
