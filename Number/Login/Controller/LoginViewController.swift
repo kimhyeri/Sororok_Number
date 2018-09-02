@@ -59,31 +59,48 @@ extension LoginViewController {
     }
     
     @objc func done(){
-        let parameters : [String:Any] =
-        ["phone" : numberText.text!,
+        
+        let parameters = [
+        "phone" : numberText.text!,
         "name" : nameText.text!,
         "email" : emailText.text!,
         "loginType" : (param?.loginType)!,
-        "loginUid" : (param?.loginUid)!]
+        "loginUid" : (param?.loginUid)!
 //        "memberImage" : (param?.memberImage)!,
 //        "imageUrl" : (param?.imageUrl)!]
+        ] as Parameters
 
         print(parameters)
-        Alamofire.request("http://45.63.120.140:40005/member/join", method: .put, parameters: nil, encoding: JSONEncoding.default)
-            .responseJSON { response in
-                print(response)
-        }
+        let url = URL(string: "http://45.63.120.140:40005/member/join")
+    
+        let phone = numberText.text!
+        let name = nameText.text!
+        let email = emailText.text!
+        let loginType = (param?.loginType)!
+        let loginUid = (param?.loginUid)!
         
-//        Alamofire.request("http://45.63.120.140:40005/member/join", method: .put, parameters: parameters, encoding: .JSON, headers: [:]).responseJSON(completionHandler: { response in
-//            switch response.result {
-//            case .success:
-//                print("SUCCESS")
-//                print(response.data)
-//            case .0failure(let error):
-//                print(error)
-//            }
-//        })
-       
+        Alamofire.upload(
+            multipartFormData: { multipartFormData in
+                multipartFormData.append((phone.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "phone")
+                multipartFormData.append((name.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "name")
+                multipartFormData.append((email.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "email")
+                multipartFormData.append((loginType.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "loginType")
+                multipartFormData.append((loginUid.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "loginUid")
+                
+        },
+            to: url!,
+            method: .put,
+            encodingCompletion: { encodingResult in
+                switch encodingResult {
+                case .success(let upload, _, _):
+                    upload.responseData { response in
+                        print(response.result)
+                        print(response.data)
+                    }
+                case .failure(let encodingError):
+                    print(encodingError)
+                }
+        })
     }
 
     @objc func back(){
@@ -155,5 +172,23 @@ extension LoginViewController : AlbumSelectionDelegate{
             }
         }
         imgProfile.image = img
+    }
+}
+
+struct JSONStringArrayEncoding: ParameterEncoding {
+    private let array: [String: Any]
+    
+    init(array: [String : Any]) {
+        self.array = array
+    }
+    
+    func encode(_ urlRequest: URLRequestConvertible, with parameters: Parameters?) throws -> URLRequest {
+            var urlRequest = try urlRequest.asURLRequest()
+            let data = try JSONSerialization.data(withJSONObject: array, options: [])
+            if urlRequest.value(forHTTPHeaderField: "Content-Type") == nil {
+                urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            }
+            urlRequest.httpBody = data
+            return urlRequest
     }
 }
