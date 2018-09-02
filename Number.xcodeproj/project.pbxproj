@@ -51,6 +51,7 @@
 		355BB7552129E63C009A7837 /* Logout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 355BB7542129E63C009A7837 /* Logout.storyboard */; };
 		355BB7572129E767009A7837 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 355BB7562129E766009A7837 /* Assets.xcassets */; };
 		355F0A732108E96C00715E3F /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 355F0A722108E96C00715E3F /* Setting.storyboard */; };
+		356125E9213C49340040985D /* UserInfoSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356125E8213C49340040985D /* UserInfoSet.swift */; };
 		3565D4432128291B000D70D2 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3565D4422128291B000D70D2 /* ContactsViewController.swift */; };
 		3565D445212837CA000D70D2 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3565D444212837CA000D70D2 /* SearchView.swift */; };
 		3565D44721283B0A000D70D2 /* HexColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3565D44621283B0A000D70D2 /* HexColor.swift */; };
@@ -114,6 +115,7 @@
 		355BB7542129E63C009A7837 /* Logout.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Logout.storyboard; sourceTree = "<group>"; };
 		355BB7562129E766009A7837 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Number/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		355F0A722108E96C00715E3F /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
+		356125E8213C49340040985D /* UserInfoSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoSet.swift; sourceTree = "<group>"; };
 		3565D4422128291B000D70D2 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		3565D444212837CA000D70D2 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		3565D44621283B0A000D70D2 /* HexColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexColor.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				354E6CEA2130BD0700C6C526 /* Register.swift */,
+				356125E8213C49340040985D /* UserInfoSet.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -575,6 +578,7 @@
 				354E6CE9213080CB00C6C526 /* APICollection.swift in Sources */,
 				35ECDEF02103B1B700308080 /* AppDelegate.swift in Sources */,
 				354EA79A210C900900D16A80 /* DeleteViewController.swift in Sources */,
+				356125E9213C49340040985D /* UserInfoSet.swift in Sources */,
 				351AB63B2105C16E0017D41A /* MyPageViewController.swift in Sources */,
 				35325D4E212F0E4500AC3897 /* ContactNaviViewController.swift in Sources */,
 			);

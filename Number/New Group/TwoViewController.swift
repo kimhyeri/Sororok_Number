@@ -213,7 +213,7 @@ extension TwoViewController {
     
     func loadItem(){
         let parameter = [
-            "memberId" : 27
+            "memberId" : UserDefaults.standard.integer(forKey: "memberId")
         ]
         
         Alamofire.request("http://45.63.120.140:40005/repository/list", method: .get, parameters: parameter).responseJSON {

@@ -48,14 +48,17 @@ class APICollection{
     }
     
     func checkMemberInfo(parameter: Parameters, completion: @escaping (_ result: JSON) -> (Void)){
+        
         Alamofire.request("http://45.63.120.140:40005/member/info", method: .get, parameters: parameter).responseJSON {
+            
             response in
             let json = JSON(response.result.value)
             print(json)
             switch response.result {
             case .success:
                 print("success")
-                break
+                completion(json)
+                UserDefaults.standard.set(json.array, forKey: "userInfo")
             case .failure:
                 print("fail")
                 break

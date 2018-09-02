@@ -18,6 +18,7 @@ class ViewController: UIViewController{
     @IBOutlet weak var google: UIButton!
     @IBOutlet weak var naver: UIButton!
     @IBOutlet weak var kakao: UIButton!
+    var userData : UserInfoSet!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,10 +52,24 @@ class ViewController: UIViewController{
             "uid" : UserInfo.getUid() ,
         ]
         
-        APICollection.sharedAPI.registeredCheck(parameters: body, completion: {
-            (result) -> (Void) in
-            //확인되면 바로 페이지 넘기기
-        })
+//        APICollection.sharedAPI.registeredCheck(parameters: body, completion: {
+//            (result) -> (Void) in
+//        })
+        
+        Alamofire.request("http://45.63.120.140:40005/member/login", method: .post, parameters: body as? [String: Any], encoding: JSONEncoding.default, headers: [:])
+            .responseJSON { response in
+                let json = JSON(response.result.value)
+                print(json)
+                switch response.result {
+                case .success:
+                    self.userData = UserInfoSet(rawJson: json)
+                    UserDefaults.standard.set(self.userData.id, forKey: "memberId")
+                    break
+                case .failure:
+                    print("fail")
+                    break
+                }
+        }
     }
     
     
