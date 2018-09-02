@@ -16,8 +16,8 @@ class CustomNaviViewController: UINavigationController {
         self.navigationBar.shadowImage = UIImage()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    func isLoggedIn() -> Bool {
+        return UserDefaults.standard.bool(forKey: "isLoggedIn")
     }
 
 }

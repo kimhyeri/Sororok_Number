@@ -22,6 +22,8 @@ class LogoutViewController: UIViewController {
     }
     
     @IBAction func logoutButtonPressed(_ sender: UIButton) {
+        UserDefaults.standard.set(false, forKey: "isLoggedIn")
+        UserDefaults.standard.synchronize()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "Main")
         self.navigationController?.popToRootViewController(animated: true)

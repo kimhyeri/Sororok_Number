@@ -94,6 +94,8 @@ extension LoginViewController {
                 switch encodingResult {
                 case .success(let upload, _, _):
                     upload.responseJSON { response in
+                        UserDefaults.standard.set(true, forKey: "isLoggedIn")
+                        UserDefaults.standard.synchronize()
                         print(response.result.value!)
                         print(response.result)
                     }

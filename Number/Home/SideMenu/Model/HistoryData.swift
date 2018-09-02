@@ -22,3 +22,13 @@ struct HistoryData {
         seq_no = json["seq_no"].intValue
     }
 }
+
+struct HistoryDataSet {
+    lazy var historyList = Array<HistoryData>()
+    init(rawJson: Any) {
+        let json = JSON(rawJson)
+        for data in json.arrayValue {
+            historyList.append(HistoryData(rawJson: data))
+        }
+    }
+}

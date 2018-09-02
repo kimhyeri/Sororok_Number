@@ -74,6 +74,7 @@ class APICollection{
             switch response.result {
             case .success:
                 print("success")
+                completion(json)
                 break
             case .failure:
                 print("fail")

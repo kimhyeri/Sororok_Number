@@ -31,6 +31,13 @@ class MyPageViewController: UIViewController, UITextFieldDelegate {
         emailText.delegate = self
         
         self.title = "마이페이지"
+        numText.text = UserDefaults.standard.string(forKey: "phone")
+        emailText.text = UserDefaults.standard.string(forKey: "email")
+        nameText.text = UserDefaults.standard.string(forKey: "name")
+        if let image =  UserDefaults.standard.string(forKey: "imageName") {
+            myImage.image = UIImage(named: image)
+        }
+        
         defaultFrame = textView.frame
         nameText.attributedPlaceholder = NSAttributedString(string: "이름", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
         emailText.attributedPlaceholder = NSAttributedString(string: "이메일", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])

@@ -63,7 +63,12 @@ class ViewController: UIViewController{
                 switch response.result {
                 case .success:
                     self.userData = UserInfoSet(rawJson: json)
+                    print(self.userData)
                     UserDefaults.standard.set(self.userData.id, forKey: "memberId")
+                    UserDefaults.standard.set(self.userData.email, forKey: "email")
+                    UserDefaults.standard.set(self.userData.name, forKey: "name")
+                    UserDefaults.standard.set(self.userData.phone, forKey: "phone")
+                    UserDefaults.standard.set(self.userData.imageName, forKey: "imageName")
                     break
                 case .failure:
                     print("fail")
