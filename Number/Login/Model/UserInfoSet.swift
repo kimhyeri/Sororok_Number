@@ -13,7 +13,7 @@ struct UserInfoSet {
     var phone : String?
     var name : String?
     var email : String?
-    var id : Int?
+    var memberId : Int?
     var imageName : String?
 
     init(rawJson: Any) {
@@ -22,7 +22,7 @@ struct UserInfoSet {
         phone = json["phone"].stringValue
         name = json["name"].stringValue
         email = json["email"].stringValue
-        id = json["id"].intValue
+        memberId = json["memberId"].intValue
         imageName = json["imageName"].stringValue
     }
 }
@@ -31,7 +31,7 @@ struct GetUserInfo {
     let phone : String?
     let name : String?
     let email : String?
-    let id : Int?
+    let memberId : Int?
     let imageName : String?
     
     init(rawJson: Any) {
@@ -40,7 +40,7 @@ struct GetUserInfo {
         phone = json["phone"].stringValue
         name = json["name"].stringValue
         email = json["email"].stringValue
-        id = json["id"].intValue
+        memberId = json["memberId"].intValue
         imageName = json["imageName"].stringValue
     }
 }

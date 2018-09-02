@@ -8,6 +8,8 @@
 
 import UIKit
 import Photos
+import SwiftyJSON
+import Alamofire
 
 class MyPageViewController: UIViewController, UITextFieldDelegate {
     
@@ -57,8 +59,37 @@ class MyPageViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func saveButton(){
-        print("Saved server")
-        self.navigationController?.popViewController(animated: true)
+        let url = URL(string: "http://45.63.120.140:40005/member/update")
+        
+        //이미지 처리 해줘야 함
+        let phone = numText.text!
+        let name = nameText.text!
+        let email = emailText.text!
+        let memberId = UserDefaults.standard.string(forKey: "memberId")
+//        let memberImage = UIImagePNGRepresentation(myImage.image!)
+
+        Alamofire.upload(
+            multipartFormData: { multipartFormData in
+                multipartFormData.append((phone.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "phone")
+                multipartFormData.append((name.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "name")
+                multipartFormData.append((email.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "email")
+                multipartFormData.append((memberId?.data(using: .utf8, allowLossyConversion: false))!, withName: "memberId")
+//                multipartFormData.append((memberImage.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "memberImage")
+                
+        },
+            to: url!,
+            method: .put,
+            encodingCompletion: { encodingResult in
+                switch encodingResult {
+                case .success(let upload, _, _):
+                    upload.responseJSON { response in
+                        print(response.result.value!)
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                case .failure(let encodingError):
+                    print(encodingError)
+                }
+        })
     }
     
     @IBAction func buttonPressed(_ sender: Any) {
