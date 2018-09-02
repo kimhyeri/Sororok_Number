@@ -93,7 +93,8 @@ extension LoginViewController {
             encodingCompletion: { encodingResult in
                 switch encodingResult {
                 case .success(let upload, _, _):
-                    upload.responseData { response in
+                    upload.responseJSON { response in
+                        print(response.result.value)
                         print(response.result)
                         print(response.data)
                     }
