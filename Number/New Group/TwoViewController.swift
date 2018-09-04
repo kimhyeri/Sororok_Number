@@ -21,6 +21,7 @@ class TwoViewController: UIViewController {
     @IBOutlet weak var nothingLabel1: UILabel!
     @IBOutlet weak var nothingLabel2: UILabel!
     @IBOutlet weak var firstView: UIView!
+    @IBOutlet weak var topNameLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var nameShadow: UIView!
     @IBOutlet weak var searchView: UIView!
@@ -68,7 +69,9 @@ class TwoViewController: UIViewController {
         defaultLabel = Int(self.nameLabel.frame.origin.y)
         
         if let name = UserDefaults.standard.string(forKey: "name") {
+            
             nameLabel.text = "\(name)님 \n 안녕하세요 !"
+            topNameLabel.text = "\(name)님"
         }
         
         self.navigationController!.navigationBar.topItem!.title = ""

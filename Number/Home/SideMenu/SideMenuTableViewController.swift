@@ -11,14 +11,8 @@ import SwiftyJSON
 import Alamofire
 
 class SideMenuTableViewController: UITableViewController {
-
-    //api 통신전 임시 데이터
-    var newsData :[String] = ["넥터13기 그룹의 남수민님의 번호가 변경되었습니다! 새롭게 업데이트 해주세요.",
-                              "소로록이 새롭게 업데이트가 되었습니다!",
-                              "넥터13기 그룹이 새롭게 추가되었습니다!",
-                              "어서오세요:) 소로록에 오신것을 환영합니다."]
     
-    var historyData : [HistoryData]!
+    var historyData : HistoryDataSet?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,22 +25,23 @@ class SideMenuTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if newsData.count == 0 {
+        if let count = historyData?.historyList.count {
+            return count
+        } else {
             return 1
         }
-        return newsData.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SideMenuCell
-        if newsData.count == 0 {
+        if historyData?.historyList.count == 0 {
             cell.iconImage.image = UIImage(named: "icnNoticeEmpty")
             cell.news.text = "최근 소식이 없습니다."
             cell.newsTimeLabel.text = " "
         }else {
             cell.iconImage.image = UIImage(named: "icnNotiNotice")
-            cell.news.text = newsData[indexPath.row]
-            //cell.newsTimeLabel.text = 시간
+            cell.news.text = self.historyData?.historyList[indexPath.row].content
+            cell.newsTimeLabel.text = self.historyData?.historyList[indexPath.row].date
         }
         
         return cell
@@ -66,11 +61,8 @@ class SideMenuTableViewController: UITableViewController {
         ]
         
         APICollection.sharedAPI.memberHistory(parameter: memberId, completion: {(result) -> (Void) in
-//            if let jArray = result.array {
-//                if let westHolidayArray = jArray[0]["content"] {
-//                  
-//                }
-//            }
+            self.historyData = HistoryDataSet(rawJson: result)
+            self.tableView.reloadData()
         })
     }
 }

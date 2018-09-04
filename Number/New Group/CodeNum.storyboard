@@ -51,7 +51,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018.08.20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jvc-my-ORq">
                                                     <rect key="frame" x="58" y="35" width="73" height="17"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="73" id="Lnd-I6-r4P"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="73" id="Lnd-I6-r4P"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.74509803919999995" green="0.76078431369999999" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -305,6 +305,7 @@
                         <outlet property="nothingLabel2" destination="kuF-8W-Pea" id="UAD-bI-f0x"/>
                         <outlet property="searchView" destination="jxQ-QW-pHh" id="9Fn-Eq-a0F"/>
                         <outlet property="tableView" destination="b5l-G0-h4U" id="NYD-Da-96c"/>
+                        <outlet property="topNameLabel" destination="8Ei-OK-JaP" id="Mre-uh-fyM"/>
                         <outlet property="topView" destination="QPC-zA-VDt" id="X89-EX-H5s"/>
                     </connections>
                 </viewController>
