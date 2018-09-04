@@ -18,7 +18,7 @@ class SideMenuTableViewController: UITableViewController {
                               "넥터13기 그룹이 새롭게 추가되었습니다!",
                               "어서오세요:) 소로록에 오신것을 환영합니다."]
     
-    var historyData : HistoryDataSet!
+    var historyData : [HistoryData]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,9 +66,11 @@ class SideMenuTableViewController: UITableViewController {
         ]
         
         APICollection.sharedAPI.memberHistory(parameter: memberId, completion: {(result) -> (Void) in
-            self.historyData = HistoryDataSet(rawJson: result)
-            print(self.historyData)
-            print("result \(result)")
+//            if let jArray = result.array {
+//                if let westHolidayArray = jArray[0]["content"] {
+//                  
+//                }
+//            }
         })
     }
 }
