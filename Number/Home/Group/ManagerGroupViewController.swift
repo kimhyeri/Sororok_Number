@@ -74,9 +74,10 @@ extension ManagerGroupViewController : UITableViewDelegate, UITableViewDataSourc
             self.navigationController?.pushViewController(vc, animated: true)
         }
         else if indexPath.row == 2 {
-            let storyboard = UIStoryboard.init(name: "Manager", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "ChangeManager")
-            self.navigationController?.pushViewController(vc, animated: true)
+            //관리자 변경 비활성화 version1
+//            let storyboard = UIStoryboard.init(name: "Manager", bundle: nil)
+//            let vc = storyboard.instantiateViewController(withIdentifier: "ChangeManager")
+//            self.navigationController?.pushViewController(vc, animated: true)
         }
         else if indexPath.row == 3 {
             let storyboard = UIStoryboard.init(name: "Manager", bundle: nil)

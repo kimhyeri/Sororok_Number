@@ -17,6 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        if UserDefaults.standard.bool(forKey: "isLoggedIn") == true {
+            
+        } else {
         print(UserDefaults.standard.bool(forKey: "isLoggedIn"))
         let instance = NaverThirdPartyLoginConnection.getSharedInstance()
         instance?.isInAppOauthEnable = true
@@ -28,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         instance?.appName = kServiceAppName
         
         GIDSignIn.sharedInstance().clientID = "485287400995-no0nk4j0g2lpk3v5n0h6pu8evqun5tvh.apps.googleusercontent.com"
-
+        }
         return true
     }
     

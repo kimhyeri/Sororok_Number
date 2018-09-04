@@ -67,6 +67,10 @@ class TwoViewController: UIViewController {
         defaultButton = Int(self.imageButton.frame.origin.y)
         defaultLabel = Int(self.nameLabel.frame.origin.y)
         
+        if let name = UserDefaults.standard.string(forKey: "name") {
+            nameLabel.text = "\(name)님 \n 안녕하세요 !"
+        }
+        
         self.navigationController!.navigationBar.topItem!.title = ""
         floatingView.layer.cornerRadius = floatingView.frame.width/2
         navigationBarHeight = navigationBarHeight + (self.navigationController?.navigationBar.frame.height)!
