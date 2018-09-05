@@ -39,8 +39,16 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     
     var selectedArray : [String:String] = [:]
     
-
+    //repoID 이전단계에서 받는 작업 필요
     override func viewWillAppear(_ animated: Bool) {
+        let parameter = [
+            "repositoryId" : 53
+        ]
+        
+        APICollection.sharedAPI.getRepoMember(parameter: parameter) { (result) -> (Void) in
+            
+        }
+        
         totalLabel.text = "총 \(array1.count)명"
 //        let dac = array1.map { return $0.key }
 //        for j in 0..<dac.count{

@@ -46,6 +46,7 @@
 		355A9466213B26C5005AD348 /* HistoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355A9465213B26C4005AD348 /* HistoryData.swift */; };
 		355B5772213FCC160085028E /* repoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B5771213FCC160085028E /* repoList.swift */; };
 		355B5777213FE4410085028E /* ToastLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B5776213FE4410085028E /* ToastLabel.swift */; };
+		355B577A214070390085028E /* DetailMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B5779214070390085028E /* DetailMember.swift */; };
 		355B69962132BDED0002FD80 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 355B69952132BDEC0002FD80 /* MessageUI.framework */; };
 		355BB75021297782009A7837 /* NothingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355BB74E21297782009A7837 /* NothingTableViewCell.swift */; };
 		355BB75121297782009A7837 /* NothingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 355BB74F21297782009A7837 /* NothingTableViewCell.xib */; };
@@ -112,6 +113,7 @@
 		355A9465213B26C4005AD348 /* HistoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryData.swift; sourceTree = "<group>"; };
 		355B5771213FCC160085028E /* repoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = repoList.swift; sourceTree = "<group>"; };
 		355B5776213FE4410085028E /* ToastLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastLabel.swift; sourceTree = "<group>"; };
+		355B5779214070390085028E /* DetailMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMember.swift; sourceTree = "<group>"; };
 		355B69952132BDEC0002FD80 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		355BB74E21297782009A7837 /* NothingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NothingTableViewCell.swift; path = Number/Home/DetailHome/NothingTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		355BB74F21297782009A7837 /* NothingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NothingTableViewCell.xib; path = Number/Home/DetailHome/NothingTableViewCell.xib; sourceTree = SOURCE_ROOT; };
@@ -248,6 +250,7 @@
 		3556196721071D39009CC356 /* DetailHome */ = {
 			isa = PBXGroup;
 			children = (
+				355B5778214070030085028E /* Model */,
 				3556196121071BDE009CC356 /* DetailHome.storyboard */,
 				35325D4D212F0E4500AC3897 /* ContactNaviViewController.swift */,
 				35572C22212C06BB00A919C7 /* NotSearchTableViewCell.swift */,
@@ -287,6 +290,14 @@
 				355B5776213FE4410085028E /* ToastLabel.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		355B5778214070030085028E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				355B5779214070390085028E /* DetailMember.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		355F0A712108E95600715E3F /* Setting */ = {
@@ -590,6 +601,7 @@
 				354E6CEB2130BD0700C6C526 /* Register.swift in Sources */,
 				35325D48212E9DEB00AC3897 /* Index.swift in Sources */,
 				355BB7532129E625009A7837 /* LogoutViewController.swift in Sources */,
+				355B577A214070390085028E /* DetailMember.swift in Sources */,
 				3556196521071C01009CC356 /* DetailHomeTableViewController.swift in Sources */,
 				35572C27212C342500A919C7 /* SettingViewController.swift in Sources */,
 				354EA79D210C9BD300D16A80 /* ManagerViewController.swift in Sources */,
