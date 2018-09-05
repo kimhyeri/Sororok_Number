@@ -38,6 +38,14 @@ class GroupCreateViewController: UIViewController {
         
         groupInfoText.attributedPlaceholder = NSAttributedString(string: "그룹명을 적어주세요", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
         groupNameText.attributedPlaceholder = NSAttributedString(string: "그룹설명을 적어주세요", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
+        
+        getCode()
+    }
+    
+    func getCode() {
+        APICollection.sharedAPI.createCode(completion: { (result) -> (Void) in
+            self.groupCode.titleLabel?.text = result["code"].stringValue
+        })
     }
     
     //Create repositroy

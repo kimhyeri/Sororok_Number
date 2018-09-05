@@ -132,5 +132,21 @@ class APICollection{
             }
         }
     }
+    
+    func createCode (completion: @escaping (_ result: JSON) -> (Void)){
+        Alamofire.request("http://45.63.120.140:40005/repository/code").responseJSON { response in
+            let json = JSON(response.result.value)
+            print(json)
+            switch response.result {
+            case .success:
+                print("success")
+                completion(json)
+                break
+            case .failure:
+                print("fail")
+                break
+            }
+        }
+    }
 }
 
