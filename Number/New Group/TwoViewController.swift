@@ -221,11 +221,13 @@ extension TwoViewController {
                 switch response.result {
                 case .success:
                     print("success")
-                    alert.removeFromParentViewController()
-                    let storyboard = UIStoryboard.init(name: "DetailHome", bundle: nil)
-                    let nv = storyboard.instantiateViewController(withIdentifier: "NV") as! ContactNaviViewController
-                    self.present(nv, animated: true, completion: nil)
-                    break
+                    if json["repositoryId"] == -2 {
+                        alert.removeFromParentViewController()
+                        let storyboard = UIStoryboard.init(name: "DetailHome", bundle: nil)
+                        let nv = storyboard.instantiateViewController(withIdentifier: "NV") as! ContactNaviViewController
+                        self.present(nv, animated: true, completion: nil)
+                        break
+                    }
                 case .failure:
                     print("fail")
                     

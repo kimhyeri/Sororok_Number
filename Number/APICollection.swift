@@ -49,7 +49,7 @@ class APICollection{
     
     func checkMemberInfo(parameter: Parameters, completion: @escaping (_ result: JSON) -> (Void)){
         
-        Alamofire.request("http://45.63.120.140:40005/member/info", method: .get, parameters: parameter).responseJSON {
+        Alamofire.request("\(url)member/info", method: .get, parameters: parameter).responseJSON {
             
             response in
             let json = JSON(response.result.value)
@@ -67,7 +67,7 @@ class APICollection{
     }
     
     func memberHistory(parameter: Parameters, completion: @escaping (_ result: JSON) -> (Void)){
-        Alamofire.request("http://45.63.120.140:40005/member/history", method: .get, parameters: parameter).responseJSON {
+        Alamofire.request("\(url)member/history", method: .get, parameters: parameter).responseJSON {
             response in
             let json = JSON(response.result.value)
             print(json)
@@ -135,7 +135,7 @@ class APICollection{
     }
     
     func createCode (completion: @escaping (_ result: JSON) -> (Void)){
-        Alamofire.request("http://45.63.120.140:40005/repository/code").responseJSON { response in
+        Alamofire.request("\(url)repository/code").responseJSON { response in
             let json = JSON(response.result.value)
             print(json)
             switch response.result {
@@ -194,7 +194,7 @@ class APICollection{
                 case .failure:
                     print("fail")
                     break
-                }
+            }
         }
     }
 }
