@@ -57,7 +57,10 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="cellView" destination="HRm-uL-75J" id="PKx-Pt-4KD"/>
+                <outlet property="descLabel" destination="Bdx-h2-2Sj" id="p3f-sc-DaO"/>
                 <outlet property="groupImage" destination="GFZ-Pc-76S" id="vdk-8Z-Uzn"/>
+                <outlet property="groupName" destination="cLd-mt-4Rm" id="AYI-oy-AgP"/>
+                <outlet property="statusLabel" destination="pRM-5g-0CT" id="uh4-6y-UEp"/>
             </connections>
             <point key="canvasLocation" x="29.5" y="89.5"/>
         </tableViewCell>

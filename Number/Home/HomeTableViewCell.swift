@@ -10,6 +10,9 @@ import UIKit
 
 class HomeTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var descLabel: UILabel!
+    @IBOutlet weak var groupName: UILabel!
     @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var groupImage: UIImageView!
     

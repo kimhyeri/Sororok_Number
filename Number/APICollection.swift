@@ -98,6 +98,7 @@ class APICollection{
             }
         }
     }
+    
     func repoList(parameter: Parameters, completion: @escaping (_ ruslt: JSON) -> (Void)){
         Alamofire.request("\(url)/repository/list", method: .get, parameters: parameter).responseJSON {
             response in
@@ -106,6 +107,7 @@ class APICollection{
             switch response.result {
             case .success:
                 print("success")
+                completion(json)
                 break
             case .failure:
                 print("fail")
@@ -113,6 +115,5 @@ class APICollection{
             }
         }
     }
-  
 }
 

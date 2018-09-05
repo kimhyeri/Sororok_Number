@@ -50,13 +50,16 @@ class TwoViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        loadItem(memberId: UserDefaults.standard.integer(forKey: "memberId"))
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initNavigation()
         tableView.delegate = self
         tableView.dataSource = self
         defaultView()
-        loadItem()
     }
     
     func defaultView(){
@@ -70,7 +73,6 @@ class TwoViewController: UIViewController {
         defaultLabel = Int(self.nameLabel.frame.origin.y)
         
         if let name = UserDefaults.standard.string(forKey: "name") {
-            
             nameLabel.text = "\(name)님 \n 안녕하세요 !"
             topNameLabel.text = "\(name)님"
         }
@@ -156,18 +158,24 @@ extension TwoViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        //        데이터 아무것도 없을 경우
-        //        let cell = tableView.dequeueReusableCell(withIdentifier: "NothingTableViewCell", for: indexPath)
-        //        return cell
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath) as! HomeTableViewCell
-        cell.groupImage?.image = UIImage(named: groupDefaultImages[indexPath.row % groupDefaultImages.count])
-        cell.cellView.layer.cornerRadius = 10
-        cell.cellView.layer.borderWidth = 1
-        cell.cellView.layer.borderColor = UIColor(red:196/255, green:197/255, blue:214/255, alpha: 1).cgColor
-        cell.groupImage.layer.cornerRadius = 10
-        return cell
+        if repoList?.dataList.count == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NothingTableViewCell", for: indexPath)
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath) as! HomeTableViewCell
+            cell.descLabel.text = repoList?.dataList[indexPath.row].extra_info
+            cell.groupName.text = repoList?.dataList[indexPath.row].name
+            let status = repoList?.dataList[indexPath.row].authority
+            if status == 0 {
+                cell.statusLabel.text = "멤버"
+            }
+            cell.groupImage?.image = UIImage(named: groupDefaultImages[indexPath.row % groupDefaultImages.count])
+            cell.cellView.layer.cornerRadius = 10
+            cell.cellView.layer.borderWidth = 1
+            cell.cellView.layer.borderColor = UIColor(red:196/255, green:197/255, blue:214/255, alpha: 1).cgColor
+            cell.groupImage.layer.cornerRadius = 10
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -223,14 +231,26 @@ extension TwoViewController {
         tableView.frame = defaultSize[4]
     }
     
-    func loadItem(){
-        let parameter = [
-            "memberId" : UserDefaults.standard.integer(forKey: "memberId")
+    
+    func loadItem(memberId: Int){
+        let memberId : Parameters = [
+            "memberId" : memberId
         ]
         
-        APICollection.sharedAPI.repoList(parameter: parameter, completion: {(result) -> (Void) in
-            self.repoList = repoListSet(rawJson: result)
-            self.tableView.reloadData()
-        })
+        Alamofire.request("http://45.63.120.140:40005/repository/list", method: .get, parameters: memberId).responseJSON {
+            response in
+            let json = JSON(response.result.value)
+            print(json)
+            switch response.result {
+            case .success:
+                print("success")
+                self.repoList = repoListSet(rawJson: json)
+                self.tableView.reloadData()
+                break
+            case .failure:
+                print("fail")
+                break
+            }
+        }
     }
 }
