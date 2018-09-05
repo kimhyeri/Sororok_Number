@@ -35,6 +35,7 @@ class TwoViewController: UIViewController {
     var defaultButton = 0
     var defaultLabel = 0
     var groupDefaultImages = ["imgDefaultGroup01","imgDefaultGroup02","imgDefaultGroup03","imgDefaultGroup04","imgDefaultGroup05","imgDefaultGroup06"]
+    var repoList : repoListSet?
     
     @IBAction func pressedSosik(_ sender: Any) {
         makeDefault()
@@ -147,7 +148,11 @@ extension TwoViewController : UIScrollViewDelegate {
 extension TwoViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        if let count = repoList?.dataList.count {
+            return count
+        } else {
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -223,18 +228,9 @@ extension TwoViewController {
             "memberId" : UserDefaults.standard.integer(forKey: "memberId")
         ]
         
-        Alamofire.request("http://45.63.120.140:40005/repository/list", method: .get, parameters: parameter).responseJSON {
-            response in
-            let json = JSON(response.result.value)
-            print(json)
-            switch response.result {
-            case .success:
-                print("success")
-                break
-            case .failure:
-                print("fail")
-                break
-            }
-        }
+        APICollection.sharedAPI.repoList(parameter: parameter, completion: {(result) -> (Void) in
+            self.repoList = repoListSet(rawJson: result)
+            self.tableView.reloadData()
+        })
     }
 }

@@ -98,13 +98,21 @@ class APICollection{
             }
         }
     }
-    
-    func createRepository(parameter: Parameters, complection: @escaping (_ result: JSON) -> (Void)) {
-//        Alamofire.request("\(url)/repository/create", method: .put, parameters: parameter, encoding: JSON, headers: nil).responseJSON {
-//            response in
-//            let json = JSON(response.result.value)
-//            
-//        }
+    func repoList(parameter: Parameters, completion: @escaping (_ ruslt: JSON) -> (Void)){
+        Alamofire.request("\(url)/repository/list", method: .get, parameters: parameter).responseJSON {
+            response in
+            let json = JSON(response.result.value)
+            print(json)
+            switch response.result {
+            case .success:
+                print("success")
+                break
+            case .failure:
+                print("fail")
+                break
+            }
+        }
     }
+  
 }
 
