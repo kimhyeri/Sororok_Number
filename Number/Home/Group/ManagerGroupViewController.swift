@@ -12,11 +12,13 @@ import SwiftyJSON
 
 class ManagerGroupViewController: UIViewController{
 
+    @IBOutlet weak var refreshButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var codeLabel: UILabel!
     @IBOutlet weak var changeCodeView: UIView!
     
     var manager :[String] = ["그룹 공유하기", "그룹원 관리", "관리자 변경", "그룹 폭파" ]
+    var member : [String] = ["그룹 공유하기", "그룹 나가기"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +63,8 @@ extension ManagerGroupViewController : UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ManagerCellTableViewCell
         cell.label.text = manager[indexPath.row]
+        //멤버이면
+//        cell.label.text = member[indexPath.row]
         return cell
     }
     

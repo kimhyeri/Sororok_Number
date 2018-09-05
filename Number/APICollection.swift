@@ -84,7 +84,7 @@ class APICollection{
     }
     
     func memberRemove(parameter: Parameters, completion: @escaping (_ result: JSON) -> (Void)){
-        Alamofire.request("\(url)/member/remove", method: .put, parameters: parameter, encoding: JSONEncoding.default, headers: [:]).responseJSON {
+        Alamofire.request("\(url)member/remove", method: .put, parameters: parameter, encoding: JSONEncoding.default, headers: [:]).responseJSON {
             response in
             let json = JSON(response.result.value)
             print(json)
@@ -100,7 +100,7 @@ class APICollection{
     }
     
     func repoList(parameter: Parameters, completion: @escaping (_ ruslt: JSON) -> (Void)){
-        Alamofire.request("\(url)/repository/list", method: .get, parameters: parameter).responseJSON {
+        Alamofire.request("\(url)repository/list", method: .get, parameters: parameter).responseJSON {
             response in
             let json = JSON(response.result.value)
             print(json)
@@ -117,7 +117,7 @@ class APICollection{
     }
     
     func checkRepoJoin (parameter: Parameters, completion: @escaping (_ result: JSON) -> (Void)){
-        Alamofire.request("\(url)/repository/join", method: .put, parameters: parameter, encoding: JSONEncoding.default, headers: [:]).responseJSON {
+        Alamofire.request("\(url)repository/join", method: .put, parameters: parameter, encoding: JSONEncoding.default, headers: [:]).responseJSON {
             response in
             let json = JSON(response.result.value)
             print(json)
@@ -151,7 +151,7 @@ class APICollection{
     }
     
     func searchRepo (parameter : Parameters, completion: @escaping (_ result: JSON) -> (Void)){
-         Alamofire.request("\(url)/repository/search", method: .get, parameters: parameter).responseJSON { response in
+         Alamofire.request("\(url)repository/search", method: .get, parameters: parameter).responseJSON { response in
             let json = JSON(response.result.value)
             print(json)
             switch response.result {
@@ -163,6 +163,22 @@ class APICollection{
                 print("fail")
                 break
             }
+        }
+    }
+    
+    func destroyRepo(parameters: Parameters ,completion: @escaping (_ result: JSON) -> (Void)){
+        Alamofire.request("\(url)repository/destroy", method: .post, parameters: parameters as? [String: Any], encoding: JSONEncoding.default, headers: [:])
+            .responseJSON { response in
+                let json = JSON(response.result.value)
+                print(json)
+                switch response.result {
+                case .success:
+                    completion(json)
+                    break
+                case .failure:
+                    print("fail")
+                    break
+                }
         }
     }
 }

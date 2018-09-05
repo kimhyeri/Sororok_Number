@@ -36,6 +36,7 @@ class TwoViewController: UIViewController {
     var defaultLabel = 0
     var groupDefaultImages = ["imgDefaultGroup01","imgDefaultGroup02","imgDefaultGroup03","imgDefaultGroup04","imgDefaultGroup05","imgDefaultGroup06"]
     var repoList : repoListSet?
+    var searchList : repoListSet?
     
     @IBAction func pressedSosik(_ sender: Any) {
         makeDefault()

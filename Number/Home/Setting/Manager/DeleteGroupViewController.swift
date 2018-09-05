@@ -21,9 +21,16 @@ class DeleteGroupViewController: UIViewController {
     }
 
     @IBAction func Delete(_ sender: Any) {
-        let storyboard = UIStoryboard.init(name: "CodeNum", bundle: nil)
-        let bv = storyboard.instantiateViewController(withIdentifier: "ST") as! CustomNaviViewController
-        self.present(bv, animated: true, completion: nil)
+        let parameter = [
+            "memberId" : UserDefaults.standard.integer(forKey: "memberId"),
+            "repositoryId" : 52
+        ]
+        
+        APICollection.sharedAPI.destroyRepo(parameters: parameter, completion: { (result) -> (Void) in
+            let storyboard = UIStoryboard.init(name: "CodeNum", bundle: nil)
+            let bv = storyboard.instantiateViewController(withIdentifier: "ST") as! CustomNaviViewController
+            self.present(bv, animated: true, completion: nil)
+        })
     }
     
     @IBAction func changeAdmin(_ sender: Any) {
