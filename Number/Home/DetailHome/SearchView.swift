@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class SearchView: UIView {
     
@@ -19,6 +21,7 @@ class SearchView: UIView {
         self.searchBar.clipsToBounds = true
         self.searchBar.layer.cornerRadius = 5
         
+        searchBar.delegate = self
         self.addSubview(self.searchBar)
         
         self.searchBar.translatesAutoresizingMaskIntoConstraints = false
@@ -50,5 +53,37 @@ class SearchView: UIView {
         UIColor.white.set()
         UIRectFill(bottomRect)
     }
+}
+
+extension SearchView : UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard searchBar.text != nil else {return}
     
+        let parameter : Parameters = [
+            "memberId" : UserDefaults.standard.integer(forKey: "memberId"),
+            "name" : searchBar.text!
+        ]
+
+        Alamofire.request("http://45.63.120.140:40005/repository/search", method: .get, parameters: parameter).responseJSON { response in
+            let json = JSON(response.result.value)
+            print(json)
+            switch response.result {
+            case .success:
+                print("search success")
+                break
+            case .failure:
+                print("fail")
+                break
+            }
+        }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text?.count == 0 {
+            
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
+        }
+    }
 }

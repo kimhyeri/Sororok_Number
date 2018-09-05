@@ -59,6 +59,7 @@ class TwoViewController: UIViewController {
         initNavigation()
         tableView.delegate = self
         tableView.dataSource = self
+        
         defaultView()
     }
     
@@ -230,6 +231,7 @@ extension TwoViewController {
                     break
                 }
             }
+        }
         
         alert.addAction(noAlert)
         alert.addAction(okAlert)
@@ -276,3 +278,4 @@ extension TwoViewController {
         }
     }
 }
+
