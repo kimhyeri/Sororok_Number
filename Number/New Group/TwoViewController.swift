@@ -207,18 +207,29 @@ extension TwoViewController {
             (result: UIAlertAction) in
             
             let parameter : Parameters = [
-                "code" : alert.textFields![0] as UITextField,
+                "code" : alert.textFields![0].text!,
                 "memberId" : UserDefaults.standard.integer(forKey: "memberId"),
                 "repositoryId" : data
             ]
             
-            APICollection.sharedAPI.checkRepoJoin(parameter: parameter, completion: { (result) -> (Void) in
-                alert.removeFromParentViewController()
-                let storyboard = UIStoryboard.init(name: "DetailHome", bundle: nil)
-                let nv = storyboard.instantiateViewController(withIdentifier: "NV") as! ContactNaviViewController
-                self.present(nv, animated: true, completion: nil)
-            })
-        }
+            Alamofire.request("http://45.63.120.140:40005/repository/join", method: .put, parameters: parameter, encoding: JSONEncoding.default, headers: [:]).responseJSON {
+                response in
+                let json = JSON(response.result.value)
+                print(json)
+                switch response.result {
+                case .success:
+                    print("success")
+                    alert.removeFromParentViewController()
+                    let storyboard = UIStoryboard.init(name: "DetailHome", bundle: nil)
+                    let nv = storyboard.instantiateViewController(withIdentifier: "NV") as! ContactNaviViewController
+                    self.present(nv, animated: true, completion: nil)
+                    break
+                case .failure:
+                    print("fail")
+                    
+                    break
+                }
+            }
         
         alert.addAction(noAlert)
         alert.addAction(okAlert)

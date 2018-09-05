@@ -81,6 +81,7 @@ class GroupCreateViewController: UIViewController {
                     print(encodingError)
                 }
         })
+        
         self.navigationController?.popViewController(animated: true)
     }
 
@@ -92,7 +93,7 @@ class GroupCreateViewController: UIViewController {
             (result: UIAlertAction) in
             alert.removeFromParentViewController()
         }
-    
+
         alert.addAction(OKAlert)
         present(alert,animated: true, completion: nil)
     }
