@@ -181,5 +181,21 @@ class APICollection{
                 }
         }
     }
+    
+    func exitRepo(parameters: Parameters ,completion: @escaping (_ result: JSON) -> (Void)){
+        Alamofire.request("\(url)repository/exit", method: .post, parameters: parameters as? [String: Any], encoding: JSONEncoding.default, headers: [:])
+            .responseJSON { response in
+                let json = JSON(response.result.value)
+                print(json)
+                switch response.result {
+                case .success:
+                    completion(json)
+                    break
+                case .failure:
+                    print("fail")
+                    break
+                }
+        }
+    }
 }
 
