@@ -180,21 +180,23 @@ extension TwoViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.view.endEditing(true)
-        //데이터가 있을 경우만 활성화 시킴
-        createAlert()
+        if repoList?.dataList.count != 0 {
+            if let repositoryId = repoList?.dataList[indexPath.row].repositoryId {
+                createAlert(data: repositoryId)
+            }
+        }
     }
-    
 }
 
 //MARK: AlertViewController Custom
 
 extension TwoViewController {
-    func createAlert(){
+    func createAlert(data: Int){
         let alert = UIAlertController(title: "그룹 코드를 입력해주세요", message: nil, preferredStyle: .alert)
-        alert.addTextField { (pTextField) in
-            pTextField.placeholder = "코드 입력"
-            pTextField.clearButtonMode = .whileEditing
-            pTextField.borderStyle = .none
+        alert.addTextField { (textField) in
+            textField.placeholder = "코드 입력"
+            textField.clearButtonMode = .whileEditing
+            textField.borderStyle = .none
         }
         
         let noAlert = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default){
@@ -203,10 +205,19 @@ extension TwoViewController {
         }
         let okAlert = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default){
             (result: UIAlertAction) in
-            alert.removeFromParentViewController()
-            let storyboard = UIStoryboard.init(name: "DetailHome", bundle: nil)
-            let nv = storyboard.instantiateViewController(withIdentifier: "NV") as! ContactNaviViewController
-            self.present(nv, animated: true, completion: nil)
+            
+            let parameter : Parameters = [
+                "code" : alert.textFields![0] as UITextField,
+                "memberId" : UserDefaults.standard.integer(forKey: "memberId"),
+                "repositoryId" : data
+            ]
+            
+            APICollection.sharedAPI.checkRepoJoin(parameter: parameter, completion: { (result) -> (Void) in
+                alert.removeFromParentViewController()
+                let storyboard = UIStoryboard.init(name: "DetailHome", bundle: nil)
+                let nv = storyboard.instantiateViewController(withIdentifier: "NV") as! ContactNaviViewController
+                self.present(nv, animated: true, completion: nil)
+            })
         }
         
         alert.addAction(noAlert)

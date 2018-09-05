@@ -115,5 +115,22 @@ class APICollection{
             }
         }
     }
+    
+    func checkRepoJoin (parameter: Parameters, completion: @escaping (_ result: JSON) -> (Void)){
+        Alamofire.request("\(url)/repository/join", method: .put, parameters: parameter, encoding: JSONEncoding.default, headers: [:]).responseJSON {
+            response in
+            let json = JSON(response.result.value)
+            print(json)
+            switch response.result {
+            case .success:
+                print("success")
+                completion(json)
+                break
+            case .failure:
+                print("fail")
+                break
+            }
+        }
+    }
 }
 
