@@ -45,6 +45,7 @@
 		35572C27212C342500A919C7 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35572C26212C342500A919C7 /* SettingViewController.swift */; };
 		355A9466213B26C5005AD348 /* HistoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355A9465213B26C4005AD348 /* HistoryData.swift */; };
 		355B5772213FCC160085028E /* repoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B5771213FCC160085028E /* repoList.swift */; };
+		355B5777213FE4410085028E /* ToastLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B5776213FE4410085028E /* ToastLabel.swift */; };
 		355B69962132BDED0002FD80 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 355B69952132BDEC0002FD80 /* MessageUI.framework */; };
 		355BB75021297782009A7837 /* NothingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355BB74E21297782009A7837 /* NothingTableViewCell.swift */; };
 		355BB75121297782009A7837 /* NothingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 355BB74F21297782009A7837 /* NothingTableViewCell.xib */; };
@@ -110,6 +111,7 @@
 		35572C26212C342500A919C7 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		355A9465213B26C4005AD348 /* HistoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryData.swift; sourceTree = "<group>"; };
 		355B5771213FCC160085028E /* repoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = repoList.swift; sourceTree = "<group>"; };
+		355B5776213FE4410085028E /* ToastLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastLabel.swift; sourceTree = "<group>"; };
 		355B69952132BDEC0002FD80 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		355BB74E21297782009A7837 /* NothingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NothingTableViewCell.swift; path = Number/Home/DetailHome/NothingTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		355BB74F21297782009A7837 /* NothingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NothingTableViewCell.xib; path = Number/Home/DetailHome/NothingTableViewCell.xib; sourceTree = SOURCE_ROOT; };
@@ -276,6 +278,17 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		355B5775213FE3FD0085028E /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				35325D4B212F08F600AC3897 /* Helper.swift */,
+				3565D44621283B0A000D70D2 /* HexColor.swift */,
+				3555AB0B2133C067003FE3AD /* StringKorean.swift */,
+				355B5776213FE4410085028E /* ToastLabel.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		355F0A712108E95600715E3F /* Setting */ = {
 			isa = PBXGroup;
 			children = (
@@ -355,7 +368,7 @@
 		35ECDF0C2104759400308080 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				35325D4B212F08F600AC3897 /* Helper.swift */,
+				355B5775213FE3FD0085028E /* Helper */,
 				354EA793210C7CDE00D16A80 /* SideMenu */,
 				354EA78E210C663B00D16A80 /* Group */,
 				353EC8C7210AF0AE004081D1 /* AddressBook */,
@@ -364,8 +377,6 @@
 				351AB6372105C14B0017D41A /* MyPage */,
 				35ECDF13210476F200308080 /* HomeTableViewCell.swift */,
 				35ECDF14210476F200308080 /* HomeTableViewCell.xib */,
-				3565D44621283B0A000D70D2 /* HexColor.swift */,
-				3555AB0B2133C067003FE3AD /* StringKorean.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -582,6 +593,7 @@
 				3556196521071C01009CC356 /* DetailHomeTableViewController.swift in Sources */,
 				35572C27212C342500A919C7 /* SettingViewController.swift in Sources */,
 				354EA79D210C9BD300D16A80 /* ManagerViewController.swift in Sources */,
+				355B5777213FE4410085028E /* ToastLabel.swift in Sources */,
 				354E6CE721307D3C00C6C526 /* GetUserInfo.swift in Sources */,
 				35325D50212F52B000AC3897 /* DeleteGroupViewController.swift in Sources */,
 				35572C1F212BF1F000A919C7 /* ManagerCellTableViewCell.swift in Sources */,

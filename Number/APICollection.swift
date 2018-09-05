@@ -128,6 +128,7 @@ class APICollection{
                 break
             case .failure:
                 print("fail")
+                
                 break
             }
         }
