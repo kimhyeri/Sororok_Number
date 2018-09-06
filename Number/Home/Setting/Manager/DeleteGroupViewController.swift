@@ -23,7 +23,7 @@ class DeleteGroupViewController: UIViewController {
     @IBAction func Delete(_ sender: Any) {
         let parameter = [
             "memberId" : UserDefaults.standard.integer(forKey: "memberId"),
-            "repositoryId" : 52
+            "repositoryId" : ContactsViewController.repoId
         ]
         
         APICollection.sharedAPI.destroyRepo(parameters: parameter, completion: { (result) -> (Void) in

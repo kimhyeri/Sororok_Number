@@ -34,43 +34,32 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     func getHangul(num : Int) -> String {
         let hangle = ["ㄱ","ㄲ","ㄴ","ㄷ","ㄸ","ㄹ","ㅁ","ㅂ","ㅃ","ㅅ","ㅆ","ㅇ","ㅈ","ㅉ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"]
         return hangle[num]
-        
     }
     
-    //repoID 이전단계에서 받는 작업 필요
     override func viewWillAppear(_ animated: Bool) {
-        print(ContactsViewController.repoId)
         let parameter = [
             "repositoryId" : ContactsViewController.repoId
         ]
         
         APICollection.sharedAPI.getRepoMember(parameter: parameter) { (result) -> (Void) in
             self.memberList = DetailMemberSet(rawJson: result)
+            if let count = self.memberList?.memberList.count {
+                self.totalLabel.text = "총 \(count)명"
+            }
             self.tableView.reloadData()
         }
-        
-        totalLabel.text = "총 \(memberList?.memberList.count)명"
-//        let dac = array1.map { return $0.key }
-//        for j in 0..<dac.count{
-//            let name = dac[j]
-//            let text = dac[j].first
-//            let val = UnicodeScalar(String(text!))?.value
-//            if ( val! >= 0xAC00 && val! <= 0xD7A3 ) {
-//                let first = (val! - 0xac00) / 28 / 21
-//                let getValue: String =  getHangul(num: Int(first))
-//                array1.changeKey(from: name, to: getValue+name)
-//            }
-//        }
-        checkSplit()
     }
     
-    func checkSplit() {
-//        let dac = memberList?.memberList.map { return $0.key }
-//        for j in 0..<dac.count{
-//            print(dac[j])
-//            let st = "김혜리"
-//            print(st.decomposedStringWithCanonicalMapping)
-//        }
+    func checkSplit(name: String) {
+        let dic = name.map { return $0 }
+        let text = dic[0]
+        print(text)
+        let val = UnicodeScalar(String(text))?.value
+        if ( val! >= 0xAC00 && val! <= 0xD7A3 ) {
+            let first = (val! - 0xac00) / 28 / 21
+            let getValue: String =  getHangul(num: Int(first))
+            print(getValue)
+        }
     }
     
     override func viewDidLoad() {
@@ -153,11 +142,11 @@ extension ContactsViewController {
             cell.nameLabel?.text = memberList?.memberList[indexPath.row].name
             cell.phoneLabel?.text = memberList?.memberList[indexPath.row].phone
             
-            let predicate = NSPredicate(format: "SELF beginswith[c] %@", index.arrIndexSection.object(at: indexPath.section) as! CVarArg)
             cell.userImage?.layer.cornerRadius = (cell.userImage?.frame.width)!/2
-//            let dic = memberList?.memberList.map { return $0.key }
-//            let arrContacts = (dic as NSArray).filtered(using: predicate) as NSArray
-//            cell.nameLabel?.text = arrContacts.object(at: indexPath.row) as? String
+            if memberList?.memberList[indexPath.row].name != nil {
+                checkSplit(name: (memberList?.memberList[indexPath.row].name)!)
+            }
+            
             return cell
         }
     }
