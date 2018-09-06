@@ -27,6 +27,7 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     
     var checkState = false
     var index = DefualtIndex()
+    var memberList : DetailMemberSet?
     let contact = CNMutableContact()
     
     func getHangul(num : Int) -> String {
@@ -35,10 +36,6 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
         
     }
     
-    var array1:[String:String] = ["김혜리":"010-1234-1234", "박혜리":"010-1234-4234", "정혜리":"010-1034-1234","미혜리":"010-1234-1234","어혜리":"010-1134-1234","푸혜리":"010-1241-1234", "타혜리":"010-1234-1234" ,"Kim":"010-1243-1123","apark":"110-123-1123","adim":"010-1623-1123","afim":"010-1283-1123"]
-    
-    var selectedArray : [String:String] = [:]
-    
     //repoID 이전단계에서 받는 작업 필요
     override func viewWillAppear(_ animated: Bool) {
         let parameter = [
@@ -46,10 +43,11 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
         ]
         
         APICollection.sharedAPI.getRepoMember(parameter: parameter) { (result) -> (Void) in
-            
+            self.memberList = DetailMemberSet(rawJson: result)
+            self.tableView.reloadData()
         }
         
-        totalLabel.text = "총 \(array1.count)명"
+        totalLabel.text = "총 \(memberList?.memberList.count)명"
 //        let dac = array1.map { return $0.key }
 //        for j in 0..<dac.count{
 //            let name = dac[j]
@@ -65,12 +63,12 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     }
     
     func checkSplit() {
-        let dac = array1.map { return $0.key }
-        for j in 0..<dac.count{
-            print(dac[j])
-            let st = "김혜리"
-            print(st.decomposedStringWithCanonicalMapping)
-        }
+//        let dac = memberList?.memberList.map { return $0.key }
+//        for j in 0..<dac.count{
+//            print(dac[j])
+//            let st = "김혜리"
+//            print(st.decomposedStringWithCanonicalMapping)
+//        }
     }
     
     override func viewDidLoad() {
@@ -134,7 +132,7 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     }
     
     @IBAction func saveButtonPressed(_ sender: Any) {
-        sort()
+//        sort()
         let storyboard = UIStoryboard.init(name: "Progress", bundle: nil)
         let nv = storyboard.instantiateViewController(withIdentifier: "Progress") as! ProgressViewController
         self.present(nv, animated: true, completion: nil)
@@ -145,16 +143,17 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
 extension ContactsViewController {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if array1.count == 0 {
+        if memberList?.memberList.count == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "NotSearchTableViewCell", for: indexPath) as! NotSearchTableViewCell
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DetailHomeTableViewCell", for: indexPath) as! DetailHomeTableViewCell
-            let predicate = NSPredicate(format: "SELF beginswith[c] %@", index.arrIndexSection.object(at: indexPath.section) as! CVarArg)
-            cell.userImage?.layer.cornerRadius = (cell.userImage?.frame.width)!/2
-            let dic = array1.map { return $0.key }
-            let arrContacts = (dic as NSArray).filtered(using: predicate) as NSArray
-            cell.nameLabel?.text = arrContacts.object(at: indexPath.row) as? String
+            cell.nameLabel?.text = memberList?.memberList[indexPath.row].name
+//            let predicate = NSPredicate(format: "SELF beginswith[c] %@", index.arrIndexSection.object(at: indexPath.section) as! CVarArg)
+//            cell.userImage?.layer.cornerRadius = (cell.userImage?.frame.width)!/2
+//            let dic = memberList?.memberList.map { return $0.key }
+//            let arrContacts = (dic as NSArray).filtered(using: predicate) as NSArray
+//            cell.nameLabel?.text = arrContacts.object(at: indexPath.row) as? String
             return cell
         }
     }
@@ -172,10 +171,13 @@ extension ContactsViewController {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let predicate = NSPredicate(format: "SELF beginswith[c] %@", index.arrIndexSection.object(at: section) as! CVarArg)
-        let dic = array1.map { return $0.key }
-        let arrContacts = (dic as NSArray).filtered(using: predicate) as NSArray
-        return arrContacts.count
+//        let predicate = NSPredicate(format: "SELF beginswith[c] %@", index.arrIndexSection.object(at: section) as! CVarArg)
+//        let dic = memberList?.memberList.map { return $0.key }
+//        let arrContacts = (dic as NSArray).filtered(using: predicate) as NSArray
+        if let count = memberList?.memberList.count {
+            return count
+        }
+        return 1
         
     }
 }
@@ -228,18 +230,18 @@ extension ContactsViewController {
 //MARK: save contacts
 extension ContactsViewController{
     
-    func sort() {
-        let name = array1.map { return $0.key }
-        let number = array1.map { return $0.value }
-        for i in 0..<array1.count {
-            contact.givenName = name[i]
-            contact.phoneNumbers = [CNLabeledValue(
-                label:CNLabelPhoneNumberMain, value:CNPhoneNumber(stringValue: number[i]))]
-            
-            self.contactSave()
-        }
-        
-    }
+//    func sort() {
+//        let name = memberList?.memberList.map { return $0.key }
+//        let number = memberList?.memberList.map { return $0.value }
+//        for i in 0..<memberList?.memberList.count {
+//            contact.givenName = name[i]
+//            contact.phoneNumbers = [CNLabeledValue(
+//                label:CNLabelPhoneNumberMain, value:CNPhoneNumber(stringValue: number[i]))]
+//
+//            self.contactSave()
+//        }
+//
+//    }
     
     func contactSave(){
         let store = CNContactStore()
