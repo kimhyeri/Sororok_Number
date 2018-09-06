@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,15 +19,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1v1-zU-Vx6">
-                                <rect key="frame" x="19.5" y="156.5" width="116" height="18"/>
+                                <rect key="frame" x="18" y="156.5" width="116" height="18"/>
                                 <color key="backgroundColor" red="1" green="0.63137254899999995" blue="0.74509803919999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="18" id="Xsh-CO-OWc"/>
-                                    <constraint firstAttribute="width" constant="116" id="mvB-ha-3PW"/>
+                                    <constraint firstAttribute="width" constant="116" id="rZd-YE-sV5"/>
+                                    <constraint firstAttribute="height" constant="18" id="vca-5x-zqR"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sororok에 어서와요! :)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1rW-ss-AUf" userLabel="Sororok에 어서와요! :)">
-                                <rect key="frame" x="24.5" y="137" width="126" height="107.5"/>
+                                <rect key="frame" x="24" y="137" width="126" height="107.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -42,10 +43,10 @@
                         <color key="backgroundColor" red="0.20392156862745098" green="0.22745098039215686" blue="0.81176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="dY9-Nl-BRV" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="96t-kK-vHk"/>
-                            <constraint firstItem="1v1-zU-Vx6" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-168" id="Ipu-Xr-iJX"/>
-                            <constraint firstItem="1rW-ss-AUf" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-143" id="Mwc-OM-aGS"/>
-                            <constraint firstItem="1v1-zU-Vx6" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" constant="-110" id="Tij-6Z-jBx"/>
-                            <constraint firstItem="1rW-ss-AUf" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" constant="-100" id="aFe-DF-7kK"/>
+                            <constraint firstItem="dY9-Nl-BRV" firstAttribute="top" secondItem="1v1-zU-Vx6" secondAttribute="bottom" constant="103" id="IMg-nE-SEK"/>
+                            <constraint firstItem="1v1-zU-Vx6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="18" id="ONl-ca-THJ"/>
+                            <constraint firstItem="1rW-ss-AUf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="S75-uv-gpd"/>
+                            <constraint firstItem="dY9-Nl-BRV" firstAttribute="top" secondItem="1rW-ss-AUf" secondAttribute="bottom" constant="33" id="fNg-RA-4ey"/>
                             <constraint firstItem="dY9-Nl-BRV" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="20" id="rjn-NB-Rov"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
