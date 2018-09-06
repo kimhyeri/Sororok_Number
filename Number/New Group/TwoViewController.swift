@@ -34,9 +34,11 @@ class TwoViewController: UIViewController {
     var defaultSize : [CGRect] = []
     var defaultButton = 0
     var defaultLabel = 0
+    var searchText : String?
     var groupDefaultImages = ["imgDefaultGroup01","imgDefaultGroup02","imgDefaultGroup03","imgDefaultGroup04","imgDefaultGroup05","imgDefaultGroup06"]
     var repoList : repoListSet?
     var searchList : repoListSet?
+    var result = [Any]()
     let search = Notification.Name(rawValue: searchNotificationKey)
     let searchDone = Notification.Name(rawValue: searchDoneNotificationKey)
     
@@ -45,16 +47,47 @@ class TwoViewController: UIViewController {
     }
     
     func createObserver(){
-        NotificationCenter.default.addObserver(self, selector: #selector(self.searchNoti), name: search, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.searchNoti(_:)), name: search, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.searchDoneNoti), name: searchDone, object: nil)
     }
     
     @objc func searchDoneNoti(){
         print("search Done Noti")
+        loadItem(memberId: UserDefaults.standard.integer(forKey: "memberId"))
     }
     
-    @objc func searchNoti(){
-        print("searchNoti")
+    @objc func searchNoti(_ notification: Notification){
+
+        if let data = notification.userInfo as? [String: String]
+        {
+            for (_, text) in data
+            {
+                searchText = text
+            }
+        }
+        guard searchText != nil else{return}
+        print(searchText!)
+        
+        let parameter : Parameters = [
+            "memberId" : UserDefaults.standard.integer(forKey: "memberId"),
+            "name" : searchText!
+        ]
+
+        Alamofire.request("http://45.63.120.140:40005/repository/search", method: .get, parameters: parameter).responseJSON { response in
+            let json = JSON(response.result.value)
+            print(json)
+            switch response.result {
+            case .success:
+                print("search success")
+                self.repoList = repoListSet(rawJson: json)
+                self.view.endEditing(true)
+                self.tableView.reloadData()
+                break
+            case .failure:
+                print("fail")
+                break
+            }
+        }
     }
     
     @IBAction func pressedSosik(_ sender: Any) {
@@ -241,7 +274,10 @@ extension TwoViewController {
                 switch response.result {
                 case .success:
                     print("success")
-                    if json["repositoryId"] == -2 {
+                    if json["repositoryId"] == -1 {
+                        self.showToast(message: "코드번호 불일치")
+                    }
+                    else if json["repositoryId"] == -2 {
                         alert.removeFromParentViewController()
                         let storyboard = UIStoryboard.init(name: "DetailHome", bundle: nil)
                         let nv = storyboard.instantiateViewController(withIdentifier: "NV") as! ContactNaviViewController
@@ -255,7 +291,6 @@ extension TwoViewController {
                 }
             }
         }
-        
         alert.addAction(noAlert)
         alert.addAction(okAlert)
         present(alert,animated: true, completion: nil)
@@ -277,7 +312,6 @@ extension TwoViewController {
         searchView.frame = defaultSize[3]
         tableView.frame = defaultSize[4]
     }
-    
     
     func loadItem(memberId: Int){
         let memberId : Parameters = [
@@ -301,4 +335,3 @@ extension TwoViewController {
         }
     }
 }
-
