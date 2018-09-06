@@ -58,7 +58,10 @@ class SearchView: UIView {
 extension SearchView : UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard searchBar.text != nil else {return}
-    
+        
+        let search = Notification.Name(rawValue: searchNotificationKey)
+        NotificationCenter.default.post(name: search, object: nil)
+
         let parameter : Parameters = [
             "memberId" : UserDefaults.standard.integer(forKey: "memberId"),
             "name" : searchBar.text!
@@ -80,7 +83,8 @@ extension SearchView : UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.text?.count == 0 {
-            
+            let search = Notification.Name(rawValue: searchDoneNotificationKey)
+            NotificationCenter.default.post(name: search, object: nil)
 //            DispatchQueue.main.async {
 //                searchBar.resignFirstResponder()
 //            }

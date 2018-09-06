@@ -37,6 +37,25 @@ class TwoViewController: UIViewController {
     var groupDefaultImages = ["imgDefaultGroup01","imgDefaultGroup02","imgDefaultGroup03","imgDefaultGroup04","imgDefaultGroup05","imgDefaultGroup06"]
     var repoList : repoListSet?
     var searchList : repoListSet?
+    let search = Notification.Name(rawValue: searchNotificationKey)
+    let searchDone = Notification.Name(rawValue: searchDoneNotificationKey)
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    func createObserver(){
+        NotificationCenter.default.addObserver(self, selector: #selector(self.searchNoti), name: search, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.searchDoneNoti), name: searchDone, object: nil)
+    }
+    
+    @objc func searchDoneNoti(){
+        print("search Done Noti")
+    }
+    
+    @objc func searchNoti(){
+        print("searchNoti")
+    }
     
     @IBAction func pressedSosik(_ sender: Any) {
         makeDefault()
@@ -57,6 +76,7 @@ class TwoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        createObserver()
         initNavigation()
         tableView.delegate = self
         tableView.dataSource = self
