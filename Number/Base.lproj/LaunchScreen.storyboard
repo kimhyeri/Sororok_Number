@@ -33,21 +33,22 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgSplashLogo" translatesAutoresizingMaskIntoConstraints="NO" id="dY9-Nl-BRV">
-                                <rect key="frame" x="112" y="277.5" width="152" height="152"/>
+                                <rect key="frame" x="111.5" y="277.5" width="152" height="152"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="152" id="mkA-JM-Hhh"/>
                                     <constraint firstAttribute="height" constant="152" id="nIg-mX-8JU"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.20392156862745098" green="0.22745098039215686" blue="0.81176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.20392156859999999" green="0.2274509804" blue="0.81176470590000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="dY9-Nl-BRV" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="96t-kK-vHk"/>
-                            <constraint firstItem="dY9-Nl-BRV" firstAttribute="top" secondItem="1v1-zU-Vx6" secondAttribute="bottom" constant="103" id="IMg-nE-SEK"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="1rW-ss-AUf" secondAttribute="trailing" constant="225" id="EhF-48-PNH"/>
                             <constraint firstItem="1v1-zU-Vx6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="18" id="ONl-ca-THJ"/>
                             <constraint firstItem="1rW-ss-AUf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="S75-uv-gpd"/>
-                            <constraint firstItem="dY9-Nl-BRV" firstAttribute="top" secondItem="1rW-ss-AUf" secondAttribute="bottom" constant="33" id="fNg-RA-4ey"/>
+                            <constraint firstItem="dY9-Nl-BRV" firstAttribute="top" secondItem="1rW-ss-AUf" secondAttribute="bottom" constant="33" id="V9U-e8-kYV"/>
                             <constraint firstItem="dY9-Nl-BRV" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="20" id="rjn-NB-Rov"/>
+                            <constraint firstItem="dY9-Nl-BRV" firstAttribute="top" secondItem="1v1-zU-Vx6" secondAttribute="bottom" constant="103" id="vs8-yk-mls"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
