@@ -11,7 +11,7 @@ import Photos
 import SwiftyJSON
 import Alamofire
 
-class MyPageViewController: UIViewController, UITextFieldDelegate {
+class MyPageViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var textView: UIView!
     @IBOutlet weak var myImage: UIImageView!
@@ -107,13 +107,17 @@ class MyPageViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func albumButtonPressed(_ sender: Any) {
-        let st = UIStoryboard.init(name: "MyPage", bundle: nil)
-        let vc = st.instantiateViewController(withIdentifier: "Album") as! AlbumViewController
-        vc.albumSelectionDelegate = self
-        self.navigationController?.pushViewController(vc, animated: true)
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = false
+        self.present(picker, animated: true)
     }
     
-    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        self.myImage.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        print(info[UIImagePickerControllerOriginalImage])
+        picker.dismiss(animated: false)
+    }
 }
 
 extension MyPageViewController : AlbumSelectionDelegate{

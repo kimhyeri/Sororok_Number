@@ -11,7 +11,7 @@ import Photos
 import SwiftyJSON
 import Alamofire
 
-class GroupCreateViewController: UIViewController {
+class GroupCreateViewController: UIViewController , UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 
     @IBOutlet weak var groupInfoText: UITextField!
     @IBOutlet weak var groupNameText: UITextField!
@@ -99,12 +99,18 @@ class GroupCreateViewController: UIViewController {
     }
     
     @IBAction func AlbumPressed(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "MyPage", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "Album") as! AlbumViewController
-        vc.albumSelectionDelegate = self
-        self.navigationController?.pushViewController(vc, animated: true)
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = false
+        self.present(picker, animated: true)
     }
-
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        self.groupImage.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        print(info[UIImagePickerControllerOriginalImage])
+        picker.dismiss(animated: false)
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
     }
