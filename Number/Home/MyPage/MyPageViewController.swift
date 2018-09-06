@@ -36,9 +36,10 @@ class MyPageViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         numText.text = UserDefaults.standard.string(forKey: "phone")
         emailText.text = UserDefaults.standard.string(forKey: "email")
         nameText.text = UserDefaults.standard.string(forKey: "name")
-        if let image =  UserDefaults.standard.string(forKey: "imageName") {
-            myImage.image = UIImage(named: image)
-        }
+        
+//        if let image =  UserDefaults.standard.string(forKey: "imageName") {
+//            myImage.image = UIImage(data: image)
+//        }
         
         defaultFrame = textView.frame
         nameText.attributedPlaceholder = NSAttributedString(string: "이름", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
@@ -58,6 +59,11 @@ class MyPageViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         textView.frame = defaultFrame!
     }
     
+    func convertBase64ToImage(imageString: String) -> UIImage {
+        let imageData = Data(base64Encoded: imageString, options: Data.Base64DecodingOptions.ignoreUnknownCharacters)!
+        return UIImage(data: imageData)!
+    }
+    
     @objc func saveButton(){
         let url = URL(string: "http://45.63.120.140:40005/member/update")
         
@@ -66,16 +72,17 @@ class MyPageViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         let name = nameText.text!
         let email = emailText.text!
         let memberId = UserDefaults.standard.string(forKey: "memberId")
-//        let memberImage = UIImagePNGRepresentation(myImage.image!)
-
+        
         Alamofire.upload(
             multipartFormData: { multipartFormData in
                 multipartFormData.append((phone.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "phone")
                 multipartFormData.append((name.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "name")
                 multipartFormData.append((email.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "email")
                 multipartFormData.append((memberId?.data(using: .utf8, allowLossyConversion: false))!, withName: "memberId")
-//                multipartFormData.append((memberImage.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "memberImage")
-                
+                DispatchQueue.main.async {
+                    multipartFormData.append(UIImageJPEGRepresentation(self.myImage.image!, 1)!, withName: "memberImage", fileName: "memberImage.jpeg", mimeType: "memberImage/jpeg")
+                }
+
         },
             to: url!,
             method: .put,

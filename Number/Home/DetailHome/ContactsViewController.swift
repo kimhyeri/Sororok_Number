@@ -149,8 +149,10 @@ extension ContactsViewController {
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DetailHomeTableViewCell", for: indexPath) as! DetailHomeTableViewCell
             cell.nameLabel?.text = memberList?.memberList[indexPath.row].name
-//            let predicate = NSPredicate(format: "SELF beginswith[c] %@", index.arrIndexSection.object(at: indexPath.section) as! CVarArg)
-//            cell.userImage?.layer.cornerRadius = (cell.userImage?.frame.width)!/2
+            cell.phoneLabel?.text = memberList?.memberList[indexPath.row].phone
+            
+            let predicate = NSPredicate(format: "SELF beginswith[c] %@", index.arrIndexSection.object(at: indexPath.section) as! CVarArg)
+            cell.userImage?.layer.cornerRadius = (cell.userImage?.frame.width)!/2
 //            let dic = memberList?.memberList.map { return $0.key }
 //            let arrContacts = (dic as NSArray).filtered(using: predicate) as NSArray
 //            cell.nameLabel?.text = arrContacts.object(at: indexPath.row) as? String
