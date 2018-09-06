@@ -50,15 +50,26 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
         }
     }
     
-    func checkSplit(name: String) {
+    func checkSplit(name: String, num : Int) -> Bool {
         let dic = name.map { return $0 }
         let text = dic[0]
+        var getValue = ""
+        var valueString = ""
         print(text)
         let val = UnicodeScalar(String(text))?.value
         if ( val! >= 0xAC00 && val! <= 0xD7A3 ) {
             let first = (val! - 0xac00) / 28 / 21
-            let getValue: String =  getHangul(num: Int(first))
-            print(getValue)
+            getValue =  getHangul(num: Int(first))
+        }
+        
+        if let value = index.arrIndexSection.object(at: num) as? String {
+            valueString = String(value)
+        }
+
+        if getValue == valueString {
+            return true
+        }else{
+            return false
         }
     }
     
@@ -138,16 +149,19 @@ extension ContactsViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "NotSearchTableViewCell", for: indexPath) as! NotSearchTableViewCell
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DetailHomeTableViewCell", for: indexPath) as! DetailHomeTableViewCell
-            cell.nameLabel?.text = memberList?.memberList[indexPath.row].name
-            cell.phoneLabel?.text = memberList?.memberList[indexPath.row].phone
-            
-            cell.userImage?.layer.cornerRadius = (cell.userImage?.frame.width)!/2
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
+        
             if memberList?.memberList[indexPath.row].name != nil {
-                checkSplit(name: (memberList?.memberList[indexPath.row].name)!)
+                if checkSplit(name: (memberList?.memberList[indexPath.row].name)!, num: indexPath.section) == true {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "DetailHomeTableViewCell", for: indexPath) as! DetailHomeTableViewCell
+                    
+                    cell.userImage?.layer.cornerRadius = (cell.userImage?.frame.width)!/2
+                    cell.nameLabel?.text = memberList?.memberList[indexPath.row].name
+                    cell.phoneLabel?.text = memberList?.memberList[indexPath.row].phone
+                    return cell
+                }
             }
-            
-            return cell
+         return cell
         }
     }
     
