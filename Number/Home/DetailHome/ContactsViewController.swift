@@ -29,6 +29,7 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     var index = DefualtIndex()
     var memberList : DetailMemberSet?
     let contact = CNMutableContact()
+    static var repoId : Int?
     
     func getHangul(num : Int) -> String {
         let hangle = ["ㄱ","ㄲ","ㄴ","ㄷ","ㄸ","ㄹ","ㅁ","ㅂ","ㅃ","ㅅ","ㅆ","ㅇ","ㅈ","ㅉ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"]
@@ -38,8 +39,9 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     
     //repoID 이전단계에서 받는 작업 필요
     override func viewWillAppear(_ animated: Bool) {
+        print(ContactsViewController.repoId)
         let parameter = [
-            "repositoryId" : 53
+            "repositoryId" : ContactsViewController.repoId
         ]
         
         APICollection.sharedAPI.getRepoMember(parameter: parameter) { (result) -> (Void) in

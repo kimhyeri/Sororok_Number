@@ -213,6 +213,8 @@ extension TwoViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print(repoList?.dataList.count)
+        print(repoList?.dataList)
         if repoList?.dataList.count == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "NothingTableViewCell", for: indexPath)
             return cell
@@ -222,7 +224,7 @@ extension TwoViewController : UITableViewDelegate, UITableViewDataSource {
             cell.groupName.text = repoList?.dataList[indexPath.row].name
             let status = repoList?.dataList[indexPath.row].authority
             if status == 0 {
-                cell.statusLabel.text = "멤버"
+                cell.statusLabel.text = ""
             }
             cell.groupImage?.image = UIImage(named: groupDefaultImages[indexPath.row % groupDefaultImages.count])
             cell.cellView.layer.cornerRadius = 10
@@ -281,6 +283,7 @@ extension TwoViewController {
                         alert.removeFromParentViewController()
                         let storyboard = UIStoryboard.init(name: "DetailHome", bundle: nil)
                         let nv = storyboard.instantiateViewController(withIdentifier: "NV") as! ContactNaviViewController
+                        ContactsViewController.repoId = data
                         self.present(nv, animated: true, completion: nil)
                         break
                     }
