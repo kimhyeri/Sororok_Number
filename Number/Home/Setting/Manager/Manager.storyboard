@@ -190,7 +190,11 @@
                         <viewLayoutGuide key="safeArea" id="iJb-a8-3Ih"/>
                     </view>
                     <connections>
+                        <outlet property="change" destination="qp5-Qp-htK" id="wrm-Ax-lk2"/>
                         <outlet property="constraintY" destination="fuy-T8-mSe" id="m3t-JO-Ms9"/>
+                        <outlet property="delete" destination="BMd-1J-Dbo" id="Byd-XU-OV4"/>
+                        <outlet property="descLabel" destination="Cxz-EU-7qq" id="uzW-Gh-gwu"/>
+                        <outlet property="titleLabel" destination="2pr-BE-lsK" id="htg-tM-2Vd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vGO-GU-slN" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -17,7 +17,7 @@ class ManagerGroupViewController: UIViewController{
     @IBOutlet weak var codeLabel: UILabel!
     @IBOutlet weak var changeCodeView: UIView!
     
-    var manager :[String] = ["그룹 공유하기", "그룹원 관리", "관리자 변경", "그룹 폭파" ]
+    var manager :[String] = ["그룹 공유하기", "그룹 폭파"]
     var member : [String] = ["그룹 공유하기", "그룹 나가기"]
     
     override func viewDidLoad() {
@@ -44,14 +44,17 @@ class ManagerGroupViewController: UIViewController{
 
 extension ManagerGroupViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ManagerCellTableViewCell
-        cell.label.text = manager[indexPath.row]
-        //멤버이면
-//        cell.label.text = member[indexPath.row]
+        switch UserDefaults.standard.integer(forKey: "authority") {
+        case 0:
+            cell.label.text = member[indexPath.row]
+        default:
+            cell.label.text = manager[indexPath.row]
+        }
         return cell
     }
     
@@ -63,22 +66,29 @@ extension ManagerGroupViewController : UITableViewDelegate, UITableViewDataSourc
             self.present(activity, animated: true, completion: nil)
         }
             
-        else if indexPath.row == 1 {
-            let storyboard = UIStoryboard.init(name: "Manager", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "ManageGroup")
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-        else if indexPath.row == 2 {
+//        else if indexPath.row == 1 {
+//            let storyboard = UIStoryboard.init(name: "Manager", bundle: nil)
+//            let vc = storyboard.instantiateViewController(withIdentifier: "ManageGroup")
+//            self.navigationController?.pushViewController(vc, animated: true)
+//        }
+//        else if indexPath.row == 2 {
             //관리자 변경 비활성화 version1
 //            let storyboard = UIStoryboard.init(name: "Manager", bundle: nil)
 //            let vc = storyboard.instantiateViewController(withIdentifier: "ChangeManager")
 //            self.navigationController?.pushViewController(vc, animated: true)
-        }
-        else if indexPath.row == 3 {
-            let storyboard = UIStoryboard.init(name: "Manager", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "Delete")
-            vc.modalPresentationStyle = .overCurrentContext
-            self.present(vc, animated: false, completion: nil)
+//        }
+        else if indexPath.row == 1 {
+            switch UserDefaults.standard.integer(forKey: "authority") {
+            case 0:
+                let storyboard = UIStoryboard.init(name: "Manager", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "Delete")
+                vc.modalPresentationStyle = .overCurrentContext
+                self.present(vc, animated: false, completion: nil)
+            default:
+                let storyboard = UIStoryboard.init(name: "Manager", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "Delete")
+                vc.modalPresentationStyle = .overCurrentContext
+                self.present(vc, animated: false, completion: nil)            }            
         }
     }
 }

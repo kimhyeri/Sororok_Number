@@ -241,6 +241,9 @@ extension TwoViewController : UITableViewDelegate, UITableViewDataSource {
             if let repositoryId = repoList?.dataList[indexPath.row].repositoryId {
                 createAlert(data: repositoryId)
             }
+            if repoList?.dataList[indexPath.row].joinFlag == 1 {
+                 UserDefaults.standard.set(repoList?.dataList[indexPath.row].authority, forKey: "authority")
+            }
         }
     }
 }

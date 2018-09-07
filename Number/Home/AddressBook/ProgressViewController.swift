@@ -10,25 +10,21 @@ import UIKit
 import Contacts
 
 class ProgressViewController: UIViewController {
-
+    
     @IBOutlet weak var iconView: UIView!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var currentLabel: UILabel!
     
-    let contact = CNMutableContact()
     let save = Notification.Name(rawValue: saveNotificationKey)
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
         createObserver()
-
+        defaultView()
+    }
+    
+    func defaultView() {
         iconView.layer.cornerRadius = iconView.frame.width/2
-        contact.givenName = "이름"
-        contact.familyName = "성성"
-
-        contact.phoneNumbers = [CNLabeledValue(
-            label:CNLabelPhoneNumberMain, value:CNPhoneNumber(stringValue:"010-1231-0126"))]
     }
     
     deinit {
@@ -43,41 +39,35 @@ class ProgressViewController: UIViewController {
         print(notification)
         let store = CNContactStore()
         let saveRequest = CNSaveRequest()
-        saveRequest.add(contact, toContainerWithIdentifier:nil)
-        do{
-            try store.execute(saveRequest)
-     
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                let st = UIStoryboard.init(name: "DetailHome", bundle: nil)
-                let vc = st.instantiateViewController(withIdentifier: "NV") as! ContactNaviViewController
-                self.present(vc, animated: true, completion: nil)
+        
+        let userDict = notification.userInfo as! NSDictionary
+        let names = userDict.allValues
+        let numbers = userDict.allKeys
+        
+        print("names : \(names)")
+        print("numbers: \(numbers)")
+
+        for i in 0..<names.count{
+            var contact = CNMutableContact()
+
+            saveRequest.add(contact, toContainerWithIdentifier:nil)
+        
+            contact.givenName = names[i] as! String
+            contact.phoneNumbers = [CNLabeledValue(
+                label:CNLabelPhoneNumberMain, value:CNPhoneNumber(stringValue:"\(numbers[i] as! String)"))]
+            
+            do{
+                try store.execute(saveRequest)
+                print("저장 성공")
+                //            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+//                                let st = UIStoryboard.init(name: "DetailHome", bundle: nil)
+//                                let vc = st.instantiateViewController(withIdentifier: "NV") as! ContactNaviViewController
+                //                self.present(vc, animated: true, completion: nil)
+                //            }
+            } catch let err{
+                showToast(message: "저장 실패")
+                print("Failed to save the contact. \(err)")
             }
-            print("Done")
-        } catch let err{
-            showToast(message: "저장 실패")
-            print("Failed to save the contact. \(err)")
         }
     }
-
-//    public func createAndSaveContact(userData : AnyObject)
-//    {
-//        let userDict = userData as! NSDictionary
-//        let contactNew = CNMutableContact()
-//        let homePhone = CNLabeledValue(label: CNLabelHome, value: CNPhoneNumber(stringValue: userDict.objectForKey("contact_phone") as! String))
-//        let homeEmail = CNLabeledValue(label:CNLabelHome, value: userDict.objectForKey("contact_email") as! String)
-//        contactNew.givenName = userDict.objectForKey("contact_name") as! String
-//        contactNew.phoneNumbers = [homePhone]
-//        contactNew.emailAddresses = [homeEmail]
-//        let request = CNSaveRequest()
-//        request.addContact(contactNew, toContainerWithIdentifier: nil)
-//        do{
-//            try store.executeSaveRequest(request)
-//
-//            print("Done")
-//
-//        } catch let err{
-//            print("Failed to save the contact. \(err)")
-//        }
-//    }
-    
 }
