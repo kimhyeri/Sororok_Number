@@ -32,6 +32,10 @@ class ManagerGroupViewController: UIViewController{
         changeCodeView.clipsToBounds = true
         tableView.delegate = self
         tableView.dataSource = self
+        if UserDefaults.standard.integer(forKey: "authority") == 0 {
+            refreshButton.alpha = 0
+            refreshButton.isEnabled = false
+        }
     }
     
     @IBAction func changeCodeButtonPressed(_ sender: Any) {
