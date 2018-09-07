@@ -125,6 +125,13 @@ class MyPageViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         print(info[UIImagePickerControllerOriginalImage])
         picker.dismiss(animated: false)
     }
+    
+    @IBAction func textFieldChangeButton(_ sender: Any) {
+        viewUp()
+        nameText.isUserInteractionEnabled = true
+        numText.isUserInteractionEnabled = true
+        emailText.isUserInteractionEnabled = true
+    }
 }
 
 extension MyPageViewController : AlbumSelectionDelegate{
