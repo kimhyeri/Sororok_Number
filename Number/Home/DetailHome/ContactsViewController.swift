@@ -8,6 +8,8 @@
 
 import UIKit
 import Contacts
+import Alamofire
+import SwiftyJSON
 
 extension Dictionary{
     mutating func changeKey(from: Key, to: Key){
@@ -24,18 +26,19 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     @IBOutlet weak var cellSelected: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var saveLabel: UILabel!
-    
+    @IBOutlet weak var nothingView: UIView!
+
+    var searchText : String?
     var checkState = false
     var index = DefualtIndex()
     var memberList : DetailMemberSet?
     var selected = [String:String]()
     let contact = CNMutableContact()
     static var repoId : Int?
+    let searchMember = Notification.Name(rawValue: searchMemberNotificationKey)
+    let searchMemberDone = Notification.Name(rawValue: searchMemberDoneNotificationKey)
     
-    func getHangul(num : Int) -> String {
-        let hangle = ["ㄱ","ㄲ","ㄴ","ㄷ","ㄸ","ㄹ","ㅁ","ㅂ","ㅃ","ㅅ","ㅆ","ㅇ","ㅈ","ㅉ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"]
-        return hangle[num]
-    }
+   
     
     override func viewWillAppear(_ animated: Bool) {
         let parameter = [
@@ -58,6 +61,8 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
         tableView.register(UINib(nibName:"DetailHomeTableViewCell",bundle: nil), forCellReuseIdentifier: "DetailHomeTableViewCell")
         tableView.register(UINib(nibName:"NotSearchTableViewCell",bundle: nil), forCellReuseIdentifier: "NotSearchTableViewCell")
         defaultView()
+        createObserver()
+        
     }
     
     func defaultView(){
@@ -84,6 +89,72 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    func createObserver(){
+        NotificationCenter.default.addObserver(self, selector: #selector(self.searchMemberNoti(_:)), name: searchMember, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.searchMemberDoneNoti), name: searchMemberDone, object: nil)
+    }
+    
+    @objc func searchMemberDoneNoti(){
+        print("search Done Noti")
+        nothingView.alpha = 0
+        let parameter = [
+            "repositoryId" : ContactsViewController.repoId
+        ]
+        
+        APICollection.sharedAPI.getRepoMember(parameter: parameter) { (result) -> (Void) in
+            self.memberList = DetailMemberSet(rawJson: result)
+            if let count = self.memberList?.memberList.count {
+                self.totalLabel.text = "총 \(count)명"
+            }
+            self.tableView.reloadData()
+        }    }
+    
+    @objc func searchMemberNoti(_ notification: Notification){
+        
+        if let data = notification.userInfo as? [String: String]
+        {
+            for (_, text) in data
+            {
+                searchText = text
+            }
+        }
+        guard searchText != nil else{return}
+        
+        let parameter : Parameters = [
+            "memberName" : searchText!,
+            "repositoryId" : ContactsViewController.repoId
+        ]
+        
+        Alamofire.request("http://45.63.120.140:40005/repository/memberSearch", method: .get, parameters: parameter).responseJSON { response in
+            let json = JSON(response.result.value)
+            print(json)
+            switch response.result {
+            case .success:
+                print("search success")
+                self.memberList = DetailMemberSet(rawJson: json)
+                self.view.endEditing(true)
+                if self.memberList?.memberList.count != 0 {
+                    self.tableView.reloadData()
+                }else{
+                    self.nothingView.alpha = 1
+                }
+                break
+            case .failure:
+                print("fail")
+                break
+            }
+        }
+    }
+    
+    func getHangul(num : Int) -> String {
+        let hangle = ["ㄱ","ㄲ","ㄴ","ㄷ","ㄸ","ㄹ","ㅁ","ㅂ","ㅃ","ㅅ","ㅆ","ㅇ","ㅈ","ㅉ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"]
+        return hangle[num]
     }
     
     @IBAction func allButtonPressed(_ sender: UIButton) {
@@ -253,28 +324,4 @@ extension ContactsViewController {
         return index.arrIndexSection.object(at: section) as? String
     }
     
-}
-
-//MARK: save contacts
-extension ContactsViewController{
-    
-//    func sort() {
-//        let name = memberList?.memberList.map { return $0.key }
-//        let number = memberList?.memberList.map { return $0.value }
-//        for i in 0..<memberList?.memberList.count {
-//            contact.givenName = name[i]
-//            contact.phoneNumbers = [CNLabeledValue(
-//                label:CNLabelPhoneNumberMain, value:CNPhoneNumber(stringValue: number[i]))]
-//
-//            self.contactSave()
-//        }
-//
-//    }
-    
-    func contactSave(){
-        let store = CNContactStore()
-        let saveRequest = CNSaveRequest()
-        saveRequest.add(contact, toContainerWithIdentifier:nil)
-        try! store.execute(saveRequest)
-    }
 }
