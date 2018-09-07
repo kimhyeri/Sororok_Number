@@ -27,7 +27,7 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var saveLabel: UILabel!
     @IBOutlet weak var nothingView: UIView!
-
+    
     var searchText : String?
     var checkState = false
     var index = DefualtIndex()
@@ -38,7 +38,7 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     let searchMember = Notification.Name(rawValue: searchMemberNotificationKey)
     let searchMemberDone = Notification.Name(rawValue: searchMemberDoneNotificationKey)
     
-   
+    
     
     override func viewWillAppear(_ animated: Bool) {
         let parameter = [
@@ -183,7 +183,7 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     }
     
     @IBAction func saveButtonPressed(_ sender: Any) {
-//        sort()
+        //        sort()
         let storyboard = UIStoryboard.init(name: "Progress", bundle: nil)
         let nv = storyboard.instantiateViewController(withIdentifier: "Progress") as! ProgressViewController
         self.present(nv, animated: true, completion: nil)
@@ -230,20 +230,25 @@ extension ContactsViewController {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
-
+            
             if memberList?.memberList[indexPath.row].name != nil {
                 for i in 0 ..< compare {
-                if checkSplit(name: (memberList?.memberList[i].name)!, num: indexPath.section) == true {
-                        let cell = tableView.dequeueReusableCell(withIdentifier: "DetailHomeTableViewCell", for: indexPath) as! DetailHomeTableViewCell
-                    
-                        cell.userImage?.layer.cornerRadius = (cell.userImage?.frame.width)!/2
-                        cell.nameLabel?.text = memberList?.memberList[indexPath.row].name
-                        cell.phoneLabel?.text = memberList?.memberList[indexPath.row].phone
-                        return cell
+                    if checkSplit(name: (memberList?.memberList[i].name)!, num: indexPath.section) == true {
+                        if let index: IndexPath = tableView.indexPath(for: cell){
+                            if index.row == indexPath.row {
+                                let cell = tableView.dequeueReusableCell(withIdentifier: "DetailHomeTableViewCell", for: indexPath) as! DetailHomeTableViewCell
+                                
+                                cell.userImage?.layer.cornerRadius = (cell.userImage?.frame.width)!/2
+                                cell.nameLabel?.text = memberList?.memberList[indexPath.row].name
+                                cell.phoneLabel?.text = memberList?.memberList[indexPath.row].phone
+                                return cell
+                            }
+                        }
+                        
                     }
                 }
             }
-         return cell
+            return cell
         }
     }
     
@@ -307,12 +312,12 @@ extension ContactsViewController {
 extension ContactsViewController {
     
     public func numberOfSections(in tableView: UITableView) -> Int {
- 
+        
         return index.arrIndexSection.count
     }
     
     public func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-
+        
         return self.index.arrIndexSection as? [String]
     }
     

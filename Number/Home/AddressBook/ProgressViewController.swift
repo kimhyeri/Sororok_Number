@@ -42,13 +42,14 @@ class ProgressViewController: UIViewController {
         
         let userDict = notification.userInfo as! NSDictionary
         let names = userDict.allValues
+        totalLabel.text = String(names.count)
         let numbers = userDict.allKeys
         
         print("names : \(names)")
         print("numbers: \(numbers)")
 
         for i in 0..<names.count{
-            var contact = CNMutableContact()
+            let contact = CNMutableContact()
 
             saveRequest.add(contact, toContainerWithIdentifier:nil)
         
