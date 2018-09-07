@@ -282,7 +282,7 @@ extension TwoViewController {
                     if json["repositoryId"] == -1 {
                         self.showToast(message: "코드번호 불일치")
                     }
-                    else if json["repositoryId"] == -2 {
+                    else if (json["repositoryId"] == -2) || (json["joinFlag"] == 0) {
                         alert.removeFromParentViewController()
                         let storyboard = UIStoryboard.init(name: "DetailHome", bundle: nil)
                         let nv = storyboard.instantiateViewController(withIdentifier: "NV") as! ContactNaviViewController

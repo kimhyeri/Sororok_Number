@@ -165,6 +165,14 @@
                                             <action selector="changeAdmin:" destination="Wem-MD-QKz" eventType="touchUpInside" id="iG7-l7-6cJ"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JsT-Wa-V9f">
+                                        <rect key="frame" x="328" y="7" width="32" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="icnNotiClose"/>
+                                        <connections>
+                                            <action selector="dismissButtonTapped:" destination="Wem-MD-QKz" eventType="touchUpInside" id="8ZU-Zm-LQB"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -333,6 +341,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="icnNotiClose" width="32" height="32"/>
         <image name="imgGroupDelete" width="82" height="98"/>
         <image name="imgSettingEmptyAdmin" width="61" height="61"/>
         <image name="imgSettingGroupPoint" width="28" height="12"/>

@@ -18,6 +18,7 @@ class GroupCreateViewController: UIViewController , UIImagePickerControllerDeleg
     @IBOutlet weak var groupCode: UIButton!
     @IBOutlet weak var groupImage: UIImageView!
     @IBOutlet weak var groupView: UIView!
+    @IBOutlet weak var codeLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,15 +37,15 @@ class GroupCreateViewController: UIViewController , UIImagePickerControllerDeleg
         groupImage.layer.cornerRadius = self.groupImage.frame.width/2
         groupView.layer.cornerRadius = 10
         
-        groupInfoText.attributedPlaceholder = NSAttributedString(string: "그룹명을 적어주세요", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
-        groupNameText.attributedPlaceholder = NSAttributedString(string: "그룹설명을 적어주세요", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
+//        groupInfoText.attributedPlaceholder = NSAttributedString(string: "그룹명을 적어주세요", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
+//        groupNameText.attributedPlaceholder = NSAttributedString(string: "그룹설명을 적어주세요", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
         
         getCode()
     }
     
     func getCode() {
         APICollection.sharedAPI.createCode(completion: { (result) -> (Void) in
-            self.groupCode.titleLabel?.text = result["code"].stringValue
+            self.codeLabel.text = result["code"].stringValue
         })
     }
     
@@ -86,7 +87,7 @@ class GroupCreateViewController: UIViewController , UIImagePickerControllerDeleg
     }
 
     @IBAction func clipButtonPressed(_ sender: UIButton) {
-        copyToClipBoard(textToCopy: (groupCode.titleLabel?.text)!)
+        copyToClipBoard(textToCopy: (codeLabel.text)!)
 
         let alert = UIAlertController(title: nil, message: "그룹 코드번호가 클립보드에 복사되었습니다.", preferredStyle: .alert)
         let OKAlert = UIAlertAction(title: "OK", style: UIAlertActionStyle.default){

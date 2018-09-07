@@ -60,6 +60,9 @@ class DeleteGroupViewController: UIViewController {
         }
     }
     
+    @IBAction func dismissButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     @IBAction func changeAdmin(_ sender: Any) {
         self.dismiss(animated: false, completion:nil)
     }
