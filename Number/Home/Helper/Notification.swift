@@ -10,3 +10,5 @@ import Foundation
 
 let searchNotificationKey = "com.number.search"
 let searchDoneNotificationKey = "com.number.searchDone"
+let saveNotificationKey = "com.number.saveNumber"
+

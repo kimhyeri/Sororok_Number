@@ -28,6 +28,7 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     var checkState = false
     var index = DefualtIndex()
     var memberList : DetailMemberSet?
+    var selected = [String:String]()
     let contact = CNMutableContact()
     static var repoId : Int?
     
@@ -47,29 +48,6 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
                 self.totalLabel.text = "총 \(count)명"
             }
             self.tableView.reloadData()
-        }
-    }
-    
-    func checkSplit(name: String, num : Int) -> Bool {
-        let dic = name.map { return $0 }
-        let text = dic[0]
-        var getValue = ""
-        var valueString = ""
-        print(text)
-        let val = UnicodeScalar(String(text))?.value
-        if ( val! >= 0xAC00 && val! <= 0xD7A3 ) {
-            let first = (val! - 0xac00) / 28 / 21
-            getValue =  getHangul(num: Int(first))
-        }
-        
-        if let value = index.arrIndexSection.object(at: num) as? String {
-            valueString = String(value)
-        }
-
-        if getValue == valueString {
-            return true
-        }else{
-            return false
         }
     }
     
@@ -98,14 +76,14 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
         self.present(bv, animated: true, completion: nil)
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
-        self.view.endEditing(true)
-    }
-    
     @objc func pressedButton(){
         let storyboard = UIStoryboard.init(name: "ManagerGroup", bundle: nil)
         let uv = storyboard.instantiateViewController(withIdentifier: "ManagerGroup") as! ManagerGroupViewController
         self.navigationController?.pushViewController(uv, animated: true)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.view.endEditing(true)
     }
     
     @IBAction func allButtonPressed(_ sender: UIButton) {
@@ -138,27 +116,60 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
         let storyboard = UIStoryboard.init(name: "Progress", bundle: nil)
         let nv = storyboard.instantiateViewController(withIdentifier: "Progress") as! ProgressViewController
         self.present(nv, animated: true, completion: nil)
+        let save = Notification.Name(rawValue: saveNotificationKey)
+        NotificationCenter.default.post(name: save, object: nil, userInfo: self.selected)
     }
 }
 
 //MARK: tableview datasource delegate
 extension ContactsViewController {
+    
+    func checkSplit(name: String, num : Int) -> Bool {
+        let dic = name.map { return $0 }
+        let text = dic[0]
+        var getValue = ""
+        var valueString = ""
+        print(text)
+        let val = UnicodeScalar(String(text))?.value
+        if ( val! >= 0xAC00 && val! <= 0xD7A3 ) {
+            let first = (val! - 0xac00) / 28 / 21
+            getValue =  getHangul(num: Int(first))
+        }
+        
+        if let value = index.arrIndexSection.object(at: num) as? String {
+            valueString = String(value)
+        }
+        
+        if getValue == valueString {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        var compare = 0
+        if let count = memberList?.memberList.count {
+            compare = count
+        }
         
         if memberList?.memberList.count == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "NotSearchTableViewCell", for: indexPath) as! NotSearchTableViewCell
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
-        
+
             if memberList?.memberList[indexPath.row].name != nil {
-                if checkSplit(name: (memberList?.memberList[indexPath.row].name)!, num: indexPath.section) == true {
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "DetailHomeTableViewCell", for: indexPath) as! DetailHomeTableViewCell
+                for i in 0 ..< compare {
+                if checkSplit(name: (memberList?.memberList[i].name)!, num: indexPath.section) == true {
+                        let cell = tableView.dequeueReusableCell(withIdentifier: "DetailHomeTableViewCell", for: indexPath) as! DetailHomeTableViewCell
                     
-                    cell.userImage?.layer.cornerRadius = (cell.userImage?.frame.width)!/2
-                    cell.nameLabel?.text = memberList?.memberList[indexPath.row].name
-                    cell.phoneLabel?.text = memberList?.memberList[indexPath.row].phone
-                    return cell
+                        cell.userImage?.layer.cornerRadius = (cell.userImage?.frame.width)!/2
+                        cell.nameLabel?.text = memberList?.memberList[indexPath.row].name
+                        cell.phoneLabel?.text = memberList?.memberList[indexPath.row].phone
+                        return cell
+                    }
                 }
             }
          return cell
@@ -167,25 +178,35 @@ extension ContactsViewController {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         changeView(alpha: true)
+        self.selected.updateValue((memberList?.memberList[indexPath.row].name)!, forKey: (memberList?.memberList[indexPath.row].phone)!)
         updateCount()
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         updateCount()
+        self.selected.removeValue(forKey: (memberList?.memberList[indexPath.row].phone)!)
         if tableView.indexPathsForSelectedRows?.count == nil{
             changeView(alpha: false)
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        let predicate = NSPredicate(format: "SELF beginswith[c] %@", index.arrIndexSection.object(at: section) as! CVarArg)
-//        let dic = memberList?.memberList.map { return $0.key }
-//        let arrContacts = (dic as NSArray).filtered(using: predicate) as NSArray
+        var count = 0
+        var compare = 0
         if let count = memberList?.memberList.count {
-            return count
+            compare = count
         }
-        return 1
         
+        if section < compare {
+            for i in 0 ..< compare {
+                if memberList?.memberList[i].name != nil {
+                    if checkSplit(name: (memberList?.memberList[i].name)!, num: section) == true {
+                        count = count + 1
+                    }
+                }
+            }
+        }
+        return count
     }
 }
 

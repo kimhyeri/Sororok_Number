@@ -17,7 +17,6 @@
 		35325D50212F52B000AC3897 /* DeleteGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35325D4F212F52B000AC3897 /* DeleteGroupViewController.swift */; };
 		353EC8C4210A2BBF004081D1 /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353EC8C3210A2BBF004081D1 /* AlbumViewController.swift */; };
 		353EC8C6210A3169004081D1 /* AlbumUICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353EC8C5210A3169004081D1 /* AlbumUICollectionViewCell.swift */; };
-		353EC8CA210AF0D4004081D1 /* Address.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 353EC8C9210AF0D4004081D1 /* Address.storyboard */; };
 		353EC8CC210AF0F1004081D1 /* AddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353EC8CB210AF0F1004081D1 /* AddressViewController.swift */; };
 		35444631212D69180075116C /* Progress.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35444630212D69180075116C /* Progress.storyboard */; };
 		35444633212D69210075116C /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35444632212D69210075116C /* ProgressViewController.swift */; };
@@ -84,7 +83,6 @@
 		35325D4F212F52B000AC3897 /* DeleteGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteGroupViewController.swift; sourceTree = "<group>"; };
 		353EC8C3210A2BBF004081D1 /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
 		353EC8C5210A3169004081D1 /* AlbumUICollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumUICollectionViewCell.swift; sourceTree = "<group>"; };
-		353EC8C9210AF0D4004081D1 /* Address.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Address.storyboard; sourceTree = "<group>"; };
 		353EC8CB210AF0F1004081D1 /* AddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressViewController.swift; sourceTree = "<group>"; };
 		35444630212D69180075116C /* Progress.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Progress.storyboard; sourceTree = "<group>"; };
 		35444632212D69210075116C /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
@@ -198,7 +196,6 @@
 		353EC8C7210AF0AE004081D1 /* AddressBook */ = {
 			isa = PBXGroup;
 			children = (
-				353EC8C9210AF0D4004081D1 /* Address.storyboard */,
 				353EC8CB210AF0F1004081D1 /* AddressViewController.swift */,
 				35444630212D69180075116C /* Progress.storyboard */,
 				35444632212D69210075116C /* ProgressViewController.swift */,
@@ -487,7 +484,6 @@
 				355BB7572129E767009A7837 /* Assets.xcassets in Resources */,
 				35444631212D69180075116C /* Progress.storyboard in Resources */,
 				351AB6392105C1570017D41A /* MyPage.storyboard in Resources */,
-				353EC8CA210AF0D4004081D1 /* Address.storyboard in Resources */,
 				354EA790210C665600D16A80 /* GroupCreate.storyboard in Resources */,
 				3556196B21071EDF009CC356 /* DetailHomeTableViewCell.xib in Resources */,
 				35572C25212C06BB00A919C7 /* NotSearchTableViewCell.xib in Resources */,
