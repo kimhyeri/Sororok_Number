@@ -32,6 +32,7 @@ class ManagerGroupViewController: UIViewController{
         changeCodeView.clipsToBounds = true
         tableView.delegate = self
         tableView.dataSource = self
+        
         if UserDefaults.standard.integer(forKey: "authority") == 0 {
             refreshButton.alpha = 0
             refreshButton.isEnabled = false
@@ -42,7 +43,8 @@ class ManagerGroupViewController: UIViewController{
         APICollection.sharedAPI.createCode(completion: { (result) -> (Void) in
             self.codeLabel.text = result["code"].stringValue
         })
-
+        
+        //서버로 repository/update 호출해야함 
     }
 }
 

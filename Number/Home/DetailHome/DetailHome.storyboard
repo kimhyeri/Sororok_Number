@@ -223,6 +223,7 @@
                         <outlet property="cellView" destination="QUg-K9-0Ph" id="YJa-a4-MGX"/>
                         <outlet property="nothingView" destination="Pam-5P-L2x" id="X7j-Kp-ugZ"/>
                         <outlet property="saveLabel" destination="WGK-Eh-wIy" id="sxx-uZ-iHm"/>
+                        <outlet property="selectAllbutton" destination="ras-C6-8u9" id="bvc-nk-pUc"/>
                         <outlet property="selectButton" destination="Pos-Gp-cdb" id="Xbq-QM-oVb"/>
                         <outlet property="tableView" destination="Eua-ct-xOA" id="NzL-Ax-0qD"/>
                         <outlet property="totalLabel" destination="xpV-ac-oaI" id="EH8-tN-dt6"/>

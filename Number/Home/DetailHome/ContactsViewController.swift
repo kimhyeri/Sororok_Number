@@ -20,6 +20,7 @@ extension Dictionary{
 
 class ContactsViewController: UIViewController , UITableViewDataSource, UITableViewDelegate{
     
+    @IBOutlet weak var selectAllbutton: UIButton!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var selectButton: UIButton!
     @IBOutlet weak var cellView: UIImageView!
@@ -103,6 +104,9 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     @objc func searchMemberDoneNoti(){
         print("search Done Noti")
         nothingView.alpha = 0
+        self.selectButton.isEnabled = true
+        self.selectAllbutton.isEnabled = true
+        
         let parameter = [
             "repositoryId" : ContactsViewController.repoId
         ]
@@ -143,6 +147,8 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
                     self.tableView.reloadData()
                 }else{
                     self.nothingView.alpha = 1
+                    self.selectButton.isEnabled = false
+                    self.selectAllbutton.isEnabled = false
                 }
                 break
             case .failure:

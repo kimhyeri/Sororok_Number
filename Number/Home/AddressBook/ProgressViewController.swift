@@ -16,6 +16,7 @@ class ProgressViewController: UIViewController {
     @IBOutlet weak var currentLabel: UILabel!
     
     let save = Notification.Name(rawValue: saveNotificationKey)
+    var contactList = [CNMutableContact]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,36 +39,43 @@ class ProgressViewController: UIViewController {
     @objc func contactSave(_ notification: Notification){
         print(notification)
         let store = CNContactStore()
-        let saveRequest = CNSaveRequest()
         
         let userDict = notification.userInfo as! NSDictionary
         let names = userDict.allValues
         totalLabel.text = String(names.count)
         let numbers = userDict.allKeys
         
-        print("names : \(names)")
-        print("numbers: \(numbers)")
-
-        for i in 0..<names.count{
+        for i in 0..<names.count
+        {
             let contact = CNMutableContact()
-
-            saveRequest.add(contact, toContainerWithIdentifier:nil)
-        
             contact.givenName = names[i] as! String
             contact.phoneNumbers = [CNLabeledValue(
                 label:CNLabelPhoneNumberMain, value:CNPhoneNumber(stringValue:"\(numbers[i] as! String)"))]
-            
-            do{
-                try store.execute(saveRequest)
-                print("저장 성공")
-                //            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-//                                let st = UIStoryboard.init(name: "DetailHome", bundle: nil)
-//                                let vc = st.instantiateViewController(withIdentifier: "NV") as! ContactNaviViewController
-                //                self.present(vc, animated: true, completion: nil)
-                //            }
-            } catch let err{
-                showToast(message: "저장 실패")
-                print("Failed to save the contact. \(err)")
+            contactList.append(contact)
+        }
+        
+        let saveRequest = CNSaveRequest()
+        
+        for i in 0..<contactList.count{
+            saveRequest.add(contactList[i], toContainerWithIdentifier: nil)
+            if i == contactList.count-1{
+                do
+                {
+                    try? store.execute(saveRequest)
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        let st = UIStoryboard.init(name: "DetailHome", bundle: nil)
+                        let vc = st.instantiateViewController(withIdentifier: "NV") as! ContactNaviViewController
+                        self.present(vc, animated: true, completion: nil)
+                    }
+                    print("done")
+                }
+                catch
+                {
+                    showToast(message: "저장 실패")
+                    print("Error fetching results for container")
+                }
+                
             }
         }
     }
