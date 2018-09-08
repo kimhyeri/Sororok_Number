@@ -63,7 +63,6 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
         tableView.register(UINib(nibName:"NotSearchTableViewCell",bundle: nil), forCellReuseIdentifier: "NotSearchTableViewCell")
         defaultView()
         createObserver()
-        
     }
     
     func defaultView(){

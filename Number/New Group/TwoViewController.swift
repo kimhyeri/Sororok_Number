@@ -41,7 +41,8 @@ class TwoViewController: UIViewController {
     var result = [Any]()
     let search = Notification.Name(rawValue: searchNotificationKey)
     let searchDone = Notification.Name(rawValue: searchDoneNotificationKey)
-    
+    let reloadTable = Notification.Name(rawValue: reloadTalbeViewKey)
+
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -49,6 +50,11 @@ class TwoViewController: UIViewController {
     func createObserver(){
         NotificationCenter.default.addObserver(self, selector: #selector(self.searchNoti(_:)), name: search, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.searchDoneNoti), name: searchDone, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadTableNoti), name: reloadTable , object: nil)
+    }
+    
+    @objc func reloadTableNoti(){
+        loadItem(memberId: UserDefaults.standard.integer(forKey: "memberId"))
     }
     
     @objc func searchDoneNoti(){
@@ -281,15 +287,14 @@ extension TwoViewController {
                     print("success")
                     if json["repositoryId"] == -1 {
                         self.showToast(message: "코드번호 불일치")
-                    }
-                    else if (json["repositoryId"] == -2) || (json["joinFlag"] == 0) {
-                        alert.removeFromParentViewController()
+                    } else {
                         let storyboard = UIStoryboard.init(name: "DetailHome", bundle: nil)
                         let nv = storyboard.instantiateViewController(withIdentifier: "NV") as! ContactNaviViewController
                         ContactsViewController.repoId = data
                         self.present(nv, animated: true, completion: nil)
                         break
                     }
+                    
                 case .failure:
                     print("fail")
                     
