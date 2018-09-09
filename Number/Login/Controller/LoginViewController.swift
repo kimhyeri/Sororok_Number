@@ -59,18 +59,21 @@ extension LoginViewController {
     }
     
     @objc func done(){
+      
+        guard numberText.text?.count != 0 else { showToast(message: "번호를 입력해주세요"); return}
+        guard nameText.text?.count != 0 else { showToast(message: "이름을 입력해주세요"); return}
+        guard imgProfile.image != nil else { showToast(message: "사진을 추가해주세요"); return}
         
         let parameters = [
         "phone" : numberText.text!,
         "name" : nameText.text!,
         "email" : emailText.text!,
         "loginType" : (param?.loginType)!,
-        "loginUid" : (param?.loginUid)!
+        "loginUid" : (param?.loginUid)!,
 //        "memberImage" : (param?.memberImage)!,
-//        "imageUrl" : (param?.imageUrl)!]
+        "imageUrl" : (param?.imageUrl)!
         ] as Parameters
 
-        print(parameters)
         let url = URL(string: "http://45.63.120.140:40005/member/join")
     
         let phone = numberText.text!
@@ -78,6 +81,7 @@ extension LoginViewController {
         let email = emailText.text!
         let loginType = (param?.loginType)!
         let loginUid = (param?.loginUid)!
+        let imageUrl = (param?.imageUrl)!
         
         Alamofire.upload(
             multipartFormData: { multipartFormData in
@@ -86,7 +90,7 @@ extension LoginViewController {
                 multipartFormData.append((email.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "email")
                 multipartFormData.append((loginType.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "loginType")
                 multipartFormData.append((loginUid.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "loginUid")
-                //사진 추가 해줘야함 
+                multipartFormData.append((imageUrl.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "imageUrl")
         },
             to: url!,
             method: .put,
@@ -96,8 +100,9 @@ extension LoginViewController {
                     upload.responseJSON { response in
                         UserDefaults.standard.set(true, forKey: "isLoggedIn")
                         UserDefaults.standard.synchronize()
-                        print(response.result.value!)
-                        print(response.result)
+                        let st = UIStoryboard.init(name: "CodeNum", bundle: nil)
+                        let vc = st.instantiateViewController(withIdentifier: "ST") as! CustomNaviViewController
+                        self.present(vc, animated: true, completion: nil)
                     }
                 case .failure(let encodingError):
                     print(encodingError)

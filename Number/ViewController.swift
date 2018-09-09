@@ -24,7 +24,7 @@ class ViewController: UIViewController{
         super.viewDidLoad()
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().delegate = self
-        checkLogin(memberId: 27)
+//        checkLogin(memberId: 27)
         changeView()
     }
     
@@ -58,14 +58,7 @@ class ViewController: UIViewController{
                 print("json: \(json)")
                 switch response.result {
                 case .success:
-                    self.userData = UserInfoSet(rawJson: json)
-                    UserDefaults.standard.set(true, forKey: "isLoggedIn")
-                    UserDefaults.standard.set(self.userData.memberId, forKey: "memberId")
-                    UserDefaults.standard.set(self.userData.email, forKey: "email")
-                    UserDefaults.standard.set(self.userData.name, forKey: "name")
-                    UserDefaults.standard.set(self.userData.phone, forKey: "phone")
-                    UserDefaults.standard.set(self.userData.imageName, forKey: "imageName")
-                    UserDefaults.standard.synchronize()
+                    print("success")
                     break
                 case .failure:
                     print("fail")
@@ -76,25 +69,22 @@ class ViewController: UIViewController{
     
     
     //사용자 정보 들고오기
-    func checkLogin(memberId: Int){
-        let memberId : Parameters = [
-            "memberId" : memberId
-            ]
-
-        APICollection.sharedAPI.checkMemberInfo(parameter: memberId, completion: {
-            (result) -> (Void) in
-            print(self.userData)
-            self.userData = UserInfoSet(rawJson: result)
-            UserDefaults.standard.set(true, forKey: "isLoggedIn")
-            UserDefaults.standard.set(self.userData.memberId, forKey: "memberId")
-            UserDefaults.standard.set(self.userData.email, forKey: "email")
-            UserDefaults.standard.set(self.userData.name, forKey: "name")
-            UserDefaults.standard.set(self.userData.phone, forKey: "phone")
-            UserDefaults.standard.set(self.userData.imageName, forKey: "imageName")
-            UserDefaults.standard.synchronize()
-        })
-        
-    }
+//    func checkLogin(memberId: Int){
+//        let memberId : Parameters = [
+//            "memberId" : memberId
+//            ]
+//
+//        APICollection.sharedAPI.checkMemberInfo(parameter: memberId, completion: { (result) -> (Void) in
+//
+//            self.userData = UserInfoSet(rawJson: result)
+//            UserDefaults.standard.set(self.userData.email, forKey: "email")
+//            UserDefaults.standard.set(self.userData.name, forKey: "name")
+//            UserDefaults.standard.set(self.userData.phone, forKey: "phone")
+//            UserDefaults.standard.set(self.userData.imageName, forKey: "imageName")
+//            UserDefaults.standard.synchronize()
+//        })
+//
+//    }
     
     @IBAction func naverButtonPressed(_ sender: UIButton){
         let loginInstance = NaverThirdPartyLoginConnection.getSharedInstance()
@@ -111,7 +101,7 @@ class ViewController: UIViewController{
     @IBAction func kakaoButtonPressed(_ sender: Any) {
         let session :KOSession = KOSession.shared()
         
-//        checkLogin(type: typeCase.kakao.rawValue)
+        checkLogin(type: typeCase.kakao.rawValue)
         
         if session.isOpen() {
             session.close()
