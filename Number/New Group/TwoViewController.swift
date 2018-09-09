@@ -142,6 +142,8 @@ class TwoViewController: UIViewController {
             if let image = UIImage(data: imageData) {
                 imageButton.setImage(image, for: .normal)
                 imageSecondView.setImage(image, for: .normal)
+                imageButton.layer.cornerRadius = imageButton.frame.width/2
+                imageSecondView.layer.cornerRadius = imageSecondView.frame.width/2
             }
         }
         
@@ -226,8 +228,6 @@ extension TwoViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print(repoList?.dataList.count)
-        print(repoList?.dataList)
         if repoList?.dataList.count == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "NothingTableViewCell", for: indexPath)
             return cell

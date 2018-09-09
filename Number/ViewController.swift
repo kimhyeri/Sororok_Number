@@ -59,11 +59,13 @@ class ViewController: UIViewController{
                 switch response.result {
                 case .success:
                     self.userData = UserInfoSet(rawJson: json)
+                    UserDefaults.standard.set(true, forKey: "isLoggedIn")
                     UserDefaults.standard.set(self.userData.memberId, forKey: "memberId")
                     UserDefaults.standard.set(self.userData.email, forKey: "email")
                     UserDefaults.standard.set(self.userData.name, forKey: "name")
                     UserDefaults.standard.set(self.userData.phone, forKey: "phone")
                     UserDefaults.standard.set(self.userData.imageName, forKey: "imageName")
+                    UserDefaults.standard.synchronize()
                     break
                 case .failure:
                     print("fail")
@@ -81,7 +83,15 @@ class ViewController: UIViewController{
 
         APICollection.sharedAPI.checkMemberInfo(parameter: memberId, completion: {
             (result) -> (Void) in
-            
+            print(self.userData)
+            self.userData = UserInfoSet(rawJson: result)
+            UserDefaults.standard.set(true, forKey: "isLoggedIn")
+            UserDefaults.standard.set(self.userData.memberId, forKey: "memberId")
+            UserDefaults.standard.set(self.userData.email, forKey: "email")
+            UserDefaults.standard.set(self.userData.name, forKey: "name")
+            UserDefaults.standard.set(self.userData.phone, forKey: "phone")
+            UserDefaults.standard.set(self.userData.imageName, forKey: "imageName")
+            UserDefaults.standard.synchronize()
         })
         
     }
@@ -101,7 +111,7 @@ class ViewController: UIViewController{
     @IBAction func kakaoButtonPressed(_ sender: Any) {
         let session :KOSession = KOSession.shared()
         
-        checkLogin(type: typeCase.kakao.rawValue)
+//        checkLogin(type: typeCase.kakao.rawValue)
         
         if session.isOpen() {
             session.close()
