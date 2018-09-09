@@ -20,7 +20,8 @@ class MyPageViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     @IBOutlet weak var numText: UITextField!
     
     var defaultFrame : CGRect?
-    
+    var userData : UserInfoSet!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         initNav()
@@ -36,9 +37,36 @@ class MyPageViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         numText.text = UserDefaults.standard.string(forKey: "phone")
         emailText.text = UserDefaults.standard.string(forKey: "email")
         nameText.text = UserDefaults.standard.string(forKey: "name")
+     
+        if let imageData =  UserDefaults.standard.data (forKey: "imageName") {
+            if let image = UIImage(data: imageData) {
+                myImage.image = image
+            }
+        }
+       
+//            if let nsImage = imageData.data(using: .utf8){
+//                let change = convertBase64ToImage(imageString: imageData)
+//                myImage.image = change
+//
+//                if let decodedimage = UIImage(data: nsImage){
+//                myImage.image = decodedimage
+//                }
+//            }
         
-//        if let image =  UserDefaults.standard.string(forKey: "imageName") {
-//            myImage.image = UIImage(data: image)
+        
+//        if let url = URL(string: UserDefaults.standard.string(forKey: "imageName")!) {
+//            let data = try? Data(contentsOf: url)
+//            if let imageData = data {
+//                if let image = UIImage(data: imageData) {
+//                    myImage.image = image
+//                }
+//            }
+//        }
+//        
+//        if let data = NSData(contentsOfFile: UserDefaults.standard.string(forKey: "imageName")!)  {
+//            if let image = UIImage(data: data as Data){
+//                myImage.image = image
+//            }
 //        }
         
         defaultFrame = textView.frame
@@ -72,17 +100,19 @@ class MyPageViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         let name = nameText.text!
         let email = emailText.text!
         let memberId = UserDefaults.standard.string(forKey: "memberId")
+//        let image = UIImagePNGRepresentation(self.myImage.image!)
+        let image = imageChange() as Data
         
         Alamofire.upload(
             multipartFormData: { multipartFormData in
+                if image != nil {
+                     multipartFormData.append(image, withName: "memberImage", fileName: "memberImage.jpeg", mimeType: "memberImage/jpeg")
+                }
+               
                 multipartFormData.append((phone.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "phone")
                 multipartFormData.append((name.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "name")
                 multipartFormData.append((email.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "email")
                 multipartFormData.append((memberId?.data(using: .utf8, allowLossyConversion: false))!, withName: "memberId")
-                DispatchQueue.main.async {
-                    multipartFormData.append(UIImageJPEGRepresentation(self.myImage.image!, 1)!, withName: "memberImage", fileName: "memberImage.jpeg", mimeType: "memberImage/jpeg")
-                }
-
         },
             to: url!,
             method: .put,
@@ -90,7 +120,15 @@ class MyPageViewController: UIViewController, UITextFieldDelegate, UIImagePicker
                 switch encodingResult {
                 case .success(let upload, _, _):
                     upload.responseJSON { response in
-                        print(response.result.value!)
+                        let json = JSON(response.result.value)
+
+                        self.userData = UserInfoSet(rawJson: json)
+                        UserDefaults.standard.set(self.userData.memberId, forKey: "memberId")
+                        UserDefaults.standard.set(self.userData.email, forKey: "email")
+                        UserDefaults.standard.set(self.userData.name, forKey: "name")
+                        UserDefaults.standard.set(self.userData.phone, forKey: "phone")
+                        UserDefaults.standard.set(image, forKey: "imageName")
+                        
                         self.navigationController?.popViewController(animated: true)
                     }
                 case .failure(let encodingError):
@@ -111,6 +149,13 @@ class MyPageViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     
     func viewUp() {
         textView.frame = CGRect(x: 0, y: 65, width: self.view.frame.width, height: textView.frame.height)
+    }
+    
+    func imageChange() -> NSData {
+        let image : UIImage = myImage.image!
+        let imageData:NSData = UIImagePNGRepresentation(image)! as NSData
+        let strBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
+        return imageData
     }
     
     @IBAction func albumButtonPressed(_ sender: Any) {
@@ -148,6 +193,12 @@ extension MyPageViewController : AlbumSelectionDelegate{
             }
         }
         myImage.image = img
+    }
+}
+
+extension Data {
+    var uiImage: UIImage? {
+        return UIImage(data: self)
     }
 }
 

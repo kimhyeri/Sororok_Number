@@ -138,6 +138,13 @@ class TwoViewController: UIViewController {
             topNameLabel.text = "\(name)님"
         }
         
+        if let imageData =  UserDefaults.standard.data (forKey: "imageName") {
+            if let image = UIImage(data: imageData) {
+                imageButton.setImage(image, for: .normal)
+                imageSecondView.setImage(image, for: .normal)
+            }
+        }
+        
         self.navigationController!.navigationBar.topItem!.title = ""
         floatingView.layer.cornerRadius = floatingView.frame.width/2
         navigationBarHeight = navigationBarHeight + (self.navigationController?.navigationBar.frame.height)!

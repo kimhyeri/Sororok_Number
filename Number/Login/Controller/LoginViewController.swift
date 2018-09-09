@@ -86,7 +86,7 @@ extension LoginViewController {
                 multipartFormData.append((email.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "email")
                 multipartFormData.append((loginType.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "loginType")
                 multipartFormData.append((loginUid.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "loginUid")
-                
+                //사진 추가 해줘야함 
         },
             to: url!,
             method: .put,

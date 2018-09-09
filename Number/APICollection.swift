@@ -70,7 +70,6 @@ class APICollection{
         Alamofire.request("\(url)member/history", method: .get, parameters: parameter).responseJSON {
             response in
             let json = JSON(response.result.value)
-            print(json)
             switch response.result {
             case .success:
                 print("success")
