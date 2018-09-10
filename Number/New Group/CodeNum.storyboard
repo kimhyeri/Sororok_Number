@@ -251,19 +251,47 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qvt-bg-4qq">
+                                <rect key="frame" x="0.0" y="266" width="375" height="401"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="imgMainGraphic" translatesAutoresizingMaskIntoConstraints="NO" id="UFL-t1-fH6">
+                                        <rect key="frame" x="0.0" y="206" width="375" height="180"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="아직 가입된 그룹이 없네요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0A-FN-32I">
+                                        <rect key="frame" x="82" y="67" width="210" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        <color key="textColor" red="0.16862745098039217" green="0.1803921568627451" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="검색으로 그룹을 찾아보세요!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cxy-xH-BFy">
+                                        <rect key="frame" x="97" y="93" width="180" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                        <color key="textColor" red="0.60784313725490191" green="0.62352941176470589" blue="0.6588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Qvt-bg-4qq" firstAttribute="leading" secondItem="3gN-s0-xpm" secondAttribute="leading" id="6C4-o4-AFn"/>
                             <constraint firstItem="jxQ-QW-pHh" firstAttribute="top" secondItem="UHI-GQ-NIg" secondAttribute="bottom" id="Cl0-zG-ssG"/>
+                            <constraint firstAttribute="trailing" secondItem="Qvt-bg-4qq" secondAttribute="trailing" id="HPB-ft-Myv"/>
                             <constraint firstItem="b5l-G0-h4U" firstAttribute="top" secondItem="jxQ-QW-pHh" secondAttribute="bottom" id="Psd-1S-c7o"/>
                             <constraint firstItem="UHI-GQ-NIg" firstAttribute="leading" secondItem="3gN-s0-xpm" secondAttribute="leading" id="WzD-cS-F8x"/>
                             <constraint firstItem="jxQ-QW-pHh" firstAttribute="leading" secondItem="qcg-m7-ibF" secondAttribute="leading" id="XAF-fv-PwX"/>
                             <constraint firstAttribute="trailing" secondItem="b5l-G0-h4U" secondAttribute="trailing" id="koJ-zB-7G3"/>
                             <constraint firstItem="qcg-m7-ibF" firstAttribute="trailing" secondItem="dtD-a4-OE9" secondAttribute="trailing" constant="24" id="liH-rP-0fd"/>
                             <constraint firstItem="jxQ-QW-pHh" firstAttribute="trailing" secondItem="qcg-m7-ibF" secondAttribute="trailing" id="neA-zI-5UF"/>
+                            <constraint firstAttribute="bottom" secondItem="Qvt-bg-4qq" secondAttribute="bottom" id="noE-Pb-Dvn"/>
                             <constraint firstAttribute="bottom" secondItem="b5l-G0-h4U" secondAttribute="bottom" id="s30-cy-zgJ"/>
                             <constraint firstAttribute="trailing" secondItem="UHI-GQ-NIg" secondAttribute="trailing" id="s4O-yf-dqp"/>
                             <constraint firstItem="UHI-GQ-NIg" firstAttribute="top" secondItem="3gN-s0-xpm" secondAttribute="top" id="uoX-PF-XNz"/>
+                            <constraint firstItem="Qvt-bg-4qq" firstAttribute="top" secondItem="jxQ-QW-pHh" secondAttribute="bottom" id="vuB-za-Hlm"/>
                             <constraint firstItem="b5l-G0-h4U" firstAttribute="leading" secondItem="3gN-s0-xpm" secondAttribute="leading" id="wVq-QS-a41"/>
                             <constraint firstItem="qcg-m7-ibF" firstAttribute="bottom" secondItem="dtD-a4-OE9" secondAttribute="bottom" constant="24" id="wsz-Im-0o5"/>
                         </constraints>
@@ -294,6 +322,9 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="firstDescLabel" destination="cxy-xH-BFy" id="tYO-g2-n1b"/>
+                        <outlet property="firstLoginView" destination="Qvt-bg-4qq" id="zPd-cy-kXT"/>
+                        <outlet property="firstTitleLabel" destination="g0A-FN-32I" id="1ge-eg-0pm"/>
                         <outlet property="firstView" destination="UHI-GQ-NIg" id="s7U-hy-yF6"/>
                         <outlet property="floatingView" destination="dtD-a4-OE9" id="XHD-vn-dFw"/>
                         <outlet property="imageButton" destination="cT8-P0-tSN" id="l4q-L3-kI6"/>
@@ -311,7 +342,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Sg-uD-Eua" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1991" y="-1088"/>
+            <point key="canvasLocation" x="1989.5999999999999" y="-1088.0059970014993"/>
         </scene>
         <!--Custom Navi View Controller-->
         <scene sceneID="GWd-Q0-4pF">
@@ -349,6 +380,7 @@
         <image name="girlBig" width="96" height="96"/>
         <image name="icnNotiClose" width="32" height="32"/>
         <image name="icnNotiNotice" width="40" height="40"/>
+        <image name="imgMainGraphic" width="375" height="180"/>
         <image name="noti" width="24" height="24"/>
         <image name="setting" width="22" height="24"/>
     </resources>

@@ -24,13 +24,13 @@ class DeleteViewController: UIViewController {
     }
     
     @IBAction func memberRemove(_ sender: Any) {
-        //멤버변수에 userdefault에 저장된 memberId로 지우기
         let memberId : Parameters = [
-            "memberId" : 30
+            "memberId" : UserDefaults.standard.integer(forKey: "memberId")
         ]
         
         APICollection.sharedAPI.memberRemove(parameter: memberId, completion: {(result) -> (Void) in
-            
+            UserDefaults.standard.set(false, forKey: "isLoggedIn")
+            UserDefaults.standard.synchronize()
         })
     }
 }

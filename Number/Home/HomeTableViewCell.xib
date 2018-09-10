@@ -45,13 +45,6 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="0.20392156859999999" green="0.2274509804" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="관리자" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pRM-5g-0CT">
-                        <rect key="frame" x="46" y="73" width="37" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -60,7 +53,6 @@
                 <outlet property="descLabel" destination="Bdx-h2-2Sj" id="p3f-sc-DaO"/>
                 <outlet property="groupImage" destination="GFZ-Pc-76S" id="vdk-8Z-Uzn"/>
                 <outlet property="groupName" destination="cLd-mt-4Rm" id="AYI-oy-AgP"/>
-                <outlet property="statusLabel" destination="pRM-5g-0CT" id="uh4-6y-UEp"/>
             </connections>
             <point key="canvasLocation" x="29.5" y="89.5"/>
         </tableViewCell>

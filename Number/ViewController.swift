@@ -68,7 +68,7 @@ class ViewController: UIViewController{
     }
     
     
-    //사용자 정보 들고오기
+//    사용자 정보 들고오기
 //    func checkLogin(memberId: Int){
 //        let memberId : Parameters = [
 //            "memberId" : memberId

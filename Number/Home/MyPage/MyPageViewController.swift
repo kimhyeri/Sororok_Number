@@ -22,6 +22,10 @@ class MyPageViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     var defaultFrame : CGRect?
     var userData : UserInfoSet!
 
+    override func viewWillAppear(_ animated: Bool) {
+        checkLogin()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initNav()
@@ -38,11 +42,7 @@ class MyPageViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         emailText.text = UserDefaults.standard.string(forKey: "email")
         nameText.text = UserDefaults.standard.string(forKey: "name")
      
-        if let imageData =  UserDefaults.standard.data (forKey: "imageName") {
-            if let image = UIImage(data: imageData) {
-                myImage.image = image
-            }
-        }
+
        
 //            if let nsImage = imageData.data(using: .utf8){
 //                let change = convertBase64ToImage(imageString: imageData)
@@ -151,6 +151,34 @@ class MyPageViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         textView.frame = CGRect(x: 0, y: 65, width: self.view.frame.width, height: textView.frame.height)
     }
     
+    //    사용자 정보 들고오기
+    func checkLogin(){
+        let memberId : Parameters = [
+            "memberId" : UserDefaults.standard.integer(forKey: "memberId")
+        ]
+        
+        APICollection.sharedAPI.checkMemberInfo(parameter: memberId, completion: { (result) -> (Void) in
+            print(result)
+            self.userData = UserInfoSet(rawJson: result)
+            if let imageData =  self.userData.imageName {
+//                let dataDecoded : Data = Data(base64Encoded: imageData, options: .ignoreUnknownCharacters)!
+//                let decodedimage:UIImage = UIImage(data: dataDecoded)!
+//                print(decodedimage)
+                self.myImage.image = UIImage(named: imageData)
+
+//                if let image = UIImage(data: userData.imageName as Data, scale: 1) {
+//                    self.myImage.image = image
+//                }
+            }
+            UserDefaults.standard.set(self.userData.email, forKey: "email")
+            UserDefaults.standard.set(self.userData.name, forKey: "name")
+            UserDefaults.standard.set(self.userData.phone, forKey: "phone")
+            UserDefaults.standard.set(self.userData.imageName, forKey: "imageName")
+            UserDefaults.standard.synchronize()
+        })
+        
+    }
+    
     func imageChange() -> NSData {
         let image : UIImage = myImage.image!
         let imageData:NSData = UIImagePNGRepresentation(image)! as NSData
@@ -167,7 +195,6 @@ class MyPageViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         self.myImage.image = info[UIImagePickerControllerOriginalImage] as? UIImage
-        print(info[UIImagePickerControllerOriginalImage])
         picker.dismiss(animated: false)
     }
     

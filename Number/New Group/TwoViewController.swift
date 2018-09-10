@@ -13,6 +13,9 @@ import SwiftyJSON
 
 class TwoViewController: UIViewController {
     
+    @IBOutlet weak var firstDescLabel: UILabel!
+    @IBOutlet weak var firstTitleLabel: UILabel!
+    @IBOutlet weak var firstLoginView: UIView!
     @IBOutlet weak var insideView: UIView!
     @IBOutlet weak var floatingView: UIView!
     @IBOutlet weak var imageButton: UIButton!
@@ -59,6 +62,7 @@ class TwoViewController: UIViewController {
     
     @objc func searchDoneNoti(){
         print("search Done Noti")
+        firstLoginView.alpha = 0
         loadItem(memberId: UserDefaults.standard.integer(forKey: "memberId"))
     }
     
@@ -86,6 +90,11 @@ class TwoViewController: UIViewController {
             case .success:
                 print("search success")
                 self.repoList = repoListSet(rawJson: json)
+                if self.repoList?.dataList.count == 0 {
+                    self.firstTitleLabel.text = "해당하는 그룹이 없네요."
+                    self.firstDescLabel.text = "그룹명을 다시 확인해주세요!"
+                    self.firstLoginView.alpha = 1
+                }
                 self.view.endEditing(true)
                 self.tableView.reloadData()
                 break
@@ -177,43 +186,43 @@ class TwoViewController: UIViewController {
     }
 }
 
-//MARK: ScrollViewDeleate animation
+//MARK: ScrollViewDeleate animation 잠시 막아놈 
 
-extension TwoViewController : UIScrollViewDelegate {
-    func changeView(){
-        if movedView == false{
-            searchView.frame = CGRect(x: 0, y: self.firstView.frame.height , width: self.view.frame.width, height: 38)
-            tableView.frame = CGRect(x: 0, y: self.firstView.frame.height + self.searchView.frame.height, width: self.view.frame.width, height: self.view.frame.height - (firstView.frame.height + searchView.frame.height))
-        }
-    }
-    
-    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
-        self.lastContentOffset = scrollView.contentOffset.y
-    }
- 
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        scrollView.decelerationRate = UIScrollViewDecelerationRateFast
-        let y = 227 - scrollView.contentOffset.y
-        let h = max(65, y)
-        let rect = CGRect(x: 0, y: 0, width: view.bounds.width, height: h)
-        firstView.frame = rect
-        
-        let x = 65 + -scrollView.contentOffset.y
-        let a = min(x, 90)
-        let rect1 = CGRect(x: 10, y: a, width: 355, height: 146)
-        insideView.frame = rect1
-        
-        changeView()
-        if (h < 130) {
-            let rect2 = CGRect(x: 0, y: 65 - h , width: view.bounds.width, height: 65)
-            topView.frame = rect2
-        }
-        
-        if (self.lastContentOffset < scrollView.contentOffset.y) {
-            insideView.alpha = 1 - ( tableView.contentOffset.y * 0.01)
-        }
-    }
-}
+//extension TwoViewController : UIScrollViewDelegate {
+//    func changeView(){
+//        if movedView == false{
+//            searchView.frame = CGRect(x: 0, y: self.firstView.frame.height , width: self.view.frame.width, height: 38)
+//            tableView.frame = CGRect(x: 0, y: self.firstView.frame.height + self.searchView.frame.height, width: self.view.frame.width, height: self.view.frame.height - (firstView.frame.height + searchView.frame.height))
+//        }
+//    }
+//
+//    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+//        self.lastContentOffset = scrollView.contentOffset.y
+//    }
+//
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        scrollView.decelerationRate = UIScrollViewDecelerationRateFast
+//        let y = 227 - scrollView.contentOffset.y
+//        let h = max(65, y)
+//        let rect = CGRect(x: 0, y: 0, width: view.bounds.width, height: h)
+//        firstView.frame = rect
+//
+//        let x = 65 + -scrollView.contentOffset.y
+//        let a = min(x, 90)
+//        let rect1 = CGRect(x: 10, y: a, width: 355, height: 146)
+//        insideView.frame = rect1
+//
+//        changeView()
+//        if (h < 130) {
+//            let rect2 = CGRect(x: 0, y: 65 - h , width: view.bounds.width, height: 65)
+//            topView.frame = rect2
+//        }
+//
+//        if (self.lastContentOffset < scrollView.contentOffset.y) {
+//            insideView.alpha = 1 - ( tableView.contentOffset.y * 0.01)
+//        }
+//    }
+//}
 
 //MARK: TableView Delegate, DataSource
 
@@ -236,9 +245,6 @@ extension TwoViewController : UITableViewDelegate, UITableViewDataSource {
             cell.descLabel.text = repoList?.dataList[indexPath.row].extra_info
             cell.groupName.text = repoList?.dataList[indexPath.row].name
             let status = repoList?.dataList[indexPath.row].authority
-            if status == 0 {
-                cell.statusLabel.text = ""
-            }
             cell.groupImage?.image = UIImage(named: groupDefaultImages[indexPath.row % groupDefaultImages.count])
             cell.cellView.layer.cornerRadius = 10
             cell.cellView.layer.borderWidth = 1
@@ -344,6 +350,9 @@ extension TwoViewController {
             case .success:
                 print("success")
                 self.repoList = repoListSet(rawJson: json)
+                if self.repoList?.dataList.count == 0 {
+                    self.firstLoginView.alpha = 1
+                }
                 self.tableView.reloadData()
                 break
             case .failure:
