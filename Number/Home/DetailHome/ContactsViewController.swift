@@ -32,6 +32,7 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     @IBOutlet weak var nothingView: UIView!
 
     var searchText : String?
+    var sortedName : NSMutableArray?
     var checkState = false
     var index = DefualtIndex()
     var memberList : DetailMemberSet?
@@ -41,8 +42,6 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     static var repoName : String?
     let searchMember = Notification.Name(rawValue: searchMemberNotificationKey)
     let searchMemberDone = Notification.Name(rawValue: searchMemberDoneNotificationKey)
-    
-   
     
     override func viewWillAppear(_ animated: Bool) {
         titleLabel.text = ContactsViewController.repoName
@@ -56,15 +55,22 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
             self.memberList = DetailMemberSet(rawJson: result)
             if let count = self.memberList?.memberList.count {
                 self.totalLabel.text = "총 \(count)명"
+                self.sortName(count: count)
             }
             self.tableView.reloadData()
         }
     }
+
+    //문자열 정렬 먼저 필요함
+    func sortName(count: Int){
+        for i in 0..<count {
+            sortedName?.insert(memberList?.memberList[i].name, at: i)
+        }
+        print(sortedName?.sorted(by: { $1 as! String > $0 as! String }))
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(titleLabel.frame)
-        print(titleView.frame)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName:"DetailHomeTableViewCell",bundle: nil), forCellReuseIdentifier: "DetailHomeTableViewCell")
@@ -85,93 +91,30 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
         
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    //뒤로가기 버튼
     @objc func backButtonPressed() {
         let storyboard = UIStoryboard.init(name: "CodeNum", bundle: nil)
         let bv = storyboard.instantiateViewController(withIdentifier: "ST") as! CustomNaviViewController
         self.present(bv, animated: true, completion: nil)
     }
     
+    //그룹 관리 버튼
     @objc func pressedButton(){
         let storyboard = UIStoryboard.init(name: "ManagerGroup", bundle: nil)
         let uv = storyboard.instantiateViewController(withIdentifier: "ManagerGroup") as! ManagerGroupViewController
         self.navigationController?.pushViewController(uv, animated: true)
     }
     
+    //터치 끝내기
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
     }
     
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
-    func createObserver(){
-        NotificationCenter.default.addObserver(self, selector: #selector(self.searchMemberNoti(_:)), name: searchMember, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.searchMemberDoneNoti), name: searchMemberDone, object: nil)
-    }
-    
-    @objc func searchMemberDoneNoti(){
-        print("search Done Noti")
-        nothingView.alpha = 0
-        self.selectButton.isEnabled = true
-        self.selectAllbutton.isEnabled = true
-        
-        let parameter = [
-            "repositoryId" : ContactsViewController.repoId
-        ]
-        
-        APICollection.sharedAPI.getRepoMember(parameter: parameter) { (result) -> (Void) in
-            self.memberList = DetailMemberSet(rawJson: result)
-            if let count = self.memberList?.memberList.count {
-                self.totalLabel.text = "총 \(count)명"
-            }
-            self.tableView.reloadData()
-        }    }
-    
-    @objc func searchMemberNoti(_ notification: Notification){
-        
-        if let data = notification.userInfo as? [String: String]
-        {
-            for (_, text) in data
-            {
-                searchText = text
-            }
-        }
-        guard searchText != nil else{return}
-        
-        let parameter : Parameters = [
-            "memberName" : searchText!,
-            "repositoryId" : ContactsViewController.repoId
-        ]
-        
-        Alamofire.request("http://45.63.120.140:40005/repository/memberSearch", method: .get, parameters: parameter).responseJSON { response in
-            let json = JSON(response.result.value)
-            print(json)
-            switch response.result {
-            case .success:
-                print("search success")
-                self.memberList = DetailMemberSet(rawJson: json)
-                self.view.endEditing(true)
-                if self.memberList?.memberList.count != 0 {
-                    self.tableView.reloadData()
-                }else{
-                    self.nothingView.alpha = 1
-                    self.selectButton.isEnabled = false
-                    self.selectAllbutton.isEnabled = false
-                }
-                break
-            case .failure:
-                print("fail")
-                break
-            }
-        }
-    }
-    
-    func getHangul(num : Int) -> String {
-        let hangle = ["ㄱ","ㄲ","ㄴ","ㄷ","ㄸ","ㄹ","ㅁ","ㅂ","ㅃ","ㅅ","ㅆ","ㅇ","ㅈ","ㅉ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"]
-        return hangle[num]
-    }
-    
+    //전체 선택 버튼
     @IBAction func allButtonPressed(_ sender: UIButton) {
         
         if checkState == false {
@@ -197,8 +140,8 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
         }
     }
     
+    //전화번호 저장 버튼
     @IBAction func saveButtonPressed(_ sender: Any) {
-//        sort()
         let storyboard = UIStoryboard.init(name: "Progress", bundle: nil)
         let nv = storyboard.instantiateViewController(withIdentifier: "Progress") as! ProgressViewController
         self.present(nv, animated: true, completion: nil)
@@ -210,6 +153,13 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
 //MARK: tableview datasource delegate
 extension ContactsViewController {
     
+    //한글 몇번째 리턴해줌
+    func getHangul(num : Int) -> String {
+        let hangle = ["ㄱ","ㄲ","ㄴ","ㄷ","ㄸ","ㄹ","ㅁ","ㅂ","ㅃ","ㅅ","ㅆ","ㅇ","ㅈ","ㅉ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"]
+        return hangle[num]
+    }
+    
+    //초성 나누기
     func checkSplit(name: String, num : Int) -> Bool {
         let dic = name.map { return $0 }
         let text = dic[0]
@@ -296,7 +246,30 @@ extension ContactsViewController {
     }
 }
 
-//MARK: update selected cell
+//MARK: contacts index header part
+extension ContactsViewController {
+    
+    public func numberOfSections(in tableView: UITableView) -> Int {
+        
+        return index.arrIndexSection.count
+    }
+    
+    public func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        
+        return self.index.arrIndexSection as? [String]
+    }
+    
+    public func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+        return index
+    }
+    
+    public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return index.arrIndexSection.object(at: section) as? String
+    }
+    
+}
+
+//MARK: 셀 선택시 뷰 변경
 extension ContactsViewController {
     
     func updateCount(){
@@ -318,25 +291,68 @@ extension ContactsViewController {
     }
 }
 
-//MARK: contacts index header part
+//MARK: Notifications
 extension ContactsViewController {
     
-    public func numberOfSections(in tableView: UITableView) -> Int {
- 
-        return index.arrIndexSection.count
+    func createObserver(){
+        NotificationCenter.default.addObserver(self, selector: #selector(self.searchMemberNoti(_:)), name: searchMember, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.searchMemberDoneNoti), name: searchMemberDone, object: nil)
     }
     
-    public func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-
-        return self.index.arrIndexSection as? [String]
+    @objc func searchMemberDoneNoti(){
+        nothingView.alpha = 0
+        self.selectButton.isEnabled = true
+        self.selectAllbutton.isEnabled = true
+        
+        let parameter = [
+            "repositoryId" : ContactsViewController.repoId
+        ]
+        
+        APICollection.sharedAPI.getRepoMember(parameter: parameter) { (result) -> (Void) in
+            self.memberList = DetailMemberSet(rawJson: result)
+            if let count = self.memberList?.memberList.count {
+                self.totalLabel.text = "총 \(count)명"
+            }
+            self.tableView.reloadData()
+        }
     }
     
-    public func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
-        return index
+    @objc func searchMemberNoti(_ notification: Notification){
+        
+        if let data = notification.userInfo as? [String: String]
+        {
+            for (_, text) in data
+            {
+                searchText = text
+            }
+        }
+        guard searchText != nil else{return}
+        
+        let parameter : Parameters = [
+            "memberName" : searchText!,
+            "repositoryId" : ContactsViewController.repoId
+        ]
+        
+        Alamofire.request("http://45.63.120.140:40005/repository/memberSearch", method: .get, parameters: parameter).responseJSON { response in
+            let json = JSON(response.result.value)
+            print(json)
+            switch response.result {
+            case .success:
+                print("search success")
+                self.memberList = DetailMemberSet(rawJson: json)
+                self.view.endEditing(true)
+                if self.memberList?.memberList.count != 0 {
+                    self.tableView.reloadData()
+                }else{
+                    self.nothingView.alpha = 1
+                    self.selectButton.isEnabled = false
+                    self.selectAllbutton.isEnabled = false
+                }
+                break
+            case .failure:
+                print("fail")
+                break
+            }
+        }
     }
-    
-    public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return index.arrIndexSection.object(at: section) as? String
-    }
-    
 }

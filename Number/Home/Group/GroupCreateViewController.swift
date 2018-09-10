@@ -41,9 +41,6 @@ class GroupCreateViewController: UIViewController , UIImagePickerControllerDeleg
         groupImage.layer.cornerRadius = self.groupImage.frame.width/2
         groupView.layer.cornerRadius = 10
         
-//        groupInfoText.attributedPlaceholder = NSAttributedString(string: "그룹명을 적어주세요", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
-//        groupNameText.attributedPlaceholder = NSAttributedString(string: "그룹설명을 적어주세요", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
-        
     }
     
     func getCode() {
@@ -54,11 +51,12 @@ class GroupCreateViewController: UIViewController , UIImagePickerControllerDeleg
     
     //Create repositroy
     @objc func saveButton(){
+      
         let url = "http://45.63.120.140:40005/repository/create"
         
-        guard groupNameText.text != nil else {showToast(message: "fail"); return}
+        guard groupNameText.text != nil else {showToast(message: "이름 입력해주세요"); return}
         guard codeLabel.text != nil else {showToast(message: "fail"); return}
-        guard groupInfoText.text != nil else {showToast(message: "fail"); return}
+        guard groupInfoText.text != nil else {showToast(message: "그룹설명 입력해주세요"); return}
         
         let name = groupNameText.text!
         let code = codeLabel.text!
