@@ -20,6 +20,8 @@ extension Dictionary{
 
 class ContactsViewController: UIViewController , UITableViewDataSource, UITableViewDelegate{
     
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var selectAllbutton: UIButton!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var selectButton: UIButton!
@@ -36,12 +38,16 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     var selected = [String:String]()
     let contact = CNMutableContact()
     static var repoId : Int?
+    static var repoName : String?
     let searchMember = Notification.Name(rawValue: searchMemberNotificationKey)
     let searchMemberDone = Notification.Name(rawValue: searchMemberDoneNotificationKey)
     
    
     
     override func viewWillAppear(_ animated: Bool) {
+        titleLabel.text = ContactsViewController.repoName
+        titleLabel.sizeToFit()
+
         let parameter = [
             "repositoryId" : ContactsViewController.repoId
         ]
@@ -57,6 +63,8 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(titleLabel.frame)
+        print(titleView.frame)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName:"DetailHomeTableViewCell",bundle: nil), forCellReuseIdentifier: "DetailHomeTableViewCell")
@@ -66,6 +74,8 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     }
     
     func defaultView(){
+        titleView.frame = CGRect(x: titleView.frame.origin.x, y: titleView.frame.origin.y , width: titleLabel.frame.width + 6 , height: titleView.frame.height )
+        
         let backButton = UIBarButtonItem(image: UIImage(named: "btnCommBackWh"), style: .plain, target: self, action: #selector(ContactsViewController.backButtonPressed))
         self.navigationItem.leftBarButtonItem = backButton
         backButton.imageInsets.left = -10

@@ -257,11 +257,16 @@ extension TwoViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.view.endEditing(true)
         if repoList?.dataList.count != 0 {
-            if let repositoryId = repoList?.dataList[indexPath.row].repositoryId {
-                createAlert(data: repositoryId)
-            }
             if repoList?.dataList[indexPath.row].joinFlag == 1 {
                  UserDefaults.standard.set(repoList?.dataList[indexPath.row].authority, forKey: "authority")
+                let storyboard = UIStoryboard.init(name: "DetailHome", bundle: nil)
+                let nv = storyboard.instantiateViewController(withIdentifier: "NV") as! ContactNaviViewController
+                ContactsViewController.repoId = repoList?.dataList[indexPath.row].repositoryId
+                ContactsViewController.repoName = repoList?.dataList[indexPath.row].name
+                self.present(nv, animated: true, completion: nil)
+            }
+            if let repositoryId = repoList?.dataList[indexPath.row].repositoryId {
+                createAlert(data: repositoryId)
             }
         }
     }

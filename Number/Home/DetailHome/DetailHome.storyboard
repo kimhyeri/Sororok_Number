@@ -37,14 +37,18 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NeZ-TE-HKJ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dvY-VL-QLz">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dvY-VL-QLz">
                                         <rect key="frame" x="52" y="43" width="142" height="19"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.36078431372549019" green="0.38039215686274508" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="19" id="QkR-Jw-eaa"/>
+                                        </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="넥스터즈 13기" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iXl-E1-Bos">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="넥스터즈 13기" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iXl-E1-Bos">
                                         <rect key="frame" x="55" y="30" width="135" height="29"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="29" id="v83-gv-KZb"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -52,7 +56,12 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.20392156859999999" green="0.2274509804" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="dvY-VL-QLz" secondAttribute="bottom" constant="18" id="NOA-hC-SnB"/>
                                     <constraint firstAttribute="height" constant="80" id="U3C-QQ-txo"/>
+                                    <constraint firstItem="iXl-E1-Bos" firstAttribute="leading" secondItem="NeZ-TE-HKJ" secondAttribute="leading" constant="55" id="cYu-as-BnP"/>
+                                    <constraint firstAttribute="bottom" secondItem="iXl-E1-Bos" secondAttribute="bottom" constant="21" id="eqq-5N-Lnc"/>
+                                    <constraint firstItem="dvY-VL-QLz" firstAttribute="leading" secondItem="NeZ-TE-HKJ" secondAttribute="leading" constant="52" id="gR6-X9-hH9"/>
+                                    <constraint firstItem="dvY-VL-QLz" firstAttribute="centerX" secondItem="iXl-E1-Bos" secondAttribute="centerX" id="xVs-Tv-Nx5"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d66-I6-19F">
@@ -226,6 +235,8 @@
                         <outlet property="selectAllbutton" destination="ras-C6-8u9" id="bvc-nk-pUc"/>
                         <outlet property="selectButton" destination="Pos-Gp-cdb" id="Xbq-QM-oVb"/>
                         <outlet property="tableView" destination="Eua-ct-xOA" id="NzL-Ax-0qD"/>
+                        <outlet property="titleLabel" destination="iXl-E1-Bos" id="fdB-vZ-YUJ"/>
+                        <outlet property="titleView" destination="dvY-VL-QLz" id="PSu-gn-tZp"/>
                         <outlet property="totalLabel" destination="xpV-ac-oaI" id="EH8-tN-dt6"/>
                     </connections>
                 </viewController>

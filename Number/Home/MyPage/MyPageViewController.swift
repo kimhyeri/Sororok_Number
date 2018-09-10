@@ -160,16 +160,7 @@ class MyPageViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         APICollection.sharedAPI.checkMemberInfo(parameter: memberId, completion: { (result) -> (Void) in
             print(result)
             self.userData = UserInfoSet(rawJson: result)
-            if let imageData =  self.userData.imageName {
-//                let dataDecoded : Data = Data(base64Encoded: imageData, options: .ignoreUnknownCharacters)!
-//                let decodedimage:UIImage = UIImage(data: dataDecoded)!
-//                print(decodedimage)
-                self.myImage.image = UIImage(named: imageData)
-
-//                if let image = UIImage(data: userData.imageName as Data, scale: 1) {
-//                    self.myImage.image = image
-//                }
-            }
+    
             UserDefaults.standard.set(self.userData.email, forKey: "email")
             UserDefaults.standard.set(self.userData.name, forKey: "name")
             UserDefaults.standard.set(self.userData.phone, forKey: "phone")
