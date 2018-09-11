@@ -30,9 +30,11 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var saveLabel: UILabel!
     @IBOutlet weak var nothingView: UIView!
-
+    
     var searchText : String?
-    var sortedName : NSMutableArray?
+    var sortedName = NSMutableArray()
+    var sorted = [DetailMember]()
+    var final = [Any]()
     var checkState = false
     var index = DefualtIndex()
     var memberList : DetailMemberSet?
@@ -46,7 +48,7 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     override func viewWillAppear(_ animated: Bool) {
         titleLabel.text = ContactsViewController.repoName
         titleLabel.sizeToFit()
-
+        
         let parameter = [
             "repositoryId" : ContactsViewController.repoId
         ]
@@ -60,13 +62,15 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
             self.tableView.reloadData()
         }
     }
-
+    
     //문자열 정렬 먼저 필요함
     func sortName(count: Int){
+        
         for i in 0..<count {
-            sortedName?.insert(memberList?.memberList[i].name, at: i)
+            sortedName.insert(memberList?.memberList[i].name, at: i)
         }
-        print(sortedName?.sorted(by: { $1 as! String > $0 as! String }))
+        sorted = (memberList?.memberList.sorted(by: { $1.name > $0.name }))!
+        print(sorted)
     }
     
     override func viewDidLoad() {
@@ -155,7 +159,8 @@ extension ContactsViewController {
     
     //한글 몇번째 리턴해줌
     func getHangul(num : Int) -> String {
-        let hangle = ["ㄱ","ㄲ","ㄴ","ㄷ","ㄸ","ㄹ","ㅁ","ㅂ","ㅃ","ㅅ","ㅆ","ㅇ","ㅈ","ㅉ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"]
+        //        let hangle = ["ㄱ","ㄲ","ㄴ","ㄷ","ㄸ","ㄹ","ㅁ","ㅂ","ㅃ","ㅅ","ㅆ","ㅇ","ㅈ","ㅉ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"]
+        let hangle = ["ㄱ","ㄴ","ㄷ","ㄹ","ㅁ","ㅂ","ㅅ","ㅇ","ㅈ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"]
         return hangle[num]
     }
     
@@ -165,10 +170,14 @@ extension ContactsViewController {
         let text = dic[0]
         var getValue = ""
         var valueString = ""
-        print(text)
         let val = UnicodeScalar(String(text))?.value
         if ( val! >= 0xAC00 && val! <= 0xD7A3 ) {
-            let first = (val! - 0xac00) / 28 / 21
+            var first = (val! - 0xac00) / 28 / 21
+            if first >= 13 {first = first - 5}
+            else if first >= 10 {first = first - 4 }
+            else if first >= 8 {first = first - 3 }
+            else if first >= 4 { first = first - 2 }
+            else if first >= 1 { first = first - 1 }
             getValue =  getHangul(num: Int(first))
         }
         
@@ -195,20 +204,17 @@ extension ContactsViewController {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
-
-            if memberList?.memberList[indexPath.row].name != nil {
-                for i in 0 ..< compare {
-                if checkSplit(name: (memberList?.memberList[i].name)!, num: indexPath.section) == true {
-                        let cell = tableView.dequeueReusableCell(withIdentifier: "DetailHomeTableViewCell", for: indexPath) as! DetailHomeTableViewCell
-                    
-                        cell.userImage?.layer.cornerRadius = (cell.userImage?.frame.width)!/2
-                        cell.nameLabel?.text = memberList?.memberList[indexPath.row].name
-                        cell.phoneLabel?.text = memberList?.memberList[indexPath.row].phone
-                        return cell
-                    }
-                }
+            if checkSplit(name: sorted[indexPath.row].name, num: indexPath.section) == true {
+                
+                let cell = tableView.dequeueReusableCell(withIdentifier: "DetailHomeTableViewCell", for: indexPath) as! DetailHomeTableViewCell
+                
+                cell.userImage?.layer.cornerRadius = (cell.userImage?.frame.width)!/2
+                cell.nameLabel?.text = sorted[indexPath.row].name
+                cell.phoneLabel?.text = sorted[indexPath.row].phone
+                return cell
             }
-         return cell
+            
+            return cell
         }
     }
     
@@ -227,21 +233,19 @@ extension ContactsViewController {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         var count = 0
         var compare = 0
         if let count = memberList?.memberList.count {
             compare = count
         }
         
-        if section < compare {
-            for i in 0 ..< compare {
-                if memberList?.memberList[i].name != nil {
-                    if checkSplit(name: (memberList?.memberList[i].name)!, num: section) == true {
-                        count = count + 1
-                    }
-                }
+        for i in 0 ..< compare {
+            if checkSplit(name: sorted[i].name, num: section) == true {
+                count = count + 1
             }
         }
+        
         return count
     }
 }
