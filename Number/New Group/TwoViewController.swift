@@ -120,6 +120,23 @@ class TwoViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         loadItem(memberId: UserDefaults.standard.integer(forKey: "memberId"))
+        
+        var image = UserDefaults.standard.string(forKey: "imageName")
+        
+        if image == nil {
+            imageButton.setImage(UIImage(named: "girlBig"), for: .normal)
+        }
+        else {
+            if let url = URL(string: APICollection.sharedAPI.imageUrl + image!) {
+                let data = try? Data(contentsOf: url)
+                if let imageData = data {
+                    if let image = UIImage(data: imageData) {
+                        imageButton.setImage(image, for: .normal)
+                        imageButton.layer.cornerRadius = imageButton.frame.width/2
+                    }
+                }
+            }
+        }
     }
     
     override func viewDidLoad() {
@@ -138,6 +155,7 @@ class TwoViewController: UIViewController {
         defaultSize.append(insideView.frame)
         defaultSize.append(searchView.frame)
         defaultSize.append(tableView.frame)
+  
         
         defaultButton = Int(self.imageButton.frame.origin.y)
         defaultLabel = Int(self.nameLabel.frame.origin.y)

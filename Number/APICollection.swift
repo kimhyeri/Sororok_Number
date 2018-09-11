@@ -13,6 +13,7 @@ import SwiftyJSON
 class APICollection{
     static let sharedAPI = APICollection()
     let url = "http://45.63.120.140:40005/"
+    let imageUrl = "http://45.63.120.140:40005/sororok/images/"
     
     func registeredCheck(parameters: Parameters ,completion: @escaping (_ result: JSON) -> (Void)){
         Alamofire.request("\(url)member/login", method: .post, parameters: parameters as? [String: Any], encoding: JSONEncoding.default, headers: [:])

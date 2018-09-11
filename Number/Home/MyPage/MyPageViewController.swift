@@ -41,33 +41,23 @@ class MyPageViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         numText.text = UserDefaults.standard.string(forKey: "phone")
         emailText.text = UserDefaults.standard.string(forKey: "email")
         nameText.text = UserDefaults.standard.string(forKey: "name")
-     
-
-       
-//            if let nsImage = imageData.data(using: .utf8){
-//                let change = convertBase64ToImage(imageString: imageData)
-//                myImage.image = change
-//
-//                if let decodedimage = UIImage(data: nsImage){
-//                myImage.image = decodedimage
-//                }
-//            }
+        var image = UserDefaults.standard.string(forKey: "imageName")
+        
+        if image == nil {
+            myImage.image = UIImage(named: "girlBig")
+        }
+        else {
+            if let url = URL(string: APICollection.sharedAPI.imageUrl + image!) {
+                let data = try? Data(contentsOf: url)
+                if let imageData = data {
+                    if let image = UIImage(data: imageData) {
+                        myImage.image = image
+                    }
+                }
+            }
+        }
         
         
-//        if let url = URL(string: UserDefaults.standard.string(forKey: "imageName")!) {
-//            let data = try? Data(contentsOf: url)
-//            if let imageData = data {
-//                if let image = UIImage(data: imageData) {
-//                    myImage.image = image
-//                }
-//            }
-//        }
-//        
-//        if let data = NSData(contentsOfFile: UserDefaults.standard.string(forKey: "imageName")!)  {
-//            if let image = UIImage(data: data as Data){
-//                myImage.image = image
-//            }
-//        }
         
         defaultFrame = textView.frame
         nameText.attributedPlaceholder = NSAttributedString(string: "이름", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])

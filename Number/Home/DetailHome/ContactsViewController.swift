@@ -198,8 +198,8 @@ extension ContactsViewController {
 
                     let cell = tableView.dequeueReusableCell(withIdentifier: "DetailHomeTableViewCell", for: indexPath) as! DetailHomeTableViewCell
                     cell.userImage?.layer.cornerRadius = (cell.userImage?.frame.width)!/2
-                    cell.nameLabel?.text = sorted[i].name
-                    cell.phoneLabel?.text = sorted[i].phone
+                    cell.nameLabel?.text = sorted[indexPath.row].name
+                    cell.phoneLabel?.text = sorted[indexPath.row].phone
                     print("indexPath: \(indexPath.row) section: \(indexPath.section) name: \(sorted[i].name)")
                     return cell
                 }
