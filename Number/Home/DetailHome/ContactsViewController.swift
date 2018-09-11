@@ -200,6 +200,24 @@ extension ContactsViewController {
                     cell.userImage?.layer.cornerRadius = (cell.userImage?.frame.width)!/2
                     cell.nameLabel?.text = sorted[indexPath.row].name
                     cell.phoneLabel?.text = sorted[indexPath.row].phone
+//                    cell.imageView?.image = sorted[indexPath.row].imageName
+                    
+                    if sorted[indexPath.row].imageName == nil {
+                        cell.userImage?.image = UIImage(named: "girl")
+                    }
+                    else {
+                        if let url = URL(string: APICollection.sharedAPI.imageUrl + sorted[indexPath.row].imageName) {
+                            let data = try? Data(contentsOf: url)
+                            if let imageData = data {
+                                if let image = UIImage(data: imageData) {
+                                    cell.userImage?.image = image
+                                    cell.userImage?.layer.cornerRadius = cell.userImage.frame.width / 2 
+                                 }
+                            }
+                        }
+                    }
+                    
+                    
                     print("indexPath: \(indexPath.row) section: \(indexPath.section) name: \(sorted[i].name)")
                     return cell
                 }
