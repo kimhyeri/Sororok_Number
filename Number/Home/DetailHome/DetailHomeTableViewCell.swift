@@ -21,7 +21,11 @@ class DetailHomeTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.nameLabel.text = nil
+        self.phoneLabel.text = nil
+    }
 }

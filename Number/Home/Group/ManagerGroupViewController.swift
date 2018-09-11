@@ -20,12 +20,15 @@ class ManagerGroupViewController: UIViewController{
     var manager :[String] = ["그룹 공유하기", "그룹 폭파"]
     var member : [String] = ["그룹 공유하기", "그룹 나가기"]
     
+    override func viewWillAppear(_ animated: Bool) {
+        getCodeNum()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "btnCommBackBl")
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "btnCommBackBl")
-        
         self.navigationController?.navigationBar.topItem?.title = ""
         changeCodeView.clipsToBounds = true
         changeCodeView.layer.cornerRadius = 3
@@ -37,6 +40,15 @@ class ManagerGroupViewController: UIViewController{
             refreshButton.alpha = 0
             refreshButton.isEnabled = false
         }
+    }
+    
+    func getCodeNum(){
+        let parameter = [
+            "repositoryId" : ContactsViewController.repoId
+        ]
+        APICollection.sharedAPI.getRepoInfo(parameter: parameter, completion: { (result)-> (Void) in
+            self.codeLabel.text = result["code"].stringValue
+        })
     }
     
     @IBAction func changeCodeButtonPressed(_ sender: Any) {
@@ -83,6 +95,7 @@ extension ManagerGroupViewController : UITableViewDelegate, UITableViewDataSourc
 //            let vc = storyboard.instantiateViewController(withIdentifier: "ChangeManager")
 //            self.navigationController?.pushViewController(vc, animated: true)
 //        }
+            
         else if indexPath.row == 1 {
             switch UserDefaults.standard.integer(forKey: "authority") {
             case 0:

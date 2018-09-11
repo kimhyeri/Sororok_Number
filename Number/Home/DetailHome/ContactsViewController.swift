@@ -11,13 +11,6 @@ import Contacts
 import Alamofire
 import SwiftyJSON
 
-extension Dictionary{
-    mutating func changeKey(from: Key, to: Key){
-        self[to] = self[from]
-        self.removeValue(forKey: from)
-    }
-}
-
 class ContactsViewController: UIViewController , UITableViewDataSource, UITableViewDelegate{
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -32,7 +25,6 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     @IBOutlet weak var nothingView: UIView!
     
     var searchText : String?
-    var sortedName = NSMutableArray()
     var sorted = [DetailMember]()
     var final = [Any]()
     var checkState = false
@@ -65,10 +57,6 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     
     //문자열 정렬 먼저 필요함
     func sortName(count: Int){
-        
-        for i in 0..<count {
-            sortedName.insert(memberList?.memberList[i].name, at: i)
-        }
         sorted = (memberList?.memberList.sorted(by: { $1.name > $0.name }))!
         print(sorted)
     }
@@ -204,16 +192,18 @@ extension ContactsViewController {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
-            if checkSplit(name: sorted[indexPath.row].name, num: indexPath.section) == true {
-                
-                let cell = tableView.dequeueReusableCell(withIdentifier: "DetailHomeTableViewCell", for: indexPath) as! DetailHomeTableViewCell
-                
-                cell.userImage?.layer.cornerRadius = (cell.userImage?.frame.width)!/2
-                cell.nameLabel?.text = sorted[indexPath.row].name
-                cell.phoneLabel?.text = sorted[indexPath.row].phone
-                return cell
-            }
             
+            for i in 0..<compare{
+                if checkSplit(name: sorted[i].name, num: indexPath.section) == true {
+
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "DetailHomeTableViewCell", for: indexPath) as! DetailHomeTableViewCell
+                    cell.userImage?.layer.cornerRadius = (cell.userImage?.frame.width)!/2
+                    cell.nameLabel?.text = sorted[i].name
+                    cell.phoneLabel?.text = sorted[i].phone
+                    print("indexPath: \(indexPath.row) section: \(indexPath.section) name: \(sorted[i].name)")
+                    return cell
+                }
+            }
             return cell
         }
     }
