@@ -19,9 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         if UserDefaults.standard.bool(forKey: "isLoggedIn") == true {
-//            let st = UIStoryboard.init(name: "CodeNum", bundle: nil)
-//            let vc = st.instantiateViewController(withIdentifier: "ST") as! CustomNaviViewController
-//            window?.rootViewController = vc
+            let st = UIStoryboard.init(name: "CodeNum", bundle: nil)
+            let vc = st.instantiateViewController(withIdentifier: "ST") as! CustomNaviViewController
+            window?.rootViewController = vc
         } else {
         print(UserDefaults.standard.bool(forKey: "isLoggedIn"))
         let instance = NaverThirdPartyLoginConnection.getSharedInstance()

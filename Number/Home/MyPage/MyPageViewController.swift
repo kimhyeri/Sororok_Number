@@ -95,7 +95,7 @@ class MyPageViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         let name = nameText.text!
         let email = emailText.text!
         let memberId = UserDefaults.standard.string(forKey: "memberId")
-//        let image = UIImagePNGRepresentation(self.myImage.image!)
+//        let image1 = UIImagePNGRepresentation(self.myImage.image!)
         let image = imageChange() as Data
         
         Alamofire.upload(

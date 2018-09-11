@@ -52,11 +52,18 @@ class ManagerGroupViewController: UIViewController{
     }
     
     @IBAction func changeCodeButtonPressed(_ sender: Any) {
-        APICollection.sharedAPI.createCode(completion: { (result) -> (Void) in
-            self.codeLabel.text = result["code"].stringValue
+        let parameter = [
+            "repositoryId" : ContactsViewController.repoId
+        ]
+        APICollection.sharedAPI.updateRepo(parameter: parameter, completion: {
+            (result) -> (Void) in
+            self.codeLabel.text = result["groupCode"].stringValue
         })
+
+//        APICollection.sharedAPI.createCode(completion: { (result) -> (Void) in
+//            self.codeLabel.text = result["code"].stringValue
+//        })
         
-        //서버로 repository/update 호출해야함 
     }
 }
 

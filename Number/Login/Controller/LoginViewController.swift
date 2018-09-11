@@ -67,11 +67,6 @@ extension LoginViewController {
     
     @objc func done(){
         //사진이 url 경로인 경우 , 사진 파일인 경우
-        
-        guard numberText.text?.count != 0 else { showToast(message: "번호 입력해주세요"); return}
-        guard nameText.text?.count != 0 else { showToast(message: "이름 입력해주세요"); return}
-        guard emailText.text?.count != 0 else { showToast(message: "이메일 입력해주세요"); return}
-        guard imgProfile.image != nil else { showToast(message: "사진 추가해주세요"); return}
 
         let url = URL(string: "http://45.63.120.140:40005/member/join")
         
