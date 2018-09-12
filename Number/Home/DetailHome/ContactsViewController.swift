@@ -29,8 +29,6 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     var sorted = [DetailMember]()
     var final = [Any]()
     var checkState = false
-    var cnt = 0
-    var section = 0
     var index = DefualtIndex()
     var memberList : DetailMemberSet?
     var selected = [String:String]()
