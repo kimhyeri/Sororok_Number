@@ -129,45 +129,53 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="INL-0L-FjN">
                                 <rect key="frame" x="0.0" y="413" width="375" height="254"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="정말 그룹을 폭파하시려구요?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2pr-BE-lsK">
-                                        <rect key="frame" x="74" y="51" width="228" height="24"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="정말 그룹을 폭파하시려구요?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2pr-BE-lsK">
+                                        <rect key="frame" x="74.5" y="62" width="227.5" height="24"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="그룹에 저장된 모든 번호가 사라져요. 폭파된 그룹은 복구가 불가능해요. 관리자 변경을 추천해드립니다!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cxz-EU-7qq">
-                                        <rect key="frame" x="83" y="97" width="210" height="60"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="그룹에 저장된 모든 번호가 사라져요. 폭파된 그룹은 복구가 불가능해요. 관리자 변경을 추천해드립니다!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cxz-EU-7qq">
+                                        <rect key="frame" x="87.5" y="102" width="201" height="50.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BMd-1J-Dbo">
-                                        <rect key="frame" x="0.0" y="197" width="187.5" height="57"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.82745098039999998" green="0.83529411760000005" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="그룹삭제">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="Delete:" destination="Wem-MD-QKz" eventType="touchUpInside" id="649-Cy-tJ2"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qp5-Qp-htK">
-                                        <rect key="frame" x="187" y="197" width="187.5" height="57"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.29411764709999999" green="0.31372549020000001" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="관리자 변경">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="changeAdmin:" destination="Wem-MD-QKz" eventType="touchUpInside" id="iG7-l7-6cJ"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JsT-Wa-V9f">
-                                        <rect key="frame" x="328" y="7" width="32" height="32"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P65-PK-Ux9">
+                                        <rect key="frame" x="0.0" y="197" width="375" height="57"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BMd-1J-Dbo">
+                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="57"/>
+                                                <color key="backgroundColor" red="0.82745098039999998" green="0.83529411760000005" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="그룹삭제">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="Delete:" destination="Wem-MD-QKz" eventType="touchUpInside" id="649-Cy-tJ2"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qp5-Qp-htK">
+                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="57"/>
+                                                <color key="backgroundColor" red="0.29411764709999999" green="0.31372549020000001" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="관리자 변경">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="changeAdmin:" destination="Wem-MD-QKz" eventType="touchUpInside" id="iG7-l7-6cJ"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="qp5-Qp-htK" firstAttribute="width" secondItem="BMd-1J-Dbo" secondAttribute="width" id="F7v-Ra-HEM"/>
+                                            <constraint firstAttribute="height" constant="57" id="voo-mf-0It"/>
+                                        </constraints>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JsT-Wa-V9f">
+                                        <rect key="frame" x="327" y="8" width="32" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="32" id="8AB-Sf-GSh"/>
+                                            <constraint firstAttribute="height" constant="32" id="FqN-4H-pXz"/>
+                                        </constraints>
                                         <state key="normal" image="icnNotiClose"/>
                                         <connections>
                                             <action selector="dismissButtonTapped:" destination="Wem-MD-QKz" eventType="touchUpInside" id="8ZU-Zm-LQB"/>
@@ -176,7 +184,16 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="Cxz-EU-7qq" firstAttribute="centerX" secondItem="INL-0L-FjN" secondAttribute="centerX" id="262-p3-GXb"/>
+                                    <constraint firstItem="2pr-BE-lsK" firstAttribute="centerX" secondItem="INL-0L-FjN" secondAttribute="centerX" id="6oy-9W-LHm"/>
+                                    <constraint firstItem="JsT-Wa-V9f" firstAttribute="top" secondItem="INL-0L-FjN" secondAttribute="top" constant="8" id="8n5-ea-how"/>
+                                    <constraint firstAttribute="trailing" secondItem="P65-PK-Ux9" secondAttribute="trailing" id="IB4-E4-fYh"/>
+                                    <constraint firstAttribute="trailing" secondItem="JsT-Wa-V9f" secondAttribute="trailing" constant="16" id="R3J-ZH-RL7"/>
+                                    <constraint firstItem="Cxz-EU-7qq" firstAttribute="centerY" secondItem="INL-0L-FjN" secondAttribute="centerY" id="awk-tu-maS"/>
+                                    <constraint firstAttribute="bottom" secondItem="P65-PK-Ux9" secondAttribute="bottom" id="cgu-1a-S2c"/>
+                                    <constraint firstItem="Cxz-EU-7qq" firstAttribute="top" secondItem="2pr-BE-lsK" secondAttribute="bottom" constant="16" id="e1Y-OH-fje"/>
                                     <constraint firstAttribute="height" constant="254" id="eZB-Lv-mE2"/>
+                                    <constraint firstItem="P65-PK-Ux9" firstAttribute="leading" secondItem="INL-0L-FjN" secondAttribute="leading" id="tMs-mo-jEo"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -190,8 +207,8 @@
                             <constraint firstItem="sJO-R6-dpm" firstAttribute="trailing" secondItem="iJb-a8-3Ih" secondAttribute="trailing" id="LHh-iQ-dSE"/>
                             <constraint firstAttribute="trailing" secondItem="INL-0L-FjN" secondAttribute="trailing" id="WFG-vv-xy7"/>
                             <constraint firstItem="sJO-R6-dpm" firstAttribute="top" secondItem="HRT-FL-YKe" secondAttribute="top" id="WkH-wm-Htx"/>
-                            <constraint firstItem="INL-0L-FjN" firstAttribute="centerY" secondItem="HRT-FL-YKe" secondAttribute="centerY" constant="206.5" id="fuy-T8-mSe"/>
                             <constraint firstItem="tic-Qd-Acg" firstAttribute="centerY" secondItem="HRT-FL-YKe" secondAttribute="centerY" constant="-70" id="nXy-N0-VHV"/>
+                            <constraint firstItem="INL-0L-FjN" firstAttribute="bottom" secondItem="iJb-a8-3Ih" secondAttribute="bottom" id="ndx-lh-8v9"/>
                             <constraint firstItem="sJO-R6-dpm" firstAttribute="bottom" secondItem="iJb-a8-3Ih" secondAttribute="bottom" id="tke-Nk-GuM"/>
                             <constraint firstItem="INL-0L-FjN" firstAttribute="leading" secondItem="HRT-FL-YKe" secondAttribute="leading" id="vZg-Jc-FKc"/>
                         </constraints>
@@ -199,7 +216,6 @@
                     </view>
                     <connections>
                         <outlet property="change" destination="qp5-Qp-htK" id="wrm-Ax-lk2"/>
-                        <outlet property="constraintY" destination="fuy-T8-mSe" id="m3t-JO-Ms9"/>
                         <outlet property="delete" destination="BMd-1J-Dbo" id="Byd-XU-OV4"/>
                         <outlet property="descLabel" destination="Cxz-EU-7qq" id="uzW-Gh-gwu"/>
                         <outlet property="titleLabel" destination="2pr-BE-lsK" id="htg-tM-2Vd"/>
