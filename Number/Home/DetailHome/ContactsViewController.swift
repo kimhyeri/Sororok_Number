@@ -24,10 +24,13 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     @IBOutlet weak var saveLabel: UILabel!
     @IBOutlet weak var nothingView: UIView!
     
+    var matchData : [Int:[DetailMember]] = [Int:[DetailMember]]()
     var searchText : String?
     var sorted = [DetailMember]()
     var final = [Any]()
     var checkState = false
+    var cnt = 0
+    var section = 0
     var index = DefualtIndex()
     var memberList : DetailMemberSet?
     var selected = [String:String]()
@@ -58,7 +61,7 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     //문자열 정렬 먼저 필요함
     func sortName(count: Int){
         sorted = (memberList?.memberList.sorted(by: { $1.name > $0.name }))!
-        print(sorted)
+        
     }
     
     override func viewDidLoad() {
@@ -181,51 +184,29 @@ extension ContactsViewController {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DetailHomeTableViewCell", for: indexPath) as! DetailHomeTableViewCell
         
-        var compare = 0
-        if let count = memberList?.memberList.count {
-            compare = count
-        }
-        
-        if memberList?.memberList.count == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "NotSearchTableViewCell", for: indexPath) as! NotSearchTableViewCell
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
-            
-            for i in 0..<compare{
-                if checkSplit(name: sorted[i].name, num: indexPath.section) == true {
-
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "DetailHomeTableViewCell", for: indexPath) as! DetailHomeTableViewCell
-                    cell.userImage?.layer.cornerRadius = (cell.userImage?.frame.width)!/2
-                    cell.nameLabel?.text = sorted[indexPath.row].name
-                    cell.phoneLabel?.text = sorted[indexPath.row].phone
-//                    cell.imageView?.image = sorted[indexPath.row].imageName
-                    
-                    if sorted[indexPath.row].imageName == nil {
-                        cell.userImage?.image = UIImage(named: "girl")
-                    }
-                    else {
-                        if let url = URL(string: APICollection.sharedAPI.imageUrl + sorted[indexPath.row].imageName) {
-                            let data = try? Data(contentsOf: url)
-                            if let imageData = data {
-                                if let image = UIImage(data: imageData) {
-                                    cell.userImage?.image = image
-                                    cell.userImage?.layer.cornerRadius = cell.userImage.frame.width / 2 
-                                 }
-                            }
+        if matchData[indexPath.section] != nil {
+            cell.nameLabel.text = matchData[indexPath.section]![indexPath.row].name
+            cell.phoneLabel.text = matchData[indexPath.section]![indexPath.row].phone
+            cell.userImage.image = UIImage(named: "girl")
+            DispatchQueue.global().async {
+                guard let url = URL(string: APICollection.sharedAPI.imageUrl + self.matchData[indexPath.section]![indexPath.row].imageName) else {return}
+                guard let data = try? Data(contentsOf: url) else {return}
+                
+                DispatchQueue.main.async {
+                    if let index : IndexPath = tableView.indexPath(for: cell) {
+                        if index.row == indexPath.row {
+                            cell.userImage?.image = UIImage(data: data)
+                            cell.userImage?.layer.cornerRadius = cell.userImage.frame.width / 2
                         }
                     }
-                    
-                    
-                    print("indexPath: \(indexPath.row) section: \(indexPath.section) name: \(sorted[i].name)")
-                    return cell
                 }
             }
-            return cell
         }
+        return cell
     }
-    
+        
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         changeView(alpha: true)
         self.selected.updateValue((memberList?.memberList[indexPath.row].name)!, forKey: (memberList?.memberList[indexPath.row].phone)!)
@@ -250,6 +231,13 @@ extension ContactsViewController {
         
         for i in 0 ..< compare {
             if checkSplit(name: sorted[i].name, num: section) == true {
+                if let val = matchData[section] {
+                    matchData[section]?.append(sorted[i])
+                }else{
+                    matchData.updateValue([sorted[i]], forKey: section)
+                }
+                
+//                print(matchData)
                 count = count + 1
             }
         }
