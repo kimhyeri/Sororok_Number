@@ -18,14 +18,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fHT-7f-k8h">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fHT-7f-k8h">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.20392156862745098" green="0.22745098039215686" blue="0.81176470588235294" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mJp-7d-3yy">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mJp-7d-3yy">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="AzN-bs-Dk5">
                                     <rect key="frame" x="0.0" y="417" width="375" height="33"/>
@@ -174,6 +172,16 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fHT-7f-k8h" firstAttribute="trailing" secondItem="6ue-Db-xvb" secondAttribute="trailing" id="4hy-KK-LzV"/>
+                            <constraint firstItem="mJp-7d-3yy" firstAttribute="trailing" secondItem="6ue-Db-xvb" secondAttribute="trailing" id="Jfd-cL-DYS"/>
+                            <constraint firstItem="mJp-7d-3yy" firstAttribute="bottom" secondItem="6ue-Db-xvb" secondAttribute="bottom" id="Kk8-Ic-oHC"/>
+                            <constraint firstItem="fHT-7f-k8h" firstAttribute="leading" secondItem="6ue-Db-xvb" secondAttribute="leading" id="Zsr-gn-XE2"/>
+                            <constraint firstItem="mJp-7d-3yy" firstAttribute="top" secondItem="6ue-Db-xvb" secondAttribute="top" constant="44" id="cny-Qh-TJE"/>
+                            <constraint firstItem="mJp-7d-3yy" firstAttribute="leading" secondItem="6ue-Db-xvb" secondAttribute="leading" id="tbM-0h-79l"/>
+                            <constraint firstItem="fHT-7f-k8h" firstAttribute="bottom" secondItem="6ue-Db-xvb" secondAttribute="bottom" id="tgl-DX-LTH"/>
+                            <constraint firstItem="fHT-7f-k8h" firstAttribute="top" secondItem="RvO-1I-dVC" secondAttribute="top" id="yfy-67-GGa"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6ue-Db-xvb"/>
                     </view>
                     <navigationItem key="navigationItem" id="kdm-iK-YWK"/>
