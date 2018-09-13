@@ -13,6 +13,9 @@ import SwiftyJSON
 
 class TwoViewController: UIViewController {
     
+    @IBOutlet weak var firstDescLabel: UILabel!
+    @IBOutlet weak var firstTitleLabel: UILabel!
+    @IBOutlet weak var firstLoginView: UIView!
     @IBOutlet weak var insideView: UIView!
     @IBOutlet weak var floatingView: UIView!
     @IBOutlet weak var imageButton: UIButton!
@@ -41,7 +44,8 @@ class TwoViewController: UIViewController {
     var result = [Any]()
     let search = Notification.Name(rawValue: searchNotificationKey)
     let searchDone = Notification.Name(rawValue: searchDoneNotificationKey)
-    
+    let reloadTable = Notification.Name(rawValue: reloadTalbeViewKey)
+
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -49,10 +53,16 @@ class TwoViewController: UIViewController {
     func createObserver(){
         NotificationCenter.default.addObserver(self, selector: #selector(self.searchNoti(_:)), name: search, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.searchDoneNoti), name: searchDone, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadTableNoti), name: reloadTable , object: nil)
+    }
+    
+    @objc func reloadTableNoti(){
+        loadItem(memberId: UserDefaults.standard.integer(forKey: "memberId"))
     }
     
     @objc func searchDoneNoti(){
         print("search Done Noti")
+        firstLoginView.alpha = 0
         loadItem(memberId: UserDefaults.standard.integer(forKey: "memberId"))
     }
     
@@ -80,6 +90,11 @@ class TwoViewController: UIViewController {
             case .success:
                 print("search success")
                 self.repoList = repoListSet(rawJson: json)
+                if self.repoList?.dataList.count == 0 {
+                    self.firstTitleLabel.text = "해당하는 그룹이 없네요."
+                    self.firstDescLabel.text = "그룹명을 다시 확인해주세요!"
+                    self.firstLoginView.alpha = 1
+                }
                 self.view.endEditing(true)
                 self.tableView.reloadData()
                 break
@@ -105,6 +120,23 @@ class TwoViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         loadItem(memberId: UserDefaults.standard.integer(forKey: "memberId"))
+        
+        var image = UserDefaults.standard.string(forKey: "imageName")
+        
+        if image == nil {
+            imageButton.setImage(UIImage(named: "girlBig"), for: .normal)
+        }
+        else {
+            if let url = URL(string: APICollection.sharedAPI.imageUrl + image!) {
+                let data = try? Data(contentsOf: url)
+                if let imageData = data {
+                    if let image = UIImage(data: imageData) {
+                        imageButton.setImage(image, for: .normal)
+                        imageButton.layer.cornerRadius = imageButton.frame.width/2
+                    }
+                }
+            }
+        }
     }
     
     override func viewDidLoad() {
@@ -123,6 +155,7 @@ class TwoViewController: UIViewController {
         defaultSize.append(insideView.frame)
         defaultSize.append(searchView.frame)
         defaultSize.append(tableView.frame)
+  
         
         defaultButton = Int(self.imageButton.frame.origin.y)
         defaultLabel = Int(self.nameLabel.frame.origin.y)
@@ -130,6 +163,15 @@ class TwoViewController: UIViewController {
         if let name = UserDefaults.standard.string(forKey: "name") {
             nameLabel.text = "\(name)님 \n 안녕하세요 !"
             topNameLabel.text = "\(name)님"
+        }
+        
+        if let imageData =  UserDefaults.standard.data (forKey: "imageName") {
+            if let image = UIImage(data: imageData) {
+                imageButton.setImage(image, for: .normal)
+                imageSecondView.setImage(image, for: .normal)
+                imageButton.layer.cornerRadius = imageButton.frame.width/2
+                imageSecondView.layer.cornerRadius = imageSecondView.frame.width/2
+            }
         }
         
         self.navigationController!.navigationBar.topItem!.title = ""
@@ -162,43 +204,43 @@ class TwoViewController: UIViewController {
     }
 }
 
-//MARK: ScrollViewDeleate animation
+//MARK: ScrollViewDeleate animation 잠시 막아놈 
 
-extension TwoViewController : UIScrollViewDelegate {
-    func changeView(){
-        if movedView == false{
-            searchView.frame = CGRect(x: 0, y: self.firstView.frame.height , width: self.view.frame.width, height: 38)
-            tableView.frame = CGRect(x: 0, y: self.firstView.frame.height + self.searchView.frame.height, width: self.view.frame.width, height: self.view.frame.height - (firstView.frame.height + searchView.frame.height))
-        }
-    }
-    
-    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
-        self.lastContentOffset = scrollView.contentOffset.y
-    }
- 
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        scrollView.decelerationRate = UIScrollViewDecelerationRateFast
-        let y = 227 - scrollView.contentOffset.y
-        let h = max(65, y)
-        let rect = CGRect(x: 0, y: 0, width: view.bounds.width, height: h)
-        firstView.frame = rect
-        
-        let x = 65 + -scrollView.contentOffset.y
-        let a = min(x, 90)
-        let rect1 = CGRect(x: 10, y: a, width: 355, height: 146)
-        insideView.frame = rect1
-        
-        changeView()
-        if (h < 130) {
-            let rect2 = CGRect(x: 0, y: 65 - h , width: view.bounds.width, height: 65)
-            topView.frame = rect2
-        }
-        
-        if (self.lastContentOffset < scrollView.contentOffset.y) {
-            insideView.alpha = 1 - ( tableView.contentOffset.y * 0.01)
-        }
-    }
-}
+//extension TwoViewController : UIScrollViewDelegate {
+//    func changeView(){
+//        if movedView == false{
+//            searchView.frame = CGRect(x: 0, y: self.firstView.frame.height , width: self.view.frame.width, height: 38)
+//            tableView.frame = CGRect(x: 0, y: self.firstView.frame.height + self.searchView.frame.height, width: self.view.frame.width, height: self.view.frame.height - (firstView.frame.height + searchView.frame.height))
+//        }
+//    }
+//
+//    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+//        self.lastContentOffset = scrollView.contentOffset.y
+//    }
+//
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        scrollView.decelerationRate = UIScrollViewDecelerationRateFast
+//        let y = 227 - scrollView.contentOffset.y
+//        let h = max(65, y)
+//        let rect = CGRect(x: 0, y: 0, width: view.bounds.width, height: h)
+//        firstView.frame = rect
+//
+//        let x = 65 + -scrollView.contentOffset.y
+//        let a = min(x, 90)
+//        let rect1 = CGRect(x: 10, y: a, width: 355, height: 146)
+//        insideView.frame = rect1
+//
+//        changeView()
+//        if (h < 130) {
+//            let rect2 = CGRect(x: 0, y: 65 - h , width: view.bounds.width, height: 65)
+//            topView.frame = rect2
+//        }
+//
+//        if (self.lastContentOffset < scrollView.contentOffset.y) {
+//            insideView.alpha = 1 - ( tableView.contentOffset.y * 0.01)
+//        }
+//    }
+//}
 
 //MARK: TableView Delegate, DataSource
 
@@ -213,8 +255,6 @@ extension TwoViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print(repoList?.dataList.count)
-        print(repoList?.dataList)
         if repoList?.dataList.count == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "NothingTableViewCell", for: indexPath)
             return cell
@@ -223,9 +263,6 @@ extension TwoViewController : UITableViewDelegate, UITableViewDataSource {
             cell.descLabel.text = repoList?.dataList[indexPath.row].extra_info
             cell.groupName.text = repoList?.dataList[indexPath.row].name
             let status = repoList?.dataList[indexPath.row].authority
-            if status == 0 {
-                cell.statusLabel.text = ""
-            }
             cell.groupImage?.image = UIImage(named: groupDefaultImages[indexPath.row % groupDefaultImages.count])
             cell.cellView.layer.cornerRadius = 10
             cell.cellView.layer.borderWidth = 1
@@ -238,11 +275,16 @@ extension TwoViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.view.endEditing(true)
         if repoList?.dataList.count != 0 {
-            if let repositoryId = repoList?.dataList[indexPath.row].repositoryId {
-                createAlert(data: repositoryId)
-            }
             if repoList?.dataList[indexPath.row].joinFlag == 1 {
                  UserDefaults.standard.set(repoList?.dataList[indexPath.row].authority, forKey: "authority")
+                let storyboard = UIStoryboard.init(name: "DetailHome", bundle: nil)
+                let nv = storyboard.instantiateViewController(withIdentifier: "NV") as! ContactNaviViewController
+                ContactsViewController.repoId = repoList?.dataList[indexPath.row].repositoryId
+                ContactsViewController.repoName = repoList?.dataList[indexPath.row].name
+                self.present(nv, animated: true, completion: nil)
+            }
+            if let repositoryId = repoList?.dataList[indexPath.row].repositoryId {
+                createAlert(data: repositoryId)
             }
         }
     }
@@ -281,15 +323,14 @@ extension TwoViewController {
                     print("success")
                     if json["repositoryId"] == -1 {
                         self.showToast(message: "코드번호 불일치")
-                    }
-                    else if (json["repositoryId"] == -2) || (json["joinFlag"] == 0) {
-                        alert.removeFromParentViewController()
+                    } else {
                         let storyboard = UIStoryboard.init(name: "DetailHome", bundle: nil)
                         let nv = storyboard.instantiateViewController(withIdentifier: "NV") as! ContactNaviViewController
                         ContactsViewController.repoId = data
                         self.present(nv, animated: true, completion: nil)
                         break
                     }
+                    
                 case .failure:
                     print("fail")
                     
@@ -332,6 +373,9 @@ extension TwoViewController {
             case .success:
                 print("success")
                 self.repoList = repoListSet(rawJson: json)
+                if self.repoList?.dataList.count == 0 {
+                    self.firstLoginView.alpha = 1
+                }
                 self.tableView.reloadData()
                 break
             case .failure:

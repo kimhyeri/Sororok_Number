@@ -13,6 +13,7 @@ import SwiftyJSON
 class APICollection{
     static let sharedAPI = APICollection()
     let url = "http://45.63.120.140:40005/"
+    let imageUrl = "http://45.63.120.140:40005/sororok/images/"
     
     func registeredCheck(parameters: Parameters ,completion: @escaping (_ result: JSON) -> (Void)){
         Alamofire.request("\(url)member/login", method: .post, parameters: parameters as? [String: Any], encoding: JSONEncoding.default, headers: [:])
@@ -70,7 +71,6 @@ class APICollection{
         Alamofire.request("\(url)member/history", method: .get, parameters: parameter).responseJSON {
             response in
             let json = JSON(response.result.value)
-            print(json)
             switch response.result {
             case .success:
                 print("success")
@@ -225,6 +225,40 @@ class APICollection{
                 break
             case .failure:
                 print("fail")
+                break
+            }
+        }
+    }
+    
+    func getRepoInfo (parameter : Parameters, completion: @escaping (_ result: JSON) -> (Void)){
+        Alamofire.request("\(url)repository/info", method: .get, parameters: parameter).responseJSON { response in
+            let json = JSON(response.result.value)
+            print(json)
+            switch response.result {
+            case .success:
+                print("success")
+                completion(json)
+                break
+            case .failure:
+                print("fail")
+                break
+            }
+        }
+    }
+    
+    func updateRepo (parameter: Parameters, completion: @escaping (_ result: JSON) -> (Void)){
+        Alamofire.request("\(url)repository/update", method: .put, parameters: parameter, encoding: JSONEncoding.default, headers: [:]).responseJSON {
+            response in
+            let json = JSON(response.result.value)
+            print(json)
+            switch response.result {
+            case .success:
+                print("success")
+                completion(json)
+                break
+            case .failure:
+                print("fail")
+                
                 break
             }
         }

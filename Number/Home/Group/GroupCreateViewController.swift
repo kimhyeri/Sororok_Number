@@ -20,6 +20,10 @@ class GroupCreateViewController: UIViewController , UIImagePickerControllerDeleg
     @IBOutlet weak var groupView: UIView!
     @IBOutlet weak var codeLabel: UILabel!
     
+    override func viewWillAppear(_ animated: Bool) {
+        getCode()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,10 +41,6 @@ class GroupCreateViewController: UIViewController , UIImagePickerControllerDeleg
         groupImage.layer.cornerRadius = self.groupImage.frame.width/2
         groupView.layer.cornerRadius = 10
         
-//        groupInfoText.attributedPlaceholder = NSAttributedString(string: "그룹명을 적어주세요", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
-//        groupNameText.attributedPlaceholder = NSAttributedString(string: "그룹설명을 적어주세요", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
-        
-        getCode()
     }
     
     func getCode() {
@@ -51,22 +51,28 @@ class GroupCreateViewController: UIViewController , UIImagePickerControllerDeleg
     
     //Create repositroy
     @objc func saveButton(){
+      
         let url = "http://45.63.120.140:40005/repository/create"
         
+        guard groupNameText.text != nil else {showToast(message: "이름 입력해주세요"); return}
+        guard codeLabel.text != nil else {showToast(message: "fail"); return}
+        guard groupInfoText.text != nil else {showToast(message: "그룹설명 입력해주세요"); return}
+        
         let name = groupNameText.text!
-        let code = groupCode.titleLabel?.text!
+        let code = codeLabel.text!
         let memberId = UserDefaults.standard.string(forKey: "memberId")
         let extraInfo = groupInfoText.text!
-        //        let memberImage = UIImagePNGRepresentation(myImage.image!)
-
+        let image = imageChange() as Data
         
         Alamofire.upload(
             multipartFormData: { multipartFormData in
+                if image != nil {
+                    multipartFormData.append(image, withName: "memberImage", fileName: "memberImage.jpeg", mimeType: "memberImage/jpeg")
+                }
                 multipartFormData.append((name.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "name")
-                multipartFormData.append((code?.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "code")
+                multipartFormData.append((code.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "code")
                 multipartFormData.append((memberId?.data(using: .utf8, allowLossyConversion: false))!, withName: "memberId")
                 multipartFormData.append((extraInfo.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "extraInfo")
-                //                multipartFormData.append((memberImage.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "memberImage")
 
         },
             to: url,
@@ -75,6 +81,8 @@ class GroupCreateViewController: UIViewController , UIImagePickerControllerDeleg
                 switch encodingResult {
                 case .success(let upload, _, _):
                     upload.responseJSON { response in
+                        let reloadTable = Notification.Name(rawValue: reloadTalbeViewKey )
+                        NotificationCenter.default.post(name: reloadTable, object: nil)
                         print(response.result.value!)
                         print(response.result)
                     }
@@ -104,6 +112,13 @@ class GroupCreateViewController: UIViewController , UIImagePickerControllerDeleg
         picker.delegate = self
         picker.allowsEditing = false
         self.present(picker, animated: true)
+    }
+    
+    func imageChange() -> NSData {
+        let image : UIImage = groupImage.image!
+        let imageData:NSData = UIImagePNGRepresentation(image)! as NSData
+        let strBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
+        return imageData
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {

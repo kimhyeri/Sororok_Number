@@ -20,6 +20,11 @@ class MyPageViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     @IBOutlet weak var numText: UITextField!
     
     var defaultFrame : CGRect?
+    var userData : UserInfoSet!
+
+    override func viewWillAppear(_ animated: Bool) {
+        checkLogin()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,10 +41,23 @@ class MyPageViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         numText.text = UserDefaults.standard.string(forKey: "phone")
         emailText.text = UserDefaults.standard.string(forKey: "email")
         nameText.text = UserDefaults.standard.string(forKey: "name")
+        var image = UserDefaults.standard.string(forKey: "imageName")
         
-//        if let image =  UserDefaults.standard.string(forKey: "imageName") {
-//            myImage.image = UIImage(data: image)
-//        }
+        if image == nil {
+            myImage.image = UIImage(named: "girlBig")
+        }
+        else {
+            if let url = URL(string: APICollection.sharedAPI.imageUrl + image!) {
+                let data = try? Data(contentsOf: url)
+                if let imageData = data {
+                    if let image = UIImage(data: imageData) {
+                        myImage.image = image
+                    }
+                }
+            }
+        }
+        
+        
         
         defaultFrame = textView.frame
         nameText.attributedPlaceholder = NSAttributedString(string: "이름", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
@@ -65,6 +83,11 @@ class MyPageViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     }
     
     @objc func saveButton(){
+        guard numText.text?.count != 0 else { showToast(message: "번호 입력해주세요"); return}
+        guard nameText.text?.count != 0 else { showToast(message: "이름 입력해주세요"); return}
+        guard emailText.text?.count != 0 else { showToast(message: "이메일 입력해주세요"); return}
+        guard myImage.image != nil else { showToast(message: "사진 추가해주세요"); return}
+        
         let url = URL(string: "http://45.63.120.140:40005/member/update")
         
         //이미지 처리 해줘야 함
@@ -72,17 +95,19 @@ class MyPageViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         let name = nameText.text!
         let email = emailText.text!
         let memberId = UserDefaults.standard.string(forKey: "memberId")
+//        let image1 = UIImagePNGRepresentation(self.myImage.image!)
+        let image = imageChange() as Data
         
         Alamofire.upload(
             multipartFormData: { multipartFormData in
+                if image != nil {
+                     multipartFormData.append(image, withName: "memberImage", fileName: "memberImage.jpeg", mimeType: "memberImage/jpeg")
+                }
+               
                 multipartFormData.append((phone.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "phone")
                 multipartFormData.append((name.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "name")
                 multipartFormData.append((email.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "email")
                 multipartFormData.append((memberId?.data(using: .utf8, allowLossyConversion: false))!, withName: "memberId")
-                DispatchQueue.main.async {
-                    multipartFormData.append(UIImageJPEGRepresentation(self.myImage.image!, 1)!, withName: "memberImage", fileName: "memberImage.jpeg", mimeType: "memberImage/jpeg")
-                }
-
         },
             to: url!,
             method: .put,
@@ -90,7 +115,15 @@ class MyPageViewController: UIViewController, UITextFieldDelegate, UIImagePicker
                 switch encodingResult {
                 case .success(let upload, _, _):
                     upload.responseJSON { response in
-                        print(response.result.value!)
+                        let json = JSON(response.result.value)
+
+                        self.userData = UserInfoSet(rawJson: json)
+                        UserDefaults.standard.set(self.userData.memberId, forKey: "memberId")
+                        UserDefaults.standard.set(self.userData.email, forKey: "email")
+                        UserDefaults.standard.set(self.userData.name, forKey: "name")
+                        UserDefaults.standard.set(self.userData.phone, forKey: "phone")
+                        UserDefaults.standard.set(image, forKey: "imageName")
+                        
                         self.navigationController?.popViewController(animated: true)
                     }
                 case .failure(let encodingError):
@@ -113,6 +146,32 @@ class MyPageViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         textView.frame = CGRect(x: 0, y: 65, width: self.view.frame.width, height: textView.frame.height)
     }
     
+    //    사용자 정보 들고오기
+    func checkLogin(){
+        let memberId : Parameters = [
+            "memberId" : UserDefaults.standard.integer(forKey: "memberId")
+        ]
+        
+        APICollection.sharedAPI.checkMemberInfo(parameter: memberId, completion: { (result) -> (Void) in
+            print(result)
+            self.userData = UserInfoSet(rawJson: result)
+    
+            UserDefaults.standard.set(self.userData.email, forKey: "email")
+            UserDefaults.standard.set(self.userData.name, forKey: "name")
+            UserDefaults.standard.set(self.userData.phone, forKey: "phone")
+            UserDefaults.standard.set(self.userData.imageName, forKey: "imageName")
+            UserDefaults.standard.synchronize()
+        })
+        
+    }
+    
+    func imageChange() -> NSData {
+        let image : UIImage = myImage.image!
+        let imageData:NSData = UIImagePNGRepresentation(image)! as NSData
+        let strBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
+        return imageData
+    }
+    
     @IBAction func albumButtonPressed(_ sender: Any) {
         let picker = UIImagePickerController()
         picker.delegate = self
@@ -122,7 +181,6 @@ class MyPageViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         self.myImage.image = info[UIImagePickerControllerOriginalImage] as? UIImage
-        print(info[UIImagePickerControllerOriginalImage])
         picker.dismiss(animated: false)
     }
     
@@ -148,6 +206,12 @@ extension MyPageViewController : AlbumSelectionDelegate{
             }
         }
         myImage.image = img
+    }
+}
+
+extension Data {
+    var uiImage: UIImage? {
+        return UIImage(data: self)
     }
 }
 
