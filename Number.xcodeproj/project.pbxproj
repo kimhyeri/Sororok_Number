@@ -59,6 +59,7 @@
 		356D84372135F90E00F653B2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 356D84362135F90D00F653B2 /* GoogleService-Info.plist */; };
 		358268F621262669003415F0 /* TwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358268F521262669003415F0 /* TwoViewController.swift */; };
 		35ACD199212B52F80046B541 /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35ACD198212B52F80046B541 /* KakaoOpenSDK.framework */; };
+		35B016822151087400B12506 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B016812151087400B12506 /* LoginView.swift */; };
 		35ECDEF02103B1B700308080 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ECDEEF2103B1B700308080 /* AppDelegate.swift */; };
 		35ECDEF22103B1B700308080 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ECDEF12103B1B700308080 /* ViewController.swift */; };
 		35ECDEF52103B1B700308080 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35ECDEF32103B1B700308080 /* Main.storyboard */; };
@@ -126,6 +127,7 @@
 		3598EBD6212AB21900906BF2 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KakaoOpenSDK.framework; path = "../kakao-ios-sdk-1.9.0/KakaoOpenSDK.framework"; sourceTree = "<group>"; };
 		3598EBD8212AB49000906BF2 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		35ACD198212B52F80046B541 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KakaoOpenSDK.framework; path = Pods/KakaoOpenSDK.framework; sourceTree = "<group>"; };
+		35B016812151087400B12506 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		35ECDEEC2103B1B700308080 /* Number.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Number.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35ECDEEF2103B1B700308080 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35ECDEF12103B1B700308080 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				351AB6332105C00C0017D41A /* Login.storyboard */,
+				35B016812151087400B12506 /* LoginView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -603,6 +606,7 @@
 				35ECDEF02103B1B700308080 /* AppDelegate.swift in Sources */,
 				354EA79A210C900900D16A80 /* DeleteViewController.swift in Sources */,
 				356125E9213C49340040985D /* UserInfoSet.swift in Sources */,
+				35B016822151087400B12506 /* LoginView.swift in Sources */,
 				351AB63B2105C16E0017D41A /* MyPageViewController.swift in Sources */,
 				35325D4E212F0E4500AC3897 /* ContactNaviViewController.swift in Sources */,
 			);

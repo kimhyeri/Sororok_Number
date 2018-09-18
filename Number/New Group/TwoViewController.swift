@@ -46,6 +46,7 @@ class TwoViewController: UIViewController {
     let searchDone = Notification.Name(rawValue: searchDoneNotificationKey)
     let reloadTable = Notification.Name(rawValue: reloadTalbeViewKey)
     let changeName = Notification.Name(rawValue: nameChangedKey)
+    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -58,7 +59,7 @@ class TwoViewController: UIViewController {
     }
     
     @objc func changedName(){
-        
+
         nameLabel.text = "\(UserDefaults.standard.string(forKey: "name")!)님 \n 안녕하세요 !"
     }
     
@@ -113,13 +114,11 @@ class TwoViewController: UIViewController {
     }
     
     @IBAction func pressedSosik(_ sender: Any) {
-        makeDefault()
         let nv = self.storyboard?.instantiateViewController(withIdentifier: "LeftMenuNavigationController")
         present(nv!, animated: true, completion: nil)
     }
     
     @IBAction func profilePressed(_ sender: Any) {
-        makeDefault()
         let storyboard = UIStoryboard(name: "MyPage", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "MyPage") as! MyPageViewController
         self.navigationController?.pushViewController(vc, animated: true)
@@ -357,14 +356,6 @@ extension TwoViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
         UIApplication.shared.statusBarStyle = .default
-    }
-    
-    func makeDefault() {
-        topView.frame = defaultSize[0]
-        firstView.frame = defaultSize[1]
-        insideView.frame = defaultSize[2]
-        searchView.frame = defaultSize[3]
-        tableView.frame = defaultSize[4]
     }
     
     func loadItem(memberId: Int){
