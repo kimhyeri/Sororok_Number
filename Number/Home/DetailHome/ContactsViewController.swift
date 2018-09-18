@@ -117,6 +117,7 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
             for section in 0..<tableView.numberOfSections {
                 for row in 0..<tableView.numberOfRows(inSection: section) {
                     tableView.selectRow(at: IndexPath(row: row, section: section), animated: false, scrollPosition: .none)
+                    self.selected.updateValue(matchData[section]![row].name, forKey: (matchData[section]![row].phone))
                 }
             }
             updateCount()
@@ -128,6 +129,8 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
             for section in 0..<tableView.numberOfSections {
                 for row in 0..<tableView.numberOfRows(inSection: section) {
                     tableView.deselectRow(at: IndexPath(row: row, section: section), animated: false)
+                    self.selected.removeValue(forKey: (matchData[section]![row].phone))
+
                 }
             }
         }
@@ -135,11 +138,12 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     
     //전화번호 저장 버튼
     @IBAction func saveButtonPressed(_ sender: Any) {
-//        let storyboard = UIStoryboard.init(name: "Progress", bundle: nil)
-//        let nv = storyboard.instantiateViewController(withIdentifier: "Progress") as! ProgressViewController
-//        self.present(nv, animated: true, completion: nil)
-//        let save = Notification.Name(rawValue: saveNotificationKey)
-//        NotificationCenter.default.post(name: save, object: nil, userInfo: self.selected)
+        print(self.selected)
+        let storyboard = UIStoryboard.init(name: "Progress", bundle: nil)
+        let nv = storyboard.instantiateViewController(withIdentifier: "Progress") as! ProgressViewController
+        self.present(nv, animated: true, completion: nil)
+        let save = Notification.Name(rawValue: saveNotificationKey)
+        NotificationCenter.default.post(name: save, object: nil, userInfo: self.selected)
     }
 }
 
@@ -148,7 +152,6 @@ extension ContactsViewController {
     
     //한글 몇번째 리턴해줌
     func getHangul(num : Int) -> String {
-        //        let hangle = ["ㄱ","ㄲ","ㄴ","ㄷ","ㄸ","ㄹ","ㅁ","ㅂ","ㅃ","ㅅ","ㅆ","ㅇ","ㅈ","ㅉ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"]
         let hangle = ["ㄱ","ㄴ","ㄷ","ㄹ","ㅁ","ㅂ","ㅅ","ㅇ","ㅈ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"]
         return hangle[num]
     }
@@ -207,13 +210,13 @@ extension ContactsViewController {
         
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         changeView(alpha: true)
-        self.selected.updateValue((memberList?.memberList[indexPath.row].name)!, forKey: (memberList?.memberList[indexPath.row].phone)!)
+        self.selected.updateValue(matchData[indexPath.section]![indexPath.row].name, forKey: (matchData[indexPath.section]![indexPath.row].phone))
         updateCount()
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         updateCount()
-        self.selected.removeValue(forKey: (memberList?.memberList[indexPath.row].phone)!)
+        self.selected.removeValue(forKey: (matchData[indexPath.section]![indexPath.row].phone))
         if tableView.indexPathsForSelectedRows?.count == nil{
             changeView(alpha: false)
         }
@@ -234,8 +237,6 @@ extension ContactsViewController {
                 }else{
                     matchData.updateValue([sorted[i]], forKey: section)
                 }
-                
-//                print(matchData)
                 count = count + 1
             }
         }
@@ -248,7 +249,7 @@ extension ContactsViewController {
 extension ContactsViewController {
     
     public func numberOfSections(in tableView: UITableView) -> Int {
-        
+
         return index.arrIndexSection.count
     }
     
