@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,43 +22,60 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xOl-hS-y65">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xOl-hS-y65">
                                 <rect key="frame" x="15" y="239" width="345" height="189"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWb-X8-DTt">
-                                        <rect key="frame" x="177" y="128" width="150" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button" image="btnCancleLogout"/>
-                                        <connections>
-                                            <action selector="cancelButtonPressed:" destination="jF2-4x-YLq" eventType="touchUpInside" id="uYv-kV-8es"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7i1-LS-wXO">
-                                        <rect key="frame" x="18" y="128" width="150" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button" image="btnLogout"/>
-                                        <connections>
-                                            <action selector="logoutButtonPressed:" destination="jF2-4x-YLq" eventType="touchUpInside" id="xLq-fp-bFw"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="로그아웃 하시겠습니까" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yTl-2H-YET">
-                                        <rect key="frame" x="83" y="54" width="178" height="24"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nx1-24-FaE">
+                                        <rect key="frame" x="15" y="124" width="315" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7i1-LS-wXO">
+                                                <rect key="frame" x="0.0" y="0.0" width="157.5" height="50"/>
+                                                <state key="normal" title="Button" image="btnLogout"/>
+                                                <connections>
+                                                    <action selector="logoutButtonPressed:" destination="jF2-4x-YLq" eventType="touchUpInside" id="xLq-fp-bFw"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWb-X8-DTt">
+                                                <rect key="frame" x="157.5" y="0.0" width="157.5" height="50"/>
+                                                <state key="normal" title="Button" image="btnCancleLogout"/>
+                                                <connections>
+                                                    <action selector="cancelButtonPressed:" destination="jF2-4x-YLq" eventType="touchUpInside" id="uYv-kV-8es"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="uWb-X8-DTt" firstAttribute="leading" secondItem="7i1-LS-wXO" secondAttribute="trailing" id="N7I-0M-NWc"/>
+                                            <constraint firstItem="uWb-X8-DTt" firstAttribute="width" secondItem="7i1-LS-wXO" secondAttribute="width" id="Usr-tf-akq"/>
+                                        </constraints>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="로그아웃 하시겠습니까" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yTl-2H-YET">
+                                        <rect key="frame" x="84" y="54" width="177.5" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <color key="textColor" red="0.16862745098039217" green="0.1803921568627451" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="yTl-2H-YET" firstAttribute="top" secondItem="xOl-hS-y65" secondAttribute="top" constant="54" id="Fcg-Ji-7g3"/>
+                                    <constraint firstAttribute="trailing" secondItem="nx1-24-FaE" secondAttribute="trailing" constant="15" id="RdV-la-Td5"/>
+                                    <constraint firstItem="nx1-24-FaE" firstAttribute="leading" secondItem="xOl-hS-y65" secondAttribute="leading" constant="15" id="cOd-MF-G30"/>
+                                    <constraint firstItem="yTl-2H-YET" firstAttribute="centerX" secondItem="xOl-hS-y65" secondAttribute="centerX" id="ex2-JU-LVj"/>
+                                    <constraint firstAttribute="height" constant="189" id="hoY-YA-Csk"/>
+                                    <constraint firstAttribute="bottom" secondItem="nx1-24-FaE" secondAttribute="bottom" constant="15" id="zwW-6I-THw"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="xOl-hS-y65" firstAttribute="centerY" secondItem="82F-tT-oUM" secondAttribute="centerY" id="07a-9R-IWJ"/>
                             <constraint firstItem="INj-eD-u2u" firstAttribute="top" secondItem="82F-tT-oUM" secondAttribute="top" id="82R-Mn-MO9"/>
+                            <constraint firstItem="iFB-jH-QuJ" firstAttribute="trailing" secondItem="xOl-hS-y65" secondAttribute="trailing" constant="15" id="BNF-rF-msT"/>
                             <constraint firstItem="INj-eD-u2u" firstAttribute="leading" secondItem="iFB-jH-QuJ" secondAttribute="leading" id="BQq-8a-U7G"/>
                             <constraint firstItem="INj-eD-u2u" firstAttribute="trailing" secondItem="iFB-jH-QuJ" secondAttribute="trailing" id="BTT-y6-ric"/>
+                            <constraint firstItem="xOl-hS-y65" firstAttribute="leading" secondItem="iFB-jH-QuJ" secondAttribute="leading" constant="15" id="ElY-dK-tBN"/>
                             <constraint firstItem="INj-eD-u2u" firstAttribute="bottom" secondItem="iFB-jH-QuJ" secondAttribute="bottom" id="cDj-ZT-2dY"/>
+                            <constraint firstItem="xOl-hS-y65" firstAttribute="centerX" secondItem="82F-tT-oUM" secondAttribute="centerX" id="vfi-FF-7Fr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iFB-jH-QuJ"/>
                     </view>

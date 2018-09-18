@@ -32,61 +32,93 @@
                                     <constraint firstAttribute="width" constant="96" id="YV9-ar-zDv"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vWF-Ce-dj0">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vWF-Ce-dj0">
                                 <rect key="frame" x="173" y="268.5" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="6Sa-Z9-UBs"/>
                                     <constraint firstAttribute="height" constant="30" id="Erk-6L-row"/>
                                 </constraints>
                                 <state key="normal" title="편집">
-                                    <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="albumButtonPressed:" destination="Cnn-d2-nYJ" eventType="touchUpInside" id="azf-Fi-ekv"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NcM-pF-Qb0">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NcM-pF-Qb0">
                                 <rect key="frame" x="0.0" y="343" width="375" height="324"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="이름" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g0D-sF-eV1">
-                                        <rect key="frame" x="97" y="32" width="180" height="41"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="번호" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Xp-oV-qzH">
+                                        <rect key="frame" x="97" y="120" width="180" height="41"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="180" id="dcl-0d-ewP"/>
+                                            <constraint firstAttribute="height" constant="41" id="j8R-We-udM"/>
+                                        </constraints>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eFV-mJ-ikv">
+                                        <rect key="frame" x="97" y="98" width="180" height="2"/>
+                                        <color key="backgroundColor" red="0.36078431370000003" green="0.3803921569" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="180" id="3Iz-Fl-1De"/>
+                                            <constraint firstAttribute="height" constant="2" id="TP1-pJ-LaG"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EYR-ch-Vmg">
+                                        <rect key="frame" x="97" y="161" width="180" height="2"/>
+                                        <color key="backgroundColor" red="0.36078431370000003" green="0.3803921569" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="O4B-ok-n8y"/>
+                                            <constraint firstAttribute="width" constant="180" id="zeC-fC-MLW"/>
+                                        </constraints>
+                                    </view>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="이메일" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nPw-hK-Gd7">
+                                        <rect key="frame" x="97" y="183" width="180" height="41"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="41" id="Zoi-T5-fvd"/>
+                                            <constraint firstAttribute="width" constant="180" id="qDb-M2-v0i"/>
+                                        </constraints>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DLT-EO-q8D">
+                                        <rect key="frame" x="97" y="224" width="180" height="2"/>
+                                        <color key="backgroundColor" red="0.36078431370000003" green="0.3803921569" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="0vW-AU-WKx"/>
+                                            <constraint firstAttribute="width" constant="180" id="X3e-Hw-ET4"/>
+                                        </constraints>
+                                    </view>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="이름" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g0D-sF-eV1">
+                                        <rect key="frame" x="97" y="57" width="180" height="41"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="41" id="JPr-QR-pyr"/>
+                                            <constraint firstAttribute="width" constant="180" id="LJm-nL-Y8R"/>
+                                        </constraints>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="번호" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Xp-oV-qzH">
-                                        <rect key="frame" x="97" y="100" width="180" height="41"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eFV-mJ-ikv">
-                                        <rect key="frame" x="97" y="73" width="180" height="2"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.36078431370000003" green="0.3803921569" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EYR-ch-Vmg">
-                                        <rect key="frame" x="97" y="141" width="180" height="2"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.36078431370000003" green="0.3803921569" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
-                                    </view>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="이메일" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nPw-hK-Gd7">
-                                        <rect key="frame" x="97" y="167" width="180" height="41"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DLT-EO-q8D">
-                                        <rect key="frame" x="97" y="208" width="180" height="2"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.36078431370000003" green="0.3803921569" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
-                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.20392156859999999" green="0.2274509804" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="eFV-mJ-ikv" firstAttribute="top" secondItem="g0D-sF-eV1" secondAttribute="bottom" id="Cos-Vf-8SE"/>
+                                    <constraint firstItem="DLT-EO-q8D" firstAttribute="centerX" secondItem="NcM-pF-Qb0" secondAttribute="centerX" id="Ih6-Aa-9j1"/>
+                                    <constraint firstItem="nPw-hK-Gd7" firstAttribute="centerX" secondItem="NcM-pF-Qb0" secondAttribute="centerX" id="KJA-vv-mZe"/>
+                                    <constraint firstItem="EYR-ch-Vmg" firstAttribute="top" secondItem="9Xp-oV-qzH" secondAttribute="bottom" id="O1x-dG-i3X"/>
+                                    <constraint firstItem="g0D-sF-eV1" firstAttribute="centerX" secondItem="NcM-pF-Qb0" secondAttribute="centerX" id="RLF-0A-HUY"/>
+                                    <constraint firstItem="9Xp-oV-qzH" firstAttribute="top" secondItem="eFV-mJ-ikv" secondAttribute="bottom" constant="20" id="RRd-M1-yJ0"/>
+                                    <constraint firstItem="eFV-mJ-ikv" firstAttribute="centerX" secondItem="NcM-pF-Qb0" secondAttribute="centerX" id="aDU-4Z-CNF"/>
+                                    <constraint firstItem="EYR-ch-Vmg" firstAttribute="centerY" secondItem="NcM-pF-Qb0" secondAttribute="centerY" id="fFQ-u2-iq1"/>
+                                    <constraint firstAttribute="height" constant="324" id="hqW-6j-ay6"/>
+                                    <constraint firstItem="EYR-ch-Vmg" firstAttribute="centerX" secondItem="NcM-pF-Qb0" secondAttribute="centerX" id="sri-oy-qUd"/>
+                                    <constraint firstItem="nPw-hK-Gd7" firstAttribute="top" secondItem="EYR-ch-Vmg" secondAttribute="bottom" constant="20" id="ui4-7L-gBP"/>
+                                    <constraint firstItem="DLT-EO-q8D" firstAttribute="top" secondItem="nPw-hK-Gd7" secondAttribute="bottom" id="uvN-Ui-vCJ"/>
+                                    <constraint firstItem="9Xp-oV-qzH" firstAttribute="centerX" secondItem="NcM-pF-Qb0" secondAttribute="centerX" id="wB9-Ax-NpR"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.20392156859999999" green="0.2274509804" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -96,7 +128,10 @@
                             <constraint firstItem="Ovo-RU-yDP" firstAttribute="centerY" secondItem="XWA-Nv-bp6" secondAttribute="centerY" constant="-85" id="Lt3-TZ-CLK"/>
                             <constraint firstItem="vWF-Ce-dj0" firstAttribute="centerY" secondItem="XWA-Nv-bp6" secondAttribute="centerY" constant="-50" id="Q1n-u2-eOU"/>
                             <constraint firstItem="Ovo-RU-yDP" firstAttribute="centerX" secondItem="XWA-Nv-bp6" secondAttribute="centerX" id="RbT-jh-stt"/>
+                            <constraint firstItem="NcM-pF-Qb0" firstAttribute="trailing" secondItem="gUX-1J-qd0" secondAttribute="trailing" id="Rnf-eI-p0I"/>
+                            <constraint firstItem="NcM-pF-Qb0" firstAttribute="leading" secondItem="gUX-1J-qd0" secondAttribute="leading" id="Zvq-hZ-KDL"/>
                             <constraint firstItem="erA-1B-6JQ" firstAttribute="centerX" secondItem="XWA-Nv-bp6" secondAttribute="centerX" id="bSJ-zC-acs"/>
+                            <constraint firstItem="NcM-pF-Qb0" firstAttribute="bottom" secondItem="gUX-1J-qd0" secondAttribute="bottom" id="ynb-u8-EXf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gUX-1J-qd0"/>
                     </view>

@@ -135,11 +135,11 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     
     //전화번호 저장 버튼
     @IBAction func saveButtonPressed(_ sender: Any) {
-        let storyboard = UIStoryboard.init(name: "Progress", bundle: nil)
-        let nv = storyboard.instantiateViewController(withIdentifier: "Progress") as! ProgressViewController
-        self.present(nv, animated: true, completion: nil)
-        let save = Notification.Name(rawValue: saveNotificationKey)
-        NotificationCenter.default.post(name: save, object: nil, userInfo: self.selected)
+//        let storyboard = UIStoryboard.init(name: "Progress", bundle: nil)
+//        let nv = storyboard.instantiateViewController(withIdentifier: "Progress") as! ProgressViewController
+//        self.present(nv, animated: true, completion: nil)
+//        let save = Notification.Name(rawValue: saveNotificationKey)
+//        NotificationCenter.default.post(name: save, object: nil, userInfo: self.selected)
     }
 }
 
@@ -188,19 +188,19 @@ extension ContactsViewController {
             cell.nameLabel.text = matchData[indexPath.section]![indexPath.row].name
             cell.phoneLabel.text = matchData[indexPath.section]![indexPath.row].phone
             cell.userImage.image = UIImage(named: "girl")
-            DispatchQueue.global().async {
-                guard let url = URL(string: APICollection.sharedAPI.imageUrl + self.matchData[indexPath.section]![indexPath.row].imageName) else {return}
-                guard let data = try? Data(contentsOf: url) else {return}
-                
-                DispatchQueue.main.async {
-                    if let index : IndexPath = tableView.indexPath(for: cell) {
-                        if index.row == indexPath.row {
-                            cell.userImage?.image = UIImage(data: data)
-                            cell.userImage?.layer.cornerRadius = cell.userImage.frame.width / 2
-                        }
-                    }
-                }
-            }
+//            DispatchQueue.global().async {
+//                guard let url = URL(string: APICollection.sharedAPI.imageUrl + self.matchData[indexPath.section]![indexPath.row].imageName) else {return}
+//                guard let data = try? Data(contentsOf: url) else {return}
+//                
+//                DispatchQueue.main.async {
+//                    if let index : IndexPath = tableView.indexPath(for: cell) {
+//                        if index.row == indexPath.row {
+//                            cell.userImage?.image = UIImage(data: data)
+//                            cell.userImage?.layer.cornerRadius = cell.userImage.frame.width / 2
+//                        }
+//                    }
+//                }
+//            }
         }
         return cell
     }

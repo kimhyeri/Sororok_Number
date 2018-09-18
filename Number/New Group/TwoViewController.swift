@@ -45,7 +45,7 @@ class TwoViewController: UIViewController {
     let search = Notification.Name(rawValue: searchNotificationKey)
     let searchDone = Notification.Name(rawValue: searchDoneNotificationKey)
     let reloadTable = Notification.Name(rawValue: reloadTalbeViewKey)
-
+    let changeName = Notification.Name(rawValue: nameChangedKey)
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -54,6 +54,12 @@ class TwoViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.searchNoti(_:)), name: search, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.searchDoneNoti), name: searchDone, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.reloadTableNoti), name: reloadTable , object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.changedName), name: changeName, object: nil)
+    }
+    
+    @objc func changedName(){
+        
+        nameLabel.text = "\(UserDefaults.standard.string(forKey: "name")!)님 \n 안녕하세요 !"
     }
     
     @objc func reloadTableNoti(){
@@ -61,7 +67,6 @@ class TwoViewController: UIViewController {
     }
     
     @objc func searchDoneNoti(){
-        print("search Done Noti")
         firstLoginView.alpha = 0
         loadItem(memberId: UserDefaults.standard.integer(forKey: "memberId"))
     }
@@ -94,6 +99,8 @@ class TwoViewController: UIViewController {
                     self.firstTitleLabel.text = "해당하는 그룹이 없네요."
                     self.firstDescLabel.text = "그룹명을 다시 확인해주세요!"
                     self.firstLoginView.alpha = 1
+                }else{
+                    self.firstLoginView.alpha = 0
                 }
                 self.view.endEditing(true)
                 self.tableView.reloadData()
@@ -121,22 +128,22 @@ class TwoViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         loadItem(memberId: UserDefaults.standard.integer(forKey: "memberId"))
         
-        var image = UserDefaults.standard.string(forKey: "imageName")
-        
-        if image == nil {
-            imageButton.setImage(UIImage(named: "girlBig"), for: .normal)
-        }
-        else {
-            if let url = URL(string: APICollection.sharedAPI.imageUrl + image!) {
-                let data = try? Data(contentsOf: url)
-                if let imageData = data {
-                    if let image = UIImage(data: imageData) {
-                        imageButton.setImage(image, for: .normal)
-                        imageButton.layer.cornerRadius = imageButton.frame.width/2
-                    }
-                }
-            }
-        }
+//        var image = UserDefaults.standard.string(forKey: "imageName")
+//
+//        if image == nil {
+//            imageButton.setImage(UIImage(named: "girlBig"), for: .normal)
+//        }
+//        else {
+//            if let url = URL(string: APICollection.sharedAPI.imageUrl + image!) {
+//                let data = try? Data(contentsOf: url)
+//                if let imageData = data {
+//                    if let image = UIImage(data: imageData) {
+//                        imageButton.setImage(image, for: .normal)
+//                        imageButton.layer.cornerRadius = imageButton.frame.width/2
+//                    }
+//                }
+//            }
+//        }
     }
     
     override func viewDidLoad() {
@@ -150,12 +157,12 @@ class TwoViewController: UIViewController {
     }
     
     func defaultView(){
+        
         defaultSize.append(topView.frame)
         defaultSize.append(firstView.frame)
         defaultSize.append(insideView.frame)
         defaultSize.append(searchView.frame)
         defaultSize.append(tableView.frame)
-  
         
         defaultButton = Int(self.imageButton.frame.origin.y)
         defaultLabel = Int(self.nameLabel.frame.origin.y)
