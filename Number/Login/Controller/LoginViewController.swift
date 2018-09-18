@@ -54,7 +54,7 @@ extension LoginViewController {
         let phone = numberText.text!
         let name = nameText.text!
         let email = emailText.text!
-        var imageUrl = ""
+//        var imageUrl = ""
 //        if param?.imageUrl != nil {
 //            imageUrl = (param?.imageUrl)!
 //        }
