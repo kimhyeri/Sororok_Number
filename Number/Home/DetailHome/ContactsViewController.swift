@@ -232,7 +232,7 @@ extension ContactsViewController {
         
         for i in 0 ..< compare {
             if checkSplit(name: sorted[i].name, num: section) == true {
-                if let val = matchData[section] {
+                if let _ = matchData[section] {
                     matchData[section]?.append(sorted[i])
                 }else{
                     matchData.updateValue([sorted[i]], forKey: section)

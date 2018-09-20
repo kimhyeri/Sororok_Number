@@ -175,9 +175,9 @@ extension LoginViewController : UITextFieldDelegate {
         textView.frame = defaultFrame!
     }
     
-//    func textFieldDidBeginEditing(_ textField: UITextField) {
-//        viewUp()
-//    }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        viewUp()
+    }
     
     func viewUp() {
         textView.frame = CGRect(x: 0, y: 65, width: self.view.frame.width, height: textView.frame.height)

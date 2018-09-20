@@ -361,11 +361,11 @@
 				35ECDF012103B1CB00308080 /* Login */,
 				35ECDEEF2103B1B700308080 /* AppDelegate.swift */,
 				35ECDEF12103B1B700308080 /* ViewController.swift */,
+				354E6CE8213080CB00C6C526 /* APICollection.swift */,
 				35ECDEF32103B1B700308080 /* Main.storyboard */,
 				355BB7562129E766009A7837 /* Assets.xcassets */,
 				35ECDEF82103B1BA00308080 /* LaunchScreen.storyboard */,
 				35ECDEFB2103B1BA00308080 /* Info.plist */,
-				354E6CE8213080CB00C6C526 /* APICollection.swift */,
 			);
 			path = Number;
 			sourceTree = "<group>";

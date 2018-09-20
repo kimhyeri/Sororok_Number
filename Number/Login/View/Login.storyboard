@@ -131,7 +131,7 @@
                             <constraint firstItem="NcM-pF-Qb0" firstAttribute="trailing" secondItem="gUX-1J-qd0" secondAttribute="trailing" id="Rnf-eI-p0I"/>
                             <constraint firstItem="NcM-pF-Qb0" firstAttribute="leading" secondItem="gUX-1J-qd0" secondAttribute="leading" id="Zvq-hZ-KDL"/>
                             <constraint firstItem="erA-1B-6JQ" firstAttribute="centerX" secondItem="XWA-Nv-bp6" secondAttribute="centerX" id="bSJ-zC-acs"/>
-                            <constraint firstItem="NcM-pF-Qb0" firstAttribute="bottom" secondItem="gUX-1J-qd0" secondAttribute="bottom" id="ynb-u8-EXf"/>
+                            <constraint firstItem="NcM-pF-Qb0" firstAttribute="top" secondItem="vWF-Ce-dj0" secondAttribute="bottom" constant="44.5" id="y7t-hI-Fv9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gUX-1J-qd0"/>
                     </view>
