@@ -46,25 +46,6 @@ class LoginViewController: UIViewController, UIImagePickerControllerDelegate, UI
 
 extension LoginViewController {
     
-    //네비게이션 설정 해야함 사용자 정보 받기 성공했을 경우
-    
-    func setNavigationBar() {
-        let screenSize: CGRect = UIScreen.main.bounds
-        let navBar = UINavigationBar(frame: CGRect(x: 0, y: 20, width: screenSize.width, height: 44))
-        let navItem = UINavigationItem(title: "")
-        navBar.setBackgroundImage(UIImage(), for: .default)
-        navBar.shadowImage = UIImage()
-        let backButton = UIBarButtonItem(image: UIImage(named: "btnCommBackWh"), style: .plain, target: self, action: #selector(back))
-        navItem.leftBarButtonItem = backButton
-        backButton.imageInsets.left = -10
-        
-        let doneItem = UIBarButtonItem.init(title: "확인", style: .plain, target: nil, action: #selector(done))
-        navItem.rightBarButtonItem = doneItem
-        navBar.setItems([navItem], animated: false)
-        navBar.tintColor = UIColor.white
-        self.view.addSubview(navBar)
-    }
-    
     @objc func done(){
         //사진이 url 경로인 경우 , 사진 파일인 경우
 
@@ -73,19 +54,19 @@ extension LoginViewController {
         let phone = numberText.text!
         let name = nameText.text!
         let email = emailText.text!
-        var imageUrl = ""
-        if param?.imageUrl != nil {
-            imageUrl = (param?.imageUrl)!
-        }
+//        var imageUrl = ""
+//        if param?.imageUrl != nil {
+//            imageUrl = (param?.imageUrl)!
+//        }
         let loginType = (param?.loginType)!
         let loginUid = (param?.loginUid)!
 
-        if param?.imageUrl == nil {
-            let memberImage = imgProfile.image
+//        if param?.imageUrl == nil {
+//            let memberImage = imgProfile.image
 
             Alamofire.upload(
                 multipartFormData: { multipartFormData in
-                    multipartFormData.append(UIImageJPEGRepresentation(memberImage!, 0.1)!, withName: "memberImage", fileName: "file.jpeg", mimeType: "image/jpeg")
+//                    multipartFormData.append(UIImageJPEGRepresentation(memberImage!, 0.1)!, withName: "memberImage", fileName: "file.jpeg", mimeType: "image/jpeg")
                     multipartFormData.append((phone.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "phone")
                     multipartFormData.append((name.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "name")
                     multipartFormData.append((email.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "email")
@@ -104,7 +85,7 @@ extension LoginViewController {
                             UserDefaults.standard.set(self.userData.email, forKey: "email")
                             UserDefaults.standard.set(self.userData.name, forKey: "name")
                             UserDefaults.standard.set(self.userData.phone, forKey: "phone")
-                            UserDefaults.standard.set(self.userData.imageName, forKey: "imageName")
+//                            UserDefaults.standard.set(self.userData.imageName, forKey: "imageName")
                             self.moveToMain(memberId: self.userData.memberId!)
                         }
                     case .failure(let encodingError):
@@ -113,35 +94,35 @@ extension LoginViewController {
             })
         }
 
-        Alamofire.upload(
-            multipartFormData: { multipartFormData in
-                multipartFormData.append((phone.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "phone")
-                multipartFormData.append((name.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "name")
-                multipartFormData.append((email.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "email")
-                multipartFormData.append((loginType.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "loginType")
-                multipartFormData.append((loginUid.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "loginUid")
-                multipartFormData.append((imageUrl.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "imageUrl")
-        },
-            to: url!,
-            method: .put,
-            encodingCompletion: { encodingResult in
-                switch encodingResult {
-                case .success(let upload, _, _):
-                    upload.responseJSON { response in
-                        let json = JSON(response.result.value)
-                        self.userData = UserInfoSet(rawJson: json)
-                        UserDefaults.standard.set(self.userData.memberId, forKey: "memberId")
-                        UserDefaults.standard.set(self.userData.email, forKey: "email")
-                        UserDefaults.standard.set(self.userData.name, forKey: "name")
-                        UserDefaults.standard.set(self.userData.phone, forKey: "phone")
-                        UserDefaults.standard.set(self.userData.imageName, forKey: "imageName")
-                        self.moveToMain(memberId: self.userData.memberId!)
-                    }
-                case .failure(let encodingError):
-                    print(encodingError)
-                }
-        })
-    }
+//        Alamofire.upload(
+//            multipartFormData: { multipartFormData in
+//                multipartFormData.append((phone.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "phone")
+//                multipartFormData.append((name.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "name")
+//                multipartFormData.append((email.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "email")
+//                multipartFormData.append((loginType.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "loginType")
+//                multipartFormData.append((loginUid.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "loginUid")
+//                multipartFormData.append((imageUrl.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "imageUrl")
+//        },
+//            to: url!,
+//            method: .put,
+//            encodingCompletion: { encodingResult in
+//                switch encodingResult {
+//                case .success(let upload, _, _):
+//                    upload.responseJSON { response in
+//                        let json = JSON(response.result.value)
+//                        self.userData = UserInfoSet(rawJson: json)
+//                        UserDefaults.standard.set(self.userData.memberId, forKey: "memberId")
+//                        UserDefaults.standard.set(self.userData.email, forKey: "email")
+//                        UserDefaults.standard.set(self.userData.name, forKey: "name")
+//                        UserDefaults.standard.set(self.userData.phone, forKey: "phone")
+////                        UserDefaults.standard.set(self.userData.imageName, forKey: "imageName")
+//                        self.moveToMain(memberId: self.userData.memberId!)
+//                    }
+//                case .failure(let encodingError):
+//                    print(encodingError)
+//                }
+//        })
+//    }
 
     @objc func back(){
         self.dismiss(animated: true, completion: nil)
@@ -156,15 +137,15 @@ extension LoginViewController {
         self.imgProfile.layer.cornerRadius = imgProfile.frame.width/2
         if param?.email != nil { self.emailText.text = param?.email }
         if param?.name != nil { self.nameText.text = param?.name}
-        if param?.imageUrl != nil {
-            do {
-            let img = param?.imageUrl
-            let url = URL(string: img!)
-            let data = try Data(contentsOf: url!)
-            self.imgProfile.image = UIImage(data: data)
-            }
-            catch{ print(error) }
-        }
+//        if param?.imageUrl != nil {
+//            do {
+//            let img = param?.imageUrl
+//            let url = URL(string: img!)
+//            let data = try Data(contentsOf: url!)
+//            self.imgProfile.image = UIImage(data: data)
+//            }
+//            catch{ print(error) }
+//        }
     }
     
     func getDelegate(){
@@ -176,13 +157,13 @@ extension LoginViewController {
     func moveToMain(memberId: Int){
         self.showToast(message: "회원가입 성공")
         
-        UserDefaults.standard.set(true, forKey: "isLoggedIn")
-        UserDefaults.standard.synchronize()
-        UserDefaults.standard.set(memberId, forKey: "memberId")
-        
         let st = UIStoryboard.init(name: "CodeNum", bundle: nil)
         let vc = st.instantiateViewController(withIdentifier: "ST") as! CustomNaviViewController
         self.present(vc, animated: true, completion: nil)
+        
+        UserDefaults.standard.set(true, forKey: "isLoggedIn")
+        UserDefaults.standard.synchronize()
+        UserDefaults.standard.set(memberId, forKey: "memberId")
     }
 }
 

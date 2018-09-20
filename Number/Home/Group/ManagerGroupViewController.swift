@@ -55,15 +55,11 @@ class ManagerGroupViewController: UIViewController{
         let parameter = [
             "repositoryId" : ContactsViewController.repoId
         ]
+        
         APICollection.sharedAPI.updateRepo(parameter: parameter, completion: {
             (result) -> (Void) in
             self.codeLabel.text = result["groupCode"].stringValue
         })
-
-//        APICollection.sharedAPI.createCode(completion: { (result) -> (Void) in
-//            self.codeLabel.text = result["code"].stringValue
-//        })
-        
     }
 }
 
@@ -86,23 +82,24 @@ extension ManagerGroupViewController : UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.row == 0 {
-            let activity = UIActivityViewController(activityItems: ["그룹코드 : \(codeLabel.text!)"], applicationActivities: nil)
+            let activity = UIActivityViewController(activityItems: ["그룹명 : \(ContactsViewController.repoName!)","그룹코드 : \(codeLabel.text!)"], applicationActivities: nil)
             activity.popoverPresentationController?.sourceView = self.view
             self.present(activity, animated: true, completion: nil)
         }
-            
-//        else if indexPath.row == 1 {
-//            let storyboard = UIStoryboard.init(name: "Manager", bundle: nil)
-//            let vc = storyboard.instantiateViewController(withIdentifier: "ManageGroup")
-//            self.navigationController?.pushViewController(vc, animated: true)
-//        }
-//        else if indexPath.row == 2 {
-            //관리자 변경 비활성화 version1
-//            let storyboard = UIStoryboard.init(name: "Manager", bundle: nil)
-//            let vc = storyboard.instantiateViewController(withIdentifier: "ChangeManager")
-//            self.navigationController?.pushViewController(vc, animated: true)
-//        }
-            
+        
+/* 요건 버전2에 넣을꺼임
+        else if indexPath.row == 1 {
+            let storyboard = UIStoryboard.init(name: "Manager", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "ManageGroup")
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        else if indexPath.row == 2 {
+            관리자 변경 비활성화 version1
+            let storyboard = UIStoryboard.init(name: "Manager", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "ChangeManager")
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+*/
         else if indexPath.row == 1 {
             switch UserDefaults.standard.integer(forKey: "authority") {
             case 0:

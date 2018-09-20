@@ -59,6 +59,9 @@
 		356D84372135F90E00F653B2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 356D84362135F90D00F653B2 /* GoogleService-Info.plist */; };
 		358268F621262669003415F0 /* TwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358268F521262669003415F0 /* TwoViewController.swift */; };
 		35ACD199212B52F80046B541 /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35ACD198212B52F80046B541 /* KakaoOpenSDK.framework */; };
+		35B016822151087400B12506 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B016812151087400B12506 /* LoginView.swift */; };
+		35B0168621517BD300B12506 /* TwoMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B0168521517BD300B12506 /* TwoMainView.swift */; };
+		35B0168821517C4400B12506 /* AlertTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B0168721517C4400B12506 /* AlertTwoView.swift */; };
 		35ECDEF02103B1B700308080 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ECDEEF2103B1B700308080 /* AppDelegate.swift */; };
 		35ECDEF22103B1B700308080 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ECDEF12103B1B700308080 /* ViewController.swift */; };
 		35ECDEF52103B1B700308080 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35ECDEF32103B1B700308080 /* Main.storyboard */; };
@@ -108,8 +111,8 @@
 		355B5776213FE4410085028E /* ToastLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastLabel.swift; sourceTree = "<group>"; };
 		355B5779214070390085028E /* DetailMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMember.swift; sourceTree = "<group>"; };
 		355B69952132BDEC0002FD80 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		355BB74E21297782009A7837 /* NothingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NothingTableViewCell.swift; path = Number/Home/DetailHome/NothingTableViewCell.swift; sourceTree = SOURCE_ROOT; };
-		355BB74F21297782009A7837 /* NothingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NothingTableViewCell.xib; path = Number/Home/DetailHome/NothingTableViewCell.xib; sourceTree = SOURCE_ROOT; };
+		355BB74E21297782009A7837 /* NothingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NothingTableViewCell.swift; path = "Number/New Group/Controller/NothingTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
+		355BB74F21297782009A7837 /* NothingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NothingTableViewCell.xib; path = "Number/New Group/View/NothingTableViewCell.xib"; sourceTree = SOURCE_ROOT; };
 		355BB7522129E625009A7837 /* LogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
 		355BB7542129E63C009A7837 /* Logout.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Logout.storyboard; sourceTree = "<group>"; };
 		355BB7562129E766009A7837 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Number/Assets.xcassets; sourceTree = SOURCE_ROOT; };
@@ -126,6 +129,9 @@
 		3598EBD6212AB21900906BF2 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KakaoOpenSDK.framework; path = "../kakao-ios-sdk-1.9.0/KakaoOpenSDK.framework"; sourceTree = "<group>"; };
 		3598EBD8212AB49000906BF2 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		35ACD198212B52F80046B541 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KakaoOpenSDK.framework; path = Pods/KakaoOpenSDK.framework; sourceTree = "<group>"; };
+		35B016812151087400B12506 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		35B0168521517BD300B12506 /* TwoMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoMainView.swift; sourceTree = "<group>"; };
+		35B0168721517C4400B12506 /* AlertTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTwoView.swift; sourceTree = "<group>"; };
 		35ECDEEC2103B1B700308080 /* Number.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Number.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35ECDEEF2103B1B700308080 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35ECDEF12103B1B700308080 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -168,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				351AB6332105C00C0017D41A /* Login.storyboard */,
+				35B016812151087400B12506 /* LoginView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -304,6 +311,27 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
+		35B0168321517B8100B12506 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				355BB74F21297782009A7837 /* NothingTableViewCell.xib */,
+				35ECDF0821046EB600308080 /* CodeNum.storyboard */,
+				35B0168521517BD300B12506 /* TwoMainView.swift */,
+				35B0168721517C4400B12506 /* AlertTwoView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		35B0168421517B9100B12506 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				358268F521262669003415F0 /* TwoViewController.swift */,
+				356A58FD210D9F35003C20BB /* CustomNaviViewController.swift */,
+				355BB74E21297782009A7837 /* NothingTableViewCell.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		35ECDEE32103B1B600308080 = {
 			isa = PBXGroup;
 			children = (
@@ -333,11 +361,11 @@
 				35ECDF012103B1CB00308080 /* Login */,
 				35ECDEEF2103B1B700308080 /* AppDelegate.swift */,
 				35ECDEF12103B1B700308080 /* ViewController.swift */,
+				354E6CE8213080CB00C6C526 /* APICollection.swift */,
 				35ECDEF32103B1B700308080 /* Main.storyboard */,
 				355BB7562129E766009A7837 /* Assets.xcassets */,
 				35ECDEF82103B1BA00308080 /* LaunchScreen.storyboard */,
 				35ECDEFB2103B1BA00308080 /* Info.plist */,
-				354E6CE8213080CB00C6C526 /* APICollection.swift */,
 			);
 			path = Number;
 			sourceTree = "<group>";
@@ -356,12 +384,9 @@
 		35ECDF0721046E5F00308080 /* CodeNum */ = {
 			isa = PBXGroup;
 			children = (
+				35B0168421517B9100B12506 /* Controller */,
+				35B0168321517B8100B12506 /* View */,
 				355B5770213FCC060085028E /* Model */,
-				35ECDF0821046EB600308080 /* CodeNum.storyboard */,
-				358268F521262669003415F0 /* TwoViewController.swift */,
-				355BB74F21297782009A7837 /* NothingTableViewCell.xib */,
-				355BB74E21297782009A7837 /* NothingTableViewCell.swift */,
-				356A58FD210D9F35003C20BB /* CustomNaviViewController.swift */,
 			);
 			name = CodeNum;
 			path = "New Group";
@@ -573,6 +598,7 @@
 				35444633212D69210075116C /* ProgressViewController.swift in Sources */,
 				353EC8C4210A2BBF004081D1 /* AlbumViewController.swift in Sources */,
 				35ECDF15210476F200308080 /* HomeTableViewCell.swift in Sources */,
+				35B0168621517BD300B12506 /* TwoMainView.swift in Sources */,
 				353EC8C6210A3169004081D1 /* AlbumUICollectionViewCell.swift in Sources */,
 				355A9466213B26C5005AD348 /* HistoryData.swift in Sources */,
 				355B5772213FCC160085028E /* repoList.swift in Sources */,
@@ -595,6 +621,7 @@
 				355B5777213FE4410085028E /* ToastLabel.swift in Sources */,
 				354E6CE721307D3C00C6C526 /* GetUserInfo.swift in Sources */,
 				35325D50212F52B000AC3897 /* DeleteGroupViewController.swift in Sources */,
+				35B0168821517C4400B12506 /* AlertTwoView.swift in Sources */,
 				35572C1F212BF1F000A919C7 /* ManagerCellTableViewCell.swift in Sources */,
 				354EA792210C6A2500D16A80 /* GroupCreateViewController.swift in Sources */,
 				3560EDD72141293B0021172D /* Notification.swift in Sources */,
@@ -603,6 +630,7 @@
 				35ECDEF02103B1B700308080 /* AppDelegate.swift in Sources */,
 				354EA79A210C900900D16A80 /* DeleteViewController.swift in Sources */,
 				356125E9213C49340040985D /* UserInfoSet.swift in Sources */,
+				35B016822151087400B12506 /* LoginView.swift in Sources */,
 				351AB63B2105C16E0017D41A /* MyPageViewController.swift in Sources */,
 				35325D4E212F0E4500AC3897 /* ContactNaviViewController.swift in Sources */,
 			);

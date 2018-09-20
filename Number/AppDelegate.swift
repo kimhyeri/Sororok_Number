@@ -12,7 +12,7 @@ import NaverThirdPartyLogin
 import KakaoOpenSDK
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate ,GIDSignInUIDelegate{
     
     var window: UIWindow?
 
@@ -23,28 +23,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let vc = st.instantiateViewController(withIdentifier: "ST") as! CustomNaviViewController
             window?.rootViewController = vc
         } else {
-        print(UserDefaults.standard.bool(forKey: "isLoggedIn"))
-        let instance = NaverThirdPartyLoginConnection.getSharedInstance()
-        instance?.isInAppOauthEnable = true
-        instance?.isNaverAppOauthEnable = true
-        instance?.isOnlyPortraitSupportedInIphone()
-        instance?.serviceUrlScheme = kServiceAppUrlScheme
-        instance?.consumerKey = kConsumerKey
-        instance?.consumerSecret = kConsumerSecret
-        instance?.appName = kServiceAppName
-        
-        GIDSignIn.sharedInstance().clientID = "485287400995-no0nk4j0g2lpk3v5n0h6pu8evqun5tvh.apps.googleusercontent.com"
+            let instance = NaverThirdPartyLoginConnection.getSharedInstance()
+            instance?.isInAppOauthEnable = true
+            instance?.isNaverAppOauthEnable = true
+            instance?.isOnlyPortraitSupportedInIphone()
+            instance?.serviceUrlScheme = kServiceAppUrlScheme
+            instance?.consumerKey = kConsumerKey
+            instance?.consumerSecret = kConsumerSecret
+            instance?.appName = kServiceAppName
+            
+            GIDSignIn.sharedInstance().clientID = "485287400995-no0nk4j0g2lpk3v5n0h6pu8evqun5tvh.apps.googleusercontent.com"
         }
         return true
     }
     
     func application(application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Initialize sign-in
         var configureError: NSError?
-//        GGLContext.sharedInstance().configureWithError(&configureError)
         assert(configureError == nil, "Error configuring Google services: \(configureError)")
         return true
+    }
+    
+    @available(iOS 9.0, *)
+    
+    func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
+        //카카오면
+        if KOSession.isKakaoAccountLoginCallback(url) {
+            return KOSession.handleOpen(url)
+        }//구글이면
+        else{
+            return GIDSignIn.sharedInstance().handle(url as URL?,sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+        }
+    }
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        
+        if KOSession.isKakaoAccountLoginCallback(url) {
+            return KOSession.handleOpen(url)
+        }
+        
+        let googleSession = GIDSignIn.sharedInstance().handle(url,sourceApplication: sourceApplication, annotation: annotation)
+        return googleSession
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
@@ -68,52 +87,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-    
-    
-}
-
-
-//MARK: Google
-extension AppDelegate :   GIDSignInUIDelegate {
-    
-    //For app to run on iOS 8
-//    func application(application: UIApplication,
-//                     openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
-//        var options: [String: AnyObject] = [UIApplicationOpenURLOptionsKey: sourceApplication,
-//                                            UIApplicationOpenURLOptionsAnnotationKey: annotation]
-//        return GIDSignIn.sharedInstance().handleURL(url,
-//                                                    sourceApplication: sourceApplication,
-//                                                    annotation: annotation)
-//    }
-//
-}
-
-//MARK: KAKAO
-extension AppDelegate {
-    
-    @available(iOS 9.0, *)
-    
-    func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
-        //카카오면
-        if KOSession.isKakaoAccountLoginCallback(url) {
-            return KOSession.handleOpen(url)
-        }//구글이면
-        else{
-            return GIDSignIn.sharedInstance().handle(url as URL?,sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
-        }
-        
-    }
-    
-    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        
-        if KOSession.isKakaoAccountLoginCallback(url) {
-            return KOSession.handleOpen(url)
-        }
-        let googleSession = GIDSignIn.sharedInstance().handle(url,sourceApplication: sourceApplication, annotation: annotation)
-        return googleSession
-    }
-    
-
     
 }
 

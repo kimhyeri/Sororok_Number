@@ -39,12 +39,12 @@ class ProgressViewController: UIViewController {
     @objc func contactSave(_ notification: Notification){
         print(notification)
         let store = CNContactStore()
-        
+
         let userDict = notification.userInfo as! NSDictionary
         let names = userDict.allValues
         totalLabel.text = String(names.count)
         let numbers = userDict.allKeys
-        
+
         for i in 0..<names.count
         {
             let contact = CNMutableContact()
@@ -53,29 +53,26 @@ class ProgressViewController: UIViewController {
                 label:CNLabelPhoneNumberMain, value:CNPhoneNumber(stringValue:"\(numbers[i] as! String)"))]
             contactList.append(contact)
         }
-        
+
         let saveRequest = CNSaveRequest()
-        
+
         for i in 0..<contactList.count{
             saveRequest.add(contactList[i], toContainerWithIdentifier: nil)
             if i == contactList.count-1{
                 do
                 {
                     try? store.execute(saveRequest)
-                    
+
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                         let st = UIStoryboard.init(name: "DetailHome", bundle: nil)
                         let vc = st.instantiateViewController(withIdentifier: "NV") as! ContactNaviViewController
                         self.present(vc, animated: true, completion: nil)
                     }
-                    print("done")
                 }
                 catch
                 {
                     showToast(message: "저장 실패")
-                    print("Error fetching results for container")
                 }
-                
             }
         }
     }

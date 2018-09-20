@@ -62,13 +62,13 @@ class GroupCreateViewController: UIViewController , UIImagePickerControllerDeleg
         let code = codeLabel.text!
         let memberId = UserDefaults.standard.string(forKey: "memberId")
         let extraInfo = groupInfoText.text!
-        let image = imageChange() as Data
+//        let image = imageChange() as Data
         
         Alamofire.upload(
             multipartFormData: { multipartFormData in
-                if image != nil {
-                    multipartFormData.append(image, withName: "memberImage", fileName: "memberImage.jpeg", mimeType: "memberImage/jpeg")
-                }
+//                if image != nil {
+//                    multipartFormData.append(image, withName: "memberImage", fileName: "memberImage.jpeg", mimeType: "memberImage/jpeg")
+//                }
                 multipartFormData.append((name.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "name")
                 multipartFormData.append((code.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "code")
                 multipartFormData.append((memberId?.data(using: .utf8, allowLossyConversion: false))!, withName: "memberId")

@@ -41,21 +41,21 @@ class MyPageViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         numText.text = UserDefaults.standard.string(forKey: "phone")
         emailText.text = UserDefaults.standard.string(forKey: "email")
         nameText.text = UserDefaults.standard.string(forKey: "name")
-        var image = UserDefaults.standard.string(forKey: "imageName")
-        
-        if image == nil {
-            myImage.image = UIImage(named: "girlBig")
-        }
-        else {
-            if let url = URL(string: APICollection.sharedAPI.imageUrl + image!) {
-                let data = try? Data(contentsOf: url)
-                if let imageData = data {
-                    if let image = UIImage(data: imageData) {
-                        myImage.image = image
-                    }
-                }
-            }
-        }
+//        var image = UserDefaults.standard.string(forKey: "imageName")
+//        
+//        if image == nil {
+//            myImage.image = UIImage(named: "girlBig")
+//        }
+//        else {
+//            if let url = URL(string: APICollection.sharedAPI.imageUrl + image!) {
+//                let data = try? Data(contentsOf: url)
+//                if let imageData = data {
+//                    if let image = UIImage(data: imageData) {
+//                        myImage.image = image
+//                    }
+//                }
+//            }
+//        }
         
         
         
@@ -86,7 +86,7 @@ class MyPageViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         guard numText.text?.count != 0 else { showToast(message: "번호 입력해주세요"); return}
         guard nameText.text?.count != 0 else { showToast(message: "이름 입력해주세요"); return}
         guard emailText.text?.count != 0 else { showToast(message: "이메일 입력해주세요"); return}
-        guard myImage.image != nil else { showToast(message: "사진 추가해주세요"); return}
+//        guard myImage.image != nil else { showToast(message: "사진 추가해주세요"); return}
         
         let url = URL(string: "http://45.63.120.140:40005/member/update")
         
@@ -100,9 +100,9 @@ class MyPageViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         
         Alamofire.upload(
             multipartFormData: { multipartFormData in
-                if image != nil {
-                     multipartFormData.append(image, withName: "memberImage", fileName: "memberImage.jpeg", mimeType: "memberImage/jpeg")
-                }
+//                if image != nil {
+//                     multipartFormData.append(image, withName: "memberImage", fileName: "memberImage.jpeg", mimeType: "memberImage/jpeg")
+//                }
                
                 multipartFormData.append((phone.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "phone")
                 multipartFormData.append((name.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "name")
@@ -122,9 +122,12 @@ class MyPageViewController: UIViewController, UITextFieldDelegate, UIImagePicker
                         UserDefaults.standard.set(self.userData.email, forKey: "email")
                         UserDefaults.standard.set(self.userData.name, forKey: "name")
                         UserDefaults.standard.set(self.userData.phone, forKey: "phone")
-                        UserDefaults.standard.set(image, forKey: "imageName")
-                        
+//                        UserDefaults.standard.set(image, forKey: "imageName")
+                        let changeName = Notification.Name(rawValue: nameChangedKey)
+                        NotificationCenter.default.post(name: changeName, object: nil)
+                    
                         self.navigationController?.popViewController(animated: true)
+                        
                     }
                 case .failure(let encodingError):
                     print(encodingError)
@@ -159,7 +162,7 @@ class MyPageViewController: UIViewController, UITextFieldDelegate, UIImagePicker
             UserDefaults.standard.set(self.userData.email, forKey: "email")
             UserDefaults.standard.set(self.userData.name, forKey: "name")
             UserDefaults.standard.set(self.userData.phone, forKey: "phone")
-            UserDefaults.standard.set(self.userData.imageName, forKey: "imageName")
+//            UserDefaults.standard.set(self.userData.imageName, forKey: "imageName")
             UserDefaults.standard.synchronize()
         })
         

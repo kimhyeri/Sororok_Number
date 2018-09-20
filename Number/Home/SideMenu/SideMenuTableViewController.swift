@@ -67,8 +67,6 @@ class SideMenuTableViewController: UITableViewController {
     }
 }
 
-
-
 class SideMenuCell: UITableViewCell {
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var news: UILabel!

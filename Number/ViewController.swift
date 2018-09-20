@@ -24,7 +24,6 @@ class ViewController: UIViewController{
         super.viewDidLoad()
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().delegate = self
-//        checkLogin(memberId: 27)
         changeView()
     }
     
