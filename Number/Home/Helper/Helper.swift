@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 extension UIViewController {
     func initNav(){
         self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "btnCommBackWh")
@@ -25,10 +24,4 @@ extension UIViewController {
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "btnCommBackBl")
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
     }
-}
-
-enum typeCase : String {
-    case google = "0"
-    case kakao = "1"
-    case naver = "2"
 }

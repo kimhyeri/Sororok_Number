@@ -62,6 +62,7 @@
 		35B016822151087400B12506 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B016812151087400B12506 /* LoginView.swift */; };
 		35B0168621517BD300B12506 /* TwoMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B0168521517BD300B12506 /* TwoMainView.swift */; };
 		35B0168821517C4400B12506 /* AlertTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B0168721517C4400B12506 /* AlertTwoView.swift */; };
+		35CF88152154374900AB9067 /* LoginEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF88142154374900AB9067 /* LoginEnum.swift */; };
 		35ECDEF02103B1B700308080 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ECDEEF2103B1B700308080 /* AppDelegate.swift */; };
 		35ECDEF22103B1B700308080 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ECDEF12103B1B700308080 /* ViewController.swift */; };
 		35ECDEF52103B1B700308080 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35ECDEF32103B1B700308080 /* Main.storyboard */; };
@@ -132,6 +133,7 @@
 		35B016812151087400B12506 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		35B0168521517BD300B12506 /* TwoMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoMainView.swift; sourceTree = "<group>"; };
 		35B0168721517C4400B12506 /* AlertTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTwoView.swift; sourceTree = "<group>"; };
+		35CF88142154374900AB9067 /* LoginEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEnum.swift; sourceTree = "<group>"; };
 		35ECDEEC2103B1B700308080 /* Number.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Number.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35ECDEEF2103B1B700308080 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35ECDEF12103B1B700308080 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -220,8 +222,8 @@
 		354EA793210C7CDE00D16A80 /* SideMenu */ = {
 			isa = PBXGroup;
 			children = (
+				35CF88162154377300AB9067 /* Controller */,
 				355A9464213B26AC005AD348 /* Model */,
-				354EA794210C877300D16A80 /* SideMenuTableViewController.swift */,
 			);
 			path = SideMenu;
 			sourceTree = "<group>";
@@ -286,6 +288,7 @@
 				3565D44621283B0A000D70D2 /* HexColor.swift */,
 				355B5776213FE4410085028E /* ToastLabel.swift */,
 				3560EDD62141293B0021172D /* Notification.swift */,
+				35CF88142154374900AB9067 /* LoginEnum.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -328,6 +331,14 @@
 				358268F521262669003415F0 /* TwoViewController.swift */,
 				356A58FD210D9F35003C20BB /* CustomNaviViewController.swift */,
 				355BB74E21297782009A7837 /* NothingTableViewCell.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		35CF88162154377300AB9067 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				354EA794210C877300D16A80 /* SideMenuTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -596,6 +607,7 @@
 				35572C24212C06BB00A919C7 /* NotSearchTableViewCell.swift in Sources */,
 				35572C21212C030800A919C7 /* AdminGroupViewController.swift in Sources */,
 				35444633212D69210075116C /* ProgressViewController.swift in Sources */,
+				35CF88152154374900AB9067 /* LoginEnum.swift in Sources */,
 				353EC8C4210A2BBF004081D1 /* AlbumViewController.swift in Sources */,
 				35ECDF15210476F200308080 /* HomeTableViewCell.swift in Sources */,
 				35B0168621517BD300B12506 /* TwoMainView.swift in Sources */,
