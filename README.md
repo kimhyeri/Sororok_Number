@@ -12,7 +12,16 @@
 - 소로록 - 멤버 : 번호 등록
 - 관리자 - 멤버 : 코드 공유 (카카오톡, 단체문자 등)
 
+### 소개
+소로록으로 모인 내 전화번호를 쉽게 공유!  
+비밀코드만 입력하면 내 모임 주소록에 쉽게 접근 가능!  
+터치 한번에 수십개의 전화번호를 손쉽게 저장!  
+쉽고 편리한 주소록 서비스 소로록과 함께 스마트한 연락처 관리를 시작해봐요!  
+
 ### 
 ![텍스트목록](./screenshot/sororok1.png)
 ![텍스트목록](./screenshot/sororok2.png)
 ![텍스트목록](./screenshot/sororok3.png)
+
+## App Store
+<a href="https://itunes.apple.com/kr/app/%EC%86%8C%EB%A1%9C%EB%A1%9D/id1436022361?mt=8" width="170" height="58"></a>
