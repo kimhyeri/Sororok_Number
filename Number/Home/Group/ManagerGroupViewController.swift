@@ -82,7 +82,7 @@ extension ManagerGroupViewController : UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.row == 0 {
-            let activity = UIActivityViewController(activityItems: ["그룹코드 : \(codeLabel.text!)"], applicationActivities: nil)
+            let activity = UIActivityViewController(activityItems: ["그룹명 : \(ContactsViewController.repoName!)","그룹코드 : \(codeLabel.text!)"], applicationActivities: nil)
             activity.popoverPresentationController?.sourceView = self.view
             self.present(activity, animated: true, completion: nil)
         }
