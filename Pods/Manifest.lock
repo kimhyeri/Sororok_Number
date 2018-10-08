@@ -20,6 +20,7 @@ PODS:
   - GTMSessionFetcher/Core (1.2.0)
   - GTMSessionFetcher/Full (1.2.0):
     - GTMSessionFetcher/Core (= 1.2.0)
+  - Kingfisher (4.1.1)
   - naveridlogin-sdk-ios (4.0.10)
   - SideMenu (4.0.0)
   - SwiftyJSON (4.1.0)
@@ -27,6 +28,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.7)
   - GoogleSignIn
+  - Kingfisher (~> 4.1.1)
   - naveridlogin-sdk-ios
   - SideMenu
   - SwiftyJSON (~> 4.0)
@@ -37,10 +39,11 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
   GTMOAuth2: c77fe325e4acd453837e72d91e3b5f13116857b2
   GTMSessionFetcher: 0c4baf0a73acd0041bf9f71ea018deedab5ea84e
+  Kingfisher: 6793a473357b5dbee42b0068ef203fe8325f259e
   naveridlogin-sdk-ios: b5a31343e7f98bab1a5a37b1bc0af3354ad59d11
   SideMenu: 70ee5657df63ec3382660ec4ef470bf1cf5db07d
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
 
-PODFILE CHECKSUM: 0b05f1417eab3a6394902c44b156126a63ebc393
+PODFILE CHECKSUM: 1e486f8ab4825c7e7fefdec01632dd8d9237b30b
 
 COCOAPODS: 1.4.0

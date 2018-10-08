@@ -9,6 +9,7 @@ target 'Number' do
    	 pod 'SideMenu'
 	 pod 'GoogleSignIn'
 	 pod 'naveridlogin-sdk-ios'
+	 pod 'Kingfisher', '~> 4.1.1’ 
  
   # Pods for Number
 
