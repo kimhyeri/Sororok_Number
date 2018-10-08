@@ -127,7 +127,6 @@
 		356D84362135F90D00F653B2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		358268F521262669003415F0 /* TwoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoViewController.swift; sourceTree = "<group>"; };
 		358AE5262136D741005B0454 /* Number.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Number.entitlements; sourceTree = "<group>"; };
-		3598EBD6212AB21900906BF2 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KakaoOpenSDK.framework; path = "../kakao-ios-sdk-1.9.0/KakaoOpenSDK.framework"; sourceTree = "<group>"; };
 		3598EBD8212AB49000906BF2 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		35ACD198212B52F80046B541 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KakaoOpenSDK.framework; path = Pods/KakaoOpenSDK.framework; sourceTree = "<group>"; };
 		35B016812151087400B12506 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -335,6 +334,16 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		35BF9523216AF4E00083EB13 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				35ECDEEF2103B1B700308080 /* AppDelegate.swift */,
+				35ECDEF12103B1B700308080 /* ViewController.swift */,
+				354E6CE8213080CB00C6C526 /* APICollection.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		35CF88162154377300AB9067 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -365,14 +374,12 @@
 		35ECDEEE2103B1B700308080 /* Number */ = {
 			isa = PBXGroup;
 			children = (
+				35BF9523216AF4E00083EB13 /* Main */,
 				358AE5262136D741005B0454 /* Number.entitlements */,
 				356D84362135F90D00F653B2 /* GoogleService-Info.plist */,
 				35ECDF0C2104759400308080 /* Home */,
 				35ECDF0721046E5F00308080 /* CodeNum */,
 				35ECDF012103B1CB00308080 /* Login */,
-				35ECDEEF2103B1B700308080 /* AppDelegate.swift */,
-				35ECDEF12103B1B700308080 /* ViewController.swift */,
-				354E6CE8213080CB00C6C526 /* APICollection.swift */,
 				35ECDEF32103B1B700308080 /* Main.storyboard */,
 				355BB7562129E766009A7837 /* Assets.xcassets */,
 				35ECDEF82103B1BA00308080 /* LaunchScreen.storyboard */,
@@ -432,7 +439,6 @@
 			isa = PBXGroup;
 			children = (
 				355B69952132BDEC0002FD80 /* MessageUI.framework */,
-				3598EBD6212AB21900906BF2 /* KakaoOpenSDK.framework */,
 				35ACD198212B52F80046B541 /* KakaoOpenSDK.framework */,
 				DDD04C5D158AE3D2E5D532A9 /* Pods_Number.framework */,
 			);
