@@ -24,7 +24,7 @@ class AdminGroupViewController: UIViewController , UITableViewDataSource, UITabl
         tableView.delegate = self
         tableView.dataSource = self
 
-        defautlView()
+        defaultView()
     }
 
     @objc func saveButton(){

@@ -8,7 +8,8 @@
 
 import Foundation
 
-extension DeleteViewController {
+extension DeleteGroupViewController {
+    
     func changeView(){
         if UserDefaults.standard.integer(forKey: "authority") == 0 {
             titleLabel.text = "정말 그룹을 나가시려구요?"
@@ -20,6 +21,5 @@ extension DeleteViewController {
             change.alpha = 0
         }
     }
-    
     
 }

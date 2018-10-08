@@ -12,8 +12,12 @@ class ContactNaviViewController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        defaultView()
+        
+    }
+    
+    func defaultView() {
         self.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationBar.shadowImage = UIImage()
-        
     }
 }

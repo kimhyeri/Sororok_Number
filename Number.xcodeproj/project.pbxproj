@@ -69,6 +69,10 @@
 		35BF953A216B38F10083EB13 /* DeleteGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BF9539216B38F10083EB13 /* DeleteGroupView.swift */; };
 		35BF953C216B39BF0083EB13 /* ManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BF953B216B39BF0083EB13 /* ManagerView.swift */; };
 		35BF953E216B39E90083EB13 /* AdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BF953D216B39E90083EB13 /* AdminView.swift */; };
+		35BF9543216B3B860083EB13 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BF9542216B3B860083EB13 /* SettingView.swift */; };
+		35BF9545216B3B920083EB13 /* LogoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BF9544216B3B920083EB13 /* LogoutView.swift */; };
+		35BF954C216B3F960083EB13 /* ContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BF954B216B3F960083EB13 /* ContactsView.swift */; };
+		35BF954E216B40D00083EB13 /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BF954D216B40D00083EB13 /* MyPageView.swift */; };
 		35CF88152154374900AB9067 /* LoginEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF88142154374900AB9067 /* LoginEnum.swift */; };
 		35ECDEF02103B1B700308080 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ECDEEF2103B1B700308080 /* AppDelegate.swift */; };
 		35ECDEF22103B1B700308080 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ECDEF12103B1B700308080 /* ViewController.swift */; };
@@ -146,6 +150,10 @@
 		35BF9539216B38F10083EB13 /* DeleteGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteGroupView.swift; sourceTree = "<group>"; };
 		35BF953B216B39BF0083EB13 /* ManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerView.swift; sourceTree = "<group>"; };
 		35BF953D216B39E90083EB13 /* AdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminView.swift; sourceTree = "<group>"; };
+		35BF9542216B3B860083EB13 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		35BF9544216B3B920083EB13 /* LogoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutView.swift; sourceTree = "<group>"; };
+		35BF954B216B3F960083EB13 /* ContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsView.swift; sourceTree = "<group>"; };
+		35BF954D216B40D00083EB13 /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
 		35CF88142154374900AB9067 /* LoginEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEnum.swift; sourceTree = "<group>"; };
 		35ECDEEC2103B1B700308080 /* Number.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Number.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35ECDEEF2103B1B700308080 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -177,10 +185,9 @@
 		351AB6372105C14B0017D41A /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
-				351AB6382105C1570017D41A /* MyPage.storyboard */,
-				353EC8C5210A3169004081D1 /* AlbumUICollectionViewCell.swift */,
-				353EC8C3210A2BBF004081D1 /* AlbumViewController.swift */,
-				351AB63A2105C16E0017D41A /* MyPageViewController.swift */,
+				35BF954A216B3F5C0083EB13 /* Model */,
+				35BF9549216B3F570083EB13 /* Controller */,
+				35BF9548216B3F530083EB13 /* View */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -205,6 +212,7 @@
 		351AB63F2105F4520017D41A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				354E6CE621307D3C00C6C526 /* GetUserInfo.swift */,
 				354E6CEA2130BD0700C6C526 /* Register.swift */,
 				356125E8213C49340040985D /* UserInfoSet.swift */,
 			);
@@ -262,16 +270,9 @@
 		3556196721071D39009CC356 /* DetailHome */ = {
 			isa = PBXGroup;
 			children = (
+				35BF9547216B3EB30083EB13 /* Controller */,
+				35BF9546216B3EAC0083EB13 /* View */,
 				355B5778214070030085028E /* Model */,
-				3556196121071BDE009CC356 /* DetailHome.storyboard */,
-				35325D4D212F0E4500AC3897 /* ContactNaviViewController.swift */,
-				35572C22212C06BB00A919C7 /* NotSearchTableViewCell.swift */,
-				35572C23212C06BB00A919C7 /* NotSearchTableViewCell.xib */,
-				3565D444212837CA000D70D2 /* SearchView.swift */,
-				3565D4422128291B000D70D2 /* ContactsViewController.swift */,
-				35325D47212E9DEB00AC3897 /* Index.swift */,
-				3556196821071EDF009CC356 /* DetailHomeTableViewCell.swift */,
-				3556196921071EDF009CC356 /* DetailHomeTableViewCell.xib */,
 			);
 			path = DetailHome;
 			sourceTree = "<group>";
@@ -307,6 +308,7 @@
 		355B5778214070030085028E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				35325D47212E9DEB00AC3897 /* Index.swift */,
 				355B5779214070390085028E /* DetailMember.swift */,
 			);
 			path = Model;
@@ -315,12 +317,11 @@
 		355F0A712108E95600715E3F /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				35BF9541216B3B540083EB13 /* Model */,
+				35BF9540216B3B500083EB13 /* Controller */,
+				35BF953F216B3B4A0083EB13 /* View */,
 				354EA79B210C9BC200D16A80 /* Manager */,
 				354EA796210C8FEC00D16A80 /* Delete */,
-				355F0A722108E96C00715E3F /* Setting.storyboard */,
-				35572C26212C342500A919C7 /* SettingViewController.swift */,
-				355BB7522129E625009A7837 /* LogoutViewController.swift */,
-				355BB7542129E63C009A7837 /* Logout.storyboard */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -437,6 +438,82 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		35BF953F216B3B4A0083EB13 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				355BB7542129E63C009A7837 /* Logout.storyboard */,
+				355F0A722108E96C00715E3F /* Setting.storyboard */,
+				35BF9542216B3B860083EB13 /* SettingView.swift */,
+				35BF9544216B3B920083EB13 /* LogoutView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		35BF9540216B3B500083EB13 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				35572C26212C342500A919C7 /* SettingViewController.swift */,
+				355BB7522129E625009A7837 /* LogoutViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		35BF9541216B3B540083EB13 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		35BF9546216B3EAC0083EB13 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3565D444212837CA000D70D2 /* SearchView.swift */,
+				3556196821071EDF009CC356 /* DetailHomeTableViewCell.swift */,
+				35572C22212C06BB00A919C7 /* NotSearchTableViewCell.swift */,
+				35572C23212C06BB00A919C7 /* NotSearchTableViewCell.xib */,
+				3556196121071BDE009CC356 /* DetailHome.storyboard */,
+				3556196921071EDF009CC356 /* DetailHomeTableViewCell.xib */,
+				35BF954B216B3F960083EB13 /* ContactsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		35BF9547216B3EB30083EB13 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				35325D4D212F0E4500AC3897 /* ContactNaviViewController.swift */,
+				3565D4422128291B000D70D2 /* ContactsViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		35BF9548216B3F530083EB13 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				351AB6382105C1570017D41A /* MyPage.storyboard */,
+				353EC8C5210A3169004081D1 /* AlbumUICollectionViewCell.swift */,
+				35BF954D216B40D00083EB13 /* MyPageView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		35BF9549216B3F570083EB13 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				353EC8C3210A2BBF004081D1 /* AlbumViewController.swift */,
+				351AB63A2105C16E0017D41A /* MyPageViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		35BF954A216B3F5C0083EB13 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		35CF88162154377300AB9067 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -487,7 +564,6 @@
 				351AB63F2105F4520017D41A /* Model */,
 				351AB63E2105F43E0017D41A /* Controller */,
 				351AB63C2105F42B0017D41A /* View */,
-				354E6CE621307D3C00C6C526 /* GetUserInfo.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -727,19 +803,23 @@
 				356A58FE210D9F35003C20BB /* CustomNaviViewController.swift in Sources */,
 				3565D445212837CA000D70D2 /* SearchView.swift in Sources */,
 				35325D4C212F08F600AC3897 /* Helper.swift in Sources */,
+				35BF954C216B3F960083EB13 /* ContactsView.swift in Sources */,
 				354E6CEB2130BD0700C6C526 /* Register.swift in Sources */,
 				35BF953A216B38F10083EB13 /* DeleteGroupView.swift in Sources */,
+				35BF9545216B3B920083EB13 /* LogoutView.swift in Sources */,
 				35325D48212E9DEB00AC3897 /* Index.swift in Sources */,
 				355BB7532129E625009A7837 /* LogoutViewController.swift in Sources */,
 				355B577A214070390085028E /* DetailMember.swift in Sources */,
 				35572C27212C342500A919C7 /* SettingViewController.swift in Sources */,
 				354EA79D210C9BD300D16A80 /* ManagerViewController.swift in Sources */,
 				35BF9535216B363E0083EB13 /* AddressBook.swift in Sources */,
+				35BF9543216B3B860083EB13 /* SettingView.swift in Sources */,
 				35BF952F216B331F0083EB13 /* GroupCreateView.swift in Sources */,
 				355B5777213FE4410085028E /* ToastLabel.swift in Sources */,
 				354E6CE721307D3C00C6C526 /* GetUserInfo.swift in Sources */,
 				35325D50212F52B000AC3897 /* DeleteGroupViewController.swift in Sources */,
 				35B0168821517C4400B12506 /* AlertTwoView.swift in Sources */,
+				35BF954E216B40D00083EB13 /* MyPageView.swift in Sources */,
 				35572C1F212BF1F000A919C7 /* ManagerCellTableViewCell.swift in Sources */,
 				354EA792210C6A2500D16A80 /* GroupCreateViewController.swift in Sources */,
 				3560EDD72141293B0021172D /* Notification.swift in Sources */,

@@ -17,10 +17,6 @@ class LogoutViewController: UIViewController {
         defaultView()
     }
     
-    func defaultView(){
-        logoutView.layer.cornerRadius = 10
-    }
-    
     @IBAction func logoutButtonPressed(_ sender: UIButton) {
         UserDefaults.standard.set(false, forKey: "isLoggedIn")
         UserDefaults.standard.synchronize()
@@ -33,6 +29,5 @@ class LogoutViewController: UIViewController {
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
         self.dismiss(animated: false, completion: nil)
     }
-
 
 }
