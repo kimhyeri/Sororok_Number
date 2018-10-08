@@ -63,6 +63,7 @@
 		35B0168621517BD300B12506 /* TwoMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B0168521517BD300B12506 /* TwoMainView.swift */; };
 		35B0168821517C4400B12506 /* AlertTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B0168721517C4400B12506 /* AlertTwoView.swift */; };
 		35BF9526216B2ACD0083EB13 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BF9525216B2ACD0083EB13 /* SideMenuView.swift */; };
+		35BF952D216B30FD0083EB13 /* ManagerGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BF952C216B30FD0083EB13 /* ManagerGroupView.swift */; };
 		35CF88152154374900AB9067 /* LoginEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF88142154374900AB9067 /* LoginEnum.swift */; };
 		35ECDEF02103B1B700308080 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ECDEEF2103B1B700308080 /* AppDelegate.swift */; };
 		35ECDEF22103B1B700308080 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ECDEF12103B1B700308080 /* ViewController.swift */; };
@@ -134,6 +135,7 @@
 		35B0168521517BD300B12506 /* TwoMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoMainView.swift; sourceTree = "<group>"; };
 		35B0168721517C4400B12506 /* AlertTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTwoView.swift; sourceTree = "<group>"; };
 		35BF9525216B2ACD0083EB13 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
+		35BF952C216B30FD0083EB13 /* ManagerGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerGroupView.swift; sourceTree = "<group>"; };
 		35CF88142154374900AB9067 /* LoginEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEnum.swift; sourceTree = "<group>"; };
 		35ECDEEC2103B1B700308080 /* Number.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Number.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35ECDEEF2103B1B700308080 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -211,11 +213,9 @@
 		354EA78E210C663B00D16A80 /* Group */ = {
 			isa = PBXGroup;
 			children = (
-				354EA78F210C665600D16A80 /* GroupCreate.storyboard */,
-				354EA791210C6A2500D16A80 /* GroupCreateViewController.swift */,
-				35572C1A212BEF6200A919C7 /* ManagerGroup.storyboard */,
-				35572C1E212BF1F000A919C7 /* ManagerCellTableViewCell.swift */,
-				35572C1C212BEF7000A919C7 /* ManagerGroupViewController.swift */,
+				35BF952B216B30850083EB13 /* Model */,
+				35BF952A216B30800083EB13 /* Controller */,
+				35BF9529216B30770083EB13 /* View */,
 			);
 			path = Group;
 			sourceTree = "<group>";
@@ -355,6 +355,33 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		35BF9529216B30770083EB13 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				35572C1A212BEF6200A919C7 /* ManagerGroup.storyboard */,
+				354EA78F210C665600D16A80 /* GroupCreate.storyboard */,
+				35572C1E212BF1F000A919C7 /* ManagerCellTableViewCell.swift */,
+				35BF952C216B30FD0083EB13 /* ManagerGroupView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		35BF952A216B30800083EB13 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				354EA791210C6A2500D16A80 /* GroupCreateViewController.swift */,
+				35572C1C212BEF7000A919C7 /* ManagerGroupViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		35BF952B216B30850083EB13 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		35CF88162154377300AB9067 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -385,9 +412,9 @@
 		35ECDEEE2103B1B700308080 /* Number */ = {
 			isa = PBXGroup;
 			children = (
-				35BF9523216AF4E00083EB13 /* Main */,
 				358AE5262136D741005B0454 /* Number.entitlements */,
 				356D84362135F90D00F653B2 /* GoogleService-Info.plist */,
+				35BF9523216AF4E00083EB13 /* Main */,
 				35ECDF0C2104759400308080 /* Home */,
 				35ECDF0721046E5F00308080 /* CodeNum */,
 				35ECDF012103B1CB00308080 /* Login */,
@@ -626,6 +653,7 @@
 				35572C24212C06BB00A919C7 /* NotSearchTableViewCell.swift in Sources */,
 				35572C21212C030800A919C7 /* AdminGroupViewController.swift in Sources */,
 				35444633212D69210075116C /* ProgressViewController.swift in Sources */,
+				35BF952D216B30FD0083EB13 /* ManagerGroupView.swift in Sources */,
 				35CF88152154374900AB9067 /* LoginEnum.swift in Sources */,
 				353EC8C4210A2BBF004081D1 /* AlbumViewController.swift in Sources */,
 				35ECDF15210476F200308080 /* HomeTableViewCell.swift in Sources */,

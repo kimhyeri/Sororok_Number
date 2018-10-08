@@ -1,68 +1,36 @@
 //
-//  ManagerGroupViewController.swift
+//  ManagerGroupView.swift
 //  Number
 //
-//  Created by hyerikim on 2018. 8. 21..
-//  Copyright © 2018년 nexters.number. All rights reserved.
+//  Created by hyerikim on 08/10/2018.
+//  Copyright © 2018 nexters.number. All rights reserved.
 //
 
-import UIKit
-import Alamofire
-import SwiftyJSON
+import Foundation
 
-class ManagerGroupViewController: UIViewController{
-
-    @IBOutlet weak var refreshButton: UIButton!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var codeLabel: UILabel!
-    @IBOutlet weak var changeCodeView: UIView!
-    
-    var manager :[String] = ["그룹 공유하기", "그룹 폭파"]
-    var member : [String] = ["그룹 공유하기", "그룹 나가기"]
-    
-    override func viewWillAppear(_ animated: Bool) {
-        getCodeNum()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+//MARK: manage default view
+extension ManagerGroupViewController {
+    func defualtView() {
+        tableView.delegate = self
+        tableView.dataSource = self
         
         self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "btnCommBackBl")
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "btnCommBackBl")
+        
         self.navigationController?.navigationBar.topItem?.title = ""
+        
         changeCodeView.clipsToBounds = true
         changeCodeView.layer.cornerRadius = 3
-        changeCodeView.clipsToBounds = true
-        tableView.delegate = self
-        tableView.dataSource = self
         
         if UserDefaults.standard.integer(forKey: "authority") == 0 {
             refreshButton.alpha = 0
             refreshButton.isEnabled = false
         }
-    }
-    
-    func getCodeNum(){
-        let parameter = [
-            "repositoryId" : ContactsViewController.repoId
-        ]
-        APICollection.sharedAPI.getRepoInfo(parameter: parameter, completion: { (result)-> (Void) in
-            self.codeLabel.text = result["code"].stringValue
-        })
-    }
-    
-    @IBAction func changeCodeButtonPressed(_ sender: Any) {
-        let parameter = [
-            "repositoryId" : ContactsViewController.repoId
-        ]
-        
-        APICollection.sharedAPI.updateRepo(parameter: parameter, completion: {
-            (result) -> (Void) in
-            self.codeLabel.text = result["groupCode"].stringValue
-        })
+
     }
 }
 
+//MARK: manage tableview
 extension ManagerGroupViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
@@ -86,20 +54,7 @@ extension ManagerGroupViewController : UITableViewDelegate, UITableViewDataSourc
             activity.popoverPresentationController?.sourceView = self.view
             self.present(activity, animated: true, completion: nil)
         }
-        
-/* 요건 버전2에 넣을꺼임
-        else if indexPath.row == 1 {
-            let storyboard = UIStoryboard.init(name: "Manager", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "ManageGroup")
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-        else if indexPath.row == 2 {
-            관리자 변경 비활성화 version1
-            let storyboard = UIStoryboard.init(name: "Manager", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "ChangeManager")
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-*/
+
         else if indexPath.row == 1 {
             switch UserDefaults.standard.integer(forKey: "authority") {
             case 0:
@@ -111,8 +66,22 @@ extension ManagerGroupViewController : UITableViewDelegate, UITableViewDataSourc
                 let storyboard = UIStoryboard.init(name: "Manager", bundle: nil)
                 let vc = storyboard.instantiateViewController(withIdentifier: "Delete")
                 vc.modalPresentationStyle = .overCurrentContext
-                self.present(vc, animated: false, completion: nil)            }            
+                self.present(vc, animated: false, completion: nil)            }
         }
     }
 }
 
+
+/* 요건 버전2에 넣을꺼임
+ else if indexPath.row == 1 {
+ let storyboard = UIStoryboard.init(name: "Manager", bundle: nil)
+ let vc = storyboard.instantiateViewController(withIdentifier: "ManageGroup")
+ self.navigationController?.pushViewController(vc, animated: true)
+ }
+ else if indexPath.row == 2 {
+ 관리자 변경 비활성화 version1
+ let storyboard = UIStoryboard.init(name: "Manager", bundle: nil)
+ let vc = storyboard.instantiateViewController(withIdentifier: "ChangeManager")
+ self.navigationController?.pushViewController(vc, animated: true)
+ }
+ */
