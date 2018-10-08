@@ -66,6 +66,9 @@
 		35BF952F216B331F0083EB13 /* GroupCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BF952E216B331F0083EB13 /* GroupCreateView.swift */; };
 		35BF9531216B33640083EB13 /* ManagerGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BF9530216B33640083EB13 /* ManagerGroupView.swift */; };
 		35BF9535216B363E0083EB13 /* AddressBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BF9534216B363E0083EB13 /* AddressBook.swift */; };
+		35BF953A216B38F10083EB13 /* DeleteGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BF9539216B38F10083EB13 /* DeleteGroupView.swift */; };
+		35BF953C216B39BF0083EB13 /* ManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BF953B216B39BF0083EB13 /* ManagerView.swift */; };
+		35BF953E216B39E90083EB13 /* AdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BF953D216B39E90083EB13 /* AdminView.swift */; };
 		35CF88152154374900AB9067 /* LoginEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF88142154374900AB9067 /* LoginEnum.swift */; };
 		35ECDEF02103B1B700308080 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ECDEEF2103B1B700308080 /* AppDelegate.swift */; };
 		35ECDEF22103B1B700308080 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ECDEF12103B1B700308080 /* ViewController.swift */; };
@@ -140,6 +143,9 @@
 		35BF952E216B331F0083EB13 /* GroupCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateView.swift; sourceTree = "<group>"; };
 		35BF9530216B33640083EB13 /* ManagerGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerGroupView.swift; sourceTree = "<group>"; };
 		35BF9534216B363E0083EB13 /* AddressBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBook.swift; sourceTree = "<group>"; };
+		35BF9539216B38F10083EB13 /* DeleteGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteGroupView.swift; sourceTree = "<group>"; };
+		35BF953B216B39BF0083EB13 /* ManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerView.swift; sourceTree = "<group>"; };
+		35BF953D216B39E90083EB13 /* AdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminView.swift; sourceTree = "<group>"; };
 		35CF88142154374900AB9067 /* LoginEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEnum.swift; sourceTree = "<group>"; };
 		35ECDEEC2103B1B700308080 /* Number.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Number.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35ECDEEF2103B1B700308080 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -246,10 +252,9 @@
 		354EA79B210C9BC200D16A80 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				354EA79C210C9BD300D16A80 /* ManagerViewController.swift */,
-				35572C20212C030800A919C7 /* AdminGroupViewController.swift */,
-				354EA79E210C9BDA00D16A80 /* Manager.storyboard */,
-				35325D4F212F52B000AC3897 /* DeleteGroupViewController.swift */,
+				35BF9538216B37C20083EB13 /* Model */,
+				35BF9537216B37BC0083EB13 /* Controller */,
+				35BF9536216B37B50083EB13 /* View */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -402,6 +407,34 @@
 				35444632212D69210075116C /* ProgressViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		35BF9536216B37B50083EB13 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				354EA79E210C9BDA00D16A80 /* Manager.storyboard */,
+				35BF9539216B38F10083EB13 /* DeleteGroupView.swift */,
+				35BF953B216B39BF0083EB13 /* ManagerView.swift */,
+				35BF953D216B39E90083EB13 /* AdminView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		35BF9537216B37BC0083EB13 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				35572C20212C030800A919C7 /* AdminGroupViewController.swift */,
+				354EA79C210C9BD300D16A80 /* ManagerViewController.swift */,
+				35325D4F212F52B000AC3897 /* DeleteGroupViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		35BF9538216B37C20083EB13 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		35CF88162154377300AB9067 /* Controller */ = {
@@ -672,7 +705,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				35572C1D212BEF7000A919C7 /* ManagerGroupViewController.swift in Sources */,
+				35BF953E216B39E90083EB13 /* AdminView.swift in Sources */,
 				35572C24212C06BB00A919C7 /* NotSearchTableViewCell.swift in Sources */,
+				35BF953C216B39BF0083EB13 /* ManagerView.swift in Sources */,
 				35572C21212C030800A919C7 /* AdminGroupViewController.swift in Sources */,
 				35444633212D69210075116C /* ProgressViewController.swift in Sources */,
 				35CF88152154374900AB9067 /* LoginEnum.swift in Sources */,
@@ -693,6 +728,7 @@
 				3565D445212837CA000D70D2 /* SearchView.swift in Sources */,
 				35325D4C212F08F600AC3897 /* Helper.swift in Sources */,
 				354E6CEB2130BD0700C6C526 /* Register.swift in Sources */,
+				35BF953A216B38F10083EB13 /* DeleteGroupView.swift in Sources */,
 				35325D48212E9DEB00AC3897 /* Index.swift in Sources */,
 				355BB7532129E625009A7837 /* LogoutViewController.swift in Sources */,
 				355B577A214070390085028E /* DetailMember.swift in Sources */,

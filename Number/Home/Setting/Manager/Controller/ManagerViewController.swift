@@ -17,12 +17,7 @@ class ManagerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        becomeManagerView.layer.cornerRadius = becomeManagerView.frame.width/2
-        mentView.layer.cornerRadius = 10
-        beforeManager.layer.cornerRadius = beforeManager.frame.width/2
-        myImage.layer.cornerRadius = myImage.frame.width/2
-
-        self.navigationController?.navigationBar.topItem?.title = ""
+        defaultView()
     }
 
 }
