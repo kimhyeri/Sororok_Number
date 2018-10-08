@@ -62,6 +62,7 @@
 		35B016822151087400B12506 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B016812151087400B12506 /* LoginView.swift */; };
 		35B0168621517BD300B12506 /* TwoMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B0168521517BD300B12506 /* TwoMainView.swift */; };
 		35B0168821517C4400B12506 /* AlertTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B0168721517C4400B12506 /* AlertTwoView.swift */; };
+		35BF9526216B2ACD0083EB13 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BF9525216B2ACD0083EB13 /* SideMenuView.swift */; };
 		35CF88152154374900AB9067 /* LoginEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF88142154374900AB9067 /* LoginEnum.swift */; };
 		35ECDEF02103B1B700308080 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ECDEEF2103B1B700308080 /* AppDelegate.swift */; };
 		35ECDEF22103B1B700308080 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ECDEF12103B1B700308080 /* ViewController.swift */; };
@@ -132,6 +133,7 @@
 		35B016812151087400B12506 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		35B0168521517BD300B12506 /* TwoMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoMainView.swift; sourceTree = "<group>"; };
 		35B0168721517C4400B12506 /* AlertTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTwoView.swift; sourceTree = "<group>"; };
+		35BF9525216B2ACD0083EB13 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
 		35CF88142154374900AB9067 /* LoginEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEnum.swift; sourceTree = "<group>"; };
 		35ECDEEC2103B1B700308080 /* Number.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Number.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35ECDEEF2103B1B700308080 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 		354EA793210C7CDE00D16A80 /* SideMenu */ = {
 			isa = PBXGroup;
 			children = (
+				35BF9524216B2ABA0083EB13 /* View */,
 				35CF88162154377300AB9067 /* Controller */,
 				355A9464213B26AC005AD348 /* Model */,
 			);
@@ -342,6 +345,14 @@
 				354E6CE8213080CB00C6C526 /* APICollection.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		35BF9524216B2ABA0083EB13 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				35BF9525216B2ACD0083EB13 /* SideMenuView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		35CF88162154377300AB9067 /* Controller */ = {
@@ -651,6 +662,7 @@
 				354EA79A210C900900D16A80 /* DeleteViewController.swift in Sources */,
 				356125E9213C49340040985D /* UserInfoSet.swift in Sources */,
 				35B016822151087400B12506 /* LoginView.swift in Sources */,
+				35BF9526216B2ACD0083EB13 /* SideMenuView.swift in Sources */,
 				351AB63B2105C16E0017D41A /* MyPageViewController.swift in Sources */,
 				35325D4E212F0E4500AC3897 /* ContactNaviViewController.swift in Sources */,
 			);
@@ -805,7 +817,10 @@
 				);
 				INFOPLIST_FILE = Number/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -864,7 +879,10 @@
 				);
 				INFOPLIST_FILE = Number/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
