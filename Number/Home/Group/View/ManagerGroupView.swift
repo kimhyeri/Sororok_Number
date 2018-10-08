@@ -26,7 +26,7 @@ extension ManagerGroupViewController {
             refreshButton.alpha = 0
             refreshButton.isEnabled = false
         }
-
+        
     }
 }
 
@@ -54,7 +54,7 @@ extension ManagerGroupViewController : UITableViewDelegate, UITableViewDataSourc
             activity.popoverPresentationController?.sourceView = self.view
             self.present(activity, animated: true, completion: nil)
         }
-
+            
         else if indexPath.row == 1 {
             switch UserDefaults.standard.integer(forKey: "authority") {
             case 0:

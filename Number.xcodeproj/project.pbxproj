@@ -63,7 +63,9 @@
 		35B0168621517BD300B12506 /* TwoMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B0168521517BD300B12506 /* TwoMainView.swift */; };
 		35B0168821517C4400B12506 /* AlertTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B0168721517C4400B12506 /* AlertTwoView.swift */; };
 		35BF9526216B2ACD0083EB13 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BF9525216B2ACD0083EB13 /* SideMenuView.swift */; };
-		35BF952D216B30FD0083EB13 /* ManagerGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BF952C216B30FD0083EB13 /* ManagerGroupView.swift */; };
+		35BF952F216B331F0083EB13 /* GroupCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BF952E216B331F0083EB13 /* GroupCreateView.swift */; };
+		35BF9531216B33640083EB13 /* ManagerGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BF9530216B33640083EB13 /* ManagerGroupView.swift */; };
+		35BF9535216B363E0083EB13 /* AddressBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BF9534216B363E0083EB13 /* AddressBook.swift */; };
 		35CF88152154374900AB9067 /* LoginEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CF88142154374900AB9067 /* LoginEnum.swift */; };
 		35ECDEF02103B1B700308080 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ECDEEF2103B1B700308080 /* AppDelegate.swift */; };
 		35ECDEF22103B1B700308080 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ECDEF12103B1B700308080 /* ViewController.swift */; };
@@ -135,7 +137,9 @@
 		35B0168521517BD300B12506 /* TwoMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoMainView.swift; sourceTree = "<group>"; };
 		35B0168721517C4400B12506 /* AlertTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTwoView.swift; sourceTree = "<group>"; };
 		35BF9525216B2ACD0083EB13 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
-		35BF952C216B30FD0083EB13 /* ManagerGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerGroupView.swift; sourceTree = "<group>"; };
+		35BF952E216B331F0083EB13 /* GroupCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateView.swift; sourceTree = "<group>"; };
+		35BF9530216B33640083EB13 /* ManagerGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerGroupView.swift; sourceTree = "<group>"; };
+		35BF9534216B363E0083EB13 /* AddressBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBook.swift; sourceTree = "<group>"; };
 		35CF88142154374900AB9067 /* LoginEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEnum.swift; sourceTree = "<group>"; };
 		35ECDEEC2103B1B700308080 /* Number.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Number.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35ECDEEF2103B1B700308080 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -204,8 +208,8 @@
 		353EC8C7210AF0AE004081D1 /* AddressBook */ = {
 			isa = PBXGroup;
 			children = (
-				35444630212D69180075116C /* Progress.storyboard */,
-				35444632212D69210075116C /* ProgressViewController.swift */,
+				35BF9533216B347D0083EB13 /* Controller */,
+				35BF9532216B34790083EB13 /* View */,
 			);
 			path = AddressBook;
 			sourceTree = "<group>";
@@ -361,7 +365,8 @@
 				35572C1A212BEF6200A919C7 /* ManagerGroup.storyboard */,
 				354EA78F210C665600D16A80 /* GroupCreate.storyboard */,
 				35572C1E212BF1F000A919C7 /* ManagerCellTableViewCell.swift */,
-				35BF952C216B30FD0083EB13 /* ManagerGroupView.swift */,
+				35BF952E216B331F0083EB13 /* GroupCreateView.swift */,
+				35BF9530216B33640083EB13 /* ManagerGroupView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -380,6 +385,23 @@
 			children = (
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		35BF9532216B34790083EB13 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				35444630212D69180075116C /* Progress.storyboard */,
+				35BF9534216B363E0083EB13 /* AddressBook.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		35BF9533216B347D0083EB13 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				35444632212D69210075116C /* ProgressViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		35CF88162154377300AB9067 /* Controller */ = {
@@ -653,7 +675,6 @@
 				35572C24212C06BB00A919C7 /* NotSearchTableViewCell.swift in Sources */,
 				35572C21212C030800A919C7 /* AdminGroupViewController.swift in Sources */,
 				35444633212D69210075116C /* ProgressViewController.swift in Sources */,
-				35BF952D216B30FD0083EB13 /* ManagerGroupView.swift in Sources */,
 				35CF88152154374900AB9067 /* LoginEnum.swift in Sources */,
 				353EC8C4210A2BBF004081D1 /* AlbumViewController.swift in Sources */,
 				35ECDF15210476F200308080 /* HomeTableViewCell.swift in Sources */,
@@ -677,6 +698,8 @@
 				355B577A214070390085028E /* DetailMember.swift in Sources */,
 				35572C27212C342500A919C7 /* SettingViewController.swift in Sources */,
 				354EA79D210C9BD300D16A80 /* ManagerViewController.swift in Sources */,
+				35BF9535216B363E0083EB13 /* AddressBook.swift in Sources */,
+				35BF952F216B331F0083EB13 /* GroupCreateView.swift in Sources */,
 				355B5777213FE4410085028E /* ToastLabel.swift in Sources */,
 				354E6CE721307D3C00C6C526 /* GetUserInfo.swift in Sources */,
 				35325D50212F52B000AC3897 /* DeleteGroupViewController.swift in Sources */,
@@ -686,6 +709,7 @@
 				3560EDD72141293B0021172D /* Notification.swift in Sources */,
 				35ECDEF22103B1B700308080 /* ViewController.swift in Sources */,
 				354E6CE9213080CB00C6C526 /* APICollection.swift in Sources */,
+				35BF9531216B33640083EB13 /* ManagerGroupView.swift in Sources */,
 				35ECDEF02103B1B700308080 /* AppDelegate.swift in Sources */,
 				354EA79A210C900900D16A80 /* DeleteViewController.swift in Sources */,
 				356125E9213C49340040985D /* UserInfoSet.swift in Sources */,

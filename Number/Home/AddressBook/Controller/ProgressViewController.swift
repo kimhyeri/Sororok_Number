@@ -24,10 +24,6 @@ class ProgressViewController: UIViewController {
         defaultView()
     }
     
-    func defaultView() {
-        iconView.layer.cornerRadius = iconView.frame.width/2
-    }
-    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -39,7 +35,6 @@ class ProgressViewController: UIViewController {
     @objc func contactSave(_ notification: Notification){
         print(notification)
         let store = CNContactStore()
-
         let userDict = notification.userInfo as! NSDictionary
         let names = userDict.allValues
         totalLabel.text = String(names.count)

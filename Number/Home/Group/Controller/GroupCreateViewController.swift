@@ -26,21 +26,7 @@ class GroupCreateViewController: UIViewController , UIImagePickerControllerDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         defaultView()
-    }
-    
-    func defaultView(){
-        initNav()
-        self.title = "그룹생성"
-        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-        let saveButton = UIBarButtonItem(title: "저장",  style: .plain, target: self, action: #selector(self.saveButton))
-        self.navigationItem.rightBarButtonItem = saveButton
-        groupCode.layer.cornerRadius = 10
-        groupImage.backgroundColor = .black
-        groupImage.layer.cornerRadius = self.groupImage.frame.width/2
-        groupView.layer.cornerRadius = 10
-        
     }
     
     func getCode() {
@@ -49,7 +35,6 @@ class GroupCreateViewController: UIViewController , UIImagePickerControllerDeleg
         })
     }
     
-    //Create repositroy
     @objc func saveButton(){
       
         let url = "http://45.63.120.140:40005/repository/create"
@@ -60,8 +45,8 @@ class GroupCreateViewController: UIViewController , UIImagePickerControllerDeleg
         
         let name = groupNameText.text!
         let code = codeLabel.text!
-        let memberId = UserDefaults.standard.string(forKey: "memberId")
         let extraInfo = groupInfoText.text!
+        let memberId = UserDefaults.standard.string(forKey: "memberId")
 //        let image = imageChange() as Data
         
         Alamofire.upload(
@@ -123,7 +108,6 @@ class GroupCreateViewController: UIViewController , UIImagePickerControllerDeleg
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         self.groupImage.image = info[UIImagePickerControllerOriginalImage] as? UIImage
-        print(info[UIImagePickerControllerOriginalImage])
         picker.dismiss(animated: false)
     }
     
