@@ -91,7 +91,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="uv0-Zy-QAU">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="ZtT-KK-lOO">
+                        <barButtonItem key="leftBarButtonItem" enabled="NO" style="plain" id="ZtT-KK-lOO">
                             <inset key="largeContentSizeImageInsets" minX="0.0" minY="0.0" maxX="1" maxY="0.0"/>
                             <button key="customView" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="db4-Av-abk">
                                 <rect key="frame" x="16" y="4.5" width="83" height="35"/>

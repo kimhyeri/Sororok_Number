@@ -16,6 +16,10 @@ class DeleteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        defaultView()
+    }
+    
+    func defaultView() {
         deleteView.layer.cornerRadius = 10
     }
     
