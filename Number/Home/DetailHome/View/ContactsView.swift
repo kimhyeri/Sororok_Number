@@ -7,9 +7,11 @@
 //
 
 import Foundation
+import Kingfisher
 
 //MARK: default view
 extension ContactsViewController {
+    
     func defaultView(){
         tableView.delegate = self
         tableView.dataSource = self
@@ -93,19 +95,18 @@ extension ContactsViewController {
             cell.nameLabel.text = matchData[indexPath.section]![indexPath.row].name
             cell.phoneLabel.text = matchData[indexPath.section]![indexPath.row].phone
             cell.userImage.image = UIImage(named: "girl")
-            //            DispatchQueue.global().async {
-            //                guard let url = URL(string: APICollection.sharedAPI.imageUrl + self.matchData[indexPath.section]![indexPath.row].imageName) else {return}
-            //                guard let data = try? Data(contentsOf: url) else {return}
-            //
-            //                DispatchQueue.main.async {
-            //                    if let index : IndexPath = tableView.indexPath(for: cell) {
-            //                        if index.row == indexPath.row {
-            //                            cell.userImage?.image = UIImage(data: data)
-            //                            cell.userImage?.layer.cornerRadius = cell.userImage.frame.width / 2
-            //                        }
-            //                    }
-            //                }
-            //            }
+            DispatchQueue.global().async {
+                guard let url = URL(string: APICollection.sharedAPI.imageUrl + self.matchData[indexPath.section]![indexPath.row].imageName) else {return}
+                
+                DispatchQueue.main.async {
+                    if let index : IndexPath = tableView.indexPath(for: cell) {
+                        if index.row == indexPath.row {
+                            cell.userImage.kf.setImage(with: url)
+                            cell.userImage?.layer.cornerRadius = cell.userImage.frame.width / 2
+                        }
+                    }
+                }
+            }
         }
         return cell
     }
@@ -151,12 +152,10 @@ extension ContactsViewController {
 extension ContactsViewController {
     
     public func numberOfSections(in tableView: UITableView) -> Int {
-        
         return index.arrIndexSection.count
     }
     
     public func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        
         return self.index.arrIndexSection as? [String]
     }
     
