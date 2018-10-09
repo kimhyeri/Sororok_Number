@@ -50,6 +50,8 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
         
         APICollection.sharedAPI.getRepoMember(parameter: parameter) { (result) -> (Void) in
             self.memberList = DetailMemberSet(rawJson: result)
+            self.titleLabel.text = ContactsViewController.repoName
+
             if let count = self.memberList?.memberList.count {
                 self.totalLabel.text = "총 \(count)명"
                 self.sortName(count: count)
@@ -175,7 +177,6 @@ extension ContactsViewController {
         
         Alamofire.request("http://45.63.120.140:40005/repository/memberSearch", method: .get, parameters: parameter).responseJSON { response in
             let json = JSON(response.result.value)
-            print(json)
             switch response.result {
             case .success:
                 print("search success")

@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="196" width="375" height="471"/>
                                 <subviews>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vem-yw-3bo">
-                                        <rect key="frame" x="67" y="306" width="240" height="60"/>
+                                        <rect key="frame" x="67" y="266" width="240" height="60"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
                                         <state key="normal">
@@ -33,14 +33,14 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28B-of-dkt">
-                                        <rect key="frame" x="67" y="306" width="240" height="60"/>
+                                        <rect key="frame" x="67" y="266" width="240" height="60"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                                         <color key="textColor" red="0.16862745098039217" green="0.1803921568627451" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iBF-T2-uUP">
-                                        <rect key="frame" x="117" y="382" width="141" height="29"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <rect key="frame" x="117" y="342" width="141" height="29"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="14"/>
                                         <state key="normal" title="탭하여 그룹코드 복사하기">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -49,28 +49,28 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="그룹 코드번호" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nyR-vr-sHN">
-                                        <rect key="frame" x="67" y="269" width="93" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="67" y="230" width="87.5" height="20"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="16"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LHY-ni-TDY">
-                                        <rect key="frame" x="67" y="76" width="240" height="177"/>
+                                        <rect key="frame" x="67" y="37" width="240" height="177"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="그룹설명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9bq-j3-SVt">
-                                                <rect key="frame" x="0.0" y="121" width="59" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="0.0" y="122" width="55.5" height="20"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="16"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="그룹명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xfP-96-7aU">
-                                                <rect key="frame" x="0.0" y="46" width="45" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="0.0" y="48" width="42" height="20"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="16"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kvH-aC-Zdy">
-                                                <rect key="frame" x="0.0" y="75" width="240" height="2"/>
+                                                <rect key="frame" x="0.0" y="76" width="240" height="2"/>
                                                 <color key="backgroundColor" red="0.36078431370000003" green="0.3803921569" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="2" id="fKu-9v-p5A"/>
@@ -91,18 +91,18 @@
                                                     <constraint firstAttribute="height" constant="40" id="iRJ-ZQ-X4i"/>
                                                 </constraints>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="9gX-lw-xnS">
-                                                <rect key="frame" x="72" y="35" width="168" height="40"/>
+                                                <rect key="frame" x="72" y="36" width="168" height="40"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="168" id="RQg-gr-2hK"/>
                                                     <constraint firstAttribute="height" constant="40" id="qqv-Xp-j42"/>
                                                 </constraints>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
@@ -135,7 +135,7 @@
                                     <constraint firstItem="28B-of-dkt" firstAttribute="top" secondItem="Vem-yw-3bo" secondAttribute="top" id="KZz-hy-636"/>
                                     <constraint firstItem="iBF-T2-uUP" firstAttribute="centerX" secondItem="K76-7k-dzQ" secondAttribute="centerX" id="OaL-eZ-sq7"/>
                                     <constraint firstItem="28B-of-dkt" firstAttribute="trailing" secondItem="Vem-yw-3bo" secondAttribute="trailing" id="QdS-vA-wcX"/>
-                                    <constraint firstAttribute="bottom" secondItem="iBF-T2-uUP" secondAttribute="bottom" constant="60" id="WEW-W6-4mO"/>
+                                    <constraint firstAttribute="bottom" secondItem="iBF-T2-uUP" secondAttribute="bottom" constant="100" id="WEW-W6-4mO"/>
                                     <constraint firstItem="Vem-yw-3bo" firstAttribute="top" secondItem="nyR-vr-sHN" secondAttribute="bottom" constant="16" id="a6x-j4-h5z"/>
                                     <constraint firstItem="Vem-yw-3bo" firstAttribute="leading" secondItem="K76-7k-dzQ" secondAttribute="leading" constant="67" id="aqV-nn-Oq5"/>
                                     <constraint firstItem="28B-of-dkt" firstAttribute="bottom" secondItem="Vem-yw-3bo" secondAttribute="bottom" id="h7r-ij-EoO"/>
