@@ -46,16 +46,14 @@ class MyPageViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         guard numText.text?.count != 0 else { showToast(message: "번호 입력해주세요"); return}
         guard nameText.text?.count != 0 else { showToast(message: "이름 입력해주세요"); return}
         guard emailText.text?.count != 0 else { showToast(message: "이메일 입력해주세요"); return}
-//        guard myImage.image != nil else { showToast(message: "사진 추가해주세요"); return}
+        guard myImage.image != nil else { showToast(message: "사진 추가해주세요"); return}
         
         let url = URL(string: "http://45.63.120.140:40005/member/update")
         
-        //이미지 처리 해줘야 함
         let phone = numText.text!
         let name = nameText.text!
         let email = emailText.text!
         let memberId = UserDefaults.standard.string(forKey: "memberId")
-//        let image1 = UIImagePNGRepresentation(self.myImage.image!)
         let image = imageChange() as Data
         
         Alamofire.upload(
@@ -109,30 +107,21 @@ class MyPageViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         textView.frame = CGRect(x: 0, y: 65, width: self.view.frame.width, height: textView.frame.height)
     }
     
-    //    사용자 정보 들고오기
     func checkLogin(){
         let memberId : Parameters = [
             "memberId" : UserDefaults.standard.integer(forKey: "memberId")
         ]
         
         APICollection.sharedAPI.checkMemberInfo(parameter: memberId, completion: { (result) -> (Void) in
-            print(result)
             self.userData = UserInfoSet(rawJson: result)
-    
+
             UserDefaults.standard.set(self.userData.email, forKey: "email")
             UserDefaults.standard.set(self.userData.name, forKey: "name")
             UserDefaults.standard.set(self.userData.phone, forKey: "phone")
-//            UserDefaults.standard.set(self.userData.imageName, forKey: "imageName")
+            UserDefaults.standard.set(self.userData.imageName, forKey: "imageName")
             UserDefaults.standard.synchronize()
         })
         
-    }
-    
-    func imageChange() -> NSData {
-        let image : UIImage = myImage.image!
-        let imageData:NSData = UIImagePNGRepresentation(image)! as NSData
-        let strBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
-        return imageData
     }
     
     @IBAction func albumButtonPressed(_ sender: Any) {
@@ -147,28 +136,18 @@ class MyPageViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         picker.dismiss(animated: false)
     }
     
+    func imageChange() -> NSData {
+        let image : UIImage = myImage.image!
+        let imageData:NSData = UIImagePNGRepresentation(image)! as NSData
+        let strBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
+        return imageData
+    }
+    
     @IBAction func textFieldChangeButton(_ sender: Any) {
         viewUp()
         nameText.isUserInteractionEnabled = true
         numText.isUserInteractionEnabled = true
         emailText.isUserInteractionEnabled = true
-    }
-}
-
-extension MyPageViewController : AlbumSelectionDelegate{
-    func didSelectImage(asset: PHAsset) {
-        var img: UIImage?
-        let manager = PHImageManager.default()
-        let options = PHImageRequestOptions()
-        options.version = .original
-        options.isSynchronous = true
-        manager.requestImageData(for: asset, options: options) { data, _, _, _ in
-            
-            if let data = data {
-                img = UIImage(data: data)
-            }
-        }
-        myImage.image = img
     }
 }
 

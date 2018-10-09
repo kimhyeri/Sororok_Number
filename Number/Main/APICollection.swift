@@ -94,6 +94,7 @@ class APICollection{
                 break
             case .failure:
                 print("fail")
+                
                 break
             }
         }
@@ -128,7 +129,6 @@ class APICollection{
                 break
             case .failure:
                 print("fail")
-                
                 break
             }
         }

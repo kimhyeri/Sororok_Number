@@ -119,20 +119,3 @@ class GroupCreateViewController: UIViewController , UIImagePickerControllerDeleg
         UIPasteboard.general.string = textToCopy
     }
 }
-
-extension GroupCreateViewController : AlbumSelectionDelegate{
-    func didSelectImage(asset: PHAsset) {
-        var img: UIImage?
-        let manager = PHImageManager.default()
-        let options = PHImageRequestOptions()
-        options.version = .original
-        options.isSynchronous = true
-        manager.requestImageData(for: asset, options: options) { data, _, _, _ in
-            
-            if let data = data {
-                img = UIImage(data: data)
-            }
-        }
-        groupImage.image = img
-    }
-}

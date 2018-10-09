@@ -15,8 +15,6 @@
 		35325D4C212F08F600AC3897 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35325D4B212F08F600AC3897 /* Helper.swift */; };
 		35325D4E212F0E4500AC3897 /* ContactNaviViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35325D4D212F0E4500AC3897 /* ContactNaviViewController.swift */; };
 		35325D50212F52B000AC3897 /* DeleteGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35325D4F212F52B000AC3897 /* DeleteGroupViewController.swift */; };
-		353EC8C4210A2BBF004081D1 /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353EC8C3210A2BBF004081D1 /* AlbumViewController.swift */; };
-		353EC8C6210A3169004081D1 /* AlbumUICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353EC8C5210A3169004081D1 /* AlbumUICollectionViewCell.swift */; };
 		35444631212D69180075116C /* Progress.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35444630212D69180075116C /* Progress.storyboard */; };
 		35444633212D69210075116C /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35444632212D69210075116C /* ProgressViewController.swift */; };
 		354E6CE721307D3C00C6C526 /* GetUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354E6CE621307D3C00C6C526 /* GetUserInfo.swift */; };
@@ -94,8 +92,6 @@
 		35325D4B212F08F600AC3897 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		35325D4D212F0E4500AC3897 /* ContactNaviViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactNaviViewController.swift; sourceTree = "<group>"; };
 		35325D4F212F52B000AC3897 /* DeleteGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteGroupViewController.swift; sourceTree = "<group>"; };
-		353EC8C3210A2BBF004081D1 /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
-		353EC8C5210A3169004081D1 /* AlbumUICollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumUICollectionViewCell.swift; sourceTree = "<group>"; };
 		35444630212D69180075116C /* Progress.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Progress.storyboard; sourceTree = "<group>"; };
 		35444632212D69210075116C /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
 		354E6CE621307D3C00C6C526 /* GetUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserInfo.swift; sourceTree = "<group>"; };
@@ -492,7 +488,6 @@
 			isa = PBXGroup;
 			children = (
 				351AB6382105C1570017D41A /* MyPage.storyboard */,
-				353EC8C5210A3169004081D1 /* AlbumUICollectionViewCell.swift */,
 				35BF954D216B40D00083EB13 /* MyPageView.swift */,
 			);
 			path = View;
@@ -501,7 +496,6 @@
 		35BF9549216B3F570083EB13 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				353EC8C3210A2BBF004081D1 /* AlbumViewController.swift */,
 				351AB63A2105C16E0017D41A /* MyPageViewController.swift */,
 			);
 			path = Controller;
@@ -787,10 +781,8 @@
 				35572C21212C030800A919C7 /* AdminGroupViewController.swift in Sources */,
 				35444633212D69210075116C /* ProgressViewController.swift in Sources */,
 				35CF88152154374900AB9067 /* LoginEnum.swift in Sources */,
-				353EC8C4210A2BBF004081D1 /* AlbumViewController.swift in Sources */,
 				35ECDF15210476F200308080 /* HomeTableViewCell.swift in Sources */,
 				35B0168621517BD300B12506 /* TwoMainView.swift in Sources */,
-				353EC8C6210A3169004081D1 /* AlbumUICollectionViewCell.swift in Sources */,
 				355A9466213B26C5005AD348 /* HistoryData.swift in Sources */,
 				355B5772213FCC160085028E /* repoList.swift in Sources */,
 				3556196A21071EDF009CC356 /* DetailHomeTableViewCell.swift in Sources */,
