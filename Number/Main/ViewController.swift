@@ -87,7 +87,7 @@ class ViewController: UIViewController{
     }
     
     func getAppDelegate() -> AppDelegate!{
-        return UIApplication.shared.delegate as! AppDelegate
+        return (UIApplication.shared.delegate as! AppDelegate)
     }
     
     func changeView(){

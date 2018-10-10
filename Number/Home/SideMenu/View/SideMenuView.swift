@@ -11,6 +11,10 @@ import Foundation
 //MARK: manage tableview
 extension SideMenuTableViewController {
     
+    func defaultView() {
+        tableView.rowHeight = UITableViewAutomaticDimension
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -31,7 +35,7 @@ extension SideMenuTableViewController {
             cell.iconImage.image = UIImage(named: "icnNoticeEmpty")
             cell.news.text = "최근 소식이 없습니다."
             cell.newsTimeLabel.text = " "
-        }else {
+        } else {
             cell.iconImage.image = UIImage(named: "icnNotiNotice")
             cell.news.text = self.historyData?.historyList[indexPath.row].content
             cell.newsTimeLabel.text = self.historyData?.historyList[indexPath.row].date

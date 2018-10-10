@@ -16,8 +16,8 @@ class SideMenuTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        defaultView()
         loadData(memberId: UserDefaults.standard.integer(forKey: "memberId"))
-        tableView.rowHeight = UITableViewAutomaticDimension
     }
     
     @IBAction func exitButtonPressed(_ sender: Any) {

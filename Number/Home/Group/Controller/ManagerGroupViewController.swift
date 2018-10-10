@@ -29,24 +29,24 @@ class ManagerGroupViewController: UIViewController{
         defualtView()
     }
     
-    func getCodeNum(){
-        let parameter = [
-            "repositoryId" : ContactsViewController.repoId
-        ]
-        
-        APICollection.sharedAPI.getRepoInfo(parameter: parameter, completion: { (result)-> (Void) in
-            self.codeLabel.text = result["code"].stringValue
-        })
-    }
-    
     @IBAction func changeCodeButtonPressed(_ sender: Any) {
         let parameter = [
             "repositoryId" : ContactsViewController.repoId
         ]
         
-        APICollection.sharedAPI.updateRepo(parameter: parameter, completion: {
+        APICollection.sharedAPI.updateRepo(parameter: parameter as Parameters, completion: {
             (result) -> (Void) in
             self.codeLabel.text = result["groupCode"].stringValue
+        })
+    }
+    
+    func getCodeNum(){
+        let parameter = [
+            "repositoryId" : ContactsViewController.repoId
+        ]
+        
+        APICollection.sharedAPI.getRepoInfo(parameter: parameter as Parameters, completion: { (result)-> (Void) in
+            self.codeLabel.text = result["code"].stringValue
         })
     }
 }

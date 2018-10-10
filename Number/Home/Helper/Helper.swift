@@ -9,6 +9,7 @@
 import Foundation
 
 extension UIViewController {
+    
     func initNav(){
         self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "btnCommBackWh")
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "btnCommBackWh")

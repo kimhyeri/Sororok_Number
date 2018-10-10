@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,GIDSignInUIDelegate{
         return true
     }
     
-    func application(application: UIApplication,
+    private func application(application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         var configureError: NSError?
         assert(configureError == nil, "Error configuring Google services: \(configureError)")

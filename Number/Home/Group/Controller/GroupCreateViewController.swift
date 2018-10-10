@@ -102,7 +102,7 @@ class GroupCreateViewController: UIViewController , UIImagePickerControllerDeleg
     func imageChange() -> NSData {
         let image : UIImage = groupImage.image!
         let imageData:NSData = UIImagePNGRepresentation(image)! as NSData
-        let strBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
+        _ = imageData.base64EncodedString(options: .lineLength64Characters)
         return imageData
     }
     

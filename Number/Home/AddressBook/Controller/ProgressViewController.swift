@@ -64,8 +64,7 @@ class ProgressViewController: UIViewController {
                         self.present(vc, animated: true, completion: nil)
                     }
                 }
-                catch
-                {
+                catch{
                     showToast(message: "저장 실패")
                 }
             }

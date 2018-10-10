@@ -16,7 +16,7 @@ class APICollection{
     let imageUrl = "http://45.63.120.140:40005/sororok/images/"
     
     func registeredCheck(parameters: Parameters ,completion: @escaping (_ result: JSON) -> (Void)){
-        Alamofire.request("\(url)member/login", method: .post, parameters: parameters as? [String: Any], encoding: JSONEncoding.default, headers: [:])
+        Alamofire.request("\(url)member/login", method: .post, parameters: parameters as [String: Any], encoding: JSONEncoding.default, headers: [:])
             .responseJSON { response in
                 let json = JSON(response.result.value)
                 print(json)
@@ -32,7 +32,7 @@ class APICollection{
     }
     
     func register(parameters: Parameters, completion: @escaping (_ result: JSON) -> (Void)){
-        Alamofire.request("\(url)member/join", method: .put, parameters: parameters as? [String:Any], encoding: JSONEncoding.default).responseJSON {
+        Alamofire.request("\(url)member/join", method: .put, parameters: parameters as [String:Any], encoding: JSONEncoding.default).responseJSON {
             response in
             let json = JSON(response.result.value)
             print(json)
@@ -51,7 +51,6 @@ class APICollection{
     func checkMemberInfo(parameter: Parameters, completion: @escaping (_ result: JSON) -> (Void)){
         
         Alamofire.request("\(url)member/info", method: .get, parameters: parameter).responseJSON {
-            
             response in
             let json = JSON(response.result.value)
             print(json)
