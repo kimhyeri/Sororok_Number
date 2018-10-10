@@ -36,6 +36,7 @@ class SideMenuTableViewController: UITableViewController {
     }
 }
 
+//MARK: sidemenu tableview cell
 class SideMenuCell: UITableViewCell {
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var news: UILabel!

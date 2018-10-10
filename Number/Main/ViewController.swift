@@ -18,6 +18,7 @@ class ViewController: UIViewController{
     @IBOutlet weak var google: UIButton!
     @IBOutlet weak var naver: UIButton!
     @IBOutlet weak var kakao: UIButton!
+    
     var userData : UserInfoSet!
     
     override func viewDidLoad() {
@@ -26,64 +27,6 @@ class ViewController: UIViewController{
         GIDSignIn.sharedInstance().delegate = self
         changeView()
     }
-    
-    func getAppDelegate() -> AppDelegate!{
-        return UIApplication.shared.delegate as! AppDelegate
-    }
-    
-    func changeView(){
-        google.layer.cornerRadius = 10
-        naver.layer.cornerRadius = 10
-        kakao.layer.cornerRadius = 10
-    }
-    
-    func goNextPage(param:Param){
-        let st = UIStoryboard.init(name: "Login", bundle: nil)
-        let nv = st.instantiateViewController(withIdentifier: "Login") as! LoginViewController
-        nv.param = param
-        self.present(nv, animated: false, completion: nil)
-    }
-    
-    //로그인 했는지 체크하기
-    func checkLogin(type: String){
-        let body : Parameters = [
-            "type" : type,
-            "uid" : UserInfo.getUid() ,
-        ]
-        
-        Alamofire.request("http://45.63.120.140:40005/member/login", method: .post, parameters: body as? [String: Any], encoding: JSONEncoding.default, headers: [:])
-            .responseJSON { response in
-                let json = JSON(response.result.value)
-                print("json: \(json)")
-                switch response.result {
-                case .success:
-                    print("success")
-                    break
-                case .failure:
-                    print("fail")
-                    break
-                }
-        }
-    }
-    
-    
-//    사용자 정보 들고오기
-//    func checkLogin(memberId: Int){
-//        let memberId : Parameters = [
-//            "memberId" : memberId
-//            ]
-//
-//        APICollection.sharedAPI.checkMemberInfo(parameter: memberId, completion: { (result) -> (Void) in
-//
-//            self.userData = UserInfoSet(rawJson: result)
-//            UserDefaults.standard.set(self.userData.email, forKey: "email")
-//            UserDefaults.standard.set(self.userData.name, forKey: "name")
-//            UserDefaults.standard.set(self.userData.phone, forKey: "phone")
-//            UserDefaults.standard.set(self.userData.imageName, forKey: "imageName")
-//            UserDefaults.standard.synchronize()
-//        })
-//
-//    }
     
     @IBAction func naverButtonPressed(_ sender: UIButton){
         let loginInstance = NaverThirdPartyLoginConnection.getSharedInstance()
@@ -140,6 +83,35 @@ class ViewController: UIViewController{
                     }
                 })
             } else { print("not open") }
+        })
+    }
+    
+    func getAppDelegate() -> AppDelegate!{
+        return UIApplication.shared.delegate as! AppDelegate
+    }
+    
+    func changeView(){
+        google.layer.cornerRadius = 10
+        naver.layer.cornerRadius = 10
+        kakao.layer.cornerRadius = 10
+    }
+    
+    func goNextPage(param:Param){
+        let st = UIStoryboard.init(name: "Login", bundle: nil)
+        let nv = st.instantiateViewController(withIdentifier: "Login") as! LoginViewController
+        nv.param = param
+        self.present(nv, animated: false, completion: nil)
+    }
+    
+    //로그인 했는지 체크하기
+    func checkLogin(type: String){
+        let body : Parameters = [
+            "type" : type,
+            "uid" : UserInfo.getUid() ,
+            ]
+        
+        APICollection.sharedAPI.registeredCheck(parameters: body, completion: {
+            (result) -> (Void) in
         })
     }
 }
