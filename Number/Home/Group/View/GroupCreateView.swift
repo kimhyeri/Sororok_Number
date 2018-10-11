@@ -11,6 +11,7 @@ import Foundation
 extension GroupCreateViewController {
     func defaultView(){
         initNav()
+        
         self.title = "그룹생성"
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         

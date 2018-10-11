@@ -51,4 +51,8 @@ extension MyPageViewController {
         self.navigationItem.rightBarButtonItem = saveButton
         self.navigationController?.navigationBar.tintColor = UIColor.white
     }
+    
+    func viewUp() {
+        textView.frame = CGRect(x: 0, y: 65, width: self.view.frame.width, height: textView.frame.height)
+    }
 }

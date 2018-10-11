@@ -32,6 +32,8 @@
 		354FF887216FCAE2007620EA /* NaverLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354FF886216FCAE2007620EA /* NaverLogin.swift */; };
 		354FF889216FCAE8007620EA /* GoogleLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354FF888216FCAE8007620EA /* GoogleLogin.swift */; };
 		354FF88B216FCBD2007620EA /* LoginButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354FF88A216FCBD2007620EA /* LoginButtonView.swift */; };
+		354FF88D216FCF3B007620EA /* ContactViewNotiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354FF88C216FCF3B007620EA /* ContactViewNotiController.swift */; };
+		354FF891216FCFDB007620EA /* ContactTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354FF890216FCFDB007620EA /* ContactTableView.swift */; };
 		3556196221071BDE009CC356 /* DetailHome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3556196121071BDE009CC356 /* DetailHome.storyboard */; };
 		3556196A21071EDF009CC356 /* DetailHomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3556196821071EDF009CC356 /* DetailHomeTableViewCell.swift */; };
 		3556196B21071EDF009CC356 /* DetailHomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3556196921071EDF009CC356 /* DetailHomeTableViewCell.xib */; };
@@ -114,6 +116,8 @@
 		354FF886216FCAE2007620EA /* NaverLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverLogin.swift; sourceTree = "<group>"; };
 		354FF888216FCAE8007620EA /* GoogleLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLogin.swift; sourceTree = "<group>"; };
 		354FF88A216FCBD2007620EA /* LoginButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonView.swift; sourceTree = "<group>"; };
+		354FF88C216FCF3B007620EA /* ContactViewNotiController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewNotiController.swift; sourceTree = "<group>"; };
+		354FF890216FCFDB007620EA /* ContactTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableView.swift; sourceTree = "<group>"; };
 		3556196121071BDE009CC356 /* DetailHome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailHome.storyboard; sourceTree = "<group>"; };
 		3556196821071EDF009CC356 /* DetailHomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHomeTableViewCell.swift; sourceTree = "<group>"; };
 		3556196921071EDF009CC356 /* DetailHomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailHomeTableViewCell.xib; sourceTree = "<group>"; };
@@ -486,6 +490,7 @@
 				3556196121071BDE009CC356 /* DetailHome.storyboard */,
 				3556196921071EDF009CC356 /* DetailHomeTableViewCell.xib */,
 				35BF954B216B3F960083EB13 /* ContactsView.swift */,
+				354FF890216FCFDB007620EA /* ContactTableView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -495,6 +500,7 @@
 			children = (
 				35325D4D212F0E4500AC3897 /* ContactNaviViewController.swift */,
 				3565D4422128291B000D70D2 /* ContactsViewController.swift */,
+				354FF88C216FCF3B007620EA /* ContactViewNotiController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -795,6 +801,7 @@
 				35BF953C216B39BF0083EB13 /* ManagerView.swift in Sources */,
 				35572C21212C030800A919C7 /* AdminGroupViewController.swift in Sources */,
 				35444633212D69210075116C /* ProgressViewController.swift in Sources */,
+				354FF891216FCFDB007620EA /* ContactTableView.swift in Sources */,
 				354FF887216FCAE2007620EA /* NaverLogin.swift in Sources */,
 				35CF88152154374900AB9067 /* LoginEnum.swift in Sources */,
 				35ECDF15210476F200308080 /* HomeTableViewCell.swift in Sources */,
@@ -807,6 +814,7 @@
 				3565D44721283B0A000D70D2 /* HexColor.swift in Sources */,
 				354FF889216FCAE8007620EA /* GoogleLogin.swift in Sources */,
 				355BB75021297782009A7837 /* NothingTableViewCell.swift in Sources */,
+				354FF88D216FCF3B007620EA /* ContactViewNotiController.swift in Sources */,
 				354EA795210C877300D16A80 /* SideMenuTableViewController.swift in Sources */,
 				351AB6362105C00C0017D41A /* LoginViewController.swift in Sources */,
 				356A58FE210D9F35003C20BB /* CustomNaviViewController.swift in Sources */,

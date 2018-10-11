@@ -32,16 +32,6 @@ class MyPageViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         defaultView()
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
-        self.view.endEditing(true)
-        textView.frame = defaultFrame!
-    }
-    
-    func convertBase64ToImage(imageString: String) -> UIImage {
-        let imageData = Data(base64Encoded: imageString, options: Data.Base64DecodingOptions.ignoreUnknownCharacters)!
-        return UIImage(data: imageData)!
-    }
-    
     @objc func saveButton(){
         guard numText.text?.count != 0 else { showToast(message: "번호 입력해주세요"); return}
         guard nameText.text?.count != 0 else { showToast(message: "이름 입력해주세요"); return}
@@ -98,12 +88,13 @@ class MyPageViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         self.present(popUp, animated: false, completion: nil)
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        viewUp()
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.view.endEditing(true)
+        textView.frame = defaultFrame!
     }
     
-    func viewUp() {
-        textView.frame = CGRect(x: 0, y: 65, width: self.view.frame.width, height: textView.frame.height)
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        viewUp()
     }
     
     func checkLogin(){
@@ -133,6 +124,11 @@ class MyPageViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         self.myImage.image = info[UIImagePickerControllerOriginalImage] as? UIImage
         picker.dismiss(animated: false)
+    }
+    
+    func convertBase64ToImage(imageString: String) -> UIImage {
+        let imageData = Data(base64Encoded: imageString, options: Data.Base64DecodingOptions.ignoreUnknownCharacters)!
+        return UIImage(data: imageData)!
     }
     
     func imageChange() -> NSData {

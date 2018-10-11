@@ -34,6 +34,7 @@ extension AdminGroupViewController {
     }
 }
 
+//MARK: setting default view
 extension AdminGroupViewController {
     
     func defaultView(){
