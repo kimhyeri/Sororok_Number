@@ -30,7 +30,6 @@ class LoginViewController: UIViewController, UIImagePickerControllerDelegate, UI
         defaultPage()
     }
     
-    //사용자가 직접 프로필 사진 선택한 경우 
     @IBAction func albumButtonPressed(_ sender: Any) {
         let picker = UIImagePickerController()
         picker.delegate = self
@@ -47,7 +46,6 @@ class LoginViewController: UIViewController, UIImagePickerControllerDelegate, UI
 extension LoginViewController {
     
     @objc func done(){
-        //사진이 url 경로인 경우 , 사진 파일인 경우
 
         let url = URL(string: "http://45.63.120.140:40005/member/join")
         
@@ -85,7 +83,7 @@ extension LoginViewController {
                             UserDefaults.standard.set(self.userData.email, forKey: "email")
                             UserDefaults.standard.set(self.userData.name, forKey: "name")
                             UserDefaults.standard.set(self.userData.phone, forKey: "phone")
-//                            UserDefaults.standard.set(self.userData.imageName, forKey: "imageName")
+                            UserDefaults.standard.set(self.userData.imageName, forKey: "imageName")
                             self.moveToMain(memberId: self.userData.memberId!)
                         }
                     case .failure(let encodingError):
@@ -93,36 +91,6 @@ extension LoginViewController {
                     }
             })
         }
-
-//        Alamofire.upload(
-//            multipartFormData: { multipartFormData in
-//                multipartFormData.append((phone.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "phone")
-//                multipartFormData.append((name.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "name")
-//                multipartFormData.append((email.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "email")
-//                multipartFormData.append((loginType.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "loginType")
-//                multipartFormData.append((loginUid.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "loginUid")
-//                multipartFormData.append((imageUrl.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "imageUrl")
-//        },
-//            to: url!,
-//            method: .put,
-//            encodingCompletion: { encodingResult in
-//                switch encodingResult {
-//                case .success(let upload, _, _):
-//                    upload.responseJSON { response in
-//                        let json = JSON(response.result.value)
-//                        self.userData = UserInfoSet(rawJson: json)
-//                        UserDefaults.standard.set(self.userData.memberId, forKey: "memberId")
-//                        UserDefaults.standard.set(self.userData.email, forKey: "email")
-//                        UserDefaults.standard.set(self.userData.name, forKey: "name")
-//                        UserDefaults.standard.set(self.userData.phone, forKey: "phone")
-////                        UserDefaults.standard.set(self.userData.imageName, forKey: "imageName")
-//                        self.moveToMain(memberId: self.userData.memberId!)
-//                    }
-//                case .failure(let encodingError):
-//                    print(encodingError)
-//                }
-//        })
-//    }
 
     @objc func back(){
         self.dismiss(animated: true, completion: nil)
@@ -137,15 +105,13 @@ extension LoginViewController {
         self.imgProfile.layer.cornerRadius = imgProfile.frame.width/2
         if param?.email != nil { self.emailText.text = param?.email }
         if param?.name != nil { self.nameText.text = param?.name}
-//        if param?.imageUrl != nil {
-//            do {
-//            let img = param?.imageUrl
-//            let url = URL(string: img!)
-//            let data = try Data(contentsOf: url!)
-//            self.imgProfile.image = UIImage(data: data)
-//            }
-//            catch{ print(error) }
-//        }
+        if param?.imageUrl != nil {
+            do {
+            let img = param?.imageUrl
+            let url = URL(string: img!)
+            self.imgProfile.kf.setImage(with: url)
+            } catch{ print(error) }
+        }
     }
     
     func getDelegate(){
@@ -172,7 +138,9 @@ extension LoginViewController : UITextFieldDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
-        textView.frame = defaultFrame!
+        if let viewSetting = defaultFrame {
+            textView.frame = viewSetting
+        }
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {

@@ -33,15 +33,14 @@ class ProgressViewController: UIViewController {
     }
     
     @objc func contactSave(_ notification: Notification){
-        print(notification)
+
         let store = CNContactStore()
         let userDict = notification.userInfo as! NSDictionary
         let names = userDict.allValues
         totalLabel.text = String(names.count)
         let numbers = userDict.allKeys
 
-        for i in 0..<names.count
-        {
+        for i in 0..<names.count {
             let contact = CNMutableContact()
             contact.givenName = names[i] as! String
             contact.phoneNumbers = [CNLabeledValue(
@@ -51,14 +50,14 @@ class ProgressViewController: UIViewController {
 
         let saveRequest = CNSaveRequest()
 
-        for i in 0..<contactList.count{
+        for i in 0..<contactList.count {
             saveRequest.add(contactList[i], toContainerWithIdentifier: nil)
-            if i == contactList.count-1{
-                do
-                {
+            if i == contactList.count-1 {
+                do {
                     try? store.execute(saveRequest)
-
+                    
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        self.showToast(message: "저장 성공")
                         let st = UIStoryboard.init(name: "DetailHome", bundle: nil)
                         let vc = st.instantiateViewController(withIdentifier: "NV") as! ContactNaviViewController
                         self.present(vc, animated: true, completion: nil)

@@ -27,6 +27,11 @@
 		354EA79A210C900900D16A80 /* DeleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354EA799210C900900D16A80 /* DeleteViewController.swift */; };
 		354EA79D210C9BD300D16A80 /* ManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354EA79C210C9BD300D16A80 /* ManagerViewController.swift */; };
 		354EA79F210C9BDA00D16A80 /* Manager.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 354EA79E210C9BDA00D16A80 /* Manager.storyboard */; };
+		354FF883216FC5EC007620EA /* ProtocolCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354FF882216FC5EC007620EA /* ProtocolCollection.swift */; };
+		354FF885216FCADB007620EA /* KaKaoLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354FF884216FCADB007620EA /* KaKaoLogin.swift */; };
+		354FF887216FCAE2007620EA /* NaverLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354FF886216FCAE2007620EA /* NaverLogin.swift */; };
+		354FF889216FCAE8007620EA /* GoogleLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354FF888216FCAE8007620EA /* GoogleLogin.swift */; };
+		354FF88B216FCBD2007620EA /* LoginButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354FF88A216FCBD2007620EA /* LoginButtonView.swift */; };
 		3556196221071BDE009CC356 /* DetailHome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3556196121071BDE009CC356 /* DetailHome.storyboard */; };
 		3556196A21071EDF009CC356 /* DetailHomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3556196821071EDF009CC356 /* DetailHomeTableViewCell.swift */; };
 		3556196B21071EDF009CC356 /* DetailHomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3556196921071EDF009CC356 /* DetailHomeTableViewCell.xib */; };
@@ -104,6 +109,11 @@
 		354EA799210C900900D16A80 /* DeleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteViewController.swift; sourceTree = "<group>"; };
 		354EA79C210C9BD300D16A80 /* ManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerViewController.swift; sourceTree = "<group>"; };
 		354EA79E210C9BDA00D16A80 /* Manager.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Manager.storyboard; sourceTree = "<group>"; };
+		354FF882216FC5EC007620EA /* ProtocolCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolCollection.swift; sourceTree = "<group>"; };
+		354FF884216FCADB007620EA /* KaKaoLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaKaoLogin.swift; sourceTree = "<group>"; };
+		354FF886216FCAE2007620EA /* NaverLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverLogin.swift; sourceTree = "<group>"; };
+		354FF888216FCAE8007620EA /* GoogleLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLogin.swift; sourceTree = "<group>"; };
+		354FF88A216FCBD2007620EA /* LoginButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonView.swift; sourceTree = "<group>"; };
 		3556196121071BDE009CC356 /* DetailHome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailHome.storyboard; sourceTree = "<group>"; };
 		3556196821071EDF009CC356 /* DetailHomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHomeTableViewCell.swift; sourceTree = "<group>"; };
 		3556196921071EDF009CC356 /* DetailHomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailHomeTableViewCell.xib; sourceTree = "<group>"; };
@@ -193,6 +203,7 @@
 			children = (
 				351AB6332105C00C0017D41A /* Login.storyboard */,
 				35B016812151087400B12506 /* LoginView.swift */,
+				354FF88A216FCBD2007620EA /* LoginButtonView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -201,6 +212,9 @@
 			isa = PBXGroup;
 			children = (
 				351AB6342105C00C0017D41A /* LoginViewController.swift */,
+				354FF884216FCADB007620EA /* KaKaoLogin.swift */,
+				354FF886216FCAE2007620EA /* NaverLogin.swift */,
+				354FF888216FCAE8007620EA /* GoogleLogin.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -349,6 +363,7 @@
 				35ECDEEF2103B1B700308080 /* AppDelegate.swift */,
 				35ECDEF12103B1B700308080 /* ViewController.swift */,
 				354E6CE8213080CB00C6C526 /* APICollection.swift */,
+				354FF882216FC5EC007620EA /* ProtocolCollection.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -780,6 +795,7 @@
 				35BF953C216B39BF0083EB13 /* ManagerView.swift in Sources */,
 				35572C21212C030800A919C7 /* AdminGroupViewController.swift in Sources */,
 				35444633212D69210075116C /* ProgressViewController.swift in Sources */,
+				354FF887216FCAE2007620EA /* NaverLogin.swift in Sources */,
 				35CF88152154374900AB9067 /* LoginEnum.swift in Sources */,
 				35ECDF15210476F200308080 /* HomeTableViewCell.swift in Sources */,
 				35B0168621517BD300B12506 /* TwoMainView.swift in Sources */,
@@ -789,12 +805,14 @@
 				3565D4432128291B000D70D2 /* ContactsViewController.swift in Sources */,
 				358268F621262669003415F0 /* TwoViewController.swift in Sources */,
 				3565D44721283B0A000D70D2 /* HexColor.swift in Sources */,
+				354FF889216FCAE8007620EA /* GoogleLogin.swift in Sources */,
 				355BB75021297782009A7837 /* NothingTableViewCell.swift in Sources */,
 				354EA795210C877300D16A80 /* SideMenuTableViewController.swift in Sources */,
 				351AB6362105C00C0017D41A /* LoginViewController.swift in Sources */,
 				356A58FE210D9F35003C20BB /* CustomNaviViewController.swift in Sources */,
 				3565D445212837CA000D70D2 /* SearchView.swift in Sources */,
 				35325D4C212F08F600AC3897 /* Helper.swift in Sources */,
+				354FF883216FC5EC007620EA /* ProtocolCollection.swift in Sources */,
 				35BF954C216B3F960083EB13 /* ContactsView.swift in Sources */,
 				354E6CEB2130BD0700C6C526 /* Register.swift in Sources */,
 				35BF953A216B38F10083EB13 /* DeleteGroupView.swift in Sources */,
@@ -807,6 +825,7 @@
 				35BF9535216B363E0083EB13 /* AddressBook.swift in Sources */,
 				35BF9543216B3B860083EB13 /* SettingView.swift in Sources */,
 				35BF952F216B331F0083EB13 /* GroupCreateView.swift in Sources */,
+				354FF885216FCADB007620EA /* KaKaoLogin.swift in Sources */,
 				355B5777213FE4410085028E /* ToastLabel.swift in Sources */,
 				354E6CE721307D3C00C6C526 /* GetUserInfo.swift in Sources */,
 				35325D50212F52B000AC3897 /* DeleteGroupViewController.swift in Sources */,
@@ -818,6 +837,7 @@
 				35ECDEF22103B1B700308080 /* ViewController.swift in Sources */,
 				354E6CE9213080CB00C6C526 /* APICollection.swift in Sources */,
 				35BF9531216B33640083EB13 /* ManagerGroupView.swift in Sources */,
+				354FF88B216FCBD2007620EA /* LoginButtonView.swift in Sources */,
 				35ECDEF02103B1B700308080 /* AppDelegate.swift in Sources */,
 				354EA79A210C900900D16A80 /* DeleteViewController.swift in Sources */,
 				356125E9213C49340040985D /* UserInfoSet.swift in Sources */,

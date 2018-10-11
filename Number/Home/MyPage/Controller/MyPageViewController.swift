@@ -58,10 +58,9 @@ class MyPageViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         
         Alamofire.upload(
             multipartFormData: { multipartFormData in
-//                if image != nil {
-//                     multipartFormData.append(image, withName: "memberImage", fileName: "memberImage.jpeg", mimeType: "memberImage/jpeg")
-//                }
-               
+                if image != nil {
+                     multipartFormData.append(image, withName: "memberImage", fileName: "memberImage.jpeg", mimeType: "memberImage/jpeg")
+                }
                 multipartFormData.append((phone.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "phone")
                 multipartFormData.append((name.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "name")
                 multipartFormData.append((email.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "email")
@@ -80,7 +79,7 @@ class MyPageViewController: UIViewController, UITextFieldDelegate, UIImagePicker
                         UserDefaults.standard.set(self.userData.email, forKey: "email")
                         UserDefaults.standard.set(self.userData.name, forKey: "name")
                         UserDefaults.standard.set(self.userData.phone, forKey: "phone")
-//                        UserDefaults.standard.set(image, forKey: "imageName")
+                        UserDefaults.standard.set(image, forKey: "imageName")
                         let changeName = Notification.Name(rawValue: nameChangedKey)
                         NotificationCenter.default.post(name: changeName, object: nil)
                     

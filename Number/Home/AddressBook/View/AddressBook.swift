@@ -12,5 +12,4 @@ extension ProgressViewController {
     func defaultView() {
         iconView.layer.cornerRadius = iconView.frame.width/2
     }
-    
 }
