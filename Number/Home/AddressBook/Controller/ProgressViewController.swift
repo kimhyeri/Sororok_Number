@@ -37,10 +37,12 @@ class ProgressViewController: UIViewController {
         let store = CNContactStore()
         let userDict = notification.userInfo as! NSDictionary
         let names = userDict.allValues
-        totalLabel.text = String(names.count)
         let numbers = userDict.allKeys
 
-        for i in 0..<names.count {
+        let countName = names.count
+        totalLabel.text = String(countName)
+
+        for i in 0..<countName {
             let contact = CNMutableContact()
             contact.givenName = names[i] as! String
             contact.phoneNumbers = [CNLabeledValue(
@@ -62,8 +64,7 @@ class ProgressViewController: UIViewController {
                         let vc = st.instantiateViewController(withIdentifier: "NV") as! ContactNaviViewController
                         self.present(vc, animated: true, completion: nil)
                     }
-                }
-                catch{
+                } catch{
                     showToast(message: "저장 실패")
                 }
             }

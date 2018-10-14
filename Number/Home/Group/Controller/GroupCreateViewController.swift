@@ -51,9 +51,7 @@ class GroupCreateViewController: UIViewController , UIImagePickerControllerDeleg
         
         Alamofire.upload(
             multipartFormData: { multipartFormData in
-                if image != nil {
-                    multipartFormData.append(image, withName: "memberImage", fileName: "memberImage.jpeg", mimeType: "memberImage/jpeg")
-                }
+                multipartFormData.append(image, withName: "memberImage", fileName: "memberImage.jpeg", mimeType: "memberImage/jpeg")
                 multipartFormData.append((name.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "name")
                 multipartFormData.append((code.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "code")
                 multipartFormData.append((memberId?.data(using: .utf8, allowLossyConversion: false))!, withName: "memberId")
@@ -68,8 +66,6 @@ class GroupCreateViewController: UIViewController , UIImagePickerControllerDeleg
                     upload.responseJSON { response in
                         let reloadTable = Notification.Name(rawValue: reloadTalbeViewKey )
                         NotificationCenter.default.post(name: reloadTable, object: nil)
-                        print(response.result.value!)
-                        print(response.result)
                     }
                 case .failure(let encodingError):
                     print(encodingError)
@@ -80,8 +76,10 @@ class GroupCreateViewController: UIViewController , UIImagePickerControllerDeleg
     }
 
     @IBAction func clipButtonPressed(_ sender: UIButton) {
-        copyToClipBoard(textToCopy: (codeLabel.text)!)
-
+        if let codeNum = codeLabel.text {
+            copyToClipBoard(textToCopy: codeNum)
+        }
+        
         let alert = UIAlertController(title: nil, message: "그룹 코드번호가 클립보드에 복사되었습니다.", preferredStyle: .alert)
         let OKAlert = UIAlertAction(title: "OK", style: UIAlertActionStyle.default){
             (result: UIAlertAction) in
