@@ -35,32 +35,24 @@ extension TwoViewController {
                 "repositoryId" : data
             ]
             
-            Alamofire.request("http://45.63.120.140:40005/repository/join", method: .put, parameters: parameter, encoding: JSONEncoding.default, headers: [:]).responseJSON {
-                response in
-                let json = JSON(response.result.value)
-                print(json)
-                switch response.result {
-                case .success:
-                    print("success")
-                    if json["repositoryId"] == -1 {
-                        self.showToast(message: "코드번호 불일치")
-                    } else {
-                        let storyboard = UIStoryboard.init(name: "DetailHome", bundle: nil)
-                        let nv = storyboard.instantiateViewController(withIdentifier: "NV") as! ContactNaviViewController
-                        ContactsViewController.repoId = data
-                        self.present(nv, animated: true, completion: nil)
-                        break
-                    }
-                    
-                case .failure:
-                    print("fail")
-                    
-                    break
+            
+            APICollection.sharedAPI.checkRepoJoin(parameter: parameter, completion: {
+                (result) -> (Void) in
+                if result["repositoryId"] == -1 {
+                    self.showToast(message: "코드번호 불일치")
+                } else {
+                    let storyboard = UIStoryboard.init(name: "DetailHome", bundle: nil)
+                    let nv = storyboard.instantiateViewController(withIdentifier: "NV") as! ContactNaviViewController
+                    ContactsViewController.repoId = data
+                    ContactsViewController.repoName = result["name"].stringValue
+                    self.present(nv, animated: true, completion: nil)
                 }
-            }
+            })
         }
+        
         alert.addAction(noAlert)
         alert.addAction(okAlert)
         present(alert,animated: true, completion: nil)
+    
     }
 }

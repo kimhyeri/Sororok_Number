@@ -10,6 +10,8 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
+//MARK: 그룹 검색 뷰
+
 class SearchView: UIView {
     
     var searchBar : UISearchBar!
@@ -71,6 +73,9 @@ extension SearchView : UISearchBarDelegate {
         }
     }
 }
+
+
+//MARK: 그룹원 검색 뷰
 
 class MemberSearchView: UIView {
     

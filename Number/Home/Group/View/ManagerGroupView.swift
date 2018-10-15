@@ -10,13 +10,13 @@ import Foundation
 
 //MARK: manage default view
 extension ManagerGroupViewController {
+    
     func defualtView() {
         tableView.delegate = self
         tableView.dataSource = self
         
         self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "btnCommBackBl")
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "btnCommBackBl")
-        
         self.navigationController?.navigationBar.topItem?.title = ""
         
         changeCodeView.clipsToBounds = true
@@ -26,7 +26,14 @@ extension ManagerGroupViewController {
             refreshButton.alpha = 0
             refreshButton.isEnabled = false
         }
-        
+
+    }
+    
+    func presentDeletePopup(){
+        let storyboard = UIStoryboard.init(name: "Manager", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "Delete")
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: false, completion: nil)
     }
 }
 
@@ -58,15 +65,10 @@ extension ManagerGroupViewController : UITableViewDelegate, UITableViewDataSourc
         else if indexPath.row == 1 {
             switch UserDefaults.standard.integer(forKey: "authority") {
             case 0:
-                let storyboard = UIStoryboard.init(name: "Manager", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "Delete")
-                vc.modalPresentationStyle = .overCurrentContext
-                self.present(vc, animated: false, completion: nil)
+                presentDeletePopup()
             default:
-                let storyboard = UIStoryboard.init(name: "Manager", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "Delete")
-                vc.modalPresentationStyle = .overCurrentContext
-                self.present(vc, animated: false, completion: nil)            }
+                presentDeletePopup()
+            }
         }
     }
 }

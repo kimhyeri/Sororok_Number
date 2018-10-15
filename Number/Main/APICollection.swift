@@ -127,8 +127,8 @@ class APICollection{
         }
     }
     
-    //유저가 그룹에 가입되어있는지 확인
-    func checkRepoJoin (parameter: Parameters, completion: @escaping (_ result: JSON) -> (Void)){
+    //유저가 그룹에 가입되어있는지 확인 가입
+    func checkRepoJoin(parameter: Parameters, completion: @escaping (_ result: JSON) -> (Void)){
         Alamofire.request("\(url)repository/join", method: .put, parameters: parameter, encoding: JSONEncoding.default, headers: [:]).responseJSON {
             response in
             let json = JSON(response.result.value)
@@ -146,7 +146,7 @@ class APICollection{
     }
     
     //새로운 코드번호 받기
-    func createCode (completion: @escaping (_ result: JSON) -> (Void)){
+    func createCode(completion: @escaping (_ result: JSON) -> (Void)){
         Alamofire.request("\(url)repository/code").responseJSON { response in
             let json = JSON(response.result.value)
             print(json)
@@ -163,7 +163,7 @@ class APICollection{
     }
     
     //그룹명으로 그룹 검색하기
-    func searchRepo (parameter : Parameters, completion: @escaping (_ result: JSON) -> (Void)){
+    func searchRepo(parameter : Parameters, completion: @escaping (_ result: JSON) -> (Void)){
          Alamofire.request("\(url)repository/search", method: .get, parameters: parameter).responseJSON { response in
             let json = JSON(response.result.value)
             print(json)
@@ -214,7 +214,7 @@ class APICollection{
     }
     
     //그룹에 가입된 멤버들 조회하기
-    func getRepoMember (parameter : Parameters, completion: @escaping (_ result: JSON) -> (Void)){
+    func getRepoMember(parameter : Parameters, completion: @escaping (_ result: JSON) -> (Void)){
         Alamofire.request("\(url)repository/detail", method: .get, parameters: parameter).responseJSON { response in
             let json = JSON(response.result.value)
             print(json)
@@ -231,7 +231,7 @@ class APICollection{
     }
     
     //그룹내에서 멤버 찾기
-    func searchMember (parameter : Parameters, completion: @escaping (_ result: JSON) -> (Void)){
+    func searchMember(parameter : Parameters, completion: @escaping (_ result: JSON) -> (Void)){
         Alamofire.request("\(url)repository/memberSearch", method: .get, parameters: parameter).responseJSON { response in
             let json = JSON(response.result.value)
             print(json)
@@ -248,7 +248,7 @@ class APICollection{
     }
     
     //그룹에 대한 정보 얻기
-    func getRepoInfo (parameter : Parameters, completion: @escaping (_ result: JSON) -> (Void)){
+    func getRepoInfo(parameter : Parameters, completion: @escaping (_ result: JSON) -> (Void)){
         Alamofire.request("\(url)repository/info", method: .get, parameters: parameter).responseJSON { response in
             let json = JSON(response.result.value)
             print(json)
@@ -265,7 +265,7 @@ class APICollection{
     }
     
     //그룹정보 수정
-    func updateRepo (parameter: Parameters, completion: @escaping (_ result: JSON) -> (Void)){
+    func updateRepo(parameter: Parameters, completion: @escaping (_ result: JSON) -> (Void)){
         Alamofire.request("\(url)repository/update", method: .put, parameters: parameter, encoding: JSONEncoding.default, headers: [:]).responseJSON {
             response in
             let json = JSON(response.result.value)

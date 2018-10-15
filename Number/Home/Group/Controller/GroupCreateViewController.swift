@@ -11,7 +11,7 @@ import Photos
 import SwiftyJSON
 import Alamofire
 
-class GroupCreateViewController: UIViewController , UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+class GroupCreateViewController: UIViewController {
 
     @IBOutlet weak var groupInfoText: UITextField!
     @IBOutlet weak var groupNameText: UITextField!
@@ -29,11 +29,15 @@ class GroupCreateViewController: UIViewController , UIImagePickerControllerDeleg
         defaultView()
     }
     
-    func getCode() {
-        APICollection.sharedAPI.createCode(completion: { (result) -> (Void) in
-            self.codeLabel.text = result["code"].stringValue
-        })
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.view.endEditing(true)
     }
+    
+}
+
+//MARK: create group (api)
+
+extension GroupCreateViewController {
     
     @objc func saveButton(){
       
@@ -74,7 +78,19 @@ class GroupCreateViewController: UIViewController , UIImagePickerControllerDeleg
         
         self.navigationController?.popViewController(animated: true)
     }
+    
+}
 
+//MARK: manage group code
+
+extension GroupCreateViewController {
+    
+    func getCode() {
+        APICollection.sharedAPI.createCode(completion: { (result) -> (Void) in
+            self.codeLabel.text = result["code"].stringValue
+        })
+    }
+    
     @IBAction func clipButtonPressed(_ sender: UIButton) {
         if let codeNum = codeLabel.text {
             copyToClipBoard(textToCopy: codeNum)
@@ -89,6 +105,15 @@ class GroupCreateViewController: UIViewController , UIImagePickerControllerDeleg
         alert.addAction(OKAlert)
         present(alert,animated: true, completion: nil)
     }
+    
+    func copyToClipBoard(textToCopy: String) {
+        UIPasteboard.general.string = textToCopy
+    }
+    
+}
+    //MARK: manage image
+
+extension GroupCreateViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBAction func AlbumPressed(_ sender: Any) {
         let picker = UIImagePickerController()
@@ -109,11 +134,4 @@ class GroupCreateViewController: UIViewController , UIImagePickerControllerDeleg
         picker.dismiss(animated: false)
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
-        self.view.endEditing(true)
-    }
- 
-    func copyToClipBoard(textToCopy: String) {
-        UIPasteboard.general.string = textToCopy
-    }
 }

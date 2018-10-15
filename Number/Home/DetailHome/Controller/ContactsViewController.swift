@@ -31,7 +31,6 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     var checkState = false
     var index = DefualtIndex()
     var memberList : DetailMemberSet?
-    
     var selected = [String:String]()
     let contact = CNMutableContact()
     
@@ -42,21 +41,7 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     let searchMemberDone = Notification.Name(rawValue: searchMemberDoneNotificationKey)
     
     override func viewWillAppear(_ animated: Bool) {
-        
-        let parameter = [
-            "repositoryId" : ContactsViewController.repoId
-        ]
-        
-        APICollection.sharedAPI.getRepoMember(parameter: parameter) { (result) -> (Void) in
-            self.memberList = DetailMemberSet(rawJson: result)
-            self.titleLabel.text = ContactsViewController.repoName
-
-            if let count = self.memberList?.memberList.count {
-                self.totalLabel.text = "총 \(count)명"
-                self.sortName(count: count)
-            }
-            self.tableView.reloadData()
-        }
+        loadData()
     }
     
     override func viewDidLoad() {
@@ -71,6 +56,24 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     
     func sortName(count: Int){
         sorted = (memberList?.memberList.sorted(by: { $1.name > $0.name }))!
+    }
+    
+    func loadData() {
+        let parameter = [
+        "repositoryId" : ContactsViewController.repoId
+        ]
+    
+        APICollection.sharedAPI.getRepoMember(parameter: parameter) { (result) -> (Void) in
+            self.memberList = DetailMemberSet(rawJson: result)
+            self.titleLabel.text = ContactsViewController.repoName
+    
+            if let count = self.memberList?.memberList.count {
+                self.totalLabel.text = "총 \(count)명"
+                self.sortName(count: count)
+            }
+    
+            self.tableView.reloadData()
+        }
     }
     
     //뒤로가기 버튼
@@ -123,7 +126,6 @@ class ContactsViewController: UIViewController , UITableViewDataSource, UITableV
     
     //전화번호 저장 버튼
     @IBAction func saveButtonPressed(_ sender: Any) {
-        print(self.selected)
         let storyboard = UIStoryboard.init(name: "Progress", bundle: nil)
         let nv = storyboard.instantiateViewController(withIdentifier: "Progress") as! ProgressViewController
         self.present(nv, animated: true, completion: nil)

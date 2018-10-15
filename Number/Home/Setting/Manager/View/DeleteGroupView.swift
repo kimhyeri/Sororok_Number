@@ -11,6 +11,11 @@ import Foundation
 extension DeleteGroupViewController {
     
     func changeView(){
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.view.layoutIfNeeded()
+        })
+        
         if UserDefaults.standard.integer(forKey: "authority") == 0 {
             titleLabel.text = "정말 그룹을 나가시려구요?"
             descLabel.text = """

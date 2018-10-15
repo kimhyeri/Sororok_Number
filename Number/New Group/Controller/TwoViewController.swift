@@ -49,6 +49,7 @@ class TwoViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         loadItem(memberId: UserDefaults.standard.integer(forKey: "memberId"))
+        
         if let image = UserDefaults.standard.string(forKey: "imageName") {
             if let url = URL(string: APICollection.sharedAPI.imageUrl + image) {
                 imageButton.imageView?.kf.setImage(with: url)
@@ -93,35 +94,26 @@ class TwoViewController: UIViewController {
             }
         }
         
-        guard searchText != nil else{return}
-        
         let parameter : Parameters = [
             "memberId" : UserDefaults.standard.integer(forKey: "memberId"),
             "name" : searchText!
         ]
 
-        Alamofire.request("http://45.63.120.140:40005/repository/search", method: .get, parameters: parameter).responseJSON { response in
-            let json = JSON(response.result.value)
-            print(json)
-            switch response.result {
-            case .success:
-                print("search success")
-                self.repoList = repoListSet(rawJson: json)
-                if self.repoList?.dataList.count == 0 {
-                    self.firstTitleLabel.text = "해당하는 그룹이 없네요."
-                    self.firstDescLabel.text = "그룹명을 다시 확인해주세요!"
-                    self.firstLoginView.alpha = 1
-                }else{
-                    self.firstLoginView.alpha = 0
-                }
-                self.view.endEditing(true)
-                self.tableView.reloadData()
-                break
-            case .failure:
-                print("fail")
-                break
+        guard searchText != nil else { return }
+
+        APICollection.sharedAPI.searchRepo(parameter: parameter, completion: { (result) -> (Void) in
+            self.repoList = repoListSet(rawJson: result)
+            if self.repoList?.dataList.count == 0 {
+                self.firstTitleLabel.text = "해당하는 그룹이 없네요."
+                self.firstDescLabel.text = "그룹명을 다시 확인해주세요!"
+                self.firstLoginView.alpha = 1
+            }else{
+                self.firstLoginView.alpha = 0
             }
-        }
+            self.view.endEditing(true)
+            self.tableView.reloadData()
+        })
+    
     }
     
     @IBAction func pressedSosik(_ sender: Any) {
@@ -152,6 +144,7 @@ class TwoViewController: UIViewController {
 }
 
 extension TwoViewController {
+ 
     func initNavigation(){
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -164,28 +157,20 @@ extension TwoViewController {
             "memberId" : memberId
         ]
         
-        Alamofire.request("http://45.63.120.140:40005/repository/list", method: .get, parameters: memberId).responseJSON {
-            response in
-            let json = JSON(response.result.value)
-            print(json)
-            switch response.result {
-            case .success:
-                print("success")
-                self.repoList = repoListSet(rawJson: json)
-                if self.repoList?.dataList.count == 0 {
-                    self.firstLoginView.alpha = 1
-                }
-                self.tableView.reloadData()
-                break
-            case .failure:
-                print("fail")
-                break
+        APICollection.sharedAPI.repoList(parameter: memberId, completion: { (result) -> (Void) in
+            self.repoList = repoListSet(rawJson: result)
+            if self.repoList?.dataList.count == 0 {
+                self.firstLoginView.alpha = 1
             }
-        }
+            self.tableView.reloadData()
+        })
     }
 }
 
-//MARK: ScrollViewDeleate animation 잠시 막아놈
+
+
+
+//MARK: ScrollViewDeleate animation 버전2
 
 //extension TwoViewController : UIScrollViewDelegate {
 //    func changeView(){

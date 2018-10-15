@@ -19,12 +19,15 @@ class DeleteGroupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         changeView()
-
-        UIView.animate(withDuration: 0.5, animations: {
-            self.view.layoutIfNeeded()
-        })
+        
     }
 
+    func moveToCodeNum() {
+        let storyboard = UIStoryboard.init(name: "CodeNum", bundle: nil)
+        let bv = storyboard.instantiateViewController(withIdentifier: "ST") as! CustomNaviViewController
+        self.present(bv, animated: true, completion: nil)
+    }
+    
     @IBAction func Delete(_ sender: Any) {
         let parameter = [
             "memberId" : UserDefaults.standard.integer(forKey: "memberId"),
@@ -34,15 +37,11 @@ class DeleteGroupViewController: UIViewController {
         if UserDefaults.standard.integer(forKey: "authority") == 0 {
               APICollection.sharedAPI.exitRepo(parameters: parameter, completion: {
                 (result) -> (Void) in
-                let storyboard = UIStoryboard.init(name: "CodeNum", bundle: nil)
-                let bv = storyboard.instantiateViewController(withIdentifier: "ST") as! CustomNaviViewController
-                self.present(bv, animated: true, completion: nil)
+                self.moveToCodeNum()
           })
         } else {
             APICollection.sharedAPI.destroyRepo(parameters: parameter, completion: { (result) -> (Void) in
-                let storyboard = UIStoryboard.init(name: "CodeNum", bundle: nil)
-                let bv = storyboard.instantiateViewController(withIdentifier: "ST") as! CustomNaviViewController
-                self.present(bv, animated: true, completion: nil)
+                self.moveToCodeNum()
             })
         }
     }
@@ -50,6 +49,7 @@ class DeleteGroupViewController: UIViewController {
     @IBAction func dismissButtonTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
     @IBAction func changeAdmin(_ sender: Any) {
         self.dismiss(animated: false, completion:nil)
     }

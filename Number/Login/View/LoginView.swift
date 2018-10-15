@@ -14,10 +14,12 @@ extension LoginViewController {
     
     func setNavigationBar() {
         let screenSize: CGRect = UIScreen.main.bounds
+        
         let navBar = UINavigationBar(frame: CGRect(x: 0, y: 20, width: screenSize.width, height: 44))
         let navItem = UINavigationItem(title: "")
         navBar.setBackgroundImage(UIImage(), for: .default)
         navBar.shadowImage = UIImage()
+        
         let backButton = UIBarButtonItem(image: UIImage(named: "btnCommBackWh"), style: .plain, target: self, action: #selector(back))
         navItem.leftBarButtonItem = backButton
         backButton.imageInsets.left = -10
