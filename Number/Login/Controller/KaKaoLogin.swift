@@ -14,7 +14,7 @@ extension ViewController {
     func kakaoLogin() {
         let session :KOSession = KOSession.shared()
         
-        checkLogin(type: typeCase.kakao.rawValue)
+        checkLogin(loginType: typeCase.kakao.rawValue)
         
         if session.isOpen() {
             session.close()

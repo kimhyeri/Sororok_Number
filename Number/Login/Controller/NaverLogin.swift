@@ -14,6 +14,7 @@ import Alamofire
 extension ViewController: NaverThirdPartyLoginConnectionDelegate{
     
     func naverLogin() {
+        checkLogin(loginType: typeCase.naver.rawValue)
         let loginInstance = NaverThirdPartyLoginConnection.getSharedInstance()
         loginInstance?.delegate = self
         loginInstance?.requestThirdPartyLogin()

@@ -11,59 +11,17 @@ import GoogleSignIn
 import NaverThirdPartyLogin
 import KakaoOpenSDK
 
+//MARK: life cycle
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate ,GIDSignInUIDelegate{
+class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        if UserDefaults.standard.bool(forKey: "isLoggedIn") == true {
-            let st = UIStoryboard.init(name: "CodeNum", bundle: nil)
-            let vc = st.instantiateViewController(withIdentifier: "ST") as! CustomNaviViewController
-            window?.rootViewController = vc
-        } else {
-            let instance = NaverThirdPartyLoginConnection.getSharedInstance()
-            instance?.isInAppOauthEnable = true
-            instance?.isNaverAppOauthEnable = true
-            instance?.isOnlyPortraitSupportedInIphone()
-            instance?.serviceUrlScheme = kServiceAppUrlScheme
-            instance?.consumerKey = kConsumerKey
-            instance?.consumerSecret = kConsumerSecret
-            instance?.appName = kServiceAppName
-            
-            GIDSignIn.sharedInstance().clientID = "485287400995-no0nk4j0g2lpk3v5n0h6pu8evqun5tvh.apps.googleusercontent.com"
-        }
+        checkLogin()
+    
         return true
-    }
-    
-    private func application(application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        var configureError: NSError?
-        assert(configureError == nil, "Error configuring Google services: \(configureError)")
-        return true
-    }
-    
-    @available(iOS 9.0, *)
-    
-    func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
-        //카카오면
-        if KOSession.isKakaoAccountLoginCallback(url) {
-            return KOSession.handleOpen(url)
-        }//구글이면
-        else{
-            return GIDSignIn.sharedInstance().handle(url as URL?,sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
-        }
-    }
-    
-    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        
-        if KOSession.isKakaoAccountLoginCallback(url) {
-            return KOSession.handleOpen(url)
-        }
-        
-        let googleSession = GIDSignIn.sharedInstance().handle(url,sourceApplication: sourceApplication, annotation: annotation)
-        return googleSession
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
@@ -90,3 +48,54 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,GIDSignInUIDelegate{
     
 }
 
+//MARK: Check Login
+extension AppDelegate : GIDSignInUIDelegate{
+    @available(iOS 9.0, *)
+    
+    func checkLogin() {
+        if UserDefaults.standard.bool(forKey: "isLoggedIn") == true {
+            let st = UIStoryboard.init(name: "CodeNum", bundle: nil)
+            let vc = st.instantiateViewController(withIdentifier: "ST") as! CustomNaviViewController
+            window?.rootViewController = vc
+        } else {
+            let instance = NaverThirdPartyLoginConnection.getSharedInstance()
+            instance?.isInAppOauthEnable = true
+            instance?.isNaverAppOauthEnable = true
+            instance?.isOnlyPortraitSupportedInIphone()
+            instance?.serviceUrlScheme = kServiceAppUrlScheme
+            instance?.consumerKey = kConsumerKey
+            instance?.consumerSecret = kConsumerSecret
+            instance?.appName = kServiceAppName
+            
+            GIDSignIn.sharedInstance().clientID = "485287400995-no0nk4j0g2lpk3v5n0h6pu8evqun5tvh.apps.googleusercontent.com"
+        }
+    }
+    
+    func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
+        //카카오면
+        if KOSession.isKakaoAccountLoginCallback(url) {
+            return KOSession.handleOpen(url)
+        }//구글이면
+        else{
+            return GIDSignIn.sharedInstance().handle(url as URL?,sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+        }
+    }
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        
+        if KOSession.isKakaoAccountLoginCallback(url) {
+            return KOSession.handleOpen(url)
+        }
+        
+        let googleSession = GIDSignIn.sharedInstance().handle(url,sourceApplication: sourceApplication, annotation: annotation)
+        return googleSession
+    }
+    
+//    private func application(application: UIApplication,
+//                             didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+//        var configureError: NSError?
+//        assert(configureError == nil, "Error configuring Google services: \(configureError)")
+//        return true
+//    }
+    
+}

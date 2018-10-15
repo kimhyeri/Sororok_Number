@@ -13,6 +13,7 @@ import GoogleSignIn
 extension ViewController : GIDSignInUIDelegate , GIDSignInDelegate{
     
     func googleLogin(){
+        checkLogin(loginType: typeCase.google.rawValue)
         GIDSignIn.sharedInstance().delegate=self
         GIDSignIn.sharedInstance().uiDelegate=self
         GIDSignIn.sharedInstance().signIn()

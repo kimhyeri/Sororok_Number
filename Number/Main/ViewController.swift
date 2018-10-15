@@ -9,9 +9,8 @@
 
 import UIKit
 import Alamofire
-import SwiftyJSON
 
-class ViewController: UIViewController{
+class ViewController: UIViewController , CheckLogin {
     
     @IBOutlet weak var google: UIButton!
     @IBOutlet weak var naver: UIButton!
@@ -32,7 +31,7 @@ class ViewController: UIViewController{
        googleLogin()
     }
     
-    @IBAction func kakaoButtonPressed(_ sender: Any) {
+    @IBAction func kakaoButtonPressed(_ sender: UIButton) {
         kakaoLogin()
     }
     
@@ -40,8 +39,7 @@ class ViewController: UIViewController{
         return (UIApplication.shared.delegate as! AppDelegate)
     }
     
-    //로그인 체크하기
-    func checkLogin(type: String){
+    func checkLogin(loginType type: String) {
         let body : Parameters = [
             "type" : type,
             "uid" : UserInfo.getUid() ,
@@ -49,9 +47,10 @@ class ViewController: UIViewController{
         
         APICollection.sharedAPI.registeredCheck(parameters: body, completion: {
             (result) -> (Void) in
+            print("you have id")
         })
     }
-    
+   
     func goNextPage(param:Param){
         let st = UIStoryboard.init(name: "Login", bundle: nil)
         let nv = st.instantiateViewController(withIdentifier: "Login") as! LoginViewController

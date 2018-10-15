@@ -8,30 +8,27 @@
 
 import Foundation
 
-//MARK: manage tableview
+//MARK: setting view
 extension SideMenuTableViewController {
-    
     func defaultView() {
         tableView.rowHeight = UITableViewAutomaticDimension
     }
+}
+
+//MARK: manage tableview
+extension SideMenuTableViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if let count = historyData?.historyList.count {
-            return count
-        }else {
-            return 1
-        }
-
+        return (count != 0) ? count : 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SideMenuCell
-        if historyData?.historyList.count == 0 {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! SideMenuTableViewCell
+        if count == 0 {
             cell.iconImage.image = UIImage(named: "icnNoticeEmpty")
             cell.news.text = "최근 소식이 없습니다."
             cell.newsTimeLabel.text = " "

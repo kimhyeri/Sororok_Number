@@ -15,6 +15,8 @@ class APICollection{
     let url = "http://45.63.120.140:40005/"
     let imageUrl = "http://45.63.120.140:40005/sororok/images/"
     
+    //MARK: user api
+    
     //회원가입 되어있는지 확인
     func registeredCheck(parameters: Parameters ,completion: @escaping (_ result: JSON) -> (Void)){
         Alamofire.request("\(url)member/login", method: .post, parameters: parameters as [String: Any], encoding: JSONEncoding.default, headers: [:])
@@ -103,6 +105,9 @@ class APICollection{
             }
         }
     }
+    
+    
+    //MARK: group api
     
     //유저가 가입된 그룹 조회
     func repoList(parameter: Parameters, completion: @escaping (_ ruslt: JSON) -> (Void)){

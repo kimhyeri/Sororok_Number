@@ -13,15 +13,24 @@ import Alamofire
 class SideMenuTableViewController: UITableViewController {
     
     var historyData : HistoryDataSet?
+    var count : Int = 0
+    let cellId : String = "Cell"
+
+    
+    override func viewWillAppear(_ animated: Bool) {
+        loadData(memberId: UserDefaults.standard.integer(forKey: "memberId"))
+    
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         defaultView()
-        loadData(memberId: UserDefaults.standard.integer(forKey: "memberId"))
+    
     }
     
     @IBAction func exitButtonPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+        
     }
     
     func loadData(memberId: Int) {
@@ -30,15 +39,13 @@ class SideMenuTableViewController: UITableViewController {
         ]
         
         APICollection.sharedAPI.memberHistory(parameter: memberId, completion: {(result) -> (Void) in
+            
             self.historyData = HistoryDataSet(rawJson: result)
+            if var history = self.historyData {
+                self.count = history.historyList.count
+            }
             self.tableView.reloadData()
         })
     }
-}
-
-//MARK: sidemenu tableview cell
-class SideMenuCell: UITableViewCell {
-    @IBOutlet weak var iconImage: UIImageView!
-    @IBOutlet weak var news: UILabel!
-    @IBOutlet weak var newsTimeLabel: UILabel!
+    
 }

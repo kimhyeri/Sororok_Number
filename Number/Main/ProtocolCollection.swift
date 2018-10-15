@@ -12,3 +12,7 @@ import Foundation
 protocol GoNextPage {
     var navigationController : UINavigationController? { get }
 }
+
+protocol CheckLogin {
+    func checkLogin(loginType: String)
+}

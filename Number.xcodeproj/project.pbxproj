@@ -11,6 +11,7 @@
 		351AB6362105C00C0017D41A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351AB6342105C00C0017D41A /* LoginViewController.swift */; };
 		351AB6392105C1570017D41A /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 351AB6382105C1570017D41A /* MyPage.storyboard */; };
 		351AB63B2105C16E0017D41A /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351AB63A2105C16E0017D41A /* MyPageViewController.swift */; };
+		3524C8582174B47300542518 /* SideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3524C8572174B47300542518 /* SideMenuTableViewCell.swift */; };
 		35325D48212E9DEB00AC3897 /* Index.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35325D47212E9DEB00AC3897 /* Index.swift */; };
 		35325D4C212F08F600AC3897 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35325D4B212F08F600AC3897 /* Helper.swift */; };
 		35325D4E212F0E4500AC3897 /* ContactNaviViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35325D4D212F0E4500AC3897 /* ContactNaviViewController.swift */; };
@@ -95,6 +96,7 @@
 		351AB6342105C00C0017D41A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		351AB6382105C1570017D41A /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
 		351AB63A2105C16E0017D41A /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		3524C8572174B47300542518 /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
 		35325D47212E9DEB00AC3897 /* Index.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Index.swift; sourceTree = "<group>"; };
 		35325D4B212F08F600AC3897 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		35325D4D212F0E4500AC3897 /* ContactNaviViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactNaviViewController.swift; sourceTree = "<group>"; };
@@ -147,7 +149,6 @@
 		356A58FD210D9F35003C20BB /* CustomNaviViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNaviViewController.swift; sourceTree = "<group>"; };
 		356D84362135F90D00F653B2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		358268F521262669003415F0 /* TwoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoViewController.swift; sourceTree = "<group>"; };
-		358AE5262136D741005B0454 /* Number.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Number.entitlements; sourceTree = "<group>"; };
 		3598EBD8212AB49000906BF2 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		35ACD198212B52F80046B541 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KakaoOpenSDK.framework; path = Pods/KakaoOpenSDK.framework; sourceTree = "<group>"; };
 		35B016812151087400B12506 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -376,6 +377,7 @@
 			isa = PBXGroup;
 			children = (
 				35BF9525216B2ACD0083EB13 /* SideMenuView.swift */,
+				3524C8572174B47300542518 /* SideMenuTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -559,7 +561,6 @@
 		35ECDEEE2103B1B700308080 /* Number */ = {
 			isa = PBXGroup;
 			children = (
-				358AE5262136D741005B0454 /* Number.entitlements */,
 				356D84362135F90D00F653B2 /* GoogleService-Info.plist */,
 				35BF9523216AF4E00083EB13 /* Main */,
 				35ECDF0C2104759400308080 /* Home */,
@@ -852,6 +853,7 @@
 				35B016822151087400B12506 /* LoginView.swift in Sources */,
 				35BF9526216B2ACD0083EB13 /* SideMenuView.swift in Sources */,
 				351AB63B2105C16E0017D41A /* MyPageViewController.swift in Sources */,
+				3524C8582174B47300542518 /* SideMenuTableViewCell.swift in Sources */,
 				35325D4E212F0E4500AC3897 /* ContactNaviViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
