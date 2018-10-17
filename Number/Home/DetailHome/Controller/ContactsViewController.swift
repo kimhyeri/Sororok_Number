@@ -11,7 +11,7 @@ import Contacts
 import Alamofire
 import SwiftyJSON
 
-class ContactsViewController: UIViewController , UITableViewDataSource, UITableViewDelegate{
+class ContactsViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var titleView: UIView!

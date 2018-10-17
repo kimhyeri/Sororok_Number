@@ -9,7 +9,7 @@
 import UIKit
 
 //MARK: tableview datasource delegate
-extension ContactsViewController {
+extension ContactsViewController : UITableViewDataSource, UITableViewDelegate {
     
     //한글 몇번째 리턴해줌
     func getHangul(num : Int) -> String {
@@ -51,15 +51,20 @@ extension ContactsViewController {
         if matchData[indexPath.section] != nil {
             cell.nameLabel.text = matchData[indexPath.section]![indexPath.row].name
             cell.phoneLabel.text = matchData[indexPath.section]![indexPath.row].phone
-            cell.userImage.image = UIImage(named: "girl")
-            DispatchQueue.global().async {
-                guard let url = URL(string: APICollection.sharedAPI.imageUrl + self.matchData[indexPath.section]![indexPath.row].imageName) else {return}
-                
-                DispatchQueue.main.async {
-                    if let index : IndexPath = tableView.indexPath(for: cell) {
-                        if index.row == indexPath.row {
-                            cell.userImage.kf.setImage(with: url)
-                            cell.userImage?.layer.cornerRadius = cell.userImage.frame.width / 2
+
+            let myImage = self.matchData[indexPath.section]![indexPath.row].imageName
+            if myImage == " " || myImage == "" {
+                cell.userImage.image = UIImage(named: "girl")
+            } else {
+                DispatchQueue.global().async {
+                    guard let url = URL(string: APICollection.sharedAPI.imageUrl + myImage) else { return }
+                    
+                    DispatchQueue.main.async {
+                        if let index : IndexPath = tableView.indexPath(for: cell) {
+                            if index.row == indexPath.row {
+                                cell.userImage.kf.setImage(with: url)
+                                cell.userImage?.layer.cornerRadius = cell.userImage.frame.width / 2
+                            }
                         }
                     }
                 }
