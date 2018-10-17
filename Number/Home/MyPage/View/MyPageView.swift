@@ -24,8 +24,7 @@ extension MyPageViewController {
         nameText.text = UserDefaults.standard.string(forKey: "name")
 
         if let image = UserDefaults.standard.string(forKey: "imageName") {
-            print(image)
-            if image == " " {
+            if image == " " || image == "" {
                 myImage.image = UIImage(named: "girlBig")
             } else {
                 let url = URL(string: APICollection.sharedAPI.imageUrl + image)
