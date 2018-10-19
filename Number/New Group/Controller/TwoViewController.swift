@@ -36,6 +36,7 @@ class TwoViewController: UIViewController {
     var defaultSize : [CGRect] = []
     var defaultButton = 0
     var defaultLabel = 0
+    var flag = false
     var searchText : String?
     var groupDefaultImages = ["imgDefaultGroup01","imgDefaultGroup02","imgDefaultGroup03","imgDefaultGroup04","imgDefaultGroup05","imgDefaultGroup06"]
     var repoList : repoListSet?
@@ -83,11 +84,12 @@ class TwoViewController: UIViewController {
     
     @objc func searchDoneNoti(){
         firstLoginView.alpha = 0
+        flag = false
         loadItem(memberId: UserDefaults.standard.integer(forKey: "memberId"))
     }
     
     @objc func searchNoti(_ notification: Notification){
-
+        flag = true
         if let data = notification.userInfo as? [String: String]{
             for (_, text) in data {
                 searchText = text

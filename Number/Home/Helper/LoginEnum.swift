@@ -13,3 +13,8 @@ enum typeCase : String {
     case kakao = "1"
     case naver = "2"
 }
+
+enum authority : String {
+    case member = "멤버"
+    case host = "방장"
+}

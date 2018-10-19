@@ -74,8 +74,30 @@ extension TwoViewController : UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath) as! HomeTableViewCell
             cell.descLabel.text = repoList?.dataList[indexPath.row].extra_info
             cell.groupName.text = repoList?.dataList[indexPath.row].name
-            let status = repoList?.dataList[indexPath.row].authority
-            cell.groupImage?.image = UIImage(named: groupDefaultImages[indexPath.row % groupDefaultImages.count])
+            
+            if let status = repoList?.dataList[indexPath.row].authority {
+                if (flag == false) {
+                    cell.statusLabel.alpha = 1
+
+                    if status == 0 {
+                        cell.statusLabel.text = authority.host.rawValue
+                    } else {
+                        cell.statusLabel.text = authority.member.rawValue
+                    }
+                } else {
+                    cell.statusLabel.alpha = 0
+                }
+            }
+            
+            if let groupImg = repoList?.dataList[indexPath.row].imageName {
+                if (groupImg == "" || groupImg == " ") {
+                    cell.groupImage?.image = UIImage(named: groupDefaultImages[indexPath.row % groupDefaultImages.count])
+                } else {
+                    let url = URL(string: APICollection.sharedAPI.imageUrl + groupImg)
+                    cell.groupImage.kf.setImage(with: url)
+                }
+            }
+            
             cell.cellView.layer.cornerRadius = 10
             cell.cellView.layer.borderWidth = 1
             cell.cellView.layer.borderColor = UIColor(red:196/255, green:197/255, blue:214/255, alpha: 1).cgColor
