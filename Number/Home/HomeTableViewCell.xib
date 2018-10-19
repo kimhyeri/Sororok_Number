@@ -45,8 +45,13 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="0.20392156859999999" green="0.2274509804" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPW-1s-6zr">
-                        <rect key="frame" x="28" y="69" width="80" height="21"/>
+                    <view clipsSubviews="YES" alpha="0.29999999999999999" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QzQ-BE-FrX">
+                        <rect key="frame" x="28" y="70" width="80" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPW-1s-6zr">
+                        <rect key="frame" x="28" y="70" width="80" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -60,6 +65,7 @@
                 <outlet property="descLabel" destination="Bdx-h2-2Sj" id="p3f-sc-DaO"/>
                 <outlet property="groupImage" destination="GFZ-Pc-76S" id="vdk-8Z-Uzn"/>
                 <outlet property="groupName" destination="cLd-mt-4Rm" id="AYI-oy-AgP"/>
+                <outlet property="labelView" destination="QzQ-BE-FrX" id="hqQ-qp-iH2"/>
                 <outlet property="statusLabel" destination="GPW-1s-6zr" id="Ej9-DW-Zbf"/>
             </connections>
             <point key="canvasLocation" x="28" y="88.605697151424295"/>

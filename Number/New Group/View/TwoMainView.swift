@@ -78,7 +78,7 @@ extension TwoViewController : UITableViewDelegate, UITableViewDataSource {
             if let status = repoList?.dataList[indexPath.row].authority {
                 if (flag == false) {
                     cell.statusLabel.alpha = 1
-
+                    cell.labelView.alpha = 0.3
                     if status == 0 {
                         cell.statusLabel.text = authority.host.rawValue
                     } else {
@@ -86,6 +86,7 @@ extension TwoViewController : UITableViewDelegate, UITableViewDataSource {
                     }
                 } else {
                     cell.statusLabel.alpha = 0
+                    cell.labelView.alpha = 0
                 }
             }
             
@@ -98,6 +99,7 @@ extension TwoViewController : UITableViewDelegate, UITableViewDataSource {
                 }
             }
             
+            cell.labelView.layer.cornerRadius = 10
             cell.cellView.layer.cornerRadius = 10
             cell.cellView.layer.borderWidth = 1
             cell.cellView.layer.borderColor = UIColor(red:196/255, green:197/255, blue:214/255, alpha: 1).cgColor
