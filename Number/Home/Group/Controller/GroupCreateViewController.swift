@@ -43,7 +43,8 @@ extension GroupCreateViewController {
       
         let url = "http://45.63.120.140:40005/repository/create"
         
-        guard groupNameText.text != nil else {showToast(message: "이름 입력해주세요"); return}
+        
+        guard groupNameText.text != nil else { return }
         guard codeLabel.text != nil else {showToast(message: "fail"); return}
         guard groupInfoText.text != nil else {showToast(message: "그룹설명 입력해주세요"); return}
         
@@ -70,13 +71,12 @@ extension GroupCreateViewController {
                     upload.responseJSON { response in
                         let reloadTable = Notification.Name(rawValue: reloadTalbeViewKey )
                         NotificationCenter.default.post(name: reloadTable, object: nil)
+                        self.navigationController?.popViewController(animated: true)
                     }
                 case .failure(let encodingError):
                     print(encodingError)
                 }
         })
-        
-        self.navigationController?.popViewController(animated: true)
     }
     
 }
