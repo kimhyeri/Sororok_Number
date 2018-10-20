@@ -12,7 +12,10 @@
 ![텍스트목록](./screenshot/sororok2.png)
 ![텍스트목록](./screenshot/sororok3.png)
 
-## App Store
+### 버전 정보 
+> version 1.0.2
+
+## 앱 스토어
 <a href="https://itunes.apple.com/kr/app/%EC%86%8C%EB%A1%9C%EB%A1%9D/id1436022361?mt=8"> <img src="./screenshot/AppStore.png" width="170" height="58"></a>
 
 ### 서비스 구상과정 
