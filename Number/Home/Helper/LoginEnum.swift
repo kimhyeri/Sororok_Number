@@ -15,6 +15,6 @@ enum typeCase : String {
 }
 
 enum authority : String {
-    case member = "멤버"
-    case host = "방장"
+    case member = "방장"
+    case host = "멤버"
 }
