@@ -91,11 +91,4 @@ extension AppDelegate : GIDSignInUIDelegate{
         return googleSession
     }
     
-//    private func application(application: UIApplication,
-//                             didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-//        var configureError: NSError?
-//        assert(configureError == nil, "Error configuring Google services: \(configureError)")
-//        return true
-//    }
-    
 }

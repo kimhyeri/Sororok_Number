@@ -18,6 +18,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ckv-6k-BYe">
+                                <rect key="frame" x="132.5" y="83" width="110" height="110"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="Plv-Im-2of"/>
+                                    <constraint firstAttribute="height" constant="110" id="Uut-FL-gkq"/>
+                                </constraints>
+                            </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K76-7k-dzQ">
                                 <rect key="frame" x="0.0" y="196" width="375" height="471"/>
                                 <subviews>
@@ -144,13 +152,6 @@
                                     <constraint firstItem="nyR-vr-sHN" firstAttribute="leading" secondItem="K76-7k-dzQ" secondAttribute="leading" constant="67" id="z7B-pY-0Kl"/>
                                 </constraints>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgDefaultGroup01" translatesAutoresizingMaskIntoConstraints="NO" id="Z5y-ck-tmm">
-                                <rect key="frame" x="137.5" y="88" width="100" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="1nj-Af-lgd"/>
-                                    <constraint firstAttribute="width" constant="100" id="E0k-A0-Pmi"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YBh-0e-drn">
                                 <rect key="frame" x="172.5" y="158" width="30" height="30"/>
                                 <constraints>
@@ -164,6 +165,13 @@
                                     <action selector="AlbumPressed:" destination="nWg-o9-S1c" eventType="touchUpInside" id="868-pA-SIn"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgDefaultGroup01" translatesAutoresizingMaskIntoConstraints="NO" id="Z5y-ck-tmm">
+                                <rect key="frame" x="137.5" y="88" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="1nj-Af-lgd"/>
+                                    <constraint firstAttribute="width" constant="100" id="E0k-A0-Pmi"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.20392156859999999" green="0.2274509804" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -171,7 +179,9 @@
                             <constraint firstItem="K76-7k-dzQ" firstAttribute="top" secondItem="Z5y-ck-tmm" secondAttribute="bottom" constant="8" id="8SD-kn-hRB"/>
                             <constraint firstItem="K76-7k-dzQ" firstAttribute="bottom" secondItem="L7v-Gq-UpE" secondAttribute="bottom" id="9XU-ug-jsZ"/>
                             <constraint firstItem="YBh-0e-drn" firstAttribute="centerX" secondItem="Z5y-ck-tmm" secondAttribute="centerX" id="HOn-W0-qyw"/>
+                            <constraint firstItem="ckv-6k-BYe" firstAttribute="centerX" secondItem="hNy-PF-b1K" secondAttribute="centerX" id="Xzi-RX-sSd"/>
                             <constraint firstItem="K76-7k-dzQ" firstAttribute="top" secondItem="YBh-0e-drn" secondAttribute="bottom" constant="8" id="i3l-FL-09w"/>
+                            <constraint firstItem="ckv-6k-BYe" firstAttribute="top" secondItem="L7v-Gq-UpE" secondAttribute="top" constant="63" id="mAY-O3-Edk"/>
                             <constraint firstItem="Z5y-ck-tmm" firstAttribute="centerX" secondItem="hNy-PF-b1K" secondAttribute="centerX" id="qWD-tZ-rQg"/>
                             <constraint firstItem="K76-7k-dzQ" firstAttribute="leading" secondItem="L7v-Gq-UpE" secondAttribute="leading" id="srT-eA-KIf"/>
                             <constraint firstItem="Z5y-ck-tmm" firstAttribute="top" secondItem="L7v-Gq-UpE" secondAttribute="top" constant="68" id="yEK-MW-QAK"/>
@@ -180,6 +190,7 @@
                     </view>
                     <connections>
                         <outlet property="codeLabel" destination="28B-of-dkt" id="Pcg-qQ-RnT"/>
+                        <outlet property="groupBackView" destination="ckv-6k-BYe" id="ixe-li-uH9"/>
                         <outlet property="groupCode" destination="Vem-yw-3bo" id="6sm-e4-kNN"/>
                         <outlet property="groupImage" destination="Z5y-ck-tmm" id="oAL-CC-k1H"/>
                         <outlet property="groupInfoText" destination="WbM-a1-ld7" id="tny-vb-Idb"/>

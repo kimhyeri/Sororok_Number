@@ -13,6 +13,7 @@ import Alamofire
 
 class GroupCreateViewController: UIViewController {
 
+    @IBOutlet weak var groupBackView: UIView!
     @IBOutlet weak var groupInfoText: UITextField!
     @IBOutlet weak var groupNameText: UITextField!
     @IBOutlet weak var groupCode: UIButton!

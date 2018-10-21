@@ -18,6 +18,9 @@ extension GroupCreateViewController {
         self.title = "그룹생성"
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         
+        groupBackView.clipsToBounds = true
+        groupBackView.layer.cornerRadius = self.groupBackView.frame.width/2
+        
         groupCode.layer.cornerRadius = 10
         groupImage.backgroundColor = .black
         groupImage.layer.cornerRadius = self.groupImage.frame.width/2
