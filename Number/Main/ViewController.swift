@@ -47,7 +47,7 @@ class ViewController: UIViewController , CheckLogin {
         
         APICollection.sharedAPI.registeredCheck(parameters: body, completion: {
             (result) -> (Void) in
-            print("you have id")
+            self.showToast(message: "등록된 아이디가 있습니다.")
         })
     }
    

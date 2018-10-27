@@ -143,26 +143,32 @@ extension TwoViewController : UIScrollViewDelegate {
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        scrollView.decelerationRate = UIScrollViewDecelerationRateFast
-        let y = 227 - scrollView.contentOffset.y
-        let h = max(65, y)
-        let rect = CGRect(x: 0, y: 0, width: view.bounds.width, height: h)
-        firstView.frame = rect
-
-        let x = 65 + -scrollView.contentOffset.y
-        let a = min(x, 90)
-        let rect1 = CGRect(x: 10, y: a, width: 355, height: 146)
-        insideView.frame = rect1
-
-        changeView()
-        
-        if (h < 130) {
-            let rect2 = CGRect(x: 0, y: 65 - h , width: view.bounds.width, height: 65)
-            topView.frame = rect2
+ 
+        if (scrollView.contentSize.height > tableView.frame.height * 2 ){
+          
+            scrollView.decelerationRate = UIScrollViewDecelerationRateFast
+            let y = 227 - scrollView.contentOffset.y
+            let h = max(65, y)
+            let rect = CGRect(x: 0, y: 0, width: view.bounds.width, height: h)
+            firstView.frame = rect
+            
+            let x = 65 + -scrollView.contentOffset.y
+            let a = min(x, 90)
+            let rect1 = CGRect(x: 10, y: a, width: 355, height: 146)
+            insideView.frame = rect1
+            
+            changeView()
+            
+            if (h < 130) {
+                let rect2 = CGRect(x: 0, y: 65 - h , width: view.bounds.width, height: 65)
+                topView.frame = rect2
+            }
+            
+            if (self.lastContentOffset < scrollView.contentOffset.y) {
+                insideView.alpha = 1 - ( tableView.contentOffset.y * 0.01)
+            }
+            
         }
-
-        if (self.lastContentOffset < scrollView.contentOffset.y) {
-            insideView.alpha = 1 - ( tableView.contentOffset.y * 0.01)
-        }
+   
     }
 }
