@@ -12,6 +12,7 @@
 		351AB6392105C1570017D41A /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 351AB6382105C1570017D41A /* MyPage.storyboard */; };
 		351AB63B2105C16E0017D41A /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351AB63A2105C16E0017D41A /* MyPageViewController.swift */; };
 		3524C8582174B47300542518 /* SideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3524C8572174B47300542518 /* SideMenuTableViewCell.swift */; };
+		3527990B218C036800C14B0C /* CheckLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3527990A218C036800C14B0C /* CheckLogin.swift */; };
 		35325D48212E9DEB00AC3897 /* Index.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35325D47212E9DEB00AC3897 /* Index.swift */; };
 		35325D4C212F08F600AC3897 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35325D4B212F08F600AC3897 /* Helper.swift */; };
 		35325D4E212F0E4500AC3897 /* ContactNaviViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35325D4D212F0E4500AC3897 /* ContactNaviViewController.swift */; };
@@ -97,6 +98,7 @@
 		351AB6382105C1570017D41A /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
 		351AB63A2105C16E0017D41A /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		3524C8572174B47300542518 /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
+		3527990A218C036800C14B0C /* CheckLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckLogin.swift; sourceTree = "<group>"; };
 		35325D47212E9DEB00AC3897 /* Index.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Index.swift; sourceTree = "<group>"; };
 		35325D4B212F08F600AC3897 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		35325D4D212F0E4500AC3897 /* ContactNaviViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactNaviViewController.swift; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 				35ECDEF12103B1B700308080 /* ViewController.swift */,
 				354E6CE8213080CB00C6C526 /* APICollection.swift */,
 				354FF882216FC5EC007620EA /* ProtocolCollection.swift */,
+				3527990A218C036800C14B0C /* CheckLogin.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -806,6 +809,7 @@
 				354FF887216FCAE2007620EA /* NaverLogin.swift in Sources */,
 				35CF88152154374900AB9067 /* LoginEnum.swift in Sources */,
 				35ECDF15210476F200308080 /* HomeTableViewCell.swift in Sources */,
+				3527990B218C036800C14B0C /* CheckLogin.swift in Sources */,
 				35B0168621517BD300B12506 /* TwoMainView.swift in Sources */,
 				355A9466213B26C5005AD348 /* HistoryData.swift in Sources */,
 				355B5772213FCC160085028E /* repoList.swift in Sources */,
