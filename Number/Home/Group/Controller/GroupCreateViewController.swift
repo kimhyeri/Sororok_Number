@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Photos
 import SwiftyJSON
 import Alamofire
 
@@ -36,50 +35,6 @@ class GroupCreateViewController: UIViewController {
     
 }
 
-//MARK: create group (api)
-
-extension GroupCreateViewController {
-    
-    @objc func saveButton(){
-      
-        let url = "http://45.63.120.140:40005/repository/create"
-        
-        guard groupNameText.text != "" else { showToast(message: "그룹명"); return }
-        guard codeLabel.text != "" else { showToast(message: "코드번호 오류"); return}
-        
-        let memberId = UserDefaults.standard.string(forKey: "memberId")
-        let image = imageChange() as Data
-        let extraInfo = groupInfoText.text ?? ""
-
-        if let name = groupNameText.text {
-            if let code = codeLabel.text {
-                Alamofire.upload(
-                    multipartFormData: { multipartFormData in
-                        //                multipartFormData.append(image, withName: "memberImage", fileName: "memberImage.jpeg", mimeType: "memberImage/jpeg")
-                        multipartFormData.append((name.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "name")
-                        multipartFormData.append((code.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "code")
-                        multipartFormData.append((memberId?.data(using: .utf8, allowLossyConversion: false))!, withName: "memberId")
-                        multipartFormData.append((extraInfo.data(using: String.Encoding.utf8, allowLossyConversion: false))!, withName: "extraInfo")
-                        
-                },
-                    to: url,
-                    method: .put,
-                    encodingCompletion: { encodingResult in
-                        switch encodingResult {
-                        case .success(let upload, _, _):
-                            upload.responseJSON { response in
-                                let reloadTable = Notification.Name(rawValue: reloadTalbeViewKey )
-                                NotificationCenter.default.post(name: reloadTable, object: nil)
-                                self.navigationController?.popViewController(animated: true)
-                            }
-                        case .failure(let encodingError):
-                            print(encodingError)
-                        }
-                })
-            }
-        }
-    }
-}
 
 //MARK: manage group code
 
@@ -108,30 +63,6 @@ extension GroupCreateViewController {
     
     func copyToClipBoard(textToCopy: String) {
         UIPasteboard.general.string = textToCopy
-    }
-    
-}
-    //MARK: manage image
-
-extension GroupCreateViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-    @IBAction func AlbumPressed(_ sender: Any) {
-        let picker = UIImagePickerController()
-        picker.delegate = self
-        picker.allowsEditing = false
-        self.present(picker, animated: true)
-    }
-    
-    func imageChange() -> NSData {
-        let image : UIImage = groupImage.image!
-        let imageData:NSData = UIImagePNGRepresentation(image)! as NSData
-        _ = imageData.base64EncodedString(options: .lineLength64Characters)
-        return imageData
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        self.groupImage.image = info[UIImagePickerControllerOriginalImage] as? UIImage
-        picker.dismiss(animated: false)
     }
     
 }

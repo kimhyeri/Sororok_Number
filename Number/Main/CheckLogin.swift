@@ -13,6 +13,7 @@ import KakaoOpenSDK
 
 //MARK: Check Login
 extension AppDelegate : GIDSignInUIDelegate{
+  
     @available(iOS 9.0, *)
     
     func checkLogin() {
@@ -35,11 +36,10 @@ extension AppDelegate : GIDSignInUIDelegate{
     }
     
     func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
-        //카카오면
-        if KOSession.isKakaoAccountLoginCallback(url) {
+
+      if KOSession.isKakaoAccountLoginCallback(url) {
             return KOSession.handleOpen(url)
-        }//구글이면
-        else {
+        } else {
             return GIDSignIn.sharedInstance().handle(url as URL?,sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
         }
     }
