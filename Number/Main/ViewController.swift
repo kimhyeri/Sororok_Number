@@ -16,7 +16,7 @@ class ViewController: UIViewController , CheckLogin {
     @IBOutlet weak var naver: UIButton!
     @IBOutlet weak var kakao: UIButton!
     
-    var userData : UserInfoSet!
+    private var userData : UserInfoSet!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,12 +40,12 @@ class ViewController: UIViewController , CheckLogin {
     }
     
     func checkLogin(loginType type: String) {
-        let body : Parameters = [
-            "type" : type,
-            "uid" : UserInfo.getUid() ,
+        let parameter : Parameters = [
+            "type" : type ,
+            "uid" : UserInfo.getUid()
             ]
         
-        APICollection.sharedAPI.registeredCheck(parameters: body, completion: {
+        APICollection.sharedAPI.registeredCheck(parameters: parameter, completion: {
             (result) -> (Void) in
             self.showToast(message: "등록된 아이디가 있습니다.")
         })
