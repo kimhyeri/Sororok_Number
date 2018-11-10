@@ -40,13 +40,3 @@ struct repoList {
     }
     
 }
-
-struct searchList {
-    let joinFlag : Int
-    let name : String
-    let repositoryId : Int
-    let authority : Int
-    let imageName : String
-    let extra_info : String
-    
-}

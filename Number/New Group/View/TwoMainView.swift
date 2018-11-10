@@ -59,11 +59,7 @@ extension TwoViewController {
 extension TwoViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let count = repoList?.dataList.count {
-            return count
-        } else {
-            return 1
-        }
+        return repoList?.dataList.count ?? 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

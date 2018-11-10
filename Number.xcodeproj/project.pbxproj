@@ -48,7 +48,7 @@
 		35572C25212C06BB00A919C7 /* NotSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35572C23212C06BB00A919C7 /* NotSearchTableViewCell.xib */; };
 		35572C27212C342500A919C7 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35572C26212C342500A919C7 /* SettingViewController.swift */; };
 		355A9466213B26C5005AD348 /* HistoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355A9465213B26C4005AD348 /* HistoryData.swift */; };
-		355B5772213FCC160085028E /* repoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B5771213FCC160085028E /* repoList.swift */; };
+		355B5772213FCC160085028E /* RepoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B5771213FCC160085028E /* RepoList.swift */; };
 		355B5777213FE4410085028E /* ToastLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B5776213FE4410085028E /* ToastLabel.swift */; };
 		355B577A214070390085028E /* DetailMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B5779214070390085028E /* DetailMember.swift */; };
 		355B69962132BDED0002FD80 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 355B69952132BDEC0002FD80 /* MessageUI.framework */; };
@@ -57,6 +57,7 @@
 		355BB7532129E625009A7837 /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355BB7522129E625009A7837 /* LogoutViewController.swift */; };
 		355BB7552129E63C009A7837 /* Logout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 355BB7542129E63C009A7837 /* Logout.storyboard */; };
 		355BB7572129E767009A7837 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 355BB7562129E766009A7837 /* Assets.xcassets */; };
+		355EE7DF219712B2002BAA85 /* SearchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355EE7DE219712B2002BAA85 /* SearchList.swift */; };
 		355F0A732108E96C00715E3F /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 355F0A722108E96C00715E3F /* Setting.storyboard */; };
 		3560EDD72141293B0021172D /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3560EDD62141293B0021172D /* Notification.swift */; };
 		356125E9213C49340040985D /* UserInfoSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356125E8213C49340040985D /* UserInfoSet.swift */; };
@@ -136,7 +137,7 @@
 		35572C23212C06BB00A919C7 /* NotSearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotSearchTableViewCell.xib; sourceTree = "<group>"; };
 		35572C26212C342500A919C7 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		355A9465213B26C4005AD348 /* HistoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryData.swift; sourceTree = "<group>"; };
-		355B5771213FCC160085028E /* repoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = repoList.swift; sourceTree = "<group>"; };
+		355B5771213FCC160085028E /* RepoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoList.swift; sourceTree = "<group>"; };
 		355B5776213FE4410085028E /* ToastLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastLabel.swift; sourceTree = "<group>"; };
 		355B5779214070390085028E /* DetailMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMember.swift; sourceTree = "<group>"; };
 		355B69952132BDEC0002FD80 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -145,6 +146,7 @@
 		355BB7522129E625009A7837 /* LogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
 		355BB7542129E63C009A7837 /* Logout.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Logout.storyboard; sourceTree = "<group>"; };
 		355BB7562129E766009A7837 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Number/Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		355EE7DE219712B2002BAA85 /* SearchList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchList.swift; sourceTree = "<group>"; };
 		355F0A722108E96C00715E3F /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		3560EDD62141293B0021172D /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		356125E8213C49340040985D /* UserInfoSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoSet.swift; sourceTree = "<group>"; };
@@ -309,7 +311,8 @@
 		355B5770213FCC060085028E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				355B5771213FCC160085028E /* repoList.swift */,
+				355B5771213FCC160085028E /* RepoList.swift */,
+				355EE7DE219712B2002BAA85 /* SearchList.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -819,12 +822,13 @@
 				3527990B218C036800C14B0C /* CheckLogin.swift in Sources */,
 				35B0168621517BD300B12506 /* TwoMainView.swift in Sources */,
 				355A9466213B26C5005AD348 /* HistoryData.swift in Sources */,
-				355B5772213FCC160085028E /* repoList.swift in Sources */,
+				355B5772213FCC160085028E /* RepoList.swift in Sources */,
 				3556196A21071EDF009CC356 /* DetailHomeTableViewCell.swift in Sources */,
 				3565D4432128291B000D70D2 /* ContactsViewController.swift in Sources */,
 				358268F621262669003415F0 /* TwoViewController.swift in Sources */,
 				3565D44721283B0A000D70D2 /* HexColor.swift in Sources */,
 				354FF889216FCAE8007620EA /* GoogleLogin.swift in Sources */,
+				355EE7DF219712B2002BAA85 /* SearchList.swift in Sources */,
 				355BB75021297782009A7837 /* NothingTableViewCell.swift in Sources */,
 				354FF88D216FCF3B007620EA /* ContactViewNotiController.swift in Sources */,
 				354EA795210C877300D16A80 /* SideMenuTableViewController.swift in Sources */,

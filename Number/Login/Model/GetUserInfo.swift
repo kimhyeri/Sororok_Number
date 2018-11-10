@@ -12,13 +12,14 @@ import Foundation
 
 class UserInfo{
     class func getUid() -> String {
-        var UUID = UserDefaults.standard.object(forKey: "uuid") as? String
+        let UUID = UserDefaults.standard.object(forKey: "uuid") as? String
+        
         if UUID == nil {
             let createUuid : CFUUID = CFUUIDCreate(nil)
             let string: CFString = CFUUIDCreateString(nil, createUuid)
             UserDefaults.standard.setValue(string, forKey: "uuid")
-            print(UUID)
         }
+        
         return UUID ?? ""
     }
 }
