@@ -40,7 +40,12 @@ extension ManagerGroupViewController {
 //MARK: manage tableview
 extension ManagerGroupViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        switch UserDefaults.standard.integer(forKey: "authority") {
+        case 0:
+            return member.count
+        default:
+            return manager.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -70,20 +75,20 @@ extension ManagerGroupViewController : UITableViewDelegate, UITableViewDataSourc
                 presentDeletePopup()
             }
         }
+            //그룹원 강퇴 기능
+         else if indexPath.row == 2 {
+             let storyboard = UIStoryboard.init(name: "Manager", bundle: nil)
+             let vc = storyboard.instantiateViewController(withIdentifier: "ManageGroup")
+             self.navigationController?.pushViewController(vc, animated: true)
+         }
+        
+            //관리자 변경 기능
+         else if indexPath.row == 3 {
+             let storyboard = UIStoryboard.init(name: "Manager", bundle: nil)
+             let vc = storyboard.instantiateViewController(withIdentifier: "ChangeManager")
+             self.navigationController?.pushViewController(vc, animated: true)
+         }
+
+
     }
 }
-
-
-/* 요건 버전2에 넣을꺼임
- else if indexPath.row == 1 {
- let storyboard = UIStoryboard.init(name: "Manager", bundle: nil)
- let vc = storyboard.instantiateViewController(withIdentifier: "ManageGroup")
- self.navigationController?.pushViewController(vc, animated: true)
- }
- else if indexPath.row == 2 {
- 관리자 변경 비활성화 version1
- let storyboard = UIStoryboard.init(name: "Manager", bundle: nil)
- let vc = storyboard.instantiateViewController(withIdentifier: "ChangeManager")
- self.navigationController?.pushViewController(vc, animated: true)
- }
- */

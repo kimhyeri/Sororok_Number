@@ -17,7 +17,7 @@ class ManagerGroupViewController: UIViewController{
     @IBOutlet weak var codeLabel: UILabel!
     @IBOutlet weak var changeCodeView: UIView!
     
-    var manager: [String] = ["그룹 공유하기", "그룹 폭파"]
+    var manager: [String] = ["그룹 공유하기", "그룹원 관리", "관리자 변경", "그룹 폭파"]
     var member: [String] = ["그룹 공유하기", "그룹 나가기"]
     
     override func viewWillAppear(_ animated: Bool) {
