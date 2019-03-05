@@ -18,6 +18,8 @@
 ## 앱 스토어
 <a href="https://itunes.apple.com/kr/app/%EC%86%8C%EB%A1%9C%EB%A1%9D/id1436022361?mt=8"> <img src="./screenshot/AppStore.png" width="170" height="58"></a>
 
+- 서비스 종료 
+
 * * *
 
 ### 서비스 구상과정 
